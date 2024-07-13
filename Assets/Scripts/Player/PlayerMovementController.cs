@@ -8,7 +8,7 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] float m_speed = 10f;
     [SerializeField] float m_jumpHeight = 3f;
     [SerializeField] float m_gravity = -9.81f;
-    [SerializeField] float m_mouseSensitivity = 100f;
+    [SerializeField] float m_mouseSensitivity = 500f;
     [SerializeField] private Transform m_cameraTransform;
 
     private CharacterController m_characterController;
