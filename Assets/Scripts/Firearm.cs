@@ -6,7 +6,7 @@ using UnityEngine;
 public class Firearm : MonoBehaviour
 {
 
-    public Camera camera;
+    public Camera cam;
     public GameObject bullet;
     public Transform bulletSpawnPoint;   
     public TextMeshPro ammoDisplay;
@@ -55,7 +55,7 @@ public class Firearm : MonoBehaviour
         isFiring = true;
 
         // calculate direction to aim
-        Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
         Vector3 aim;
         RaycastHit hit;
