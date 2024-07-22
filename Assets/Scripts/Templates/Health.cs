@@ -3,6 +3,7 @@ using UnityEngine;
 public abstract class Health : MonoBehaviour
 {
 	[Header("Health Settings")]
+	[Space(2)]
 	[SerializeField] protected bool m_isPlayer;
 	[SerializeField] protected bool m_dontDestroy;
 	[SerializeField] protected bool m_dontRemoveDeadBody;

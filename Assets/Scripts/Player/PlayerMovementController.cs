@@ -5,9 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovementController : MonoBehaviour
 {
+    private PlayerStats m_stats;
+
     [SerializeField] float m_speed = 10f;
+    private float m_normalSpeed;
+    private float m_sprintSpeed;
+    private float m_sprintTimer = 0f;
+    private float m_sprintRate = 0.5f;
+
     [SerializeField] float m_jumpHeight = 3f;
     [SerializeField] float m_gravity = -9.81f;
+
     [SerializeField] float m_mouseSensitivity = 500f;
     [SerializeField] private Transform m_cameraTransform;
 
@@ -19,13 +27,27 @@ public class PlayerMovementController : MonoBehaviour
 
     void Start()
     {
+        m_stats = GetComponent<PlayerStats>();
         m_characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        m_normalSpeed = m_speed;
+        m_sprintSpeed = m_speed * 2f;
     }
 
     void Update()
     {
+        if (m_isGrounded && !Input.GetButton("Sprint"))
+        {
+            m_stats.EnableStaminaRegeneration();
+        }
+        else
+        {
+            m_stats.DisableStaminaRegeneration();
+        }
+
+        HandleSprint();
         HandleMovement();
         HandleMouseLook();
     }
@@ -47,7 +69,10 @@ public class PlayerMovementController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && m_isGrounded)
         {
-            m_velocity.y = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
+            if (m_stats.UseStamina(3f) > 0)
+            {
+                m_velocity.y = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
+            }
         }
 
         m_velocity.y += m_gravity * Time.deltaTime;
@@ -64,5 +89,30 @@ public class PlayerMovementController : MonoBehaviour
 
         m_cameraTransform.localRotation = Quaternion.Euler(m_xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
+    }
+
+    private void HandleSprint()
+    {
+        if (Input.GetButton("Sprint") && m_isGrounded)
+        {
+            m_sprintTimer += Time.deltaTime;
+            if (m_sprintTimer > m_sprintRate)
+            {
+                if (m_stats.UseStamina(1f) > 0)
+                {
+                    m_speed = m_sprintSpeed;
+                    m_sprintTimer = 0f;
+                }
+                else
+                {
+                    m_speed = m_normalSpeed;
+                }
+
+            }
+        }
+        else
+        {
+            m_speed = m_normalSpeed;
+        }
     }
 }
