@@ -19141,6 +19141,7 @@ GameObject:
   - component: {fileID: 2420158218747612087}
   - component: {fileID: 1380489201760062354}
   - component: {fileID: 38569860786222543}
+  - component: {fileID: 7389396962155888438}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -19234,7 +19235,6 @@ MonoBehaviour:
   m_mouseSensitivity: 100
   m_camera: {fileID: 5465714931067513084}
   m_dutchAngle: 10
-  m_dodgeDuration: 5
   m_dodgeDistance: 5
   m_dodgeCooldown: 0.5
 --- !u!114 &1380489201760062354
@@ -19277,6 +19277,28 @@ MonoBehaviour:
   m_JumpInput: 0
   m_SprintInput: 0
   m_DodgeInput: 0
+--- !u!114 &7389396962155888438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7644133815727854264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7767f93d3aa334aa3a1d472bdecd71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 3912613330199414438}
+  bullet: {fileID: 2656098712342941740, guid: e18799c16bdc44d429a33d0d7fa6c9fb, type: 3}
+  bulletSpawnPoint: {fileID: 4693210759133076363}
+  ammoDisplay: {fileID: 0}
+  range: 500
+  fireRate: 0.1
+  reloadTime: 1
+  bulletLaunchVelocity: 75
+  ammoSize: 20
+  reserveSize: 60
 --- !u!1 &7808544937418167269
 GameObject:
   m_ObjectHideFlags: 0
