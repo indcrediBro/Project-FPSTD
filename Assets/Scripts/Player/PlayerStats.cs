@@ -3,10 +3,17 @@ using UnityEngine;
 public class PlayerStats : Health
 {
     [Space(5)]
+    [Header("References")]
+    [Space(2)]
+    [SerializeField] private PlayerInputController m_inputController;
+    public PlayerInputController GetPlayerInput() { return m_inputController; }
+
+    [Space(5)]
     [Header("Stamina Settings")]
     [Space(2)]
     [SerializeField] private UnityEngine.UI.Slider m_staminaBar;
     [SerializeField] private float m_maxStamina = 10f;
+
     private float m_stamina;
     private float m_staminaRegenTime;
     private float m_staminaRegenTimer;
