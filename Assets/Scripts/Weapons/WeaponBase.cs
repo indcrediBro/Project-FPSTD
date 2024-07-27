@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Firearm : MonoBehaviour
+public class WeaponBase : MonoBehaviour
 {
 
-    public Camera cam;
+    public Camera pov;
     public GameObject bullet;
     public Transform bulletSpawnPoint;   
-    public TextMeshPro ammoDisplay;
+    public TextMeshProUGUI ammoDisplay;
 
-    public float range;
-    public float fireRate;
-    public float reloadTime;
-    public float bulletLaunchVelocity;
-    public int ammoSize;
-    public int reserveSize;
+    public float range = 100f;
+    public float fireRate = 0.1f;
+    public float reloadTime = 1f;
+    public float bulletLaunchVelocity = 10f;
+    public int ammoSize = 20;
+    public int reserveSize = 60;
 
     private int currentAmmo;
     private int currentReserve;
@@ -55,7 +55,7 @@ public class Firearm : MonoBehaviour
         isFiring = true;
 
         // calculate direction to aim
-        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray ray = pov.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
         Vector3 aim;
         RaycastHit hit;
