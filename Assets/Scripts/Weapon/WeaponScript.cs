@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Firearm : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Firearm : MonoBehaviour
     public Camera cam;
     public GameObject bullet;
     public Transform bulletSpawnPoint;   
-    public TextMeshPro ammoDisplay;
+    public TextMeshProUGUI ammoDisplay;
 
 
     public float range = 100f;
@@ -116,7 +117,7 @@ public class Firearm : MonoBehaviour
     {
         if (ammoDisplay != null)
         {
-            ammoDisplay.SetText(currentAmmo + " / " + currentReserve);
+            ammoDisplay.text = (currentAmmo + " / " + currentReserve);
         }
     }
 }
