@@ -7,16 +7,16 @@ public class WeaponBase : MonoBehaviour
 {
 
     public Camera pov;
-    public GameObject bullet;
-    public Transform bulletSpawnPoint;   
     public TextMeshProUGUI ammoDisplay;
-
+    public GameObject bullet;
     public float range = 100f;
     public float fireRate = 0.1f;
     public float reloadTime = 1f;
     public float bulletLaunchVelocity = 10f;
     public int ammoSize = 20;
     public int reserveSize = 60;
+
+    public Transform _bulletSpawnPoint;   
 
     private int currentAmmo;
     private int currentReserve;
@@ -28,6 +28,7 @@ public class WeaponBase : MonoBehaviour
     {
         currentAmmo = ammoSize;
         currentReserve = reserveSize;
+        UpdateText();
     }
 
 
@@ -38,6 +39,7 @@ public class WeaponBase : MonoBehaviour
 
         if (isFiring == false && isReloading == false)
         {
+
             if (attemptReload) { Reload(); }
         
             else if (attemptFire)
@@ -63,15 +65,16 @@ public class WeaponBase : MonoBehaviour
             aim = hit.point;
         else
             aim = ray.GetPoint(range);
-        Vector3 direction = aim - bulletSpawnPoint.position;
+        Vector3 direction = aim - _bulletSpawnPoint.position;
 
         // fire bullet
-        GameObject newBullet = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
+        GameObject newBullet = Instantiate(bullet, _bulletSpawnPoint.position, Quaternion.identity);
         newBullet.transform.forward = direction;
         newBullet.GetComponent<Rigidbody>().AddForce(direction.normalized * bulletLaunchVelocity, ForceMode.Impulse);
 
         // done
         currentAmmo--;
+        UpdateText();
         Invoke("DoneFire", fireRate);
 
     }
@@ -109,6 +112,7 @@ public class WeaponBase : MonoBehaviour
     private void DoneReload()
     {
         isReloading = false;
+        UpdateText();
     }
 
     private void UpdateText()

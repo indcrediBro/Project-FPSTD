@@ -45,12 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pov: {fileID: 0}
-  bullet: {fileID: 2656098712342941740, guid: e18799c16bdc44d429a33d0d7fa6c9fb, type: 3}
-  bulletSpawnPoint: {fileID: 8768918917125538327}
   ammoDisplay: {fileID: 0}
+  bullet: {fileID: 2656098712342941740, guid: e18799c16bdc44d429a33d0d7fa6c9fb, type: 3}
   range: 100
   fireRate: 0.1
   reloadTime: 1
   bulletLaunchVelocity: 10
   ammoSize: 20
   reserveSize: 60
+  _bulletSpawnPoint: {fileID: 8768918917125538327}
