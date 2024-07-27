@@ -2531,13 +2531,14 @@ GameObject:
   - component: {fileID: 1132337921207189090}
   - component: {fileID: 2397549036958174117}
   - component: {fileID: 5660442518054660327}
+  - component: {fileID: 8062222534505427303}
   m_Layer: 6
-  m_Name: Cube
+  m_Name: Firearm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6029935063888128594
 Transform:
   m_ObjectHideFlags: 0
@@ -2547,10 +2548,11 @@ Transform:
   m_GameObject: {fileID: 4108799197826442463}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.15, y: -0.2, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0.15, y: -0.2, z: 0.655}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.57142645}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 526320394523658075}
   m_Father: {fileID: 8237021029971493073}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1132337921207189090
@@ -2624,6 +2626,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8062222534505427303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4108799197826442463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7767f93d3aa334aa3a1d472bdecd71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 6245854487814302898}
+  bullet: {fileID: 9050894856976800279, guid: 597ddc805848e4e93a60ddb4764d398d, type: 3}
+  bulletSpawnPoint: {fileID: 526320394523658075}
+  ammoDisplay: {fileID: 0}
+  range: 10
+  fireRate: 5
+  reloadTime: 0
+  bulletLaunchVelocity: 100
+  ammoSize: 10
+  reserveSize: 20
 --- !u!1 &4447306938475585597
 GameObject:
   m_ObjectHideFlags: 0
@@ -18855,6 +18879,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6988910956733774147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 526320394523658075}
+  m_Layer: 6
+  m_Name: Bullet Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &526320394523658075
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6988910956733774147}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.612}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6029935063888128594}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7040887449056124855
 GameObject:
   m_ObjectHideFlags: 0
@@ -19231,10 +19286,9 @@ MonoBehaviour:
   m_speed: 10
   m_jumpHeight: 3
   m_gravity: -20
-  m_mouseSensitivity: 100
+  m_mouseSensitivity: 50
   m_camera: {fileID: 5465714931067513084}
   m_dutchAngle: 10
-  m_dodgeDuration: 5
   m_dodgeDistance: 5
   m_dodgeCooldown: 0.5
 --- !u!114 &1380489201760062354
@@ -19579,7 +19633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &826257436414989431
 Transform:
   m_ObjectHideFlags: 0
