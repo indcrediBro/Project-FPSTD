@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,8 +17,13 @@ public class WeaponBase : MonoBehaviour
     public int ammoSize = 20;
     public int reserveSize = 60;
 
-    public Transform _bulletSpawnPoint;   
+    public Boolean charger = false;
+    public Boolean partialCharger = false;
+    public float chargeTime = 0f;
 
+    public Transform _bulletSpawnPoint;
+
+    private float currentCharge;
     private int currentAmmo;
     private int currentReserve;
 
@@ -34,25 +40,51 @@ public class WeaponBase : MonoBehaviour
 
     private void Update()
     {
-        var attemptFire = Input.GetKey(KeyCode.Mouse0);
+
         var attemptReload = Input.GetKeyDown(KeyCode.R);
+        var attemptFire = Input.GetKey(KeyCode.Mouse0);
 
         if (isFiring == false && isReloading == false)
         {
 
             if (attemptReload) { Reload(); }
-        
-            else if (attemptFire)
+
+            else
             {
-                if (currentAmmo > 0) { Fire(); }
+                if (currentAmmo > 0)
+                {
+                    if (charger == true)
+                    {
+                        Charge();
+                    }
+                    else if (attemptFire)
+                    {
+                        Fire();
+                    };
+                }
                 else { Reload(); }
             }
         }
     }
 
+    private void Charge()
+    {
+        var attemptFire = Input.GetKey(KeyCode.Mouse0);
+        if (attemptFire == true)
+        {
+            currentCharge = Math.Min(currentCharge + Time.deltaTime, chargeTime);
+            UpdateText();
+        }
+        else if (currentCharge >= chargeTime) { Fire(); }
+        else if (currentCharge > 0 && partialCharger == true) { Fire(); }
+        else
+        {
+            currentCharge = 0;
+            UpdateText();
+        }
+    }
     private void Fire()
     {
-
         // lock fire
         isFiring = true;
 
@@ -68,15 +100,15 @@ public class WeaponBase : MonoBehaviour
         Vector3 direction = aim - _bulletSpawnPoint.position;
 
         // fire bullet
-        GameObject newBullet = Instantiate(bullet, _bulletSpawnPoint.position, Quaternion.identity);
+        GameObject newBullet = Instantiate(bullet, _bulletSpawnPoint.position, Quaternion.LookRotation(direction));
         newBullet.transform.forward = direction;
         newBullet.GetComponent<Rigidbody>().AddForce(direction.normalized * bulletLaunchVelocity, ForceMode.Impulse);
 
         // done
         currentAmmo--;
+        currentCharge = 0;
         UpdateText();
         Invoke("DoneFire", fireRate);
-
     }
 
     private void DoneFire()
@@ -99,7 +131,8 @@ public class WeaponBase : MonoBehaviour
         {
             toRefill = currentReserve;
             currentReserve = 0;
-        } else
+        }
+        else
         {
             currentReserve -= toRefill;
         }
@@ -119,7 +152,12 @@ public class WeaponBase : MonoBehaviour
     {
         if (ammoDisplay != null)
         {
-            ammoDisplay.SetText(currentAmmo + " / " + currentReserve);
+            var maybeCharge = "";
+            if (charger == true)
+            {
+                maybeCharge = "\n" + "(" + Math.Round(currentCharge, 2) + "/" + Math.Round(chargeTime, 2) + ")";
+            }
+            ammoDisplay.SetText(currentAmmo + " / " + currentReserve + maybeCharge);
         }
     }
 }

@@ -26,7 +26,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private float m_xRotation = 0f;
 
-    [SerializeField] float m_dutchAngle = 10f;
+    [SerializeField] float m_dutchAngle = 1f;
     [SerializeField] float m_dodgeDistance = 5f;
     [SerializeField] float m_dodgeCooldown = 1f;
     private float m_dodgeDuration = 0.2f;
