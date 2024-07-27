@@ -3,12 +3,7 @@ guid: 2f7767f93d3aa334aa3a1d472bdecd71
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - cam: {instanceID: 0}
-  - bullet: {fileID: 2656098712342941740, guid: e18799c16bdc44d429a33d0d7fa6c9fb,
-      type: 3}
-  - bulletSpawnPoint: {instanceID: 0}
-  - ammoDisplay: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

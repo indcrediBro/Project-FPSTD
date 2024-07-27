@@ -11,13 +11,12 @@ public class Firearm : MonoBehaviour
     public Transform bulletSpawnPoint;   
     public TextMeshPro ammoDisplay;
 
-
-    public float range = 100f;
-    public float fireRate = 0.1f;
-    public float reloadTime = 1f;
-    public float bulletLaunchVelocity = 20f;
-    public int ammoSize = 20;
-    public int reserveSize = 60;
+    public float range;
+    public float fireRate;
+    public float reloadTime;
+    public float bulletLaunchVelocity;
+    public int ammoSize;
+    public int reserveSize;
 
     private int currentAmmo;
     private int currentReserve;
