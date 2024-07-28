@@ -1,19 +1,20 @@
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+[DefaultExecutionOrder(-10)]
+public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     [Header("Singleton Settings")]
     [SerializeField] private bool m_dontDestroyOnLoad;
 
-    public static T I { get; private set; }
+    public static T Instance { get; private set; }
 
     protected virtual void Awake()
     {
-        if (I == null)
+        if (Instance == null)
         {
-            I = this as T;
+            Instance = this as T;
         }
-        else if (I != null && I != this)
+        else if (Instance != null && Instance != this)
         {
             Debug.LogError("There's more than one singleton " + gameObject.name + " of type " + GetType());
             Destroy(gameObject);
