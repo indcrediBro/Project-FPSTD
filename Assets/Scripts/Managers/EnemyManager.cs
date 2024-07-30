@@ -7,7 +7,6 @@ public class EnemyManager : Singleton<EnemyManager>
 {
     public List<GameObject> Enemies;
     public List<GameObject> ActiveEnemies;
-    public int EnemiesDefeated;
     [SerializeField] public delegate void OnIncreaseRoundDelegate();
     [SerializeField] public event OnIncreaseRoundDelegate onIncreaseRoundEvent;
     [SerializeField] private Transform[] _enemySpawnPoint;

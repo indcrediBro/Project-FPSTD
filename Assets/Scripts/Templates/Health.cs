@@ -72,7 +72,7 @@ public abstract class Health : MonoBehaviour
 		}
 	}
 
-	private void ResetHealth()
+	public void ResetHealth()
 	{
 		m_currentHealth = m_maxHealth;
 		m_isDead = false;
