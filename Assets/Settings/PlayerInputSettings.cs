@@ -71,6 +71,33 @@ public partial class @PlayerInputSettings: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""ca257458-0c1c-4547-ae03-73a47b54e4b9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""5c5130e7-7f17-4d3f-bbab-ed677300f19a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SwitchWeapon"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""cdb786ed-c023-4fc3-b7bb-9a7546bc4a03"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -282,6 +309,116 @@ public partial class @PlayerInputSettings: IInputActionCollection2, IDisposable
                     ""action"": ""Dodge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6a1fd31f-b2e7-4872-a3b4-698916794572"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e03151e-1d29-4a18-9b4e-de54126e0444"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d105b9f6-d5a0-4a3d-829f-05d8dfaa1bfb"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""faa36c04-dcdd-41a0-acd9-33d114f34c92"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""08748dec-1e59-4d7c-bfab-2fce6f3270d5"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""bf8bc34a-e13c-4d3a-abc2-2b926092262c"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""31e0ee57-bcb3-4d99-8be3-398ea302bba1"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Mouse Scroll"",
+                    ""id"": ""42157fac-c9a7-4326-9043-865aeefb52c5"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""98f7d58d-612c-471b-9227-c2354c86b5b1"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""e96bba81-7025-42a4-a902-fcb675eb8008"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -295,6 +432,9 @@ public partial class @PlayerInputSettings: IInputActionCollection2, IDisposable
         m_PlayerInputActions_Jump = m_PlayerInputActions.FindAction("Jump", throwIfNotFound: true);
         m_PlayerInputActions_Sprint = m_PlayerInputActions.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerInputActions_Dodge = m_PlayerInputActions.FindAction("Dodge", throwIfNotFound: true);
+        m_PlayerInputActions_Reload = m_PlayerInputActions.FindAction("Reload", throwIfNotFound: true);
+        m_PlayerInputActions_Attack = m_PlayerInputActions.FindAction("Attack", throwIfNotFound: true);
+        m_PlayerInputActions_SwitchWeapon = m_PlayerInputActions.FindAction("SwitchWeapon", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -361,6 +501,9 @@ public partial class @PlayerInputSettings: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInputActions_Jump;
     private readonly InputAction m_PlayerInputActions_Sprint;
     private readonly InputAction m_PlayerInputActions_Dodge;
+    private readonly InputAction m_PlayerInputActions_Reload;
+    private readonly InputAction m_PlayerInputActions_Attack;
+    private readonly InputAction m_PlayerInputActions_SwitchWeapon;
     public struct PlayerInputActionsActions
     {
         private @PlayerInputSettings m_Wrapper;
@@ -370,6 +513,9 @@ public partial class @PlayerInputSettings: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_PlayerInputActions_Jump;
         public InputAction @Sprint => m_Wrapper.m_PlayerInputActions_Sprint;
         public InputAction @Dodge => m_Wrapper.m_PlayerInputActions_Dodge;
+        public InputAction @Reload => m_Wrapper.m_PlayerInputActions_Reload;
+        public InputAction @Attack => m_Wrapper.m_PlayerInputActions_Attack;
+        public InputAction @SwitchWeapon => m_Wrapper.m_PlayerInputActions_SwitchWeapon;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInputActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -394,6 +540,15 @@ public partial class @PlayerInputSettings: IInputActionCollection2, IDisposable
             @Dodge.started += instance.OnDodge;
             @Dodge.performed += instance.OnDodge;
             @Dodge.canceled += instance.OnDodge;
+            @Reload.started += instance.OnReload;
+            @Reload.performed += instance.OnReload;
+            @Reload.canceled += instance.OnReload;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
+            @SwitchWeapon.started += instance.OnSwitchWeapon;
+            @SwitchWeapon.performed += instance.OnSwitchWeapon;
+            @SwitchWeapon.canceled += instance.OnSwitchWeapon;
         }
 
         private void UnregisterCallbacks(IPlayerInputActionsActions instance)
@@ -413,6 +568,15 @@ public partial class @PlayerInputSettings: IInputActionCollection2, IDisposable
             @Dodge.started -= instance.OnDodge;
             @Dodge.performed -= instance.OnDodge;
             @Dodge.canceled -= instance.OnDodge;
+            @Reload.started -= instance.OnReload;
+            @Reload.performed -= instance.OnReload;
+            @Reload.canceled -= instance.OnReload;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
+            @SwitchWeapon.started -= instance.OnSwitchWeapon;
+            @SwitchWeapon.performed -= instance.OnSwitchWeapon;
+            @SwitchWeapon.canceled -= instance.OnSwitchWeapon;
         }
 
         public void RemoveCallbacks(IPlayerInputActionsActions instance)
@@ -437,5 +601,8 @@ public partial class @PlayerInputSettings: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
+        void OnSwitchWeapon(InputAction.CallbackContext context);
     }
 }

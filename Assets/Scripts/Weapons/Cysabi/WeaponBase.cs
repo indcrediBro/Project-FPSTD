@@ -102,7 +102,13 @@ public class WeaponBase : MonoBehaviour
         // fire bullet
         GameObject newBullet = Instantiate(bullet, _bulletSpawnPoint.position, Quaternion.LookRotation(direction));
         newBullet.transform.forward = direction;
-        newBullet.GetComponent<Rigidbody>().AddForce(direction.normalized * bulletLaunchVelocity, ForceMode.Impulse);
+
+        float variableBulletLaunchVelocity;
+
+        if (charger || partialCharger) variableBulletLaunchVelocity = bulletLaunchVelocity * currentCharge;
+        else variableBulletLaunchVelocity = bulletLaunchVelocity;
+        Debug.Log("variableBulletLaunchVelocity: " + variableBulletLaunchVelocity);
+        newBullet.GetComponent<Rigidbody>().AddForce(direction.normalized * variableBulletLaunchVelocity, ForceMode.Impulse);
 
         // done
         currentAmmo--;

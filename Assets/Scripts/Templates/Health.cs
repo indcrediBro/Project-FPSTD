@@ -8,8 +8,8 @@ public abstract class Health : MonoBehaviour
 	[SerializeField] protected bool m_dontDestroy;
 	[SerializeField] protected bool m_dontRemoveDeadBody;
 
-	[SerializeField] protected int m_maxHealth;
-	[SerializeField] protected int m_currentHealth;
+	[SerializeField] protected float m_maxHealth;
+	[SerializeField] protected float m_currentHealth;
 
 	[SerializeField] protected int m_regenerateAmount;
 	[SerializeField] protected float m_regenerateRate;
@@ -20,11 +20,11 @@ public abstract class Health : MonoBehaviour
 	protected bool m_isDead;
 
 	public virtual bool IsPlayer() { return m_isPlayer; }
-	public virtual int GetMaxHealthValue() { return m_maxHealth; }
-	public virtual int GetCurrentHealthValue() { return m_currentHealth; }
+	public virtual float GetMaxHealthValue() { return m_maxHealth; }
+	public virtual float GetCurrentHealthValue() { return m_currentHealth; }
 	public virtual bool IsDead() { return m_isDead; }
 
-	public virtual void Heal(int _value)
+	public virtual void Heal(float _value)
 	{
 		m_currentHealth += _value;
 		if (m_currentHealth >= m_maxHealth)
@@ -33,7 +33,7 @@ public abstract class Health : MonoBehaviour
 		}
 	}
 
-	public virtual void TakeDamage(int _damage)
+	public virtual void TakeDamage(float _damage)
 	{
 		m_currentHealth -= _damage;
 		if (m_currentHealth <= 0)

@@ -7,6 +7,7 @@ public class PlayerStats : Health
     [Space(2)]
     [SerializeField] private PlayerInputController m_inputController;
     public PlayerInputController GetPlayerInput() { return m_inputController; }
+    //public LayerMask weaponTargetLayers;
 
     [Space(5)]
     [Header("Stamina Settings")]
@@ -19,6 +20,8 @@ public class PlayerStats : Health
     private float m_staminaRegenTimer;
     private float m_staminaRegenRate = .5f;
     private bool m_allowStaminaRegen;
+
+
     public float GetStamina() { return m_stamina; }
 
     protected override void OnEnable()
