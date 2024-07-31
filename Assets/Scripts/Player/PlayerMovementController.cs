@@ -50,7 +50,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void HandleInput()
     {
-        if (m_isGrounded && !m_stats.GetPlayerInput().m_SprintInput && m_canDodge)
+        if (m_isGrounded && !InputManager.Instance.m_SprintInput && m_canDodge)
         {
             m_stats.EnableStaminaRegeneration();
         }
@@ -74,12 +74,12 @@ public class PlayerMovementController : MonoBehaviour
             m_velocity.y = -2f;
         }
 
-        Vector2 input = m_stats.GetPlayerInput().m_MoveInput;
+        Vector2 input = InputManager.Instance.m_MoveInput;
         Vector3 move = transform.right * input.x + transform.forward * input.y;
         m_characterController.Move(move * m_speed * Time.deltaTime);
 
         //Handle Jump
-        if (m_stats.GetPlayerInput().m_JumpInput && m_isGrounded)
+        if (InputManager.Instance.m_JumpInput && m_isGrounded)
         {
             if (m_stats.UseStamina(3f) > 0)
             {
@@ -93,7 +93,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void HandleMouseLook()
     {
-        Vector2 input = m_stats.GetPlayerInput().m_LookInput;
+        Vector2 input = InputManager.Instance.m_LookInput;
         float mouseX = input.x * m_mouseSensitivity * Time.deltaTime;
         float mouseY = input.y * m_mouseSensitivity * Time.deltaTime;
 
@@ -106,7 +106,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void HandleSprint()
     {
-        if (m_stats.GetPlayerInput().m_SprintInput && m_stats.GetPlayerInput().m_MoveInput.magnitude > 0 && m_isGrounded && m_stats.GetStamina() > 1f)
+        if (InputManager.Instance.m_SprintInput && InputManager.Instance.m_MoveInput.magnitude > 0 && m_isGrounded && m_stats.GetStamina() > 1f)
         {
             m_sprintTimer += Time.deltaTime;
             if (m_sprintTimer > m_sprintRate)
@@ -130,7 +130,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void HandleDodge()
     {
-        if (m_stats.GetPlayerInput().m_DodgeInput && m_canDodge)
+        if (InputManager.Instance.m_DodgeInput && m_canDodge)
         {
             if (m_stats.UseStamina(3f) > 0)
                 StartCoroutine(Dodge());
@@ -141,7 +141,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         m_canDodge = false;
 
-        Vector3 moveInput = new Vector3(m_stats.GetPlayerInput().m_MoveInput.x, 0f, m_stats.GetPlayerInput().m_MoveInput.y);
+        Vector3 moveInput = new Vector3(InputManager.Instance.m_MoveInput.x, 0f, InputManager.Instance.m_MoveInput.y);
         Vector3 dodgeDirection = (moveInput.magnitude > 0) ? transform.TransformDirection(moveInput.normalized) : -transform.forward;
 
         float elapsedTime = 0f;

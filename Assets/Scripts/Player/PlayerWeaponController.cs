@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
 {
-    private PlayerInputController m_input;
+    private InputManager m_input;
     [SerializeField] private Weapon[] m_weapons;
     private int m_currentWeaponIndex = 0;
     private Weapon m_currentWeapon;
-    private bool m_hasAttacked;
-
-    private void Awake()
-    {
-        m_input = GetComponent<PlayerStats>().GetPlayerInput(); ;
-    }
 
     private void Start()
     {
+        m_input = InputManager.Instance; ;
         EquipWeapon(m_currentWeaponIndex);
     }
 

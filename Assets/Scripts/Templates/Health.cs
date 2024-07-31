@@ -11,12 +11,12 @@ public abstract class Health : MonoBehaviour
 	[SerializeField] protected float m_maxHealth;
 	[SerializeField] protected float m_currentHealth;
 
-	[SerializeField] protected int m_regenerateAmount;
-	[SerializeField] protected float m_regenerateRate;
+	//[SerializeField] protected int m_regenerateAmount;
+	//[SerializeField] protected float m_regenerateRate;
 
-	[SerializeField] protected UnityEngine.UI.Slider m_healthBar;
+	//[SerializeField] protected UnityEngine.UI.Slider m_healthBar;
 
-	private float m_currentRegenTime;
+	//private float m_currentRegenTime;
 	protected bool m_isDead;
 
 	public virtual bool IsPlayer() { return m_isPlayer; }
@@ -61,18 +61,18 @@ public abstract class Health : MonoBehaviour
 		}
 	}
 
-	private void RegenerateOverTime()
-	{
-		m_currentRegenTime -= Time.deltaTime;
+	//private void RegenerateOverTime()
+	//{
+	//	m_currentRegenTime -= Time.deltaTime;
 
-		if (m_currentRegenTime <= 0)
-		{
-			Heal(m_regenerateAmount);
-			m_currentRegenTime = m_regenerateRate;
-		}
-	}
+	//	if (m_currentRegenTime <= 0)
+	//	{
+	//		Heal(m_regenerateAmount);
+	//		m_currentRegenTime = m_regenerateRate;
+	//	}
+	//}
 
-	public void ResetHealth()
+	public void ResetHealthToMax()
 	{
 		m_currentHealth = m_maxHealth;
 		m_isDead = false;
@@ -80,23 +80,23 @@ public abstract class Health : MonoBehaviour
 
 	protected virtual void OnEnable()
 	{
-		ResetHealth();
+		ResetHealthToMax();
 
-		if (m_healthBar)
-		{
-			m_healthBar.minValue = 0;
-			m_healthBar.maxValue = m_maxHealth;
-			m_healthBar.value = m_maxHealth;
-		}
+		//if (m_healthBar)
+		//{
+		//	m_healthBar.minValue = 0;
+		//	m_healthBar.maxValue = m_maxHealth;
+		//	m_healthBar.value = m_maxHealth;
+		//}
 	}
 
-	protected virtual void Update()
-	{
-		if (m_healthBar) m_healthBar.value = m_currentHealth;
+	//protected virtual void Update()
+	//{
+	//	if (m_healthBar) m_healthBar.value = m_currentHealth;
 
-		if (m_regenerateRate > 0 && m_regenerateAmount > 0 && m_currentHealth < m_maxHealth)
-		{
-			RegenerateOverTime();
-		}
-	}
+	//	if (m_regenerateRate > 0 && m_regenerateAmount > 0 && m_currentHealth < m_maxHealth)
+	//	{
+	//		RegenerateOverTime();
+	//	}
+	//}
 }
