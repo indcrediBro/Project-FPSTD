@@ -52,11 +52,11 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (m_isGrounded && !InputManager.Instance.m_SprintInput && m_canDodge)
         {
-            m_stats.EnableStaminaRegeneration();
+            m_stats.GetPlayerStaminaComponent().EnableStaminaRegeneration();
         }
         else
         {
-            m_stats.DisableStaminaRegeneration();
+            m_stats.GetPlayerStaminaComponent().DisableStaminaRegeneration();
         }
 
         HandleSprint();
@@ -81,7 +81,7 @@ public class PlayerMovementController : MonoBehaviour
         //Handle Jump
         if (InputManager.Instance.m_JumpInput && m_isGrounded)
         {
-            if (m_stats.UseStamina(3f) > 0)
+            if (m_stats.GetPlayerStaminaComponent().UseStamina(3f) > 0)
             {
                 m_velocity.y = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
             }
@@ -111,7 +111,7 @@ public class PlayerMovementController : MonoBehaviour
             m_sprintTimer += Time.deltaTime;
             if (m_sprintTimer > m_sprintRate)
             {
-                if (m_stats.UseStamina(1f) > 0)
+                if (m_stats.GetPlayerStaminaComponent().UseStamina(1f) > 0)
                 {
                     m_speed = m_sprintSpeed;
                     m_sprintTimer = 0f;
@@ -132,7 +132,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (InputManager.Instance.m_DodgeInput && m_canDodge)
         {
-            if (m_stats.UseStamina(3f) > 0)
+            if (m_stats.GetPlayerStaminaComponent().UseStamina(3f) > 0)
                 StartCoroutine(Dodge());
         }
     }

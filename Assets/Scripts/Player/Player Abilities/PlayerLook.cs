@@ -21,7 +21,7 @@ public class PlayerLook : MonoBehaviour
         m_xRotation -= mouseY;
         m_xRotation = Mathf.Clamp(m_xRotation, -90f, 90f);
 
-        m_stats.GetVirtualCamera().transform.localRotation = Quaternion.Euler(m_xRotation, 0f, 0f);
+        m_stats.GetVirtualCameraComponent().transform.localRotation = Quaternion.Euler(m_xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
     }
 }

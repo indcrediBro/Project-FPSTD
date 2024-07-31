@@ -16,7 +16,7 @@ public class PlayerJump : MonoBehaviour
     private void Start()
     {
         m_stats = GetComponent<PlayerStats>();
-        m_characterController = m_stats.GetCharacterController();
+        m_characterController = m_stats.GetCharacterControllerComponent();
     }
 
     public void Jump(bool _jumpInput)
@@ -32,7 +32,7 @@ public class PlayerJump : MonoBehaviour
         {
             if (m_useStamina && m_stats.GetStamina() > m_staminaCost)
             {
-                if (m_stats.UseStamina(m_staminaCost) > 0)
+                if (m_stats.GetPlayerStaminaComponent().UseStamina(m_staminaCost) > 0)
                 {
                     m_velocity.y = Mathf.Sqrt(m_stats.GetJumpHeight() * -2f * m_stats.GetGravity());
                 }

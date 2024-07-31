@@ -46,7 +46,7 @@ public abstract class Health : MonoBehaviour
 	{
 		m_isDead = true;
 
-		if(m_healthBar) m_healthBar.value = 0;
+		//if(m_healthBar) m_healthBar.value = 0;
 
 		if (!m_dontRemoveDeadBody)
 		{

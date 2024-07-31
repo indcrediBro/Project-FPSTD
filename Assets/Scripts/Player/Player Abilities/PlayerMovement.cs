@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         m_stats = GetComponent<PlayerStats>();
-        m_characterController = m_stats.GetCharacterController();
+        m_characterController = m_stats.GetCharacterControllerComponent();
     }
 
     public void Move(Vector2 _input)

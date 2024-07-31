@@ -9,7 +9,7 @@ public class PlayerDodge : MonoBehaviour
     [SerializeField] private float m_dodgeCooldown = 1f;
     private float m_dodgeDuration = 0.2f;
     private bool m_canDodge = true;
-
+    public bool CanDodge() { return m_canDodge; }
     [SerializeField] private float m_dutchAngle = 1f;
 
     [SerializeField] private bool m_useStamina;
@@ -21,7 +21,7 @@ public class PlayerDodge : MonoBehaviour
     private void Start()
     {
         m_stats = GetComponent<PlayerStats>();
-        m_characterController = m_stats.GetCharacterController();
+        m_characterController = m_stats.GetCharacterControllerComponent();
     }
 
     public void Dodge(Vector2 _moveInput, bool _dodgeInput)
@@ -30,7 +30,7 @@ public class PlayerDodge : MonoBehaviour
         {
             if (m_useStamina && m_stats.GetStamina() > m_staminaCost)
             {
-                if (m_stats.UseStamina(m_staminaCost) > 0)
+                if (m_stats.GetPlayerStaminaComponent().UseStamina(m_staminaCost) > 0)
                     StartCoroutine(DodgeRoutine(_moveInput));
             }
             else
@@ -68,16 +68,16 @@ public class PlayerDodge : MonoBehaviour
 
     private IEnumerator SmoothDutchTilt(float _targetDutch, float _duration)
     {
-        float initialDutch = m_stats.GetVirtualCamera().m_Lens.Dutch;
+        float initialDutch = m_stats.GetVirtualCameraComponent().m_Lens.Dutch;
         float elapsedTime = 0f;
 
         while (elapsedTime < _duration)
         {
-            m_stats.GetVirtualCamera().m_Lens.Dutch = Mathf.Lerp(initialDutch, _targetDutch, elapsedTime / _duration);
+            m_stats.GetVirtualCameraComponent().m_Lens.Dutch = Mathf.Lerp(initialDutch, _targetDutch, elapsedTime / _duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        m_stats.GetVirtualCamera().m_Lens.Dutch = _targetDutch;
+        m_stats.GetVirtualCameraComponent().m_Lens.Dutch = _targetDutch;
     }
 }

@@ -1,29 +1,28 @@
 using Cinemachine;
 using UnityEngine;
 
-public class PlayerStats : Health
+public class PlayerStats : MonoBehaviour
 {
     [Space(5)]
     [Header("References")]
     [Space(2)]
     [SerializeField] private PlayerInputController m_inputController;
-    public PlayerInputController GetPlayerInput() { return m_inputController; }
+    public PlayerInputController GetPlayerInputComponent() { return m_inputController; }
     [SerializeField] private CharacterController m_characterController;
-    public CharacterController GetCharacterController() { return m_characterController; }
+    public CharacterController GetCharacterControllerComponent() { return m_characterController; }
     [SerializeField] private CinemachineVirtualCamera m_virtualCamera;
-    public CinemachineVirtualCamera GetVirtualCamera() { return m_virtualCamera; }
+    public CinemachineVirtualCamera GetVirtualCameraComponent() { return m_virtualCamera; }
+    [SerializeField] private PlayerHealth m_playerHealth;
+    public PlayerHealth GetPlayerHealthComponent() { return m_playerHealth; }
+    [SerializeField] private PlayerStamina m_playerStamina;
+    public PlayerStamina GetPlayerStaminaComponent() { return m_playerStamina; }
 
     [Space(5)]
     [Header("Stamina Settings")]
     [Space(2)]
-    [SerializeField] private UnityEngine.UI.Slider m_staminaBar;
     [SerializeField] private float m_maxStamina = 10f;
-
     private float m_stamina;
-    private float m_staminaRegenTime;
-    private float m_staminaRegenTimer;
-    private float m_staminaRegenRate = .5f;
-    private bool m_allowStaminaRegen;
+    public float GetMaxStamina() { return m_maxStamina; }
 
     [Space(5)]
     [Header("Movement Settings")]
@@ -40,80 +39,77 @@ public class PlayerStats : Health
     public float GetGravity() { return m_gravity; }
 
     public float GetStamina() { return m_stamina; }
+    public void SetStamina(float _value) { m_stamina = _value; }
 
-    protected override void OnEnable()
-    {
-        base.OnEnable();
+    //private void OnEnable()
+    //{
+    //    m_stamina = m_maxStamina;
 
-        m_stamina = m_maxStamina;
+    //    if (m_staminaBar)
+    //    {
+    //        m_staminaBar.minValue = 0;
+    //        m_staminaBar.maxValue = m_maxStamina;
+    //        m_staminaBar.value = m_stamina;
+    //    }
+    //}
 
-        if (m_staminaBar)
-        {
-            m_staminaBar.minValue = 0;
-            m_staminaBar.maxValue = m_maxStamina;
-            m_staminaBar.value = m_stamina;
-        }
-    }
+    //private void Update()
+    //{
+    //    if (m_staminaBar) m_staminaBar.value = m_stamina;
 
-    protected override void Update()
-    {
-        base.Update();
+    //    if(m_allowStaminaRegen) RegenarateStamina();
+    //}
 
-        if (m_staminaBar) m_staminaBar.value = m_stamina;
+    //private void RegenarateStamina()
+    //{
+    //    if (m_stamina < m_maxStamina)
+    //    {
+    //        m_staminaRegenTimer += Time.deltaTime;
 
-        if(m_allowStaminaRegen) RegenarateStamina();
-    }
+    //        if (m_staminaRegenTimer > m_staminaRegenTime)
+    //        {
+    //            m_stamina += m_staminaRegenRate;
+    //            m_staminaRegenTimer = 0f;
+    //        }
+    //    }
+    //}
 
-    private void RegenarateStamina()
-    {
-        if (m_stamina < m_maxStamina)
-        {
-            m_staminaRegenTimer += Time.deltaTime;
+    //public void EnableStaminaRegeneration()
+    //{
+    //    m_allowStaminaRegen = true;
+    //}
 
-            if (m_staminaRegenTimer > m_staminaRegenTime)
-            {
-                m_stamina += m_staminaRegenRate;
-                m_staminaRegenTimer = 0f;
-            }
-        }
-    }
+    //public void DisableStaminaRegeneration()
+    //{
+    //    m_allowStaminaRegen = false;
+    //}
 
-    public void EnableStaminaRegeneration()
-    {
-        m_allowStaminaRegen = true;
-    }
+    //public float UseStamina(float _amount)
+    //{
+    //    m_allowStaminaRegen = false;
 
-    public void DisableStaminaRegeneration()
-    {
-        m_allowStaminaRegen = false;
-    }
+    //    if (m_stamina > 0f)
+    //    {
+    //        if (m_stamina > _amount)
+    //        {
+    //            m_stamina -= _amount;
+    //            return _amount;
+    //        }
+    //        else
+    //        {
+    //            float availableStamina = m_stamina - _amount;
+    //            m_stamina = 0f;
+    //            return _amount + availableStamina;
+    //        }
+    //    }
+    //    return 0f;
+    //}
 
-    public float UseStamina(float _amount)
-    {
-        m_allowStaminaRegen = false;
+    //public void IncreaseMaxStamina(float _amount)
+    //{
+    //    m_maxStamina += _amount;
 
-        if (m_stamina > 0f)
-        {
-            if (m_stamina > _amount)
-            {
-                m_stamina -= _amount;
-                return _amount;
-            }
-            else
-            {
-                float availableStamina = m_stamina - _amount;
-                m_stamina = 0f;
-                return _amount + availableStamina;
-            }
-        }
-        return 0f;
-    }
-
-    public void IncreaseMaxStamina(float _amount)
-    {
-        m_maxStamina += _amount;
-
-        if (m_staminaBar)
-            m_staminaBar.maxValue = m_maxStamina;
-    }
+    //    if (m_staminaBar)
+    //        m_staminaBar.maxValue = m_maxStamina;
+    //}
 }

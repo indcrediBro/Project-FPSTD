@@ -27,7 +27,7 @@ public class PlayerSprint : MonoBehaviour
             {
                 if (m_useStamina && m_stats.GetStamina() > m_staminaCost)
                 {
-                    if (m_stats.UseStamina(m_staminaCost) > 0)
+                    if (m_stats.GetPlayerStaminaComponent().UseStamina(m_staminaCost) > 0)
                     {
                         m_stats.SetSprintMultiplier(2f);
                         m_sprintTimer = 0f;

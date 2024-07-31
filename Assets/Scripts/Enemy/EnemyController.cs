@@ -46,7 +46,7 @@ public class EnemyController : MonoBehaviour
 
   private void Attack(GameObject _player)
   {
-    _player.GetComponent<PlayerStats>().TakeDamage(m_damage);
+    _player.GetComponent<PlayerStats>().GetPlayerHealthComponent().TakeDamage(m_damage);
     m_attackChargeTimer = m_attackChargeInterval;
   }
   
