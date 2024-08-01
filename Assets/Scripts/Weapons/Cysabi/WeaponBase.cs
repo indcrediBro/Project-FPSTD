@@ -4,29 +4,34 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+public enum WeaponType
+{
+    AUTO,
+    CHARGE,
+    PARTIAL_CHARGE,
+};
+
 public class WeaponBase : MonoBehaviour
 {
 
-    public Camera pov;
+    public Camera playerPov;
     public TextMeshProUGUI ammoDisplay;
+
     public GameObject bullet;
+    public WeaponType type;
     public float range = 100f;
     public float fireRate = 0.1f;
     public float reloadTime = 1f;
     public float bulletLaunchVelocity = 10f;
     public int ammoSize = 20;
     public int reserveSize = 60;
+    public float chargeTime = 1f;
 
-    public Boolean charger = false;
-    public Boolean partialCharger = false;
-    public float chargeTime = 0f;
-
+    [HideInInspector]
     public Transform _bulletSpawnPoint;
-
     private float currentCharge;
     private int currentAmmo;
     private int currentReserve;
-
     private bool isReloading = false;
     private bool isFiring = false;
 
@@ -53,7 +58,7 @@ public class WeaponBase : MonoBehaviour
             {
                 if (currentAmmo > 0)
                 {
-                    if (charger == true)
+                    if (type == WeaponType.CHARGE || type == WeaponType.PARTIAL_CHARGE)
                     {
                         Charge();
                     }
@@ -76,7 +81,7 @@ public class WeaponBase : MonoBehaviour
             UpdateText();
         }
         else if (currentCharge >= chargeTime) { Fire(); }
-        else if (currentCharge > 0 && partialCharger == true) { Fire(); }
+        else if (currentCharge > 0 && type == WeaponType.PARTIAL_CHARGE) { Fire(); }
         else
         {
             currentCharge = 0;
@@ -89,7 +94,7 @@ public class WeaponBase : MonoBehaviour
         isFiring = true;
 
         // calculate direction to aim
-        Ray ray = pov.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray ray = playerPov.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
         Vector3 aim;
         RaycastHit hit;
@@ -99,16 +104,16 @@ public class WeaponBase : MonoBehaviour
             aim = ray.GetPoint(range);
         Vector3 direction = aim - _bulletSpawnPoint.position;
 
+        // calculate power
+        float power = 1;
+        if (type == WeaponType.PARTIAL_CHARGE)
+            power = currentCharge / chargeTime;
+
         // fire bullet
         GameObject newBullet = Instantiate(bullet, _bulletSpawnPoint.position, Quaternion.LookRotation(direction));
         newBullet.transform.forward = direction;
-
-        float variableBulletLaunchVelocity;
-
-        if (charger || partialCharger) variableBulletLaunchVelocity = bulletLaunchVelocity * currentCharge;
-        else variableBulletLaunchVelocity = bulletLaunchVelocity;
-        Debug.Log("variableBulletLaunchVelocity: " + variableBulletLaunchVelocity);
-        newBullet.GetComponent<Rigidbody>().AddForce(direction.normalized * variableBulletLaunchVelocity, ForceMode.Impulse);
+        newBullet.GetComponent<Rigidbody>().AddForce(direction.normalized * bulletLaunchVelocity * currentCharge, ForceMode.Impulse);
+        newBullet.GetComponent<WeaponBaseProjectile>().power = power;
 
         // done
         currentAmmo--;
@@ -159,10 +164,11 @@ public class WeaponBase : MonoBehaviour
         if (ammoDisplay != null)
         {
             var maybeCharge = "";
-            if (charger == true)
-            {
+            if (type == WeaponType.PARTIAL_CHARGE)
                 maybeCharge = "\n" + "(" + Math.Round(currentCharge, 2) + "/" + Math.Round(chargeTime, 2) + ")";
-            }
+            else if (type == WeaponType.CHARGE && currentCharge >= chargeTime)
+                maybeCharge = "CHARGED";
+
             ammoDisplay.SetText(currentAmmo + " / " + currentReserve + maybeCharge);
         }
     }
