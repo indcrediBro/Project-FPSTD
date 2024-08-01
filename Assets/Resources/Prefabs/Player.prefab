@@ -16521,7 +16521,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 310
+  m_VersionIndex: 313
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -16980,6 +16980,7 @@ GameObject:
   - component: {fileID: 5057244624798551054}
   - component: {fileID: 4487583651155426220}
   - component: {fileID: 1464157911083299650}
+  - component: {fileID: 2245052435164890734}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -17173,8 +17174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_isPlayer: 1
-  m_dontDestroy: 1
-  m_dontRemoveDeadBody: 1
+  m_dontDestroy: 0
+  m_dontRemoveDeadBody: 0
   m_maxHealth: 100
   m_currentHealth: 0
   m_regenerateAmount: 5
@@ -17191,7 +17192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6beca0d7684e84a7db1b9d3d38273b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxStamina: 10
   m_staminaRegenRate: 0.5
 --- !u!114 &4487583651155426220
 MonoBehaviour:
@@ -17222,6 +17222,18 @@ MonoBehaviour:
   m_weapons:
   - {fileID: 6429658993932485264}
   - {fileID: 5983750554215381593}
+--- !u!114 &2245052435164890734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7644133815727854264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 807131d9c24d246ad9fe5bac98f4f753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7964023259912787252
 GameObject:
   m_ObjectHideFlags: 0
