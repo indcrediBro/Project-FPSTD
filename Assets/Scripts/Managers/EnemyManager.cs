@@ -11,14 +11,14 @@ public class EnemyManager : Singleton<EnemyManager>
     [SerializeField] public event OnIncreaseRoundDelegate onIncreaseRoundEvent;
     [SerializeField] private Transform[] _enemySpawnPoint;
     [SerializeField] private GameObject _tempEnemy;
-    [SerializeField] private int activeEnemyThreshold; //No of max active enemies at any given time
-    [SerializeField] private int _enemyMaxPool; //No of max active/inactive enemies in scene
-    [SerializeField] private int roundEnemyTotal; //No of enemies in round
-    [SerializeField] private int increaseEnemyTotal; //No of enemies to add to the total of round
-    private int roundSpawned; //No of enemies spawned during that round
-    private int enemySpawnQueue; //No of enemies waiting to be spawned by the timer. 
-    [SerializeField] private float enemySpawnInterval; //Interval between enemy spawns
-    private float enemySpawnTimer; //enemy spawn count down timer
+    [SerializeField] private int activeEnemyThreshold; // No of max active enemies at any given time
+    [SerializeField] private int _enemyMaxPool; // No of max active/inactive enemies in scene
+    [SerializeField] private int roundEnemyTotal; // No of enemies in round
+    [SerializeField] private int increaseEnemyTotal; // No of enemies to add to the total of round
+    private int roundSpawned; // No of enemies spawned during that round
+    private int enemySpawnQueue; // No of enemies waiting to be spawned by the timer.
+    [SerializeField] private float enemySpawnInterval; // Interval between enemy spawns
+    private float enemySpawnTimer; // enemy spawn count down timer
 
 
     void Start()
@@ -36,7 +36,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
         if (enemySpawnTimer <= 0 && enemySpawnQueue > 0)
         {
-            //we only spawn enemies when there is more than 1 in queue
+            // We only spawn enemies when there is more than 1 in queue
             SpawnEnemy();
 
             enemySpawnTimer = enemySpawnInterval;
@@ -57,12 +57,12 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private GameObject GetEnemyInPool()
     {
-        for (int i = 0; i < Enemies.Count; i++)
+        foreach (GameObject t in Enemies)
         {
-            if (!Enemies[i].activeInHierarchy)
+            if (!t.activeInHierarchy)
             {
-                ActiveEnemies.Add(Enemies[i]);
-                return Enemies[i];
+                ActiveEnemies.Add(t);
+                return t;
             }
         }
         return null;
@@ -85,7 +85,7 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         if (roundSpawned >= roundEnemyTotal && ActiveEnemies.Count <= 0 && enemySpawnQueue <= 0)
         {
-            //round has ended, broadcast event
+            // Round has ended, broadcast event
             onIncreaseRoundEvent?.Invoke();
         }
         else
@@ -103,10 +103,10 @@ public class EnemyManager : Singleton<EnemyManager>
         return _enemySpawnPoint[_randomSpawnPointIndex];
     }
 
-    //currently not really keeping track of rounds...
+    // Currently not really keeping track of rounds...
     private void IncreaseRound()
     {
-        //TODO why is this not resetting?
+        // TODO why is this not resetting?
         roundSpawned = 0;
         roundEnemyTotal += increaseEnemyTotal;
     }

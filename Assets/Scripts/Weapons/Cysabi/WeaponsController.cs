@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Rename to WeaponInventory or similar, if this is responsible for weapon inventory
 public class WeaponsController : MonoBehaviour
 {
     private InputManager inputManager;

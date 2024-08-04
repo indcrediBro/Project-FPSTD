@@ -14,15 +14,13 @@ public class PoolSystem : MonoBehaviour
     [SerializeField] private List<GameObject> m_poolObjects;
     [SerializeField] private List<GameObject> m_currentActivObjects;
 
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         m_currentActivObjects = new List<GameObject>();
         CreatePool();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown("space"))
@@ -59,12 +57,16 @@ public class PoolSystem : MonoBehaviour
     {
         for (int i = 0; i < m_poolObjects.Count; i++)
         {
-            if (!m_poolObjects[i].activeInHierarchy)
+            if (m_poolObjects[i].activeInHierarchy)
             {
-                m_poolObjects[i].SetActive(true);
-                m_currentActivObjects.Add(m_poolObjects[i]);
-                return m_poolObjects[i];
+                continue;
             }
+
+
+            m_poolObjects[i].SetActive(true);
+            m_currentActivObjects.Add(m_poolObjects[i]);
+            return m_poolObjects[i];
+
         }
         return null;
     }

@@ -31,20 +31,21 @@ public class PlayerDodge : MonoBehaviour
             if (m_useStamina && m_stats.GetStamina() > m_staminaCost)
             {
                 if (m_stats.GetPlayerStaminaComponent().UseStamina(m_staminaCost) > 0)
-                    StartCoroutine(DodgeRoutine(_moveInput));
+                    StartCoroutine(CO_DodgeRoutine(_moveInput));
             }
             else
             {
-                StartCoroutine(DodgeRoutine(_moveInput));
+                StartCoroutine(CO_DodgeRoutine(_moveInput));
             }
         }
     }
 
-    private IEnumerator DodgeRoutine(Vector2 _moveInput)
+    private IEnumerator CO_DodgeRoutine(Vector2 _moveInput)
     {
         m_canDodge = false;
 
-        Vector3 dodgeDirection = (_moveInput.magnitude > 0) ? transform.TransformDirection(new Vector3(_moveInput.x, 0f, _moveInput.y).normalized) : -transform.forward;
+        // Make a GetDodgeDirection function
+        Vector3 dodgeDirection = _moveInput.magnitude > 0 ? transform.TransformDirection(new Vector3(_moveInput.x, 0f, _moveInput.y).normalized) : -transform.forward;
 
         float elapsedTime = 0f;
 
@@ -53,6 +54,7 @@ public class PlayerDodge : MonoBehaviour
 
         while (elapsedTime < m_dodgeDuration)
         {
+            // Extract this into function
             float step = (m_dodgeDistance / m_dodgeDuration) * Time.deltaTime;
             m_characterController.Move(dodgeDirection * step);
 
@@ -62,6 +64,7 @@ public class PlayerDodge : MonoBehaviour
 
         StartCoroutine(SmoothDutchTilt(0, 0.1f));
 
+        // You can possibly cache WaitForSeconds
         yield return new WaitForSeconds(m_dodgeCooldown - m_dodgeDuration);
         m_canDodge = true;
     }

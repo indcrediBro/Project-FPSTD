@@ -18,6 +18,7 @@ public class PlayerSprint : MonoBehaviour
         m_stats = GetComponent<PlayerStats>();
     }
 
+    // Fix this
     public void Sprint(bool _sprintInput, Vector2 _moveInput, bool _isGrounded)
     {
         if (_sprintInput && _moveInput.magnitude > 0 && _isGrounded)

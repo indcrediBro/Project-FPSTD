@@ -20,7 +20,10 @@ public class PlayerWeaponController : MonoBehaviour
         if (equipped == null) return;
 
         if (inputManager.m_SwitchWeaponInput > 0)
+        {
             SwitchToWeapon(1);
+        }
+
         if (inputManager.m_SwitchWeaponInput < 0)
             SwitchToWeapon(-1);
     }

@@ -28,6 +28,9 @@ public abstract class Projectile : MonoBehaviour
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (m_isPlayerOwner && other.tag != "Player")
+        {
             OnImpact(other);
+
+        }
     }
 }

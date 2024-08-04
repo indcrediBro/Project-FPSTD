@@ -11,12 +11,14 @@ public enum WeaponType
     PARTIAL_CHARGE,
 };
 
+
+// Should be separated in multiple weapon type categories
 public class WeaponBase : MonoBehaviour
 {
-
-    public Camera playerPov;
+    public Camera m_playerPov;
     public TextMeshProUGUI ammoDisplay;
 
+    // If it does not need to be public, use [SerializeField] private instead
     public GameObject bullet;
     public WeaponType type;
     public float range = 100f;
@@ -42,17 +44,18 @@ public class WeaponBase : MonoBehaviour
         UpdateText();
     }
 
-
     private void Update()
     {
-
-        var attemptReload = Input.GetKeyDown(KeyCode.R);
-        var attemptFire = Input.GetKey(KeyCode.Mouse0);
+        // Should be using new input system
+        bool attemptReload = Input.GetKeyDown(KeyCode.R);
+        bool attemptFire = Input.GetKey(KeyCode.Mouse0);
 
         if (isFiring == false && isReloading == false)
         {
-
-            if (attemptReload) { Reload(); }
+            if (attemptReload)
+            {
+                Reload();
+            }
 
             else
             {
@@ -65,29 +68,41 @@ public class WeaponBase : MonoBehaviour
                     else if (attemptFire)
                     {
                         Fire();
-                    };
+                    }
+                    ;
                 }
-                else { Reload(); }
+                else
+                {
+                    Reload();
+                }
             }
         }
     }
 
     private void Charge()
     {
+        // Use explicit types instead
         var attemptFire = Input.GetKey(KeyCode.Mouse0);
         if (attemptFire == true)
         {
             currentCharge = Math.Min(currentCharge + Time.deltaTime, chargeTime);
             UpdateText();
         }
-        else if (currentCharge >= chargeTime) { Fire(); }
-        else if (currentCharge > 0 && type == WeaponType.PARTIAL_CHARGE) { Fire(); }
+        else if (currentCharge >= chargeTime)
+        {
+            Fire();
+        }
+        else if (currentCharge > 0 && type == WeaponType.PARTIAL_CHARGE)
+        {
+            Fire();
+        }
         else
         {
             currentCharge = 0;
             UpdateText();
         }
     }
+
     private void Fire()
     {
         // lock fire
@@ -95,34 +110,47 @@ public class WeaponBase : MonoBehaviour
 
         // calculate direction to aim
         Ray ray;
-        if(playerPov) ray = playerPov.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        // just a little addition here, as main camera will always be the one looking from player pov.
-        else ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        if (m_playerPov)
+        {
+            ray = m_playerPov.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        }
+        // Camera.main is inefficient
+        else
+        {
+            ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        }
 
         Vector3 aim;
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, range))
+        if (Physics.Raycast(ray, out RaycastHit hit, range))
+        {
             aim = hit.point;
+        }
         else
+        {
             aim = ray.GetPoint(range);
+        }
         Vector3 direction = aim - _bulletSpawnPoint.position;
+
+        // Extract all described functionality into own methods. CalculatePower(), FireBullet()
 
         // calculate power
         float power = 1;
         if (type == WeaponType.PARTIAL_CHARGE)
+        {
             power = currentCharge / chargeTime;
+        }
 
         // fire bullet
         GameObject newBullet = Instantiate(bullet, _bulletSpawnPoint.position, Quaternion.LookRotation(direction));
         newBullet.transform.forward = direction;
-        newBullet.GetComponent<Rigidbody>().AddForce(direction.normalized * bulletLaunchVelocity * currentCharge, ForceMode.Impulse);
+        // Make sure you actually got that component
+        newBullet.GetComponent<Rigidbody>().AddForce(direction.normalized * (bulletLaunchVelocity * currentCharge), ForceMode.Impulse);
         newBullet.GetComponent<WeaponBaseProjectile>().power = power;
 
-        // done
         currentAmmo--;
         currentCharge = 0;
         UpdateText();
-        Invoke("DoneFire", fireRate);
+        Invoke(nameof(DoneFire), fireRate);
     }
 
     private void DoneFire()
@@ -151,9 +179,8 @@ public class WeaponBase : MonoBehaviour
             currentReserve -= toRefill;
         }
 
-        // done
         currentAmmo += toRefill;
-        Invoke("DoneReload", reloadTime);
+        Invoke(nameof(DoneReload), reloadTime);
     }
 
     private void DoneReload()
@@ -162,15 +189,23 @@ public class WeaponBase : MonoBehaviour
         UpdateText();
     }
 
+    // This logic should be separated into its own UI script
     private void UpdateText()
     {
         if (ammoDisplay != null)
         {
             var maybeCharge = "";
             if (type == WeaponType.PARTIAL_CHARGE)
+            {
+                // This should be simplified
                 maybeCharge = "\n" + "(" + Math.Round(currentCharge, 2) + "/" + Math.Round(chargeTime, 2) + ")";
+
+            }
             else if (type == WeaponType.CHARGE && currentCharge >= chargeTime)
+            {
                 maybeCharge = "CHARGED";
+
+            }
 
             ammoDisplay.SetText(currentAmmo + " / " + currentReserve + maybeCharge);
         }

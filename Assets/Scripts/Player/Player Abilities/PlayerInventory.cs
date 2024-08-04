@@ -10,11 +10,10 @@ public class PlayerInventory : Singleton<PlayerInventory>
         public int m_itemAmount;
     }
 
-    [SerializeField]private Item[] m_Items;
+    [SerializeField] private Item[] m_Items;
 
     public void AddOrRemoveItem(string _itemName, int _itemAmount)
     {
-
         Item item = Array.Find(m_Items, item => item.m_itemName == _itemName);
 
         if (item == null) return;

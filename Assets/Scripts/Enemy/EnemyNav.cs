@@ -11,25 +11,38 @@ public class EnemyNav : MonoBehaviour
 
     private void Awake()
     {
+        InitializeAgent();
+    }
+
+    private void InitializeAgent()
+    {
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         int randomNumber = Random.Range(0, 101);
 
-        if (randomNumber < 1)
+        switch (randomNumber)
         {
-            target = GameObject.FindGameObjectWithTag("WeaponDealer");
-        }
-        else if (randomNumber > 1 && randomNumber < 20)
-        {
-            target = GameObject.FindGameObjectWithTag("Player");
-        }
-        else
-        {
-            target = GameObject.FindGameObjectWithTag("King");
+            case < 1:
+                // Find an alternative to FindGameObjectWithTag
+                target = GameObject.FindGameObjectWithTag("WeaponDealer");
+                break;
+            case > 1 and < 20:
+                // Find an alternative to FindGameObjectWithTag
+                target = GameObject.FindGameObjectWithTag("Player");
+                break;
+            default:
+                // Find an alternative to FindGameObjectWithTag
+                target = GameObject.FindGameObjectWithTag("King");
+                break;
         }
     }
 
-    void Update()
+    private void Update()
+    {
+        HandleAgentMovement();
+    }
+
+    private void HandleAgentMovement()
     {
         if (target)
         {
