@@ -94,7 +94,10 @@ public class WeaponBase : MonoBehaviour
         isFiring = true;
 
         // calculate direction to aim
-        Ray ray = playerPov.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray ray;
+        if(playerPov) ray = playerPov.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        // just a little addition here, as main camera will always be the one looking from player pov.
+        else ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
         Vector3 aim;
         RaycastHit hit;
