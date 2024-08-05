@@ -82,6 +82,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""de729b86-b6bc-4f92-b252-37b2790542ce"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""Attack"",
                     ""type"": ""PassThrough"",
                     ""id"": ""5c5130e7-7f17-4d3f-bbab-ed677300f19a"",
@@ -419,6 +428,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""SwitchWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""faf64b47-183f-487c-8bbf-ab56939cf198"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d366bee5-bd7c-4c37-a978-38a86eeb713e"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -433,6 +464,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_PlayerInputMap_Sprint = m_PlayerInputMap.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerInputMap_Dodge = m_PlayerInputMap.FindAction("Dodge", throwIfNotFound: true);
         m_PlayerInputMap_Reload = m_PlayerInputMap.FindAction("Reload", throwIfNotFound: true);
+        m_PlayerInputMap_Pause = m_PlayerInputMap.FindAction("Pause", throwIfNotFound: true);
         m_PlayerInputMap_Attack = m_PlayerInputMap.FindAction("Attack", throwIfNotFound: true);
         m_PlayerInputMap_SwitchWeapon = m_PlayerInputMap.FindAction("SwitchWeapon", throwIfNotFound: true);
     }
@@ -502,6 +534,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInputMap_Sprint;
     private readonly InputAction m_PlayerInputMap_Dodge;
     private readonly InputAction m_PlayerInputMap_Reload;
+    private readonly InputAction m_PlayerInputMap_Pause;
     private readonly InputAction m_PlayerInputMap_Attack;
     private readonly InputAction m_PlayerInputMap_SwitchWeapon;
     public struct PlayerInputMapActions
@@ -514,6 +547,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_PlayerInputMap_Sprint;
         public InputAction @Dodge => m_Wrapper.m_PlayerInputMap_Dodge;
         public InputAction @Reload => m_Wrapper.m_PlayerInputMap_Reload;
+        public InputAction @Pause => m_Wrapper.m_PlayerInputMap_Pause;
         public InputAction @Attack => m_Wrapper.m_PlayerInputMap_Attack;
         public InputAction @SwitchWeapon => m_Wrapper.m_PlayerInputMap_SwitchWeapon;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInputMap; }
@@ -543,6 +577,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Reload.started += instance.OnReload;
             @Reload.performed += instance.OnReload;
             @Reload.canceled += instance.OnReload;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
@@ -571,6 +608,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Reload.started -= instance.OnReload;
             @Reload.performed -= instance.OnReload;
             @Reload.canceled -= instance.OnReload;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
@@ -602,6 +642,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnSwitchWeapon(InputAction.CallbackContext context);
     }

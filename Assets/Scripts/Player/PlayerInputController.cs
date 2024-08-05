@@ -26,6 +26,8 @@ public class PlayerInputController : MonoBehaviour
 
     private void Update()
     {
+        GameManager.Instance.HandlePause(m_inputManager.m_PauseInput);
+
         m_playerMovement.Move(m_inputManager.m_MoveInput);
         m_playerJump.Jump(m_inputManager.m_JumpInput);
         m_playerDodge.Dodge(m_inputManager.m_MoveInput, m_inputManager.m_DodgeInput);
