@@ -113,18 +113,18 @@ public class AudioManager : Singleton<AudioManager>
         AudioSFX sfxStats = GetAudioSFXByName(_name);
         AudioSource source = GetAudioSource(_name);
 
-        if (sfxStats.randomizePitch)
-        {
-            source.pitch = RandomNumber.Instance.NextFloat(sfxStats.randomizePitchValues.x, sfxStats.randomizePitchValues.y);
-        }
-
-        if (sfxStats.playOnLocation)
-        {
-            source.transform.position = _positon;
-        }
-
         if (source)
         {
+            if (sfxStats.randomizePitch)
+            {
+                source.pitch = RandomNumber.Instance.NextFloat(sfxStats.randomizePitchValues.x, sfxStats.randomizePitchValues.y);
+            }
+
+            if (sfxStats.playOnLocation)
+            {
+                source.transform.position = _positon;
+                source.spatialBlend = 1f;
+            }
             source.Play();
         }
     }
