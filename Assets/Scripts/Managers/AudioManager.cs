@@ -14,6 +14,7 @@ public class AudioSFX
     public bool randomizePitch;
     public Vector2 randomizePitchValues = new Vector2(0.8f, 1.3f);
     public bool playOnAwake;
+    public bool playOnLocation;
     public bool loop;
 }
 
@@ -101,7 +102,28 @@ public class AudioManager : Singleton<AudioManager>
             source.pitch = RandomNumber.Instance.NextFloat(sfxStats.randomizePitchValues.x, sfxStats.randomizePitchValues.y);
         }
 
-        if (source && !source.isPlaying)
+        if (source)
+        {
+            source.Play();
+        }
+    }
+
+    public void PlaySound(string _name, Vector3 _positon)
+    {
+        AudioSFX sfxStats = GetAudioSFXByName(_name);
+        AudioSource source = GetAudioSource(_name);
+
+        if (sfxStats.randomizePitch)
+        {
+            source.pitch = RandomNumber.Instance.NextFloat(sfxStats.randomizePitchValues.x, sfxStats.randomizePitchValues.y);
+        }
+
+        if (sfxStats.playOnLocation)
+        {
+            source.transform.position = _positon;
+        }
+
+        if (source)
         {
             source.Play();
         }
