@@ -41,75 +41,8 @@ public class PlayerStats : MonoBehaviour
     public float GetStamina() { return m_stamina; }
     public void SetStamina(float _value) { m_stamina = _value; }
 
-    //private void OnEnable()
-    //{
-    //    m_stamina = m_maxStamina;
+    private bool m_isGrounded;
+    public bool IsGrounded() { return m_isGrounded; }
+    public void SetGrounded(bool _value) { m_isGrounded = _value; }
 
-    //    if (m_staminaBar)
-    //    {
-    //        m_staminaBar.minValue = 0;
-    //        m_staminaBar.maxValue = m_maxStamina;
-    //        m_staminaBar.value = m_stamina;
-    //    }
-    //}
-
-    //private void Update()
-    //{
-    //    if (m_staminaBar) m_staminaBar.value = m_stamina;
-
-    //    if(m_allowStaminaRegen) RegenarateStamina();
-    //}
-
-    //private void RegenarateStamina()
-    //{
-    //    if (m_stamina < m_maxStamina)
-    //    {
-    //        m_staminaRegenTimer += Time.deltaTime;
-
-    //        if (m_staminaRegenTimer > m_staminaRegenTime)
-    //        {
-    //            m_stamina += m_staminaRegenRate;
-    //            m_staminaRegenTimer = 0f;
-    //        }
-    //    }
-    //}
-
-    //public void EnableStaminaRegeneration()
-    //{
-    //    m_allowStaminaRegen = true;
-    //}
-
-    //public void DisableStaminaRegeneration()
-    //{
-    //    m_allowStaminaRegen = false;
-    //}
-
-    //public float UseStamina(float _amount)
-    //{
-    //    m_allowStaminaRegen = false;
-
-    //    if (m_stamina > 0f)
-    //    {
-    //        if (m_stamina > _amount)
-    //        {
-    //            m_stamina -= _amount;
-    //            return _amount;
-    //        }
-    //        else
-    //        {
-    //            float availableStamina = m_stamina - _amount;
-    //            m_stamina = 0f;
-    //            return _amount + availableStamina;
-    //        }
-    //    }
-    //    return 0f;
-    //}
-
-    //public void IncreaseMaxStamina(float _amount)
-    //{
-    //    m_maxStamina += _amount;
-
-    //    if (m_staminaBar)
-    //        m_staminaBar.maxValue = m_maxStamina;
-    //}
 }

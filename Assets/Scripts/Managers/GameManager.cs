@@ -47,12 +47,14 @@ public class GameManager : Singleton<GameManager>
     private void PauseGame()
     {
         Time.timeScale = 0f;
+        m_isPaused = true;
         Debug.Log("Game Paused!");
     }
 
     private void UnpauseGame()
     {
         Time.timeScale = 1f;
+        m_isPaused = false;
         Debug.Log("Game Unpaused!");
     }
 

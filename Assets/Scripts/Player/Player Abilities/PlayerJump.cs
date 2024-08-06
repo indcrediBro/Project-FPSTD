@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerStats))]
 public class PlayerJump : MonoBehaviour
 {
-    private CharacterController m_characterController;
     private PlayerStats m_stats;
     private Vector3 m_velocity;
     private bool m_isGrounded;
@@ -16,12 +15,11 @@ public class PlayerJump : MonoBehaviour
     private void Start()
     {
         m_stats = GetComponent<PlayerStats>();
-        m_characterController = m_stats.GetCharacterControllerComponent();
     }
 
     public void Jump(bool _jumpInput)
     {
-        m_isGrounded = m_characterController.isGrounded;
+        m_isGrounded = m_stats.IsGrounded();
         ApplyGroundedForce();
 
         bool canJump = _jumpInput && m_isGrounded;
@@ -32,21 +30,23 @@ public class PlayerJump : MonoBehaviour
         }
         
         ApplyGravity();
-        m_characterController.Move(m_velocity * Time.deltaTime);
+        m_stats.GetCharacterControllerComponent().Move(m_velocity * Time.deltaTime);
     }
 
     private void DoJump()
     {
-        if (m_useStamina && m_stats.GetStamina() > m_staminaCost)
+        if (m_useStamina)
         {
-            if (m_stats.GetPlayerStaminaComponent().UseStamina(m_staminaCost) > 0)
+            if (m_stats.GetStamina() > m_staminaCost)
             {
+                m_stats.GetPlayerStaminaComponent().UseStamina(m_staminaCost);
                 m_velocity.y = Mathf.Sqrt(m_stats.GetJumpHeight() * -2f * m_stats.GetGravity());
             }
-            return;
         }
-
-        m_velocity.y = Mathf.Sqrt(m_stats.GetJumpHeight() * -2f * m_stats.GetGravity());
+        else
+        {
+            m_velocity.y = Mathf.Sqrt(m_stats.GetJumpHeight() * -2f * m_stats.GetGravity());
+        }
     }
 
     private void ApplyGroundedForce()

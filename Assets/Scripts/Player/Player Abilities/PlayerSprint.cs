@@ -26,10 +26,11 @@ public class PlayerSprint : MonoBehaviour
             m_sprintTimer += Time.deltaTime;
             if (m_sprintTimer > m_sprintRate)
             {
-                if (m_useStamina && m_stats.GetStamina() > m_staminaCost)
+                if (m_useStamina)
                 {
-                    if (m_stats.GetPlayerStaminaComponent().UseStamina(m_staminaCost) > 0)
+                    if( m_stats.GetStamina() > m_staminaCost)
                     {
+                        m_stats.GetPlayerStaminaComponent().UseStamina(m_staminaCost);
                         m_stats.SetSprintMultiplier(2f);
                         m_sprintTimer = 0f;
                     }

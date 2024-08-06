@@ -30,8 +30,8 @@ public class PlayerDodge : MonoBehaviour
         {
             if (m_useStamina && m_stats.GetStamina() > m_staminaCost)
             {
-                if (m_stats.GetPlayerStaminaComponent().UseStamina(m_staminaCost) > 0)
-                    StartCoroutine(CO_DodgeRoutine(_moveInput));
+                m_stats.GetPlayerStaminaComponent().UseStamina(m_staminaCost);
+                StartCoroutine(CO_DodgeRoutine(_moveInput));
             }
             else
             {
