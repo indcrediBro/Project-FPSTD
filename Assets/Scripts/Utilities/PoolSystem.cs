@@ -1,9 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PoolSystem : MonoBehaviour
 {
+
     [Header("=====Manual Settings=====")]
     [SerializeField] private GameObject m_mainObject;
     [SerializeField] private int m_maxPoolCount;
@@ -11,13 +11,13 @@ public class PoolSystem : MonoBehaviour
     [SerializeField] private Transform[] m_spawnPoints;
 
     [Header("=====Debug Purpose=====")]
+    public List<GameObject> CurrentActivObjects;
     [SerializeField] private List<GameObject> m_poolObjects;
-    [SerializeField] private List<GameObject> m_currentActivObjects;
 
-    
+
     void Start()
     {
-        m_currentActivObjects = new List<GameObject>();
+        InitiateActiveList();
         CreatePool();
     }
 
@@ -38,19 +38,27 @@ public class PoolSystem : MonoBehaviour
             GameObject _object = Instantiate(m_mainObject);
             m_poolObjects.Add(_object);
             _object.SetActive(false);
+            if (_object.GetComponent<PoolObject>())
+            {
+                _object.GetComponent<PoolObject>().PoolSystem = this;
+            }
         }
     }
 
     public void SpawnObject()
     {
-        //if there is only 1 spawn point
         GameObject _object = GetObjectInPool();
-        _object.transform.position = m_spawnPoints[0].position;
-        _object.transform.rotation = m_spawnPoints[0].rotation;
+        if (_object != null)
+        {
 
-        //if multiple, and random
+            //if there is only 1 spawn point
+            _object.transform.position = m_spawnPoints[0].position;
+            _object.transform.rotation = m_spawnPoints[0].rotation;
 
-        //if multiple, and in order
+            //if multiple, and random
+
+            //if multiple, and in order
+        }
     }
 
     private GameObject GetObjectInPool()
@@ -62,12 +70,15 @@ public class PoolSystem : MonoBehaviour
                 continue;
             }
 
-
             m_poolObjects[i].SetActive(true);
-            m_currentActivObjects.Add(m_poolObjects[i]);
+            CurrentActivObjects.Add(m_poolObjects[i]);
             return m_poolObjects[i];
-
         }
         return null;
+    }
+
+    private void InitiateActiveList()
+    {
+        CurrentActivObjects = new List<GameObject>();
     }
 }
