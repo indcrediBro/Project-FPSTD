@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SG_Water
+  m_Name: M_Water
   m_Shader: {fileID: -6465566751694194690, guid: d8ed41b4a2bec25488baecbefb765f6b,
     type: 3}
   m_Parent: {fileID: 0}
@@ -23,6 +23,7 @@ Material:
     RenderType: Transparent
   disabledShaderPasses:
   - DepthOnly
+  - SHADOWCASTER
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -43,32 +44,34 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _AnimationPower: 0
+    - _AnimationPower: 0.47
+    - _AnimationScale: 0
     - _Blend: 0
-    - _CastShadows: 1
+    - _CastShadows: 0
     - _Cull: 2
     - _DstBlend: 10
-    - _Foam: 32.37
-    - _FoamCutoff: 0.93
-    - _FoamScale: 2000
-    - _FoamSpeed: 1
+    - _Foam: 15
+    - _FoamCutoff: 0.94
+    - _FoamScale: 300
+    - _FoamSpeed: 0.8
     - _POWER: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RefractionScale: 378.61
-    - _RefractionSpeed: 743.09
-    - _RefractionStrength: 1
+    - _RefractionScale: 500
+    - _RefractionSpeed: 20
+    - _RefractionStrength: 50
     - _SrcBlend: 5
     - _Surface: 1
-    - _VertexScale: 500
-    - _WaterDepth: 100
+    - _VertexAnimationSpeed: 3
+    - _VertexScale: 200
+    - _WaterDepth: 115.61
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _DeepWater: {r: 0, g: 0.011149217, b: 0.24528301, a: 1}
-    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ShallowWater: {r: 0.03529412, g: 0.41319087, b: 0.7176471, a: 0.87058824}
+    - _DeepWater: {r: 0, g: 0.06297915, b: 0.3207547, a: 1}
+    - _FoamColor: {r: 0.8632076, g: 0.8777158, b: 1, a: 1}
+    - _ShallowWater: {r: 0, g: 0.048160523, b: 0.24528301, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4502197445779797035
 MonoBehaviour:
