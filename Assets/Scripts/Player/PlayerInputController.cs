@@ -22,11 +22,14 @@ public class PlayerInputController : MonoBehaviour
         m_playerDodge = GetComponent<PlayerDodge>();
         m_playerLook = GetComponent<PlayerLook>();
         m_playerSprint = GetComponent<PlayerSprint>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()
     {
-        GameManager.Instance.HandlePause(m_inputManager.m_PauseInput.WasPerformedThisFrame());
+        //GameManager.Instance.HandlePause(m_inputManager.m_PauseInput.WasPerformedThisFrame());
         m_playerJump.Jump(m_inputManager.m_JumpInput.WasPerformedThisFrame());
         m_playerMovement.Move(m_inputManager.m_MoveInput);
         m_playerDodge.Dodge(m_inputManager.m_MoveInput, m_inputManager.m_DodgeInput);

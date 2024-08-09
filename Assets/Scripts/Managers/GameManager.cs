@@ -4,72 +4,22 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    [Header("References")]
-    [SerializeField] private GameObject m_PlayerGO;
-    [SerializeField] private GameObject m_KingGO;
-    [SerializeField] private GameObject m_WeaponDealerGO;
+    private IGameState currentState;
 
-    private bool m_isGameStarted;
-    private bool m_isPaused;
-
-    private void Start()
+    void Start()
     {
-        StartGame();
+        SetState(new StartState(this));
     }
 
-    public void StartGame()
+    void Update()
     {
-        //TODO: Reset Score
-
-        //TODO: Clear Enemies
-        ClearEnemies();
-
-        //TODO: Respawn Player, King, Weapon Dealer
-        SpawnCharacters();
-
-        UnpauseGame();
-        m_isGameStarted = true;
+        currentState?.Update();
     }
 
-    public void HandlePause(bool _input)
+    public void SetState(IGameState newState)
     {
-        if (m_isGameStarted && _input)
-        {
-            if (m_isPaused)
-            {
-                UnpauseGame();
-                return;
-            }
-            PauseGame();
-        }
-    }
-
-    private void PauseGame()
-    {
-        Time.timeScale = 0f;
-        m_isPaused = true;
-        Debug.Log("Game Paused!");
-    }
-
-    private void UnpauseGame()
-    {
-        Time.timeScale = 1f;
-        m_isPaused = false;
-        Debug.Log("Game Unpaused!");
-    }
-
-    public void EndGame()
-    {
-        m_isGameStarted = false;
-    }
-
-    private void ClearEnemies()
-    {
-
-    }
-
-    private void SpawnCharacters()
-    {
-
+        currentState?.Exit();
+        currentState = newState;
+        currentState?.Enter();
     }
 }
