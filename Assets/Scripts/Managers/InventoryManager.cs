@@ -3,30 +3,50 @@ using UnityEngine;
 
 public class InventoryManager : Singleton<InventoryManager>
 {
-    private Dictionary<string, GameObject> m_itemPrefabs = new Dictionary<string, GameObject>();
-    private List<string> m_inventory = new List<string>();
-
-    public void AddItem(string _itemName, GameObject _itemPrefab)
+    [System.Serializable]
+    public class InventoryItem
     {
-        if (!m_itemPrefabs.ContainsKey(_itemName))
+        public string Name;
+        public GameObject Prefab;
+        public int Quantity;
+    }
+
+    [SerializeField] private List<InventoryItem> m_inventoryItems;
+
+    public InventoryItem GetSelectedItem(string _itemName)
+    {
+        return m_inventoryItems.Find(item => item.Name == _itemName && item.Quantity > 0);
+    }
+
+    public void UseItem(string _itemName)
+    {
+        InventoryItem item = GetSelectedItem(_itemName);
+        if (item != null)
         {
-            m_itemPrefabs.Add(_itemName, _itemPrefab);
+            item.Quantity--;
+            if (item.Quantity <= 0)
+            {
+                m_inventoryItems.Remove(item);
+            }
         }
-        m_inventory.Add(_itemName);
     }
 
-    public void RemoveItem(string _itemName)
+    public void AddItem(string _itemName, GameObject _prefab, int _quantity)
     {
-        m_inventory.Remove(_itemName);
+        InventoryItem existingItem = m_inventoryItems.Find(item => item.Name == _itemName);
+        if (existingItem != null)
+        {
+            existingItem.Quantity += _quantity;
+        }
+        else
+        {
+            InventoryItem newItem = new InventoryItem { Name = _itemName, Prefab = _prefab, Quantity = _quantity };
+            m_inventoryItems.Add(newItem);
+        }
     }
 
-    public GameObject GetItemPrefab(string _itemName)
+    public List<InventoryItem> GetInventoryItems()
     {
-        return m_itemPrefabs.ContainsKey(_itemName) ? m_itemPrefabs[_itemName] : null;
-    }
-
-    public List<string> GetInventoryItems()
-    {
-        return m_inventory;
+        return m_inventoryItems;
     }
 }
