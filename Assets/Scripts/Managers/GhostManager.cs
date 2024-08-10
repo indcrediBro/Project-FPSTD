@@ -20,6 +20,8 @@ public class GhostManager : MonoBehaviour
 
     private Dictionary<string, GameObject> m_instanceGhosts;
     private GameObject currentGhostObject;
+    private Vector3 lastPosition;
+    private float hoverTime;
 
     private void Start()
     {
@@ -50,19 +52,54 @@ public class GhostManager : MonoBehaviour
         return _instance;
     }
 
-    public void UpdateGhost(string _name, Vector3 _position, out bool _isValid)
+    //public void UpdateGhost(string _name, Vector3 _position, out bool _isValid)
+    //{
+    //    currentGhostObject = GetGhostObjectByName(_name);
+    //    if (currentGhostObject == null)
+    //    {
+    //        _isValid = false;
+    //        return;
+    //    }
+    //    currentGhostObject.transform.position = _position;
+    //    _isValid = IsPathValid(); // Validate against existing NavMesh
+    //    UpdateGhostMaterial(_isValid);
+    //    currentGhostObject.SetActive(true);
+    //}
+
+    public void UpdateGhost(string _name, Vector3 _position, bool _isValid)
     {
-        currentGhostObject = GetGhostObjectByName(_name);
+        if (currentGhostObject == null || currentGhostObject.name != _name)
+        {
+            currentGhostObject = GetGhostObjectByName(_name);
+        }
+
         if (currentGhostObject == null)
         {
             _isValid = false;
             return;
         }
+
+        if (_position != lastPosition)
+        {
+            lastPosition = _position;
+            hoverTime = 0f;
+            _isValid = false;
+        }
+        else
+        {
+            hoverTime += Time.deltaTime;
+            if (hoverTime >= 0.5f)
+            {
+                m_navmeshManager.BuildNavMesh();
+                _isValid = IsPathValid();
+                UpdateGhostMaterial(_isValid);
+            }
+        }
+
         currentGhostObject.transform.position = _position;
-        _isValid = IsPathValid(); // Validate against existing NavMesh
-        UpdateGhostMaterial(_isValid);
         currentGhostObject.SetActive(true);
     }
+
 
     public void HideGhost()
     {

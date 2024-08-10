@@ -41,7 +41,7 @@ public class BuildManager : MonoBehaviour
         if (target != null)
         {
             Vector3 placementPosition = CalculatePlacementPosition(target);
-            bool isValidPlacement; // Declare the variable here
+            bool isValidPlacement = m_navmeshManager.CheckPathValidity(); // Declare the variable here
 
             // Check if the target has changed
             if (lastTargetTransform != target)
@@ -50,7 +50,7 @@ public class BuildManager : MonoBehaviour
                 m_ghostManager.PlaceGhostObjectTemporarily(placementPosition);
 
                 // Update the ghost object appearance based on the validity
-                m_ghostManager.UpdateGhost(selectedObject, placementPosition, out isValidPlacement);
+                m_ghostManager.UpdateGhost(selectedObject, placementPosition, isValidPlacement);
 
                 // Update the last target transform
                 lastTargetTransform = target;
@@ -58,7 +58,7 @@ public class BuildManager : MonoBehaviour
             else
             {
                 // Only update the ghost appearance if the target hasn't changed
-                m_ghostManager.UpdateGhost(selectedObject, placementPosition, out isValidPlacement);
+                m_ghostManager.UpdateGhost(selectedObject, placementPosition, isValidPlacement);
             }
 
             if (isValidPlacement && Input.GetMouseButtonDown(0))
