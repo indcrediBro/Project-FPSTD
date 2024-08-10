@@ -23,8 +23,8 @@ public class PlayerInputController : MonoBehaviour
         m_playerLook = GetComponent<PlayerLook>();
         m_playerSprint = GetComponent<PlayerSprint>();
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
     private void Update()

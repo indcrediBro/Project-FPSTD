@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class ShopManager : MonoBehaviour
+public class ShopManager : Singleton<ShopManager>
 {
     [System.Serializable]
     public class ShopItem
     {
         public string Name;
+        public string Details;
         public GameObject Prefab;
+        public Sprite Icon;
         public int Cost;
     }
 
