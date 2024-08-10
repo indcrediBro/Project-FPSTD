@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9075911211462146547}
   - component: {fileID: 2250818585541888373}
-  - component: {fileID: -676416498450856932}
+  - component: {fileID: 2365067356741696489}
   m_Layer: 8
   m_Name: Ghost Block
   m_TagString: Block
@@ -53,27 +53,24 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.30048, y: 1.7746562, z: 2.2930717}
-  m_Center: {x: 0.0017367601, y: 0.93, z: 0.0050719976}
---- !u!114 &-676416498450856932
-MonoBehaviour:
+  m_Size: {x: 2.3, y: 1.75, z: 2.3}
+  m_Center: {x: 0, y: 0.93, z: 0}
+--- !u!208 &2365067356741696489
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926842090374526278}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_OverrideGenerateLinks: 1
-  m_GenerateLinks: 0
-  m_IgnoreFromBuild: 0
-  m_ApplyToChildren: 1
-  m_AffectedAgents: ffffffff
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.15, y: 0.875, z: 1.15}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0.93, z: 0}
+  m_TimeToStationary: 0.2
 --- !u!1 &7491471297129922648
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,7 +98,7 @@ Transform:
   m_GameObject: {fileID: 7491471297129922648}
   serializedVersion: 2
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0, y: 0.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

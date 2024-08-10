@@ -26,7 +26,7 @@ public class NavmeshManager : MonoBehaviour
     private IEnumerator BuildNavMeshCoroutine()
     {
         isBaking = true;
-        yield return new WaitForSeconds(.5f); // optional: WaitForSeconds if the NavMesh build takes time
+        yield return new WaitForEndOfFrame(); 
         m_navMeshSurface.BuildNavMesh();
         isBaking = false;
     }

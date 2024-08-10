@@ -121,7 +121,7 @@ public class BuildManager : MonoBehaviour
         if (buildable != null)
         {
             Instantiate(buildable.Prefab, m_ghostManager.GetCurrentGhostPosition(), Quaternion.identity, _target);
-            m_navmeshManager.BuildNavMesh(); // Rebuild the NavMesh after placing the object
+            //m_navmeshManager.BuildNavMesh(); // Rebuild the NavMesh after placing the object
         }
     }
 
