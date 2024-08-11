@@ -91,6 +91,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""b762a8a2-df5b-469f-9f5e-83fb6d5f0586"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Attack"",
                     ""type"": ""PassThrough"",
                     ""id"": ""5c5130e7-7f17-4d3f-bbab-ed677300f19a"",
@@ -355,7 +364,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""faa36c04-dcdd-41a0-acd9-33d114f34c92"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -450,6 +459,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""06997de6-d5e5-4714-bf99-b24aa3aeaa2b"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d1e708d-491e-4aca-8658-36d5b7319fb2"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -465,6 +496,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_PlayerInputMap_Dodge = m_PlayerInputMap.FindAction("Dodge", throwIfNotFound: true);
         m_PlayerInputMap_Reload = m_PlayerInputMap.FindAction("Reload", throwIfNotFound: true);
         m_PlayerInputMap_Pause = m_PlayerInputMap.FindAction("Pause", throwIfNotFound: true);
+        m_PlayerInputMap_Interact = m_PlayerInputMap.FindAction("Interact", throwIfNotFound: true);
         m_PlayerInputMap_Attack = m_PlayerInputMap.FindAction("Attack", throwIfNotFound: true);
         m_PlayerInputMap_SwitchWeapon = m_PlayerInputMap.FindAction("SwitchWeapon", throwIfNotFound: true);
     }
@@ -535,6 +567,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInputMap_Dodge;
     private readonly InputAction m_PlayerInputMap_Reload;
     private readonly InputAction m_PlayerInputMap_Pause;
+    private readonly InputAction m_PlayerInputMap_Interact;
     private readonly InputAction m_PlayerInputMap_Attack;
     private readonly InputAction m_PlayerInputMap_SwitchWeapon;
     public struct PlayerInputMapActions
@@ -548,6 +581,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Dodge => m_Wrapper.m_PlayerInputMap_Dodge;
         public InputAction @Reload => m_Wrapper.m_PlayerInputMap_Reload;
         public InputAction @Pause => m_Wrapper.m_PlayerInputMap_Pause;
+        public InputAction @Interact => m_Wrapper.m_PlayerInputMap_Interact;
         public InputAction @Attack => m_Wrapper.m_PlayerInputMap_Attack;
         public InputAction @SwitchWeapon => m_Wrapper.m_PlayerInputMap_SwitchWeapon;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInputMap; }
@@ -580,6 +614,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
@@ -611,6 +648,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
@@ -643,6 +683,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnDodge(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnSwitchWeapon(InputAction.CallbackContext context);
     }

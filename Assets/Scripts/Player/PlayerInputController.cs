@@ -12,6 +12,7 @@ public class PlayerInputController : MonoBehaviour
     private PlayerDodge m_playerDodge;
     private PlayerLook m_playerLook;
     private PlayerSprint m_playerSprint;
+    private PlayerInteract m_playerInteract;
 
     private void Start()
     {
@@ -22,7 +23,7 @@ public class PlayerInputController : MonoBehaviour
         m_playerDodge = GetComponent<PlayerDodge>();
         m_playerLook = GetComponent<PlayerLook>();
         m_playerSprint = GetComponent<PlayerSprint>();
-
+        m_playerInteract = GetComponent<PlayerInteract>();
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
     }
@@ -35,5 +36,6 @@ public class PlayerInputController : MonoBehaviour
         m_playerDodge.Dodge(m_inputManager.m_MoveInput, m_inputManager.m_DodgeInput);
         m_playerLook.Look(m_inputManager.m_LookInput);
         m_playerSprint.Sprint(m_inputManager.m_SprintInput, m_inputManager.m_MoveInput, m_playerStats.IsGrounded());
+        if (m_inputManager.m_InteractInput.WasPerformedThisFrame()) m_playerInteract.Interact();
     }
 }

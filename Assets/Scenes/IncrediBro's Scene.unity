@@ -17088,10 +17088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_dontDestroyOnLoad: 0
-  m_inventoryItems:
-  - Name: Block
-    Prefab: {fileID: 0}
-    Quantity: 0
+  m_inventoryItems: []
 --- !u!4 &1097124874
 Transform:
   m_ObjectHideFlags: 0

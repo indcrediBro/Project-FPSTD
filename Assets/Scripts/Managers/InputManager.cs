@@ -14,6 +14,7 @@ public class InputManager : Singleton<InputManager>
     [HideInInspector] public bool m_DodgeInput;
     [HideInInspector] public bool m_ReloadInput;
     [HideInInspector] public InputAction m_JumpInput;
+    [HideInInspector] public InputAction m_InteractInput;
     [HideInInspector] public InputAction m_PauseInput;
     [HideInInspector] public InputAction m_AttackInput;
 
@@ -32,6 +33,7 @@ public class InputManager : Singleton<InputManager>
         m_inputActions.PlayerInputMap.Sprint.performed += ctx => m_SprintInput = ctx.ReadValueAsButton();
         m_inputActions.PlayerInputMap.Dodge.performed += ctx => m_DodgeInput = ctx.ReadValueAsButton();
         m_inputActions.PlayerInputMap.Reload.performed += ctx => m_ReloadInput = ctx.ReadValueAsButton();
+        m_InteractInput = m_inputActions.PlayerInputMap.Interact;
         m_PauseInput = m_inputActions.PlayerInputMap.Pause;
         m_JumpInput = m_inputActions.PlayerInputMap.Jump;
         m_AttackInput = m_inputActions.PlayerInputMap.Attack;
