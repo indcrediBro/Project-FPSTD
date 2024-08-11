@@ -96,5 +96,8 @@ public class PlayerInteract : MonoBehaviour
         m_currentInteractable = null;
         m_currentInteractableTF = null;
         m_currentInteractableDistance = m_interactRange;
+
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
     }
 }
