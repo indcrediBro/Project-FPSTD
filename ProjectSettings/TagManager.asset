@@ -8,6 +8,7 @@ TagManager:
   - King
   - Floor
   - Block
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -18,9 +19,9 @@ TagManager:
   - Weapon
   - Floor
   - Block
-  - 
-  - 
-  - 
+  - Player Base
+  - Enemy
+  - Projectile
   - 
   - 
   - 

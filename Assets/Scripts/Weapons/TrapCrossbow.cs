@@ -4,37 +4,22 @@ using UnityEngine;
 
 public class TrapCrossbow : TrapBase
 {
-    public GameObject arrowPrefab;
-    public float launchForce = 20f;
-    public Transform target;
-
-    private void Start()
+    protected override void Fire()
     {
-        trapName = "Crossbow";
-        damage = 10f;
-        fireRate = 0.2f; // 5 shots per second
-    }
+        m_fireCooldown = m_fireRate;
+        ApplyRecoil();
 
-    public override void ActivateTrap()
-    {
-        StartCoroutine(FireArrows());
-    }
-
-    private IEnumerator FireArrows()
-    {
-        while (true)
+        if (m_currentTarget != null)
         {
-            RotateTowardsTarget(target.position);
-            FireProjectile();
-            yield return new WaitForSeconds(fireRate);
+            Vector3 targetPosition = m_currentTarget.position;
+            GameObject projectile = InstantiateProjectile();
+            projectile.GetComponent<Projectile>().Launch(targetPosition, m_damage);
         }
     }
 
-    private void FireProjectile()
+    private GameObject InstantiateProjectile()
     {
-        GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody rb = arrow.GetComponent<Rigidbody>();
-        Vector3 direction = (target.position - firePoint.position).normalized;
-        rb.velocity = CalculateProjectileVelocity(target.position, firePoint.position, launchForce);
+        GameObject projectile = Instantiate(m_projectile, m_firePoint.position, Quaternion.identity);
+        return projectile;
     }
 }

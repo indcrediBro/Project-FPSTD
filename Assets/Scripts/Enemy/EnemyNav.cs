@@ -22,17 +22,17 @@ public class EnemyNav : MonoBehaviour
 
         switch (randomNumber)
         {
-            case < 1:
-                // Find an alternative to FindGameObjectWithTag
-                target = GameObject.FindGameObjectWithTag("WeaponDealer");
-                break;
-            case > 1 and < 20:
+            //case < 1:
+            //    // Find an alternative to FindGameObjectWithTag
+            //    target = GameObject.FindGameObjectWithTag("WeaponDealer");
+            //    break;
+            case > 0 and < 20:
                 // Find an alternative to FindGameObjectWithTag
                 target = GameObject.FindGameObjectWithTag("Player");
                 break;
             default:
                 // Find an alternative to FindGameObjectWithTag
-                target = GameObject.FindGameObjectWithTag("King");
+                target = ShopManager.Instance.gameObject;
                 break;
         }
     }

@@ -2,28 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrapFirepit : TrapBase
+public class TrapFirepit : MonoBehaviour
 {
+    [SerializeField] private float m_damagePerSecond = 5f;
+    [SerializeField] private float m_damageInterval = 0.5f;
+
     private void Start()
     {
-        trapName = "Firepit";
-        damage = 5f; // Damage over time
-        fireRate = 1f; // Damage interval
+        StartCoroutine(DamageOverTimeRoutine());
     }
 
-    public override void ActivateTrap()
-    {
-        // Logic to continuously deal damage over time
-        StartCoroutine(DealDamageOverTime());
-    }
-
-    private IEnumerator DealDamageOverTime()
+    private IEnumerator DamageOverTimeRoutine()
     {
         while (true)
         {
-            // Damage over time logic here
-            Debug.Log($"{trapName} dealing {damage} damage over time!");
-            yield return new WaitForSeconds(fireRate);
+            DamageEnemiesInRange();
+            yield return new WaitForSeconds(m_damageInterval);
+        }
+    }
+
+    private void DamageEnemiesInRange()
+    {
+        Collider[] hitColliders = Physics.OverlapBox(transform.position, transform.localScale / 2);
+        foreach (Collider collider in hitColliders)
+        {
+            if (collider.TryGetComponent(out Health enemyHealth))
+            {
+                enemyHealth.TakeDamage(m_damagePerSecond * m_damageInterval);
+            }
         }
     }
 }

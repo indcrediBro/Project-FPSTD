@@ -8,7 +8,6 @@ public class BlockRandomiser : MonoBehaviour
     [SerializeField] private GameObject[] m_decorationsGO;
 
     [SerializeField] private Transform m_baseParentTF;
-
     [SerializeField] private float m_decorSpawnLocationRange;
 
     private void OnEnable()

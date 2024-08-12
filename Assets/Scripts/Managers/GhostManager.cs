@@ -13,25 +13,20 @@ public class GhostManager : MonoBehaviour
         [HideInInspector] public MeshRenderer Renderer;
     }
 
-    [SerializeField] private Material validMaterial;
-    [SerializeField] private Material invalidMaterial;
+    [SerializeField] private Material m_validMaterial;
+    [SerializeField] private Material m_invalidMaterial;
     [SerializeField] private NavmeshManager m_navmeshManager;
     [SerializeField] private GhostObject[] m_ghostObjects;
 
     private Dictionary<string, GameObject> m_instanceGhosts;
-    private GameObject currentGhostObject;
-    private Vector3 lastPosition;
-    private float hoverTime;
+    private GameObject m_currentGhostObject;
+    private Vector3 m_lastPosition;
+    private float m_hoverTime;
 
     private void Start()
     {
         if (m_navmeshManager == null) m_navmeshManager = FindObjectOfType<NavmeshManager>();
         InitializeGhostObjects();
-    }
-
-    private void Update()
-    {
-        //if (currentGhostObject) UpdateGhostMaterial(IsPathValid());
     }
 
     private void InitializeGhostObjects()
@@ -52,43 +47,29 @@ public class GhostManager : MonoBehaviour
         return _instance;
     }
 
-    //public void UpdateGhost(string _name, Vector3 _position, out bool _isValid)
-    //{
-    //    currentGhostObject = GetGhostObjectByName(_name);
-    //    if (currentGhostObject == null)
-    //    {
-    //        _isValid = false;
-    //        return;
-    //    }
-    //    currentGhostObject.transform.position = _position;
-    //    _isValid = IsPathValid(); // Validate against existing NavMesh
-    //    UpdateGhostMaterial(_isValid);
-    //    currentGhostObject.SetActive(true);
-    //}
-
     public void UpdateGhost(string _name, Vector3 _position, bool _isValid)
     {
-        if (currentGhostObject == null || currentGhostObject.name != _name)
+        if (m_currentGhostObject == null || m_currentGhostObject.name != _name)
         {
-            currentGhostObject = GetGhostObjectByName(_name);
+            m_currentGhostObject = GetGhostObjectByName(_name);
         }
 
-        if (currentGhostObject == null)
+        if (m_currentGhostObject == null)
         {
             _isValid = false;
             return;
         }
 
-        if (_position != lastPosition)
+        if (_position != m_lastPosition)
         {
-            lastPosition = _position;
-            hoverTime = 0f;
+            m_lastPosition = _position;
+            m_hoverTime = 0f;
             _isValid = false;
         }
         else
         {
-            hoverTime += Time.deltaTime;
-            if (hoverTime >= 0.1f)
+            m_hoverTime += Time.deltaTime;
+            if (m_hoverTime >= 0.1f)
             {
                 //m_navmeshManager.BuildNavMesh();
                 _isValid = IsPathValid();
@@ -96,17 +77,17 @@ public class GhostManager : MonoBehaviour
             }
         }
 
-        currentGhostObject.transform.position = _position;
-        currentGhostObject.SetActive(true);
+        m_currentGhostObject.transform.position = _position;
+        m_currentGhostObject.SetActive(true);
     }
 
 
     public void HideGhost()
     {
-        if (currentGhostObject != null)
+        if (m_currentGhostObject != null)
         {
-            currentGhostObject.SetActive(false);
-            currentGhostObject = null;
+            m_currentGhostObject.SetActive(false);
+            m_currentGhostObject = null;
         }
     }
 
@@ -117,10 +98,10 @@ public class GhostManager : MonoBehaviour
 
     public void PlaceGhostObjectTemporarily(Vector3 _position)
     {
-        if (currentGhostObject == null) return;
+        if (m_currentGhostObject == null) return;
 
-        currentGhostObject.transform.position = _position;
-        currentGhostObject.SetActive(true);
+        m_currentGhostObject.transform.position = _position;
+        m_currentGhostObject.SetActive(true);
 
         //m_navmeshManager.BuildNavMesh();
 
@@ -128,14 +109,14 @@ public class GhostManager : MonoBehaviour
         UpdateGhostMaterial(isPathValid);
     }
 
-    private void UpdateGhostMaterial(bool isValid)
+    private void UpdateGhostMaterial(bool _isValid)
     {
-        MeshRenderer _meshRenderer = currentGhostObject.GetComponentInChildren<MeshRenderer>();
+        MeshRenderer _meshRenderer = m_currentGhostObject.GetComponentInChildren<MeshRenderer>();
         Material[] materials = _meshRenderer.materials;
 
         for (int i = 0; i < materials.Length; i++)
         {
-            materials[i] = isValid ? validMaterial : invalidMaterial;
+            materials[i] = _isValid ? m_validMaterial : m_invalidMaterial;
         }
 
         _meshRenderer.materials = materials;
@@ -143,6 +124,6 @@ public class GhostManager : MonoBehaviour
 
     public Vector3 GetCurrentGhostPosition()
     {
-        return currentGhostObject.transform.position;
+        return m_currentGhostObject.transform.position;
     }
 }

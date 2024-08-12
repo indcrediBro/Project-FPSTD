@@ -19,6 +19,7 @@ public class ShopInteractionController : Interactable
         m_shopUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        Time.timeScale = 0;
         Debug.Log("Interacted With Shop!");
     }
     private void LookAtPlayer()

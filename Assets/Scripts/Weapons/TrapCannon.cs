@@ -4,37 +4,25 @@ using UnityEngine;
 
 public class TrapCannon : TrapBase
 {
-    public GameObject projectilePrefab; // The cannonball or arrow prefab
-    public float launchForce = 10f;
-    public Transform target;
+    [SerializeField] private float blastRadius;
 
-    private void Start()
+    protected override void Fire()
     {
-        trapName = "Cannon";
-        damage = 50f;
-        fireRate = 2f; // 1 shot per second
-    }
+        m_fireCooldown = m_fireRate;
+        ApplyRecoil();
 
-    public override void ActivateTrap()
-    {
-        StartCoroutine(FireCannon());
-    }
-
-    private IEnumerator FireCannon()
-    {
-        while (true)
+        if (m_currentTarget != null)
         {
-            RotateTowardsTarget(target.position);
-            FireProjectile();
-            yield return new WaitForSeconds(fireRate);
+            Vector3 targetPosition = m_currentTarget.position;
+            targetPosition.y += m_yOffset;
+            GameObject projectile = InstantiateProjectile();
+            projectile.GetComponent<Projectile>().Launch(targetPosition, m_damage, true, blastRadius);
         }
     }
 
-    private void FireProjectile()
+    private GameObject InstantiateProjectile()
     {
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        Vector3 direction = (target.position - firePoint.position).normalized;
-        rb.velocity = CalculateProjectileVelocity(target.position, firePoint.position, launchForce);
+        GameObject projectile = Instantiate(m_projectile,m_firePoint.position,Quaternion.identity);
+        return projectile;
     }
 }

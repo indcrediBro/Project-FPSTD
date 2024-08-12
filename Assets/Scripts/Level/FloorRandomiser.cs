@@ -43,13 +43,16 @@ public class FloorRandomiser : MonoBehaviour
         {
             GameObject decor = m_decorationsGO[randomSpawnIndex];
             decor.SetActive(true);
-            decor.transform.localPosition = new Vector3(
-                                            RandomNumber.Instance.NextFloat(-m_decorSpawnLocationRange, m_decorSpawnLocationRange),
-                                            decor.transform.localPosition.y,
-                                            RandomNumber.Instance.NextFloat(-m_decorSpawnLocationRange, m_decorSpawnLocationRange)
-                                            );
-            decor.transform.localRotation = Quaternion.Euler(0f, RandomNumber.Instance.NextFloat(0f, 360f), 0f);
-            decor.transform.localScale *= RandomNumber.Instance.NextFloat(0.5f, 1.25f);
+            if (decor != m_decorationsGO[0])
+            {
+                decor.transform.localPosition = new Vector3(
+                                                RandomNumber.Instance.NextFloat(-m_decorSpawnLocationRange, m_decorSpawnLocationRange),
+                                                decor.transform.localPosition.y,
+                                                RandomNumber.Instance.NextFloat(-m_decorSpawnLocationRange, m_decorSpawnLocationRange)
+                                                );
+                decor.transform.localRotation = Quaternion.Euler(0f, RandomNumber.Instance.NextFloat(0f, 360f), 0f);
+                decor.transform.localScale *= RandomNumber.Instance.NextFloat(0.5f, 1.25f);
+            }
         }
     }
 }

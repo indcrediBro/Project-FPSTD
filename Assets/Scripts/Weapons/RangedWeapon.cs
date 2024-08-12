@@ -41,7 +41,7 @@ public class RangedWeapon : Weapon
             Projectile proj = projectile.GetComponent<Projectile>();
             if (proj != null)
             {
-                proj.Initialize(m_damage, m_speed, true);
+                //proj.Initialize(m_damage, m_speed, true);
             }
         }
         else
