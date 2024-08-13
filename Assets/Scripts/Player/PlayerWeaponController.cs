@@ -17,9 +17,19 @@ public class PlayerWeaponController : MonoBehaviour
 
     private void Update()
     {
-        if (!m_stats.IsInBuilderMode() && m_currentWeapon)
+        if (!m_currentWeapon)
+        { return; }
+
+        if (!m_stats.IsInBuilderMode())
         {
-            m_currentWeapon.SetActive(true);
+            if (m_currentWeapon)
+            {
+                m_currentWeapon.SetActive(true);
+            }
+            else
+            {
+                EquipWeapon(m_currentWeaponIndex);
+            }
 
             if (InputManager.Instance.m_SwitchWeaponInput > 0)
             {
@@ -33,44 +43,22 @@ public class PlayerWeaponController : MonoBehaviour
         }
         else
         {
-            if (m_stats.IsInBuilderMode())
+            if (m_currentWeapon && m_currentWeapon.activeInHierarchy)
             {
                 m_currentWeapon.SetActive(false);
-                if (InputManager.Instance.m_SwitchWeaponInput < 0)
-                {
-                    BuildManager.Instance.SwitchToBuildable(-1);
-                }
-                if (InputManager.Instance.m_SwitchWeaponInput > 0)
-                {
-                    BuildManager.Instance.SwitchToBuildable(1);
-                }
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (m_stats.IsInBuilderMode())
-            {
-                BuildManager.Instance.UnequipCurrentBuildable();
-                m_stats.SetBuilderMode(false);
-            }
-            else
-            {
-                BuildManager.Instance.EquipLastBuildable();
-                m_stats.SetBuilderMode(true);
             }
         }
     }
 
     private void SwitchToWeapon(int change)
     {
-        m_currentWeaponIndex = (m_currentWeaponIndex + change + m_allWeapons.Count - 1) % m_allWeapons.Count - 1;
+        m_currentWeaponIndex = (m_currentWeaponIndex + change + m_allWeapons.ToArray().Length) % m_allWeapons.Count - 1;
         EquipWeapon(m_currentWeaponIndex);
     }
 
     private void EquipWeapon(int _index)
     {
-        for (int i = 0; i < m_allWeapons.Count - 1; i++)
+        for (int i = 0; i < m_allWeapons.ToArray().Length; i++)
         {
             m_allWeapons[i].SetActive(false);
 
@@ -80,6 +68,11 @@ public class PlayerWeaponController : MonoBehaviour
                 m_currentWeapon.SetActive(true);
             }
         }
+    }
+
+    private void UnequipWeapon()
+    {
+        m_currentWeapon.SetActive(false);
     }
 
     public void AddWeapon(GameObject _weapon)

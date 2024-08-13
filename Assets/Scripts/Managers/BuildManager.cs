@@ -112,21 +112,8 @@ public class BuildManager : Singleton<BuildManager>
 
     }
 
-    private int m_currentBuildableIndex = 0;
-
-    public void SwitchToBuildable(int change)
+    public void SetSelectedBuildable(string _name)
     {
-        m_currentBuildableIndex = (m_currentBuildableIndex + change + m_inventoryManager.GetBuildableInventoryItems().Count - 1) % m_inventoryManager.GetBuildableInventoryItems().Count - 1;
-        m_selectedObject = m_inventoryManager.GetBuildableInventoryItems()[m_currentBuildableIndex].Name;
-    }
-
-    public void UnequipCurrentBuildable()
-    {
-        m_selectedObject = "";
-    }
-
-    public void EquipLastBuildable()
-    {
-        m_selectedObject = m_inventoryManager.GetBuildableInventoryItems()[m_currentBuildableIndex].Name;
+        m_selectedObject = _name;
     }
 }

@@ -484,7 +484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -36.37, y: -25.630005}
+  m_AnchoredPosition: {x: -36.370117, y: -25.630005}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7411039736684834494
@@ -856,7 +856,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 439
+    m_Bits: 4023
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -16655,7 +16655,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 322
+  m_VersionIndex: 325
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -17197,6 +17197,7 @@ MonoBehaviour:
   m_jumpHeight: 3
   m_gravity: -20
   m_lookSensitivity: 50
+  m_inBuilderMode: 0
 --- !u!114 &38569860786222543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17338,7 +17339,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e05ceb8419b44b4a0c93406744bfcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: []
+  m_stats: {fileID: 1380489201760062354}
+  m_weaponRootTF: {fileID: 4121607406380388846}
+  m_allWeapons:
+  - {fileID: 404596866439405538}
 --- !u!114 &4852084350009653564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17355,7 +17359,7 @@ MonoBehaviour:
   m_groundCheckRadius: 0.2
   m_groundLayer:
     serializedVersion: 2
-    m_Bits: 503
+    m_Bits: 1015
 --- !u!114 &6038958952126577604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17831,6 +17835,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9faaae89f33170949851a0e5309c85ad, type: 3}
+--- !u!1 &404596866439405538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5245732848559222378, guid: 9faaae89f33170949851a0e5309c85ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 5571511906312860040}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1096009656521947347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4784004188755478875, guid: 9faaae89f33170949851a0e5309c85ad,
