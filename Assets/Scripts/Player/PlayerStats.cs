@@ -7,14 +7,14 @@ public class PlayerStats : MonoBehaviour
     [Header("References")]
     [Space(2)]
     [SerializeField] private PlayerInputController m_inputController;
-    public PlayerInputController GetPlayerInputComponent() { return m_inputController; }
     [SerializeField] private CharacterController m_characterController;
-    public CharacterController GetCharacterControllerComponent() { return m_characterController; }
     [SerializeField] private CinemachineVirtualCamera m_virtualCamera;
-    public CinemachineVirtualCamera GetVirtualCameraComponent() { return m_virtualCamera; }
     [SerializeField] private PlayerHealth m_playerHealth;
-    public PlayerHealth GetPlayerHealthComponent() { return m_playerHealth; }
     [SerializeField] private PlayerStamina m_playerStamina;
+    public PlayerInputController GetPlayerInputComponent() { return m_inputController; }
+    public CharacterController GetCharacterControllerComponent() { return m_characterController; }
+    public CinemachineVirtualCamera GetVirtualCameraComponent() { return m_virtualCamera; }
+    public PlayerHealth GetPlayerHealthComponent() { return m_playerHealth; }
     public PlayerStamina GetPlayerStaminaComponent() { return m_playerStamina; }
 
     [Space(5)]
@@ -45,4 +45,11 @@ public class PlayerStats : MonoBehaviour
     public bool IsGrounded() { return m_isGrounded; }
     public void SetGrounded(bool _value) { m_isGrounded = _value; }
 
+    [Space(5)]
+    [Header("Weapon/Builder Settings")]
+    [Space(2)]
+    [SerializeField] private bool m_inBuilderMode;
+
+    public bool IsInBuilderMode() { return m_inBuilderMode; }
+    public void SetBuilderMode(bool _value) { m_inBuilderMode = _value; }
 }

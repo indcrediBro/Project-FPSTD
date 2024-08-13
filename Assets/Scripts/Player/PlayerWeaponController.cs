@@ -4,46 +4,90 @@ using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
 {
-    private InputManager inputManager;
-    [SerializeField] private WeaponBase[] inventory;
-    private int index = 0;
-    private WeaponBase equipped;
+    [SerializeField] private PlayerStats m_stats;
+    [SerializeField] private Transform m_weaponRootTF;
+    [SerializeField] private List<GameObject> m_allWeapons;
+    private int m_currentWeaponIndex = 0;
+    private GameObject m_currentWeapon;
 
     private void Start()
     {
-        inputManager = InputManager.Instance;
-        EquipWeapon(index);
+        EquipWeapon(m_currentWeaponIndex);
     }
 
     private void Update()
     {
-        if (equipped == null) return;
-
-        if (inputManager.m_SwitchWeaponInput > 0)
+        if (!m_stats.IsInBuilderMode() && m_currentWeapon)
         {
-            SwitchToWeapon(1);
+            m_currentWeapon.SetActive(true);
+
+            if (InputManager.Instance.m_SwitchWeaponInput > 0)
+            {
+                SwitchToWeapon(1);
+            }
+
+            if (InputManager.Instance.m_SwitchWeaponInput < 0)
+            {
+                SwitchToWeapon(-1);
+            }
+        }
+        else
+        {
+            if (m_stats.IsInBuilderMode())
+            {
+                m_currentWeapon.SetActive(false);
+                if (InputManager.Instance.m_SwitchWeaponInput < 0)
+                {
+                    BuildManager.Instance.SwitchToBuildable(-1);
+                }
+                if (InputManager.Instance.m_SwitchWeaponInput > 0)
+                {
+                    BuildManager.Instance.SwitchToBuildable(1);
+                }
+            }
         }
 
-        if (inputManager.m_SwitchWeaponInput < 0)
-            SwitchToWeapon(-1);
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (m_stats.IsInBuilderMode())
+            {
+                BuildManager.Instance.UnequipCurrentBuildable();
+                m_stats.SetBuilderMode(false);
+            }
+            else
+            {
+                BuildManager.Instance.EquipLastBuildable();
+                m_stats.SetBuilderMode(true);
+            }
+        }
     }
 
     private void SwitchToWeapon(int change)
     {
-        index = (index + change + inventory.Length) % inventory.Length;
-        EquipWeapon(index);
+        m_currentWeaponIndex = (m_currentWeaponIndex + change + m_allWeapons.Count - 1) % m_allWeapons.Count - 1;
+        EquipWeapon(m_currentWeaponIndex);
     }
+
     private void EquipWeapon(int _index)
     {
-        for (int i = 0; i < inventory.Length; i++)
+        for (int i = 0; i < m_allWeapons.Count - 1; i++)
         {
-            inventory[i].gameObject.SetActive(false);
+            m_allWeapons[i].SetActive(false);
 
             if (i == _index)
             {
-                equipped = inventory[i];
-                equipped.gameObject.SetActive(true);
+                m_currentWeapon = m_allWeapons[i];
+                m_currentWeapon.SetActive(true);
             }
         }
+    }
+
+    public void AddWeapon(GameObject _weapon)
+    {
+        Transform newWeapon = _weapon.transform;
+        newWeapon.SetParent(m_weaponRootTF);
+        newWeapon.localPosition = Vector3.zero;
+        m_allWeapons.Add(newWeapon.gameObject);
+        EquipWeapon(m_allWeapons.IndexOf(newWeapon.gameObject));
     }
 }
