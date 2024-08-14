@@ -7,9 +7,9 @@ using TMPro;
 public class ShopUIManager : MonoBehaviour
 {
     [SerializeField] private ShopManager m_shopManager;
-    [SerializeField] private Transform shopPanel;
-    [SerializeField] private GameObject shopItemPrefab;
-    [SerializeField] private TMP_Text playerCurrencyText;
+    [SerializeField] private Transform m_shopPanel;
+    [SerializeField] private GameObject m_shopItemPrefab;
+    [SerializeField] private TMP_Text m_playerCurrencyText;
 
     private void Start()
     {
@@ -18,19 +18,19 @@ public class ShopUIManager : MonoBehaviour
 
     public void UpdateShopUI()
     {
-        foreach (Transform child in shopPanel)
+        foreach (Transform child in m_shopPanel)
         {
             Destroy(child.gameObject);
         }
 
-        foreach (var item in m_shopManager.GetShopItems())
+        foreach (ShopItem item in m_shopManager.GetShopItems())
         {
-            GameObject shopItemGO = Instantiate(shopItemPrefab, shopPanel);
+            GameObject shopItemGO = Instantiate(m_shopItemPrefab, m_shopPanel);
             ShopItemUI shopItemUI = shopItemGO.GetComponent<ShopItemUI>();
 
             shopItemUI.InitializeShopItemUI(item.Name, item.Details, item.Cost.ToString(), item.Icon);
         }
 
-        playerCurrencyText.text = "Currency: " + m_shopManager.GetPlayerCurrency();
+        m_playerCurrencyText.text = "Currency: " + m_shopManager.GetPlayerCurrency();
     }
 }

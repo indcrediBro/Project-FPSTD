@@ -11,29 +11,21 @@ public class InventoryManager : Singleton<InventoryManager>
         public int Quantity;
     }
 
-    [SerializeField] private List<InventoryItem> m_inventoryItems;
+    [SerializeField] private List<InventoryItem> m_buildableInventoryItems;
 
-    public InventoryItem GetSelectedItem(string _itemName)
+    public InventoryItem GetSelectedBuildableItem(string _itemName)
     {
-        return m_inventoryItems.Find(item => item.Name == _itemName && item.Quantity > 0);
+        return m_buildableInventoryItems.Find(item => item.Name == _itemName && item.Quantity > 0);
     }
 
-    public void UseItem(string _itemName)
+    public List<InventoryItem> GetBuildableInventoryItems()
     {
-        InventoryItem item = GetSelectedItem(_itemName);
-        if (item != null)
-        {
-            item.Quantity--;
-            if (item.Quantity <= 0)
-            {
-                m_inventoryItems.Remove(item);
-            }
-        }
+        return m_buildableInventoryItems;
     }
 
-    public void AddItem(string _itemName, GameObject _prefab, int _quantity)
+    public void AddBuildableItem(string _itemName, GameObject _prefab, int _quantity)
     {
-        InventoryItem existingItem = m_inventoryItems.Find(item => item.Name == _itemName);
+        InventoryItem existingItem = m_buildableInventoryItems.Find(item => item.Name == _itemName);
         if (existingItem != null)
         {
             existingItem.Quantity += _quantity;
@@ -41,12 +33,110 @@ public class InventoryManager : Singleton<InventoryManager>
         else
         {
             InventoryItem newItem = new InventoryItem { Name = _itemName, Prefab = _prefab, Quantity = _quantity };
-            m_inventoryItems.Add(newItem);
+            m_buildableInventoryItems.Add(newItem);
         }
     }
 
-    public List<InventoryItem> GetInventoryItems()
+    public void UseBuildableItem(string _itemName)
     {
-        return m_inventoryItems;
+        InventoryItem item = GetSelectedBuildableItem(_itemName);
+        if (item != null)
+        {
+            item.Quantity--;
+            if (item.Quantity <= 0)
+            {
+                m_buildableInventoryItems.Remove(item);
+            }
+        }
+    }
+
+
+    [SerializeField] private List<InventoryItem> m_ammoInventoryItems;
+
+    public InventoryItem GetSelectedAmmoItem(string _itemName)
+    {
+        return m_ammoInventoryItems.Find(item => item.Name == _itemName && item.Quantity > 0);
+    }
+
+    public List<InventoryItem> GetAmmoInventoryItems()
+    {
+        return m_ammoInventoryItems;
+    }
+
+    public void AddAmmoItem(string _itemName, GameObject _prefab, int _quantity)
+    {
+        InventoryItem existingItem = m_ammoInventoryItems.Find(item => item.Name == _itemName);
+        if (existingItem != null)
+        {
+            existingItem.Quantity += _quantity;
+        }
+        else
+        {
+            InventoryItem newItem = new InventoryItem { Name = _itemName, Prefab = _prefab, Quantity = _quantity };
+            m_ammoInventoryItems.Add(newItem);
+        }
+    }
+
+    public void UseAmmoItem(string _itemName)
+    {
+        InventoryItem item = GetSelectedAmmoItem(_itemName);
+        if (item != null)
+        {
+            item.Quantity--;
+            if (item.Quantity <= 0)
+            {
+                m_ammoInventoryItems.Remove(item);
+            }
+        }
+    }
+
+
+
+    [SerializeField] private List<InventoryItem> m_consumeableInventoryItems;
+
+    public InventoryItem GetSelectedConsumeableItem(string _itemName)
+    {
+        return m_consumeableInventoryItems.Find(item => item.Name == _itemName && item.Quantity > 0);
+    }
+
+    public List<InventoryItem> GetConsumeableInventoryItems()
+    {
+        return m_consumeableInventoryItems;
+    }
+
+    public void AddConsumeableItem(string _itemName, GameObject _prefab, int _quantity)
+    {
+        InventoryItem existingItem = m_consumeableInventoryItems.Find(item => item.Name == _itemName);
+        if (existingItem != null)
+        {
+            existingItem.Quantity += _quantity;
+        }
+        else
+        {
+            InventoryItem newItem = new InventoryItem { Name = _itemName, Prefab = _prefab, Quantity = _quantity };
+            m_consumeableInventoryItems.Add(newItem);
+        }
+    }
+
+    public void UseConsumeableItem(string _itemName)
+    {
+        InventoryItem item = GetSelectedAmmoItem(_itemName);
+        if (item != null)
+        {
+            item.Quantity--;
+            if (item.Quantity <= 0)
+            {
+                m_consumeableInventoryItems.Remove(item);
+            }
+        }
+    }
+
+
+    [SerializeField] private PlayerWeaponController m_playerWeaponController;
+
+    public void AddWeaponItem(GameObject _prefab)
+    {
+        GameObject newWeapon = Instantiate(_prefab);
+        m_playerWeaponController.AddWeapon(newWeapon);
     }
 }

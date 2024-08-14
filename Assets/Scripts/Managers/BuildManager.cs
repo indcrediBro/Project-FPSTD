@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildManager : MonoBehaviour
+public class BuildManager : Singleton<BuildManager>
 {
     [SerializeField] private InventoryManager m_inventoryManager;
     [SerializeField] private GhostManager m_ghostManager;
@@ -18,7 +18,7 @@ public class BuildManager : MonoBehaviour
 
     private void HandleGhostPlacer()
     {
-        InventoryManager.InventoryItem selectedItem = m_inventoryManager.GetSelectedItem(m_selectedObject);
+        InventoryManager.InventoryItem selectedItem = m_inventoryManager.GetSelectedBuildableItem(m_selectedObject);
         if (selectedItem == null)
         {
             m_ghostManager.HideGhost();
@@ -48,9 +48,10 @@ public class BuildManager : MonoBehaviour
                 m_ghostManager.UpdateGhost(m_selectedObject, placementPosition, isValidPlacement);
             }
 
-            if (isValidPlacement && Input.GetMouseButtonDown(0))
+            if (isValidPlacement && InputManager.Instance.m_AttackInput.WasReleasedThisFrame())
             {
                 PlaceObject(target,selectedItem.Prefab);
+                m_inventoryManager.UseBuildableItem(m_selectedObject);
                 m_ghostManager.HideGhost();
             }
         }
@@ -104,13 +105,15 @@ public class BuildManager : MonoBehaviour
 
     private void PlaceObject(Transform _target, GameObject _prefab)
     {
-            Instantiate(_prefab, m_ghostManager.GetCurrentGhostPosition(), Quaternion.identity, _target);
+        Instantiate(_prefab, m_ghostManager.GetCurrentGhostPosition(), Quaternion.identity, _target);
 
-            // Remove target from floor layer
-            if(_target.CompareTag("Floor"))
-            {
-                _target.tag = "Untagged";
-                _target.gameObject.layer = 0;
-            }
+        _target.tag = "Untagged";
+        _target.gameObject.layer = 0;
+
+    }
+
+    public void SetSelectedBuildable(string _name)
+    {
+        m_selectedObject = _name;
     }
 }

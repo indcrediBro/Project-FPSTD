@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
+    [SerializeField] private LayerMask m_interactableLayers;
     [SerializeField] private Transform m_interactCenter;
     [SerializeField] private float m_interactRange;
     private float m_currentInteractableDistance;
@@ -34,7 +35,7 @@ public class PlayerInteract : MonoBehaviour
     {
         const int maxColliders = 20;
         Collider[] colliders = new Collider[maxColliders];
-        int size = Physics.OverlapSphereNonAlloc(m_interactCenter.position, m_interactRange, colliders);
+        int size = Physics.OverlapSphereNonAlloc(m_interactCenter.position, m_interactRange, colliders, m_interactableLayers);
 
         Interactable closestInteractable = null;
         float distanceToCurrentInteractable = m_currentInteractableDistance;
@@ -90,11 +91,15 @@ public class PlayerInteract : MonoBehaviour
         m_currentInteractable?.EnableInteractGFX();
     }
 
-    private void ClearInteractable()
+    public void ClearInteractable()
     {
         m_currentInteractable?.DisableInteractGFX();
         m_currentInteractable = null;
         m_currentInteractableTF = null;
         m_currentInteractableDistance = m_interactRange;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1;
     }
 }

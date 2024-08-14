@@ -7,17 +7,17 @@ public class NavmeshManager : MonoBehaviour
 {
     [SerializeField] private NavMeshSurface m_navMeshSurface;
     [SerializeField] private Transform m_base, m_pathStart;
-    private bool isBaking;
+    private bool m_isBaking;
 
     void Start()
     {
-        BuildNavMesh();
+        //BuildNavMesh();
     }
 
     public void BuildNavMesh()
     {
         Debug.Log("BuildingMesh!");
-        if (!isBaking)
+        if (!m_isBaking)
         {
             StartCoroutine(BuildNavMeshCoroutine());
         }
@@ -25,10 +25,10 @@ public class NavmeshManager : MonoBehaviour
 
     private IEnumerator BuildNavMeshCoroutine()
     {
-        isBaking = true;
+        m_isBaking = true;
         yield return new WaitForEndOfFrame(); 
         m_navMeshSurface.BuildNavMesh();
-        isBaking = false;
+        m_isBaking = false;
     }
 
     public bool CheckPathValidity()

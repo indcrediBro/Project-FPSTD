@@ -44,7 +44,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _AnimationPower: 0.001
+    - _AnimationPower: 0.47
     - _AnimationScale: 0
     - _Blend: 0
     - _CastShadows: 0
@@ -69,9 +69,9 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _DeepWater: {r: 0, g: 0.06297915, b: 0.3207547, a: 1}
+    - _DeepWater: {r: 0, g: 0.16037738, b: 0.15572876, a: 1}
     - _FoamColor: {r: 0.8632076, g: 0.8777158, b: 1, a: 1}
-    - _ShallowWater: {r: 0, g: 0.048160523, b: 0.24528301, a: 1}
+    - _ShallowWater: {r: 0, g: 0.23026228, b: 0.41509432, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4502197445779797035
 MonoBehaviour:
