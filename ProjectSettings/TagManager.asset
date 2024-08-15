@@ -9,6 +9,7 @@ TagManager:
   - Floor
   - Block
   - Enemy
+  - NavMesh Target
   layers:
   - Default
   - TransparentFX

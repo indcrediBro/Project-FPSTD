@@ -19,6 +19,7 @@ public class Sword : Weapon
             PerformComboAttack();
     }
 
+    //TODO: Use Better Detection System
     public override void Attack()
     {
         Collider[] hitEnemies = Physics.OverlapSphere(m_weaponTransform.position, m_hitRadius, m_enemyLayer);
