@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2581245629635994562}
   - component: {fileID: 5867538150013034955}
   m_Layer: 0
-  m_Name: default
+  m_Name: Model GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,7 +342,7 @@ MonoBehaviour:
     Quantity: 1
     ItemType: 0
   - Name: Firepit
-    Details: Burning damage
+    Details: Burn
     Prefab: {fileID: 7275402095292909995, guid: 79754482d83364aeaa2688519f22320f,
       type: 3}
     Icon: {fileID: 0}
@@ -350,7 +350,7 @@ MonoBehaviour:
     Quantity: 1
     ItemType: 0
   - Name: Crossbow
-    Details: High fire rate
+    Details: Fast
     Prefab: {fileID: 2487558655328968875, guid: 8ccd7ca46eab04bbdba485645635c814,
       type: 3}
     Icon: {fileID: 0}
@@ -365,8 +365,22 @@ MonoBehaviour:
     Cost: 1
     Quantity: 1
     ItemType: 0
-  m_inventoryManager: {fileID: 0}
-  m_playerCurrency: 10
+  - Name: Arrow
+    Details: 10 Arrows
+    Prefab: {fileID: 1921194892290325215, guid: dcefd0314825b4bbba4285a315118956,
+      type: 3}
+    Icon: {fileID: 0}
+    Cost: 1
+    Quantity: 10
+    ItemType: 2
+  - Name: Bullet
+    Details: 10 Bullets
+    Prefab: {fileID: 1921194892290325215, guid: dcefd0314825b4bbba4285a315118956,
+      type: 3}
+    Icon: {fileID: 0}
+    Cost: 1
+    Quantity: 10
+    ItemType: 2
 --- !u!1 &4895613541154247159
 GameObject:
   m_ObjectHideFlags: 0

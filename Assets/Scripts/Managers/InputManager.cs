@@ -33,6 +33,7 @@ public class InputManager : Singleton<InputManager>
         m_inputActions.PlayerInputMap.Sprint.performed += ctx => m_SprintInput = ctx.ReadValueAsButton();
         m_inputActions.PlayerInputMap.Dodge.performed += ctx => m_DodgeInput = ctx.ReadValueAsButton();
         m_inputActions.PlayerInputMap.Reload.performed += ctx => m_ReloadInput = ctx.ReadValueAsButton();
+        m_inputActions.PlayerInputMap.SwitchWeapon.performed += ctx => m_SwitchWeaponInput = ctx.ReadValue<float>();
         m_InteractInput = m_inputActions.PlayerInputMap.Interact;
         m_PauseInput = m_inputActions.PlayerInputMap.Pause;
         m_JumpInput = m_inputActions.PlayerInputMap.Jump;

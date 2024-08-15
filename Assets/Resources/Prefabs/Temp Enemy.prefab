@@ -220,6 +220,7 @@ MonoBehaviour:
   m_dontRemoveDeadBody: 0
   m_maxHealth: 10
   m_currentHealth: 0
+  m_rigidbody: {fileID: -4095935205049292954}
 --- !u!54 &-4095935205049292954
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -243,9 +244,9 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 32
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!195 &3478625123019240762
 NavMeshAgent:

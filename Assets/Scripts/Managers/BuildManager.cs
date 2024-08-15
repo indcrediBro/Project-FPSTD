@@ -18,7 +18,7 @@ public class BuildManager : Singleton<BuildManager>
 
     private void HandleGhostPlacer()
     {
-        InventoryManager.InventoryItem selectedItem = m_inventoryManager.GetSelectedBuildableItem(m_selectedObject);
+        InventoryManager.InventoryItem selectedItem = m_inventoryManager.GetBuildableItem(m_selectedObject);
         if (selectedItem == null)
         {
             m_ghostManager.HideGhost();

@@ -30,10 +30,10 @@ public class PlayerBuildController : MonoBehaviour
             return;
         }
 
-        if(InventoryManager.Instance.GetBuildableInventoryItems()[m_currentBuildableIndex].Quantity <= 0)
-        {
-            UnequipCurrentBuildable();
-        }
+        //if(InventoryManager.Instance.GetBuildableInventoryItems()[m_currentBuildableIndex].Quantity <= 0)
+        //{
+        //    UnequipCurrentBuildable();
+        //}
 
         if (InputManager.Instance.m_SwitchWeaponInput < 0)
         {
@@ -47,7 +47,7 @@ public class PlayerBuildController : MonoBehaviour
 
     public void SwitchToBuildable(int change)
     {
-        m_currentBuildableIndex = (m_currentBuildableIndex + change + InventoryManager.Instance.GetBuildableInventoryItems().Count - 1) % InventoryManager.Instance.GetBuildableInventoryItems().Count - 1;
+        m_currentBuildableIndex = (m_currentBuildableIndex + change + InventoryManager.Instance.GetBuildableInventoryItems().Count) % InventoryManager.Instance.GetBuildableInventoryItems().Count;
         BuildManager.Instance.SetSelectedBuildable(InventoryManager.Instance.GetBuildableInventoryItems()[m_currentBuildableIndex].Name);
     }
 

@@ -52,7 +52,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     private void SwitchToWeapon(int change)
     {
-        m_currentWeaponIndex = (m_currentWeaponIndex + change + m_allWeapons.ToArray().Length) % m_allWeapons.Count - 1;
+        m_currentWeaponIndex = (m_currentWeaponIndex + change + m_allWeapons.Count) % m_allWeapons.Count;
         EquipWeapon(m_currentWeaponIndex);
     }
 

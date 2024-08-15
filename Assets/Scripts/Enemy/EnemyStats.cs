@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyStats : Health
 {
+    [SerializeField] private Rigidbody m_rigidbody;
+    public Rigidbody GetRigidbody() { return m_rigidbody; }
+
     protected override void Die()
     {
         base.Die();

@@ -35,7 +35,7 @@ public abstract class TrapBase : MonoBehaviour
     }
 
     protected abstract void Fire();
-    private float m_currentTargetDistance;
+
     protected virtual void LookForTarget()
     {
         const int maxColliders = 20;
