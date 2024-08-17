@@ -3,10 +3,10 @@ using UnityEngine.AI;
 using Unity.AI.Navigation;
 using System.Collections;
 
-public class NavmeshManager : MonoBehaviour
+public class NavmeshManager : Singleton<NavmeshManager>
 {
     [SerializeField] private NavMeshSurface m_navMeshSurface;
-    [SerializeField] private Transform m_base, m_pathStart;
+    [SerializeField] private Transform m_pathStart;
     [SerializeField] private Transform[] m_pathValidationTargets;
     private bool m_isBaking;
 
@@ -62,8 +62,24 @@ public class NavmeshManager : MonoBehaviour
         return m_pathStart ? m_pathStart.position : new Vector3(75f, 0f, -24f);
     }
 
-    private Vector3 GetBasePosition()
+    public Transform GetBasePositionFromArray(Transform _startTF)
     {
-        return m_base ? m_base.position : new Vector3(25f,0f,24.5f);
+        Transform basePos = null;
+        float closestDistance = Mathf.Infinity;
+
+        for (int i = 0; i < m_pathValidationTargets.Length; i++)
+        {
+            if (VerifyPath(m_pathValidationTargets[i].position))
+            {
+                float currentDistance = Vector3.Distance(m_pathValidationTargets[i].position, _startTF.position);
+                if(currentDistance < closestDistance)
+                {
+                    basePos = m_pathValidationTargets[i];
+                    closestDistance = currentDistance;
+                }
+            }
+        }
+
+        return basePos;
     }
 }

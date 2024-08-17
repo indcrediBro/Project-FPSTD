@@ -27,7 +27,7 @@ public class Sword : Weapon
         {
             if (enemy.TryGetComponent(out EnemyStats enemyStats))
             {
-                enemyStats.TakeDamage(m_damage * (m_comboCounter + 1));
+                enemyStats.GetHealth().TakeDamage(m_damage * (m_comboCounter + 1));
 
                 Vector3 knockbackDirection;
                 Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class Health : MonoBehaviour
@@ -6,17 +7,11 @@ public abstract class Health : MonoBehaviour
 	[Space(2)]
 	[SerializeField] protected bool m_isPlayer;
 	[SerializeField] protected bool m_dontDestroy;
-	[SerializeField] protected bool m_dontRemoveDeadBody;
 
 	[SerializeField] protected float m_maxHealth;
 	[SerializeField] protected float m_currentHealth;
+	[SerializeField] protected float m_waitTimeBeforeDeath = 0f;
 
-	//[SerializeField] protected int m_regenerateAmount;
-	//[SerializeField] protected float m_regenerateRate;
-
-	//[SerializeField] protected UnityEngine.UI.Slider m_healthBar;
-
-	//private float m_currentRegenTime;
 	protected bool m_isDead;
 
 	public virtual bool IsPlayer() { return m_isPlayer; }
@@ -38,39 +33,14 @@ public abstract class Health : MonoBehaviour
 		m_currentHealth -= _damage;
 		if (m_currentHealth <= 0)
 		{
-			Die();
+			Die(m_waitTimeBeforeDeath);
 		}
 	}
 
-	protected virtual void Die()
+	protected virtual void Die(float _timeBeforeRemoving)
 	{
-		m_isDead = true;
-
-		//if(m_healthBar) m_healthBar.value = 0;
-
-		if (!m_dontRemoveDeadBody)
-		{
-            if (m_dontDestroy)
-            {
-				gameObject.SetActive(false);
-			}
-			else
-			{
-				Destroy(gameObject);
-			}
-		}
+		StartCoroutine(DieCO(_timeBeforeRemoving));
 	}
-
-	//private void RegenerateOverTime()
-	//{
-	//	m_currentRegenTime -= Time.deltaTime;
-
-	//	if (m_currentRegenTime <= 0)
-	//	{
-	//		Heal(m_regenerateAmount);
-	//		m_currentRegenTime = m_regenerateRate;
-	//	}
-	//}
 
 	public void ResetHealthToMax()
 	{
@@ -81,22 +51,24 @@ public abstract class Health : MonoBehaviour
 	protected virtual void OnEnable()
 	{
 		ResetHealthToMax();
-
-		//if (m_healthBar)
-		//{
-		//	m_healthBar.minValue = 0;
-		//	m_healthBar.maxValue = m_maxHealth;
-		//	m_healthBar.value = m_maxHealth;
-		//}
 	}
 
-	//protected virtual void Update()
-	//{
-	//	if (m_healthBar) m_healthBar.value = m_currentHealth;
+	private void Deactivate()
+    {
+		if (m_dontDestroy)
+		{
+			gameObject.SetActive(false);
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
+	}
 
-	//	if (m_regenerateRate > 0 && m_regenerateAmount > 0 && m_currentHealth < m_maxHealth)
-	//	{
-	//		RegenerateOverTime();
-	//	}
-	//}
+	private IEnumerator DieCO(float _timeToWait)
+    {
+		m_isDead = true;
+		yield return new WaitForSeconds(_timeToWait);
+		Deactivate();
+	}
 }

@@ -23,7 +23,7 @@ public class Knife : Weapon
         {
             if (enemy.TryGetComponent(out EnemyStats enemyStats))
             {
-                enemyStats.TakeDamage(m_damage);
+                enemyStats.GetHealth().TakeDamage(m_damage);
                 Vector3 knockbackDirection;
                 Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
                 knockbackDirection = ray.direction;

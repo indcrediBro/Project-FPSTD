@@ -53,7 +53,7 @@ MonoBehaviour:
   m_weaponAudioSource: {fileID: 1669443779691191518}
   m_weaponAnimator: {fileID: 5078388454928088199}
   m_hitRadius: 1.5
-  m_knockbackForce: 1500
+  m_knockbackForce: 2
   m_enemyLayer:
     serializedVersion: 2
     m_Bits: 1024

@@ -10,6 +10,7 @@ TagManager:
   - Block
   - Enemy
   - NavMesh Target
+  - PlayerBase
   layers:
   - Default
   - TransparentFX

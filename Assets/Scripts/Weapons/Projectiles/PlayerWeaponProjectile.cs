@@ -36,9 +36,9 @@ public class PlayerWeaponProjectile : MonoBehaviour
 
         Debug.Log("Collided with " + _other.name + " dealing damage of " + m_damage);
 
-        if (_other.TryGetComponent(out EnemyStats _health))
+        if (_other.TryGetComponent(out EnemyStats _enemy))
         {
-            _health.TakeDamage(m_damage);
+            _enemy.GetHealth().TakeDamage(m_damage);
             DestroyAfterImpact();
         }
 
