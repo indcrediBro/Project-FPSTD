@@ -709,7 +709,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 924323831}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: MasterVolume
+        m_MethodName: SetMasterVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1474,7 +1474,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 924323831}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: SfxVolume
+        m_MethodName: SetSFXVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1571,7 +1571,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 924323831}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: VFX
+        m_MethodName: SetVFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1669,7 +1669,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 924323831}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: PostProcessing
+        m_MethodName: SetPostProcessing
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2011,7 +2011,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 924323831}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: MusicVolume
+        m_MethodName: SetMusicVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2183,7 +2183,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 924323831}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: QualitySettings
+        m_MethodName: SetQualitySettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3445,7 +3445,10 @@ MonoBehaviour:
   m_lookSensitivity: 0
   m_qualitySettings: 0
   m_postProcessing: 0
-  m_vfx: 1
+  m_vfx: 0
+  m_isVfxOn: 0
+  m_isQualitySettingsOn: 0
+  m_isPostProcessingOn: 0
   m_qualitySettingsToggle: {fileID: 612012416}
   m_postProcessingToggle: {fileID: 423067576}
   m_vfxToggle: {fileID: 412046440}
@@ -4372,7 +4375,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 924323831}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: LookSensitivity
+        m_MethodName: SetLookSensitivity
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

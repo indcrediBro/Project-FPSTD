@@ -21,6 +21,9 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private int m_qualitySettings;
     [SerializeField] private int m_postProcessing;
     [SerializeField] private int m_vfx;
+    [SerializeField] private bool m_isVfxOn;
+    [SerializeField] private bool m_isQualitySettingsOn;
+    [SerializeField] private bool m_isPostProcessingOn;
     [SerializeField] private Toggle m_qualitySettingsToggle;
     [SerializeField] private Toggle m_postProcessingToggle;
     [SerializeField] private Toggle m_vfxToggle;
@@ -35,49 +38,66 @@ public class SettingsManager : MonoBehaviour
     }
     private void LoadSettings()
     {
-        m_masterVolume = PlayerPrefs.GetFloat("MASTER",1f);
+        m_masterVolume = PlayerPrefs.GetFloat("MASTER");
         m_masterVolumeSlider.value = m_masterVolume;
-        m_musicVolume = PlayerPrefs.GetFloat("MUSIC",1f);
+        m_musicVolume = PlayerPrefs.GetFloat("MUSIC");
         m_musicVolumeSlider.value = m_musicVolume;
-        m_sfxVolume = PlayerPrefs.GetFloat("SFX", 1f);
+        m_sfxVolume = PlayerPrefs.GetFloat("SFX");
         m_sfxVolumeSlider.value = m_sfxVolume;
-        m_lookSensitivity = PlayerPrefs.GetFloat("SENSITIVITY", 1f);
+        m_lookSensitivity = PlayerPrefs.GetFloat("SENSITIVITY");
         m_lookSensitivitySlider.value = m_lookSensitivity;
-        m_qualitySettings = PlayerPrefs.GetInt("QUALITY", 1);
-        m_postProcessing = PlayerPrefs.GetInt("PROCESSING", 1);
-        m_vfx = PlayerPrefs.GetInt("VFX", 1);
-        
 
-        MasterVolume();
-        MusicVolume();
-        SfxVolume();
-        LookSensitivity(); 
+        bool isVfxOn = PlayerPrefs.GetInt("VFX") == 1;
+        m_isVfxOn = isVfxOn;
+        m_vfxToggle.isOn = m_isVfxOn;  
+        
+        bool isQualitySettingsOn = PlayerPrefs.GetInt("SETINGS") == 1;
+        m_isQualitySettingsOn = isQualitySettingsOn;
+        m_qualitySettingsToggle.isOn = m_isQualitySettingsOn;  
+        
+        bool isPostProcessingOn = PlayerPrefs.GetInt("PROCESSING") == 1;
+        m_isPostProcessingOn = isPostProcessingOn;
+        m_postProcessingToggle.isOn = m_isPostProcessingOn;
+
+
+        SetMasterVolume();
+        SetMusicVolume();
+        SetSFXVolume();
+        SetLookSensitivity(); 
+        SetQualitySettings();
+        SetPostProcessing();
+        SetVFX();
         
     }
-    public void MasterVolume()
+
+    public void SetMasterVolume()
     {
         m_masterVolume = m_masterVolumeSlider.value;
         m_audioMixer.SetFloat("Master", Mathf.Log10(m_masterVolume) * 20);
         PlayerPrefs.SetFloat("MASTER", m_masterVolume);
     }  
-    public void MusicVolume()
+
+    public void SetMusicVolume()
     {
         m_musicVolume = m_musicVolumeSlider.value;
         m_audioMixer.SetFloat("Music", Mathf.Log10(m_musicVolume) * 20);
         PlayerPrefs.SetFloat("MUSIC", m_musicVolume);
     }
-    public void SfxVolume()
+
+    public void SetSFXVolume()
     {
         m_sfxVolume = m_sfxVolumeSlider.value;
         m_audioMixer.SetFloat("Sfx", Mathf.Log10(m_sfxVolume) * 20);
         PlayerPrefs.SetFloat("SFX", m_sfxVolume);
     }
-    public void LookSensitivity()
+
+    public void SetLookSensitivity()
     {
         m_lookSensitivity = m_lookSensitivitySlider.value;
         PlayerPrefs.SetFloat("SENSITIVITY", m_lookSensitivity);
     }
-    public void QualitySettings()
+
+    public void SetQualitySettings()
     {
         if (m_qualitySettingsToggle.isOn == true)
         {
@@ -90,7 +110,8 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.SetInt("SETINGS", m_qualitySettings);
 
     }
-    public void PostProcessing()
+
+    public void SetPostProcessing()
     {
         if (m_postProcessingToggle.isOn == true)
         {
@@ -102,7 +123,8 @@ public class SettingsManager : MonoBehaviour
         }
         PlayerPrefs.SetInt("PROCESSING", m_postProcessing);
     }
-    public void VFX()
+
+    public void SetVFX()
     {
         if (m_vfxToggle.isOn == true)
         {
