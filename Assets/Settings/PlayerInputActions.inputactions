@@ -60,6 +60,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Build",
+                    "type": "Button",
+                    "id": "af4cda7e-081b-4a47-adf9-a9caf83e973c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "de729b86-b6bc-4f92-b252-37b2790542ce",
@@ -276,7 +285,7 @@
                 {
                     "name": "",
                     "id": "57e7d42e-438b-4dd7-bd4a-930aeed2ee9d",
-                    "path": "<Gamepad>/leftStickPress",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -298,7 +307,7 @@
                 {
                     "name": "",
                     "id": "9d54d8a3-5c00-4a5d-80c0-faa911a7f239",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -342,7 +351,7 @@
                 {
                     "name": "",
                     "id": "faa36c04-dcdd-41a0-acd9-33d114f34c92",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -452,11 +461,33 @@
                 {
                     "name": "",
                     "id": "5d1e708d-491e-4aca-8658-36d5b7319fb2",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ce7438c6-d365-4840-98bc-904dd22afef2",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Build",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0320bade-8c89-44a3-bcdf-e72590217c22",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Build",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
