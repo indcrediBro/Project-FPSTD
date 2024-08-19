@@ -16655,7 +16655,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 334
+  m_VersionIndex: 337
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -17298,9 +17298,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_isPlayer: 1
   m_dontDestroy: 0
-  m_dontRemoveDeadBody: 0
   m_maxHealth: 100
   m_currentHealth: 0
+  m_waitTimeBeforeDeath: 0
   m_regenerateAmount: 5
   m_regenerateRate: 0.5
 --- !u!114 &5057244624798551054
@@ -17770,35 +17770,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4121607406380388846}
     m_Modifications:
-    - target: {fileID: 1378441569728919190, guid: 62c08cc0155424603889e923f0928ca3,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1555030696135298226, guid: 62c08cc0155424603889e923f0928ca3,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1555030696135298226, guid: 62c08cc0155424603889e923f0928ca3,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 132
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706380109548598080, guid: 62c08cc0155424603889e923f0928ca3,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7266070477856990542, guid: 62c08cc0155424603889e923f0928ca3,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 135
       objectReference: {fileID: 0}
     - target: {fileID: 7266070477856990542, guid: 62c08cc0155424603889e923f0928ca3,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 165
+      value: 168
       objectReference: {fileID: 0}
     - target: {fileID: 8144537438729290365, guid: 62c08cc0155424603889e923f0928ca3,
         type: 3}
@@ -17935,6 +17915,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8011585373630983082, guid: 71bcb89b7825d4453b44bcb2cb4d8e6b,
+        type: 3}
+      propertyPath: m_damage
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18044,6 +18029,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WeaponKnife
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682374985565103845, guid: 8e7496e371d3a4a0fae9b72e0081a5a2,
+        type: 3}
+      propertyPath: m_damage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8420466628592734281, guid: 8e7496e371d3a4a0fae9b72e0081a5a2,
         type: 3}

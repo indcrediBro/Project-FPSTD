@@ -3,9 +3,9 @@ using System.Collections;
 
 public class StartState : IGameState
 {
-    private GameManager m_gameManager;
+    private GameStateManager m_gameManager;
 
-    public StartState(GameManager _gameManager)
+    public StartState(GameStateManager _gameManager)
     {
         this.m_gameManager = _gameManager;
     }

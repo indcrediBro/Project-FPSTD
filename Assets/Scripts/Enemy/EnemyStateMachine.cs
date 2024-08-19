@@ -49,9 +49,8 @@ public class EnemyStateMachine : MonoBehaviour
         m_Animations = GetComponent<EnemyAnimations>();
         m_Detection = GetComponent<EnemyDetection>();
         m_Burn = GetComponent<EnemyBurn>();
-        //TODO: Use Better Way to get referenes
-        m_PlayerTarget = GameObject.FindWithTag("Player").transform;
-        m_BaseTarget = GameObject.FindWithTag("PlayerBase").transform;
+        m_PlayerTarget = GameReferences.Instance.m_PlayerStats.transform;
+        m_BaseTarget = GameReferences.Instance.m_PlayerBase.transform;
     }
 
     private void Start()

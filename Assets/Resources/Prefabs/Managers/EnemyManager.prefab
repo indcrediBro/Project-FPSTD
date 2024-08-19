@@ -70,13 +70,13 @@ MonoBehaviour:
   - {fileID: 518646976731249668}
   - {fileID: 7989323506814913427}
   - {fileID: 3423128692124929717}
-  _tempEnemy: {fileID: 395490806217791322, guid: fe02e2a7526dc41b39f9fb8376d6f63b,
+  _tempEnemy: {fileID: 5944623235621818368, guid: 381f78cb4218d4522bea087e6422be3d,
     type: 3}
   activeEnemyThreshold: 50
-  _enemyMaxPool: 200
+  _enemyMaxPool: 50
   roundEnemyTotal: 5
   increaseEnemyTotal: 2
-  enemySpawnInterval: 1
+  enemySpawnInterval: 2
 --- !u!1 &923313795810614125
 GameObject:
   m_ObjectHideFlags: 0

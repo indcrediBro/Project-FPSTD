@@ -232,9 +232,11 @@ GameObject:
   - component: {fileID: 1478767316742643012}
   - component: {fileID: 2098285624598994496}
   - component: {fileID: 3615372115197446132}
+  - component: {fileID: 8450380072826779499}
+  - component: {fileID: 7424795990201552212}
   m_Layer: 9
   m_Name: Player Base Shop Manager
-  m_TagString: Untagged
+  m_TagString: PlayerBase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249,7 +251,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 24.92, y: 0, z: 24.54}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.43, y: 1.5, z: 1.44}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2401015324941937894}
@@ -381,6 +383,39 @@ MonoBehaviour:
     Cost: 1
     Quantity: 10
     ItemType: 2
+--- !u!208 &8450380072826779499
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4826094363461216762}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.375, y: 0.5, z: 2.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.5}
+  m_TimeToStationary: 0.5
+--- !u!114 &7424795990201552212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4826094363461216762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7267bab58b904f639a2c2e5b5546142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isPlayer: 1
+  m_dontDestroy: 0
+  m_maxHealth: 10000
+  m_currentHealth: 0
+  m_waitTimeBeforeDeath: 0
 --- !u!1 &4895613541154247159
 GameObject:
   m_ObjectHideFlags: 0

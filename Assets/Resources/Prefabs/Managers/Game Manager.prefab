@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1099005999741044175}
-  - component: {fileID: 2146735404904040803}
+  - component: {fileID: 4761149792275042536}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2146735404904040803
+--- !u!114 &4761149792275042536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9107946520817756826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57b7a198e26184d48a63dfe5db68cd35, type: 3}
+  m_Script: {fileID: 11500000, guid: a7173561985b741798cbbd4cf7168efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_dontDestroyOnLoad: 0
-  m_PlayerGO: {fileID: 0}
-  m_KingGO: {fileID: 0}
-  m_WeaponDealerGO: {fileID: 0}
+  m_dontDestroyOnLoad: 1

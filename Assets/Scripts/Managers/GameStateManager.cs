@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : Singleton<GameManager>
+public class GameStateManager : Singleton<GameStateManager>
 {
-    private IGameState currentState;
+    private IGameState m_currentState;
 
     void Start()
     {
@@ -13,13 +13,13 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-        currentState?.Update();
+        m_currentState?.Update();
     }
 
     public void SetState(IGameState newState)
     {
-        currentState?.Exit();
-        currentState = newState;
-        currentState?.Enter();
+        m_currentState?.Exit();
+        m_currentState = newState;
+        m_currentState?.Enter();
     }
 }

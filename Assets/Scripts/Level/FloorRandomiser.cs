@@ -51,7 +51,7 @@ public class FloorRandomiser : MonoBehaviour
                                                 RandomNumber.Instance.NextFloat(-m_decorSpawnLocationRange, m_decorSpawnLocationRange)
                                                 );
                 decor.transform.localRotation = Quaternion.Euler(0f, RandomNumber.Instance.NextFloat(0f, 360f), 0f);
-                decor.transform.localScale *= RandomNumber.Instance.NextFloat(0.5f, 1.25f);
+                decor.transform.localScale *= RandomNumber.Instance.NextFloat(0.9f, 1.25f);
             }
         }
     }

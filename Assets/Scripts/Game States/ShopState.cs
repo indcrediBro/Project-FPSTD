@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PauseState : IGameState
+public class ShopState : IGameState
 {
     private GameStateManager m_gameManager;
 
-    public PauseState(GameStateManager _gameManager)
+    public ShopState(GameStateManager _gameManager)
     {
         this.m_gameManager = _gameManager;
     }
