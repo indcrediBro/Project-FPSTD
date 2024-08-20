@@ -13,7 +13,6 @@ public class EnemyAttack : MonoBehaviour
     }
     private IEnumerator AttackCO(Transform _target, float _timeToWait)
     {
-        Debug.Log("Waiting Before Attack!");
         yield return new WaitForSeconds(_timeToWait);
         // Logic to deal damage to the target
         if (_target.CompareTag("Player"))

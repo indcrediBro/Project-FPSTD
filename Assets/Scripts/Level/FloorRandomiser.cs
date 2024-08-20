@@ -32,7 +32,7 @@ public class FloorRandomiser : MonoBehaviour
 
     private void RandomiseDecorations()
     {
-        int randomSpawnIndex = RandomNumber.Instance.NextInt(m_decorationsGO.Length + 50);
+        int randomSpawnIndex = RandomNumber.Instance.NextInt(m_decorationsGO.Length + 100);
 
         foreach (GameObject _decor in m_decorationsGO)
         {
