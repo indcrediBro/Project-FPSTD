@@ -37,8 +37,8 @@ public class PlayerStats : MonoBehaviour
     public float GetJumpHeight() { return m_jumpHeight; }
     public float GetLookSensitivity()
     {
-        m_lookSensitivity = SettingsManager.Instance.GetLookSensitivity();
-        return m_lookSensitivity;
+        float m_multipliedLookSensitivity = m_lookSensitivity * SettingsManager.Instance.GetLookSensitivity();
+        return m_multipliedLookSensitivity;
     }
     public float GetGravity() { return m_gravity; }
 

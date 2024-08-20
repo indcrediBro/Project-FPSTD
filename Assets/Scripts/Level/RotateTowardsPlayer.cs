@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class RotateTowardsPlayer : MonoBehaviour
 {
+#nullable enable
     [SerializeField] private Transform? m_target;
 
     private void Start()
     {
-        m_target = GameObject.FindGameObjectWithTag("Player").transform;
+        m_target = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
     private void LateUpdate()
     {
-        if (m_target) {
+        if (m_target != null) {
             Vector3 direction = m_target.position - transform.position;
 
             direction.y = 0;
