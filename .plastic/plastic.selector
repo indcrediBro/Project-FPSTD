@@ -1,0 +1,4 @@
+repository "Project-FPSTD-main@Krohncat@cloud"
+  path "/"
+    br "/main"
+    co "/main"
