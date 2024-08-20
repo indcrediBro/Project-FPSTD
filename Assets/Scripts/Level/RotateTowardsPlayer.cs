@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class RotateTowardsPlayer : MonoBehaviour
 {
-    [SerializeField] private Transform m_player;
+    [SerializeField] private Transform? m_target;
 
-    private void Awake()
+    private void Start()
     {
-        if(GameReferences.Instance) m_player = GameReferences.Instance.m_PlayerStats.transform;
+        m_target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void LateUpdate()
     {
-        if (m_player) {
-            Vector3 direction = m_player.position - transform.position;
-
-            direction.y = 0;
-            transform.rotation = Quaternion.LookRotation(direction);
-        }
-        else
-        {
-            Vector3 direction = Camera.main.transform.position - transform.position;
+        if (m_target) {
+            Vector3 direction = m_target.position - transform.position;
 
             direction.y = 0;
             transform.rotation = Quaternion.LookRotation(direction);
