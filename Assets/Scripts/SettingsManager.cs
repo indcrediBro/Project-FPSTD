@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 using Unity.VisualScripting;
 using System;
 
-public class SettingsManager : MonoBehaviour
+public class SettingsManager : Singleton<SettingsManager>
 {
     [SerializeField] public AudioMixer m_audioMixer;
     [SerializeField] private Slider m_masterVolumeSlider;
@@ -95,6 +95,11 @@ public class SettingsManager : MonoBehaviour
     {
         m_lookSensitivity = m_lookSensitivitySlider.value;
         PlayerPrefs.SetFloat("SENSITIVITY", m_lookSensitivity);
+    }
+
+    public float GetLookSensitivity()
+    {
+        return m_lookSensitivity;
     }
 
     public void SetQualitySettings()

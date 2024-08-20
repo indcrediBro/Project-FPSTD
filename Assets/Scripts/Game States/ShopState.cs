@@ -12,8 +12,8 @@ public class ShopState : IGameState
 
     public void Enter()
     {
-        Debug.Log("Entering Pause State");
-        // Pause game logic
+        Debug.Log("Entering Shop State");
+        // Shop game logic
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         Time.timeScale = 0;

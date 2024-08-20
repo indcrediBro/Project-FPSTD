@@ -1,19 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour
+public class MenuManager : Singleton<MenuManager>
 {
-	public static MenuManager Instance;
-
     [SerializeField] Menu[] menus;
-
-    void Awake()
-    {
-        Instance = this;
-    }
 
     public void OpenMenu(string menuName)
     {
@@ -53,6 +43,7 @@ public class MenuManager : MonoBehaviour
     }
     public void LoadScene()
     {
-        SceneManager.LoadScene("Gary Scene");
+        SceneManager.LoadScene("Level 1");
+        GameStateManager.Instance.SetState(new PlayState(GameStateManager.Instance));
     }
 }

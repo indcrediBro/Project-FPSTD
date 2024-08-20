@@ -32,8 +32,5 @@ public class PauseState : IGameState
     {
         Debug.Log("Exiting Pause State");
         // Resume game logic
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        Time.timeScale = 1;
     }
 }

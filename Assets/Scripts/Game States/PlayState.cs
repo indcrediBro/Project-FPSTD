@@ -13,15 +13,17 @@ public class PlayState : IGameState
     public void Enter()
     {
         Debug.Log("Entering Play State");
+
         // Start game logic
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Time.timeScale = 1;
     }
 
     public void Update()
     {
         // Check for pause condition
-        if (InputManager.Instance.m_PauseInput.WasPressedThisFrame())
+        if (InputManager.Instance.m_PauseInput.WasReleasedThisFrame())
         {
             m_gameManager.SetState(new PauseState(m_gameManager));
         }

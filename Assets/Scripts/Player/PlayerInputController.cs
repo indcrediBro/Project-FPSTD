@@ -24,8 +24,6 @@ public class PlayerInputController : MonoBehaviour
         m_playerLook = GetComponent<PlayerLook>();
         m_playerSprint = GetComponent<PlayerSprint>();
         m_playerInteract = GetComponent<PlayerInteract>();
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
     }
 
     private void Update()

@@ -35,7 +35,11 @@ public class PlayerStats : MonoBehaviour
     public float GetMoveSpeed() { return m_moveSpeed * m_sprintMultiplier; }
     public void SetSprintMultiplier(float _multiplier) { m_sprintMultiplier = _multiplier; }
     public float GetJumpHeight() { return m_jumpHeight; }
-    public float GetLookSensitivity() { return m_lookSensitivity; }
+    public float GetLookSensitivity()
+    {
+        m_lookSensitivity = SettingsManager.Instance.GetLookSensitivity();
+        return m_lookSensitivity;
+    }
     public float GetGravity() { return m_gravity; }
 
     public float GetStamina() { return m_stamina; }
