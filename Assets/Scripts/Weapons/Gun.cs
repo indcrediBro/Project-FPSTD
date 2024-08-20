@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Runtime.ConstrainedExecution;
+using UnityEditor.Rendering;
 
 public class Gun : Weapon
 {
@@ -15,23 +16,55 @@ public class Gun : Weapon
     private int m_currentAmmo;
     private bool m_isReloading = false;
     private bool m_canFire = true;
+    private PlayerUIController m_playerUI;
+
+    private void Awake()
+    {
+        m_playerUI = GetComponentInParent<PlayerUIController>();
+        UpdateAmmoUI();
+    }
+
+    private void OnEnable()
+    {
+        if(HasBullets()) UpdateAmmoUI();
+    }
 
     private void Start()
     {
         if (!m_mainCamera) { m_mainCamera = Camera.main; }
-        m_currentAmmo = m_maxAmmo;
+        //m_currentAmmo = m_maxAmmo;
     }
 
     private void FixedUpdate()
     {
-        if (InventoryManager.Instance.GetAmmoItem("Bullet") != null)
+        if (HasBullets())
         {
-            if (InventoryManager.Instance.GetAmmoItem("Bullet").Quantity > 0)
+            if (InputManager.Instance.m_AttackInput.WasPerformedThisFrame() && !m_isReloading && m_canFire)
             {
-                if (InputManager.Instance.m_AttackInput.WasPerformedThisFrame() && !m_isReloading && m_canFire)
-                {
-                    Attack();
-                }
+                Attack();
+            }
+        }
+    }
+
+    private bool HasBullets()
+    {
+        if (InventoryManager.Instance.GetAmmoItem("Bullet") != null && InventoryManager.Instance.GetAmmoItem("Bullet").Quantity > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+    private void UpdateAmmoUI()
+    {
+        if (m_playerUI)
+        {
+            if (HasBullets())
+            {
+                m_playerUI.UpdateAmmoText(m_currentAmmo+"/"+(InventoryManager.Instance.GetAmmoItem("Bullet").Quantity).ToString());
+            }
+            else
+            {
+                m_playerUI.UpdateAmmoText("0/0");
             }
         }
     }
@@ -61,6 +94,7 @@ public class Gun : Weapon
         bulletRB.AddForce(ray.direction.normalized * m_bulletSpeed, ForceMode.Impulse);
         m_weaponAudioSource.Play();
         m_currentAmmo--;
+        UpdateAmmoUI();
     }
 
     private IEnumerator ReloadCO()
@@ -69,13 +103,14 @@ public class Gun : Weapon
 
         for (int i = 0; i < m_maxAmmo; i++)
         {
-            if (InventoryManager.Instance.GetAmmoItem("Bullet") != null && InventoryManager.Instance.GetAmmoItem("Bullet").Quantity > 0)
+            if (HasBullets())
             {
                 InventoryManager.Instance.UseAmmoItem("Bullet");
                 m_currentAmmo++;
 
                 PlayAttackAnimation("Reload");
                 yield return new WaitForSeconds(m_reloadTime / m_maxAmmo);
+                UpdateAmmoUI();
             }
             else
             {

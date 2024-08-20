@@ -6,6 +6,17 @@ public class Knife : Weapon
     [SerializeField] private float m_hitRadius = 1f;
     [SerializeField] private float m_knockbackForce = 10f;
     [SerializeField] private LayerMask m_enemyLayer;
+    private PlayerUIController m_playerUI;
+
+    private void Awake()
+    {
+        m_playerUI = GetComponentInParent<PlayerUIController>();
+    }
+
+    private void OnEnable()
+    {
+        m_playerUI.UpdateAmmoText("");
+    }
 
     private void Update()
     {

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,14 +6,20 @@ public class PlayerUIController : MonoBehaviour
 {
     [SerializeField] private Slider m_healthBar;
     [SerializeField] private Slider m_staminaBar;
+    [SerializeField] private TMP_Text m_ammoText;
+    [SerializeField] private TMP_Text m_currencyText;
 
+    private PlayerStats m_playerStats;
     private PlayerHealth m_playerHealth;
     private PlayerStamina m_playerStamina;
+    private PlayerBuildController m_playerBuilder;
 
     private void Awake()
     {
-        m_playerHealth = GetComponent<PlayerHealth>();
-        m_playerStamina = GetComponent<PlayerStamina>();
+        m_playerStats = GetComponent<PlayerStats>();
+        m_playerHealth = m_playerStats.GetPlayerHealthComponent();
+        m_playerStamina = m_playerStats.GetPlayerStaminaComponent();
+        m_playerBuilder = GetComponent<PlayerBuildController>();
     }
 
     private void Start()
@@ -27,6 +32,8 @@ public class PlayerUIController : MonoBehaviour
     {
         UpdateHealthBar();
         UpdateStaminaBar();
+        UpdateCurrencyText();
+        UpdateAmmoText();
     }
 
     private void InitializeHealthBar()
@@ -62,6 +69,36 @@ public class PlayerUIController : MonoBehaviour
         if (m_staminaBar)
         {
             m_staminaBar.value = m_playerStamina.GetStamina();
+        }
+    }
+
+    private void UpdateAmmoText()
+    {
+        if (m_ammoText)
+        {
+            if (m_playerStats.IsInBuilderMode())
+            {
+                if(InventoryManager.Instance.GetBuildableItem(m_playerBuilder.GetActiveBuildableName()) != null)
+                    m_ammoText.text = InventoryManager.Instance.GetBuildableItem(m_playerBuilder.GetActiveBuildableName()).Quantity.ToString();
+                else
+                    m_ammoText.text = "0";
+            }
+        }
+    }
+
+    public void UpdateAmmoText(string _text)
+    {
+        if (m_ammoText)
+        {
+            m_ammoText.text = _text;
+        }
+    }
+
+    private void UpdateCurrencyText()
+    {
+        if (m_currencyText)
+        {
+            m_currencyText.text = "$" + EconomyManager.Instance.GetPlayerMoney().ToString();
         }
     }
 }

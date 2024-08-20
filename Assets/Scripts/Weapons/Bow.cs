@@ -13,15 +13,37 @@ public class Bow : Weapon
     private GameObject m_currentArrow;
     private float m_currentChargeTime = 0f;
     private bool m_isCharging = false;
+    private PlayerUIController m_playerUI;
+
+    private void Awake()
+    {
+        m_playerUI = GetComponentInParent<PlayerUIController>();
+    }
+
+    private void UpdateAmmoUI()
+    {
+        if (m_playerUI)
+        {
+            if (HasArrows())
+            {
+                m_playerUI.UpdateAmmoText(InventoryManager.Instance.GetAmmoItem("Arrow").Quantity.ToString());
+            }
+            else
+            {
+                m_playerUI.UpdateAmmoText("0");
+            }
+        }
+    }
 
     private void FixedUpdate()
     {
-        if(HasArrows() && !m_currentArrow)
+        if (HasArrows() && !m_currentArrow)
         {
             LoadArrow();
         }
 
         Attack();
+        UpdateAmmoUI();
     }
 
     private bool HasArrows()
@@ -55,6 +77,7 @@ public class Bow : Weapon
         m_isCharging = false;
         LaunchArrow();
         UnloadArrow();
+        InventoryManager.Instance.UseAmmoItem("Arrow");
     }
 
     private void LoadArrow()

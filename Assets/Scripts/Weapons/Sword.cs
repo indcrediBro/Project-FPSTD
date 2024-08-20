@@ -10,6 +10,17 @@ public class Sword : Weapon
     private int m_comboCounter = 1;
     private float m_comboResetTime = 1f;
     private float m_lastAttackTime;
+    private PlayerUIController m_playerUI;
+
+    private void Awake()
+    {
+        m_playerUI = GetComponentInParent<PlayerUIController>();
+    }
+
+    private void OnEnable()
+    {
+        m_playerUI.UpdateAmmoText("");
+    }
 
     private void Update()
     {

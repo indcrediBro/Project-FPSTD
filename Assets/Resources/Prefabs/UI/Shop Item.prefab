@@ -99,7 +99,7 @@ MonoBehaviour:
   m_itemCostText: {fileID: 1625549280557718730}
   m_itemIconImage: {fileID: 3757851392981048518}
   m_buyButton: {fileID: 1264091720211628359}
-  m_purchaseSound: purchase_1
+  m_purchaseSound: Purchase_Item
 --- !u!114 &1264091720211628359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,20 +143,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3943265868564615633}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
-          type: 3}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: purchase_1
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
 --- !u!114 &9076284991827464640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +159,7 @@ MonoBehaviour:
   m_rectTransform: {fileID: 1484890460306145950}
   m_button: {fileID: 1264091720211628359}
   m_scaleValue: 1.5
-  m_scaleDuration: 1
+  m_scaleDuration: 0.2
 --- !u!1 &4397034894932409790
 GameObject:
   m_ObjectHideFlags: 0
