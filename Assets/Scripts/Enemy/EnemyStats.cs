@@ -1,14 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
+    [SerializeField] private EnemyManager.EnemyNames m_enemyName;
     [SerializeField] private Rigidbody m_rigidbody;
-    public Rigidbody GetRigidbody() { return m_rigidbody; }
-
     [SerializeField] private EnemyHealth m_health;
-    public EnemyHealth GetHealth() { return m_health; }
+
+    public Rigidbody GetRigidbody()
+    {
+        return m_rigidbody;
+    }
+
+    public EnemyHealth GetHealth()
+    {
+        return m_health;
+    }
+
+    private void OnEnable()
+    {
+        EnemyManager.Instance.AddEnemyToList(gameObject, m_enemyName);
+    }
 
     private void Start()
     {
@@ -21,5 +32,10 @@ public class EnemyStats : MonoBehaviour
         {
             m_health = GetComponent<EnemyHealth>();
         }
+    }
+
+    private void OnDisable()
+    {
+        EnemyManager.Instance.RemoveEnemyFromList(gameObject, m_enemyName);
     }
 }

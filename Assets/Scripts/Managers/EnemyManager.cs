@@ -1,119 +1,66 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
-    public List<GameObject> Enemies;
-    public List<GameObject> ActiveEnemies;
-    [SerializeField] public delegate void OnIncreaseRoundDelegate();
-    [SerializeField] public event OnIncreaseRoundDelegate onIncreaseRoundEvent;
-    [SerializeField] private Transform[] _enemySpawnPoint;
-    [SerializeField] private GameObject _tempEnemy;
-    [SerializeField] private int activeEnemyThreshold; // No of max active enemies at any given time
-    [SerializeField] private int _enemyMaxPool; // No of max active/inactive enemies in scene
-    [SerializeField] private int roundEnemyTotal; // No of enemies in round
-    [SerializeField] private int increaseEnemyTotal; // No of enemies to add to the total of round
-    private int roundSpawned; // No of enemies spawned during that round
-    private int enemySpawnQueue; // No of enemies waiting to be spawned by the timer.
-    [SerializeField] private float enemySpawnInterval; // Interval between enemy spawns
-    private float enemySpawnTimer; // enemy spawn count down timer
-
-
-    void Start()
+    public enum EnemyNames
     {
-        ActiveEnemies = new List<GameObject>();
-        CreateEnemyPool();
-        onIncreaseRoundEvent += IncreaseRound;
-        UpdateAcviteEnemies();
-        enemySpawnTimer = enemySpawnInterval;
+        MINION,
+        GHOUL,
     }
 
-    void Update()
+    [Serializable]
+    public class ActiveEnemyCollection
     {
-        enemySpawnTimer -= Time.deltaTime;
+        [SerializeField] private EnemyNames m_enemyName;
+        // [SerializeField] private string m_enemyName;
+        private List<GameObject> m_enemyList = new List<GameObject>();
 
-        if (enemySpawnTimer <= 0 && enemySpawnQueue > 0)
+        public EnemyNames GetEnemyName()
         {
-            // We only spawn enemies when there is more than 1 in queue
-            SpawnEnemy();
+            return m_enemyName;
+        }
 
-            enemySpawnTimer = enemySpawnInterval;
+        public List<GameObject> GetEnemyList()
+        {
+            return m_enemyList;
+        }
+
+        public void AddEnemyToList(GameObject _enemy)
+        {
+            m_enemyList.Add(_enemy);
+        }
+
+        public void RemoveEnemyToList(GameObject _enemy)
+        {
+            m_enemyList.Remove(_enemy);
         }
     }
 
-    private void CreateEnemyPool()
-    {
-        Enemies = new List<GameObject>();
+    [SerializeField] private ActiveEnemyCollection[] m_activeEnemyCollections;
 
-        for (int i = 0; i < _enemyMaxPool; i++)
+    public void AddEnemyToList(GameObject _enemy, EnemyNames _enemyName)
+    {
+        ActiveEnemyCollection activeEnemyCollection = GetActiveEnemyCollection(_enemyName);
+        activeEnemyCollection.AddEnemyToList(_enemy);
+    }
+
+    public void RemoveEnemyFromList(GameObject _enemy, EnemyNames _enemyName)
+    {
+        ActiveEnemyCollection activeEnemyCollection = GetActiveEnemyCollection(_enemyName);
+        activeEnemyCollection.RemoveEnemyToList(_enemy);
+    }
+
+    public ActiveEnemyCollection GetActiveEnemyCollection(EnemyNames _enemyName)
+    {
+        ActiveEnemyCollection activeEnemyCollection =
+            m_activeEnemyCollections.FirstOrDefault(collection => collection.GetEnemyName() == _enemyName);
+        if (activeEnemyCollection == null)
         {
-            GameObject _enemy = Instantiate(_tempEnemy);
-            Enemies.Add(_enemy);
-            _enemy.SetActive(false);
+            throw new Exception("List with enemy name " + _enemyName + " does not exist!");
         }
-    }
-
-    private GameObject GetEnemyInPool()
-    {
-        foreach (GameObject t in Enemies)
-        {
-            if (!t.activeInHierarchy)
-            {
-                ActiveEnemies.Add(t);
-                return t;
-            }
-        }
-        return null;
-    }
-
-    public void SpawnEnemy()
-    {
-        GameObject _enemy = GetEnemyInPool();
-        if (_enemy != null)
-        {
-            _enemy.transform.position = GetAvailableSpawnPoint().position;
-            _enemy.SetActive(true);
-
-            enemySpawnQueue--;
-            roundSpawned++;
-        }
-    }
-
-    public void UpdateAcviteEnemies()
-    {
-        if (roundSpawned >= roundEnemyTotal && ActiveEnemies.Count <= 0 && enemySpawnQueue <= 0)
-        {
-            // Round has ended, broadcast event
-            onIncreaseRoundEvent?.Invoke();
-        }
-        else
-        {
-            while (roundSpawned + enemySpawnQueue < roundEnemyTotal && (enemySpawnQueue < activeEnemyThreshold - ActiveEnemies.Count))
-            {
-                enemySpawnQueue++;
-            }
-        }
-    }
-
-    private Transform GetAvailableSpawnPoint()
-    {
-        int _randomSpawnPointIndex = Random.Range(0, _enemySpawnPoint.Length);
-        return _enemySpawnPoint[_randomSpawnPointIndex];
-    }
-
-    // Currently not really keeping track of rounds...
-    private void IncreaseRound()
-    {
-        // TODO why is this not resetting?
-        roundSpawned = 0;
-        roundEnemyTotal += increaseEnemyTotal;
-    }
-
-
-    private void OnDisable()
-    {
-        onIncreaseRoundEvent -= IncreaseRound;
+        return activeEnemyCollection;
     }
 }

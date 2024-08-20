@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.045924485, g: 0.23528208, b: 1.1766298, a: 1}
+  m_IndirectSpecularColor: {r: 0.04592456, g: 0.23528257, b: 1.1766312, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -43626,6 +43626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db797062e5414bd9bfdf212f811f1f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_enemyName: 
   m_rigidbody: {fileID: 0}
   m_health: {fileID: 0}
 --- !u!136 &1848529210
@@ -48718,6 +48719,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926106860997609947, guid: edf473e424f0246f89818939e54c3119,
+        type: 3}
+      propertyPath: m_enemyCollections.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926106860997609947, guid: edf473e424f0246f89818939e54c3119,
+        type: 3}
+      propertyPath: m_activeEnemyCollections.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926106860997609947, guid: edf473e424f0246f89818939e54c3119,
+        type: 3}
+      propertyPath: m_activeEnemyCollections.Array.data[0].m_enemyName
+      value: minion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

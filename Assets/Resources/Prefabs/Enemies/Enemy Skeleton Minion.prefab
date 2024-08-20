@@ -15899,6 +15899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db797062e5414bd9bfdf212f811f1f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_enemyName: 0
   m_rigidbody: {fileID: 6701311267524651008}
   m_health: {fileID: 3340179588282938972}
 --- !u!114 &2684584694817969547

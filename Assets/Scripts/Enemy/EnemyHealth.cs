@@ -17,8 +17,8 @@ public class EnemyHealth : Health
         m_stateMachine.TransitionToState(m_stateMachine.m_DeadState);
         if (EnemyManager.Instance)
         {
-            EnemyManager.Instance.ActiveEnemies.Remove(gameObject);
-            EnemyManager.Instance.UpdateAcviteEnemies();
+            // EnemyManager.Instance.ActiveEnemies.Remove(gameObject);
+            // EnemyManager.Instance.UpdateAcviteEnemies();
             ResetHealthToMax();
         }
     }
