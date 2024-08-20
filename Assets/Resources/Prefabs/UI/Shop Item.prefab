@@ -99,6 +99,7 @@ MonoBehaviour:
   m_itemCostText: {fileID: 1625549280557718730}
   m_itemIconImage: {fileID: 3757851392981048518}
   m_buyButton: {fileID: 1264091720211628359}
+  m_purchaseSound: purchase_1
 --- !u!114 &1264091720211628359
 MonoBehaviour:
   m_ObjectHideFlags: 0
