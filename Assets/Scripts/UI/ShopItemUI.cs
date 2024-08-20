@@ -1,8 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+#region
+
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+
+#endregion
 
 public class ShopItemUI : MonoBehaviour
 {
@@ -19,5 +21,6 @@ public class ShopItemUI : MonoBehaviour
         m_itemCostText.text = _cost;
         m_itemIconImage.sprite = _icon;
         m_buyButton.onClick.AddListener(() => ShopManager.Instance.BuyItem(_name));
+        m_buyButton.onClick.AddListener(() => AudioManager.Instance.PlaySound("purchase_1"));
     }
 }

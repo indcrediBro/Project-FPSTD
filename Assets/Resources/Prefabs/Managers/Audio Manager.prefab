@@ -50,4 +50,14 @@ MonoBehaviour:
     type: 2}
   m_sfxMixer: {fileID: 6701690750796449149, guid: f761d52be2e5cf34bbb77540f268d507,
     type: 2}
-  m_audioSFXList: []
+  m_audioSFXList:
+  - name: purchase_1
+    audioClip: {fileID: 8300000, guid: 10595d2bd5f2ace4e8ef1c3e97515115, type: 3}
+    volume: 0
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 0
+    randomizePitchValues: {x: 0, y: 0}
+    playOnAwake: 0
+    playOnLocation: 0
+    loop: 0
