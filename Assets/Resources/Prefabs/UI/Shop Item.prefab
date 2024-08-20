@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3943265868564615633}
   - component: {fileID: 3382870497792737799}
   - component: {fileID: 1264091720211628359}
+  - component: {fileID: 9076284991827464640}
   m_Layer: 5
   m_Name: Shop Item
   m_TagString: Untagged
@@ -141,7 +142,36 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3943265868564615633}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+          type: 3}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: purchase_1
+          m_BoolArgument: 0
+        m_CallState: 1
+--- !u!114 &9076284991827464640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4238775038371749058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a367bf9617c86f749916a047a7448683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_rectTransform: {fileID: 1484890460306145950}
+  m_button: {fileID: 1264091720211628359}
+  m_scaleValue: 1.5
+  m_scaleDuration: 1
 --- !u!1 &4397034894932409790
 GameObject:
   m_ObjectHideFlags: 0

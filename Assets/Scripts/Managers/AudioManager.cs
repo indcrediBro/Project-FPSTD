@@ -1,9 +1,13 @@
-using System.Collections;
+#region
+
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-[System.Serializable]
+#endregion
+
+[Serializable]
 public class AudioSFX
 {
     public string name;
@@ -12,7 +16,7 @@ public class AudioSFX
     public bool isMusic;
     public bool isUISFX;
     public bool randomizePitch;
-    public Vector2 randomizePitchValues = new Vector2(0.8f, 1.3f);
+    public Vector2 randomizePitchValues = new(0.8f, 1.3f);
     public bool playOnAwake;
     public bool playOnLocation;
     public bool loop;
@@ -20,12 +24,15 @@ public class AudioSFX
 
 public class AudioManager : Singleton<AudioManager>
 {
-    [Header("Mixer Settings")]
-    [SerializeField] private AudioMixer m_mixer;
+    [Header("Mixer Settings")] [SerializeField]
+    private AudioMixer m_mixer;
+
     [SerializeField] private AudioMixerGroup m_musicMixer, m_sfxMixer;
-    [Header("Audio Clip Settings")]
-    [SerializeField] private List<AudioSFX> m_audioSFXList;
-    private List<GameObject> m_audioSourceObjects;
+
+    [Header("Audio Clip Settings")] [SerializeField]
+    private List<AudioSFX> m_audioSFXList;
+
+    private static List<GameObject> m_audioSourceObjects;
 
     protected override void Awake()
     {
@@ -39,12 +46,12 @@ public class AudioManager : Singleton<AudioManager>
         {
             m_audioSourceObjects = new List<GameObject>();
 
-            foreach (AudioSFX sfx in m_audioSFXList)
+            foreach (var sfx in m_audioSFXList)
             {
-                GameObject sfxObject = new GameObject(sfx.name, typeof(AudioSource));
+                var sfxObject = new GameObject(sfx.name, typeof(AudioSource));
                 sfxObject.transform.SetParent(transform);
 
-                AudioSource newAudioSource = sfxObject.GetComponent<AudioSource>();
+                var newAudioSource = sfxObject.GetComponent<AudioSource>();
                 newAudioSource.volume = sfx.volume;
                 newAudioSource.clip = sfx.audioClip;
                 if (sfx.playOnAwake)
@@ -52,16 +59,13 @@ public class AudioManager : Singleton<AudioManager>
                     newAudioSource.playOnAwake = sfx.playOnAwake;
                     newAudioSource.Play();
                 }
+
                 newAudioSource.loop = sfx.loop;
 
                 if (sfx.isMusic)
-                {
                     newAudioSource.outputAudioMixerGroup = m_musicMixer;
-                }
                 else
-                {
                     newAudioSource.outputAudioMixerGroup = m_sfxMixer;
-                }
 
                 m_audioSourceObjects.Add(sfxObject);
             }
@@ -70,72 +74,55 @@ public class AudioManager : Singleton<AudioManager>
 
     private AudioSource GetAudioSource(string _name)
     {
-        foreach (GameObject obj in m_audioSourceObjects)
-        {
+        foreach (var obj in m_audioSourceObjects)
             if (obj.name == _name)
-            {
                 return obj.GetComponent<AudioSource>();
-            }
-        }
         return null;
     }
 
     private AudioSFX GetAudioSFXByName(string _name)
     {
-        foreach (AudioSFX sfx in m_audioSFXList)
-        {
+        foreach (var sfx in m_audioSFXList)
             if (sfx.name == _name)
-            {
                 return sfx;
-            }
-        }
         return null;
     }
 
     public void PlaySound(string _name)
     {
-        AudioSFX sfxStats = GetAudioSFXByName(_name);
-        AudioSource source = GetAudioSource(_name);
+        var sfxStats = GetAudioSFXByName(_name);
+        var source = GetAudioSource(_name);
 
         if (sfxStats.randomizePitch)
-        {
             source.pitch = RandomNumber.Instance.NextFloat(sfxStats.randomizePitchValues.x, sfxStats.randomizePitchValues.y);
-        }
 
-        if (source)
-        {
-            source.Play();
-        }
+        if (source) source.Play();
     }
 
     public void PlaySound(string _name, Vector3 _positon)
     {
-        AudioSFX sfxStats = GetAudioSFXByName(_name);
-        AudioSource source = GetAudioSource(_name);
+        var sfxStats = GetAudioSFXByName(_name);
+        var source = GetAudioSource(_name);
 
         if (source)
         {
             if (sfxStats.randomizePitch)
-            {
                 source.pitch = RandomNumber.Instance.NextFloat(sfxStats.randomizePitchValues.x, sfxStats.randomizePitchValues.y);
-            }
 
             if (sfxStats.playOnLocation)
             {
                 source.transform.position = _positon;
                 source.spatialBlend = 1f;
             }
+
             source.Play();
         }
     }
 
     public void StopSound(string _name)
     {
-        AudioSource source = GetAudioSource(_name);
+        var source = GetAudioSource(_name);
 
-        if (source && !source.isPlaying)
-        {
-            source.Stop();
-        }
+        if (source && !source.isPlaying) source.Stop();
     }
 }
