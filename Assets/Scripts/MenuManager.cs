@@ -1,9 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : Singleton<MenuManager>
 {
-    [SerializeField] Menu[] menus;
+	public static MenuManager Instance;
+    
+    [SerializeField] private Menu[] menus;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     public void OpenMenu(string menuName)
     {
@@ -12,6 +23,8 @@ public class MenuManager : Singleton<MenuManager>
             if (menus[i].menuName == menuName)
             {
                 menus[i].Open();
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(menus[i].defaultButton);
             }
             else if (menus[i].open)
             {
@@ -30,11 +43,14 @@ public class MenuManager : Singleton<MenuManager>
             }
         }
         menu.Open();
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(menu.defaultButton);
     }
 
     public void CloseMenu(Menu menu)
     {
         menu.Close();
+        menu.defaultButton = EventSystem.current.currentSelectedGameObject;
     }
 
     public void QuitGame()
