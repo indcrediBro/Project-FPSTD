@@ -1,11 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+#region
+
 using UnityEngine;
+
+#endregion
 
 public class Menu : MonoBehaviour
 {
     public string menuName;
     public bool open;
+    public GameObject defaultButton;
 
     public void Open()
     {
