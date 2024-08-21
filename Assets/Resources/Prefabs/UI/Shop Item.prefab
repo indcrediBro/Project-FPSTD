@@ -158,8 +158,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rectTransform: {fileID: 1484890460306145950}
   m_button: {fileID: 1264091720211628359}
-  m_scaleValue: 1.5
-  m_scaleDuration: 0.2
+  m_scaleValue: 1.2
+  m_scaleDuration: 0.35
+  m_easing: 30
 --- !u!1 &4397034894932409790
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class OnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private Button m_button;
     [SerializeField] private float m_scaleValue;
     [SerializeField] private float m_scaleDuration;
+    [SerializeField] private Ease m_easing;
     private Tween m_tweener;
 
     private void Start()
@@ -26,7 +27,7 @@ public class OnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        m_tweener = m_rectTransform.DOScale(Vector3.one * m_scaleValue, m_scaleDuration);
+        m_tweener = m_rectTransform.DOScale(Vector3.one * m_scaleValue, m_scaleDuration).SetEase(m_easing);
         m_tweener.SetUpdate(true);
     }
 
