@@ -16,7 +16,6 @@ public enum EnemyState
 
 public class EnemyStateMachine : MonoBehaviour
 {
-
     public IEnemyState m_CurrentState { get; private set; }
 
     // Public states
@@ -50,7 +49,7 @@ public class EnemyStateMachine : MonoBehaviour
         m_Detection = GetComponent<EnemyDetection>();
         m_Burn = GetComponent<EnemyBurn>();
         m_PlayerTarget = GameReferences.Instance.m_PlayerStats.transform;
-        m_BaseTarget = GameReferences.Instance.m_PlayerBase.transform;
+        m_BaseTarget = GameReferences.Instance.m_PlayerBase?.transform;
     }
 
     private void Start()

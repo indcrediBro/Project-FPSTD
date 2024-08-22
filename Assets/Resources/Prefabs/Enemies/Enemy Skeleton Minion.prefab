@@ -15798,7 +15798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8278826826465990864
 Transform:
   m_ObjectHideFlags: 0
@@ -15902,6 +15902,7 @@ MonoBehaviour:
   m_enemyName: 0
   m_rigidbody: {fileID: 6701311267524651008}
   m_health: {fileID: 3340179588282938972}
+  m_attack: {fileID: 4764180114664281875}
 --- !u!114 &2684584694817969547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15943,7 +15944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba624fdb36e8c4eed864a2d469f312f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_detectionRadius: 10
+  m_detectionRadius: 5
   m_targetLayer:
     serializedVersion: 2
     m_Bits: 520

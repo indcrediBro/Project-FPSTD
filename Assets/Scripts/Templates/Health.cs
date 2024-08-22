@@ -48,6 +48,13 @@ public abstract class Health : MonoBehaviour
 		m_isDead = false;
 	}
 
+	public void SetMaxHealth(float _amount)
+	{
+		m_maxHealth = _amount;
+		m_currentHealth = m_maxHealth;
+		m_isDead = false;
+	}
+
 	protected virtual void OnEnable()
 	{
 		ResetHealthToMax();

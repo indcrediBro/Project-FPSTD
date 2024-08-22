@@ -7,14 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : Singleton<MenuManager>
 {
-	public static MenuManager Instance;
-    
     [SerializeField] private Menu[] menus;
-
-    void Awake()
-    {
-        Instance = this;
-    }
 
     public void OpenMenu(string menuName)
     {

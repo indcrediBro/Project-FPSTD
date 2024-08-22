@@ -15,7 +15,6 @@ public class EnemyManager : Singleton<EnemyManager>
     public class ActiveEnemyCollection
     {
         [SerializeField] private EnemyNames m_enemyName;
-        // [SerializeField] private string m_enemyName;
         private List<GameObject> m_enemyList = new List<GameObject>();
 
         public EnemyNames GetEnemyName()
@@ -62,5 +61,17 @@ public class EnemyManager : Singleton<EnemyManager>
             throw new Exception("List with enemy name " + _enemyName + " does not exist!");
         }
         return activeEnemyCollection;
+    }
+
+    public bool AreAllEnemiesDefeated()
+    {
+        foreach (ActiveEnemyCollection collection in m_activeEnemyCollections)
+        {
+            if (collection.GetEnemyList().Any(enemy => enemy.activeInHierarchy))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

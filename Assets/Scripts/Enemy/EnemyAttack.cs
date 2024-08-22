@@ -25,10 +25,4 @@ public class EnemyAttack : MonoBehaviour
             _target.GetComponent<PlayerBaseHealth>().TakeDamage(m_attackDamage);
         }
     }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + transform.forward, m_attackRange);
-    }
 }
