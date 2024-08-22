@@ -17,12 +17,9 @@ public class ShopInteractionController : Interactable
     public override void Interact()
     {
         m_shopUI.SetActive(true);
-        //Cursor.lockState = CursorLockMode.None;
-        //Cursor.visible = true;
-        //Time.timeScale = 0;
         GameStateManager.Instance.SetState(new ShopState(GameStateManager.Instance));
-        Debug.Log("Interacted With Shop!");
     }
+
     private void LookAtPlayer()
     {
         Vector3 direction = Camera.main.transform.position - transform.position;

@@ -34,8 +34,6 @@ public class PlayerWeaponProjectile : MonoBehaviour
         m_collider.enabled = false;
         m_rigidbody.isKinematic = true;
 
-        Debug.Log("Collided with " + _other.name + " dealing damage of " + m_damage);
-
         if (_other.TryGetComponent(out EnemyStats _enemy))
         {
             _enemy.GetHealth().TakeDamage(m_damage);

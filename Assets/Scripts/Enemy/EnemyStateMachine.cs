@@ -29,6 +29,7 @@ public class EnemyStateMachine : MonoBehaviour
     public readonly IEnemyState m_BurnState = new BurnState();
 
     // References to other components
+    public EnemyStats m_Stats { get; private set; }
     public EnemyHealth m_Health { get; private set; }
     public EnemyMovement m_Movement { get; private set; }
     public EnemyAttack m_Attack { get; private set; }
@@ -42,6 +43,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void Awake()
     {
+        m_Stats = GetComponent<EnemyStats>();
         m_Health = GetComponent<EnemyHealth>();
         m_Movement = GetComponent<EnemyMovement>();
         m_Attack = GetComponent<EnemyAttack>();

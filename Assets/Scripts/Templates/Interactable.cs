@@ -8,7 +8,14 @@ public abstract class Interactable : MonoBehaviour
 
     public virtual void EnableInteractGFX()
     {
-        m_interactGFX.SetActive(true);
+        if (m_interactGFX)
+        {
+            m_interactGFX.SetActive(true);
+        }
+        else
+        {
+            Interact();
+        }
     }
 
     public virtual void DisableInteractGFX()
