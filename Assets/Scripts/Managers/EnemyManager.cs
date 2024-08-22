@@ -17,25 +17,10 @@ public class EnemyManager : Singleton<EnemyManager>
         [SerializeField] private EnemyNames m_enemyName;
         private List<GameObject> m_enemyList = new List<GameObject>();
 
-        public EnemyNames GetEnemyName()
-        {
-            return m_enemyName;
-        }
-
-        public List<GameObject> GetEnemyList()
-        {
-            return m_enemyList;
-        }
-
-        public void AddEnemyToList(GameObject _enemy)
-        {
-            m_enemyList.Add(_enemy);
-        }
-
-        public void RemoveEnemyToList(GameObject _enemy)
-        {
-            m_enemyList.Remove(_enemy);
-        }
+        public EnemyNames GetEnemyName() { return m_enemyName; }
+        public List<GameObject> GetEnemyList() { return m_enemyList; }
+        public void AddEnemyToList(GameObject _enemy) { m_enemyList.Add(_enemy); }
+        public void RemoveEnemyToList(GameObject _enemy) { m_enemyList.Remove(_enemy); }
     }
 
     [SerializeField] private ActiveEnemyCollection[] m_activeEnemyCollections;
@@ -63,6 +48,7 @@ public class EnemyManager : Singleton<EnemyManager>
         return activeEnemyCollection;
     }
 
+    //TODO: Use wave enemy count
     public bool AreAllEnemiesDefeated()
     {
         foreach (ActiveEnemyCollection collection in m_activeEnemyCollections)

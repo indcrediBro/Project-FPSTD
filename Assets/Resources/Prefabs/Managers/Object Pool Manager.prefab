@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_dontDestroyOnLoad: 0
-  objectPools:
+  m_objectPools:
   - m_Name: Enemy_Minion
     m_PooledObjects: []
     m_PooledObject: {fileID: 5944623235621818368, guid: 381f78cb4218d4522bea087e6422be3d,
       type: 3}
-    m_PooledAmount: 5
+    m_PooledAmount: 10
     m_WillGrow: 1

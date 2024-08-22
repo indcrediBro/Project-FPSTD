@@ -7,6 +7,7 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] private Rigidbody m_rigidbody;
     [SerializeField] private EnemyHealth m_health;
     [SerializeField] private EnemyAttack m_attack;
+    [SerializeField] private EnemyStateMachine m_stateMachine;
 
     public Rigidbody GetRigidbody() { return m_rigidbody; }
     public EnemyHealth GetHealth() { return m_health; }
@@ -19,20 +20,15 @@ public class EnemyStats : MonoBehaviour
 
     private void Start()
     {
-        if (m_rigidbody == null)
-        {
-            m_rigidbody = GetComponent<Rigidbody>();
-        }
+        InitialiseReferences();
+    }
 
-        if (m_health == null)
-        {
-            m_health = GetComponent<EnemyHealth>();
-        }
-
-        if (m_attack == null)
-        {
-            m_attack = GetComponent<EnemyAttack>();
-        }
+    private void InitialiseReferences()
+    {
+        if (m_rigidbody == null) { m_rigidbody = GetComponent<Rigidbody>(); }
+        if (m_health == null) { m_health = GetComponent<EnemyHealth>(); }
+        if (m_attack == null) { m_attack = GetComponent<EnemyAttack>(); }
+        if (m_stateMachine == null) { m_stateMachine = GetComponent<EnemyStateMachine>(); }
     }
 
     private void OnDisable()
@@ -47,7 +43,13 @@ public class EnemyStats : MonoBehaviour
             EnemyManager.Instance.AddEnemyToList(gameObject, m_enemyName);
         }
         int currentWave = WaveManager.Instance.GetCurrentWave();
+
         UpgradeStats(currentWave);
+
+        if (m_stateMachine.m_SpawnState != null && m_stateMachine.m_Animations)
+        {
+            m_stateMachine.TransitionToState(m_stateMachine.m_SpawnState);
+        }
     }
 
     public void OnObjectDespawn()

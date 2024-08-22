@@ -17,5 +17,6 @@ public class DeadState : IEnemyState
     public void ExitState(EnemyStateMachine _stateMachine)
     {
         // Cleanup logic if needed before removing the enemy
+
     }
 }

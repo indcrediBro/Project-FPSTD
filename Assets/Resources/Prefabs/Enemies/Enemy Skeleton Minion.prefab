@@ -15903,6 +15903,7 @@ MonoBehaviour:
   m_rigidbody: {fileID: 6701311267524651008}
   m_health: {fileID: 3340179588282938972}
   m_attack: {fileID: 4764180114664281875}
+  m_stateMachine: {fileID: 2684584694817969547}
 --- !u!114 &2684584694817969547
 MonoBehaviour:
   m_ObjectHideFlags: 0

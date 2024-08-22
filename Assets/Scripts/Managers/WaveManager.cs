@@ -45,23 +45,13 @@ public class WaveManager : Singleton<WaveManager>
             Transform spawnPoint = m_spawnPoints[RandomNumber.Instance.NextInt(m_spawnPoints.Count)];
 
             GameObject enemyObject = ObjectPoolManager.Instance.GetPooledObject(enemyType.m_PoolName);
-            if (enemyObject != null)
-            {
-                enemyObject.transform.position = spawnPoint.position;
-                enemyObject.SetActive(true);
+            enemyObject.transform.position = spawnPoint.position;
+            enemyObject.SetActive(true);
 
-                EnemyStats enemyStats = enemyObject.GetComponent<EnemyStats>();
-                if (enemyStats != null)
-                {
-                    enemyStats.OnObjectSpawn();
-                }
-
-                EnemyManager.Instance.AddEnemyToList(enemyObject, enemyType.m_EnemyName);
-            }
-
+            EnemyManager.Instance.AddEnemyToList(enemyObject, enemyType.m_EnemyName);
+            
             yield return new WaitForSeconds(RandomNumber.Instance.NextFloat(0.5f, 2f));
         }
-
         StartCoroutine(CheckWaveCompletion());
     }
 
@@ -104,7 +94,6 @@ public class WaveManager : Singleton<WaveManager>
     private void WaveCompleted()
     {
         m_isWaveActive = false;
-        Debug.Log("Wave Completed!");
         UpgradeEnemies();
         if (startWaveOnGameStart) StartWave();
     }

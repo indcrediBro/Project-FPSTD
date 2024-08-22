@@ -40,7 +40,6 @@ public class Knife : Weapon
                 knockbackDirection = ray.direction;
                 knockbackDirection.y += m_knockbackForce;
                 enemyStats.GetRigidbody().AddForce(knockbackDirection * m_knockbackForce, ForceMode.Impulse);
-                Debug.Log("Collided with " + enemyStats.name + " dealing damage of " + m_damage);
             }
         }
     }

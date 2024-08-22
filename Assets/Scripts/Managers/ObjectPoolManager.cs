@@ -14,31 +14,36 @@ public class ObjectPool
 
 public class ObjectPoolManager: Singleton<ObjectPoolManager>
 {
-    public ObjectPool[] objectPools;
+    public ObjectPool[] m_objectPools;
 
     private void Start()
     {
-        for (int i = 0; i < objectPools.Length; i++)
+        InitializePools();
+    }
+
+    private void InitializePools()
+    {
+        for (int i = 0; i < m_objectPools.Length; i++)
         {
-            objectPools[i].m_PooledObjects = new List<GameObject>();
+            m_objectPools[i].m_PooledObjects = new List<GameObject>();
         }
 
-        for (int i = 0; i < objectPools.Length; i++)
+        for (int i = 0; i < m_objectPools.Length; i++)
         {
-            for (int t = 0; t < objectPools[i].m_PooledAmount; t++)
+            for (int t = 0; t < m_objectPools[i].m_PooledAmount; t++)
             {
 
-                GameObject obj = Instantiate(objectPools[i].m_PooledObject);
+                GameObject obj = Instantiate(m_objectPools[i].m_PooledObject);
 
                 obj.SetActive(false);
-                objectPools[i].m_PooledObjects.Add(obj);
+                m_objectPools[i].m_PooledObjects.Add(obj);
             }
         }
     }
 
     public GameObject GetPooledObject(string name)
     {
-        ObjectPool op = Array.Find(objectPools, ObjectPools => ObjectPools.m_Name == name);
+        ObjectPool op = Array.Find(m_objectPools, ObjectPools => ObjectPools.m_Name == name);
 
         for (int i = 0; i < op.m_PooledObjects.Count; i++)
         {
