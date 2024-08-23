@@ -3,6 +3,13 @@ using System.Collections;
 
 public class StartState : IGameState
 {
+    private GameStateManager m_gameManager;
+
+    public StartState(GameStateManager _gameManager)
+    {
+        this.m_gameManager = _gameManager;
+    }
+
     public void Enter()
     {
         InitializeGameSettings();
@@ -10,7 +17,10 @@ public class StartState : IGameState
 
     public void Update()
     {
-
+        if (GameReferences.Instance.m_PlayerStats.GetPlayerHealthComponent().IsDead() || GameReferences.Instance.m_PlayerBase.IsDead())
+        {
+            m_gameManager.SetState(new GameOverState(m_gameManager));
+        }
     }
 
     public void Exit()

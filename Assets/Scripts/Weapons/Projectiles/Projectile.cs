@@ -65,7 +65,7 @@ public class Projectile : MonoBehaviour
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, m_blastRadius);
             foreach (var hitCollider in hitColliders)
             {
-                if (hitCollider.TryGetComponent(out Health enemyHealth))
+                if (hitCollider.TryGetComponent(out EnemyHealth enemyHealth))
                 {
                     float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
                     float scaledDamage = Mathf.Lerp(m_damage*2, m_damage/2, distance / m_blastRadius);
@@ -79,7 +79,7 @@ public class Projectile : MonoBehaviour
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.5f);
             foreach (var hitCollider in hitColliders)
             {
-                if (hitCollider.TryGetComponent(out Health enemyHealth))
+                if (hitCollider.TryGetComponent(out EnemyHealth enemyHealth))
                 {
                     enemyHealth.TakeDamage(m_damage);
                 }

@@ -14,6 +14,8 @@ public class GameOverState : IGameState
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
+
+        Debug.Log("Game Over State!");
     }
 
     public void Update()

@@ -9,7 +9,7 @@ public class ShopUIManager : MonoBehaviour
     [SerializeField] private ShopManager m_shopManager;
     [SerializeField] private Transform m_shopPanel;
     [SerializeField] private GameObject m_shopItemPrefab;
-    [SerializeField] private TMP_Text m_playerCurrencyText;
+    //[SerializeField] private TMP_Text m_playerCurrencyText;
 
     private void Start()
     {

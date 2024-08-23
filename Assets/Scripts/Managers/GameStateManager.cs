@@ -8,7 +8,7 @@ public class GameStateManager : Singleton<GameStateManager>
 
     void Start()
     {
-        SetState(new StartState());
+        SetState(new StartState(this));
     }
 
     void Update()
