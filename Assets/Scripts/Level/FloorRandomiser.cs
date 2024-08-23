@@ -8,7 +8,7 @@ public class FloorRandomiser : MonoBehaviour
     [SerializeField] private GameObject[] m_decorationsGO;
 
     [SerializeField] private Transform m_baseParentTF;
-
+    [SerializeField] private bool m_destoryOtherObjetsOnSpawn = true;
     [SerializeField] private float m_decorSpawnLocationRange;
 
     private void OnEnable()
@@ -24,6 +24,10 @@ public class FloorRandomiser : MonoBehaviour
         for (int i = 0; i < m_baseObjectsGO.Length; i++)
         {
             m_baseObjectsGO[i].SetActive(false);
+            if (m_destoryOtherObjetsOnSpawn && m_baseObjectsGO[i] != m_baseObjectsGO[randomIndex])
+            {
+                Destroy(m_baseObjectsGO[i]);
+            }
         }
         m_baseObjectsGO[randomIndex].SetActive(true);
 
@@ -34,9 +38,18 @@ public class FloorRandomiser : MonoBehaviour
     {
         int randomSpawnIndex = RandomNumber.Instance.NextInt(m_decorationsGO.Length + 100);
 
-        foreach (GameObject _decor in m_decorationsGO)
+        for (int i = 0; i < m_decorationsGO.Length; i++)
         {
+            GameObject _decor = m_decorationsGO[i];
             _decor.SetActive(false);
+            if(m_destoryOtherObjetsOnSpawn && randomSpawnIndex < m_decorationsGO.Length && _decor != m_decorationsGO[randomSpawnIndex])
+            {
+                Destroy(_decor);
+            }
+            if(m_destoryOtherObjetsOnSpawn && randomSpawnIndex > m_decorationsGO.Length)
+            {
+                Destroy(_decor);
+            }
         }
 
         if (randomSpawnIndex < m_decorationsGO.Length)

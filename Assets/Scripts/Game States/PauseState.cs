@@ -12,17 +12,15 @@ public class PauseState : IGameState
 
     public void Enter()
     {
-        Debug.Log("Entering Pause State");
-        // Pause game logic
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         Time.timeScale = 0;
+        GameReferences.Instance.m_IsPaused = true;
     }
 
     public void Update()
     {
-        // Transition back to PlayState
-        if (InputManager.Instance.m_PauseInput.WasPressedThisFrame())
+        if (InputManager.Instance.m_PauseInput.WasReleasedThisFrame() && GameReferences.Instance.m_IsPaused == true)
         {
             m_gameManager.SetState(new PlayState(m_gameManager));
         }
@@ -30,7 +28,6 @@ public class PauseState : IGameState
 
     public void Exit()
     {
-        Debug.Log("Exiting Pause State");
-        // Resume game logic
+
     }
 }

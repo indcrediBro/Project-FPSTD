@@ -19,14 +19,21 @@ public class ChaseBaseState : IEnemyState
             _stateMachine.SetNavigationalBaseTarget(target);
         }
 
-        _stateMachine.m_Movement.MoveToTarget(_stateMachine.m_NavigationBaseTarget.position);
-
-        if (_stateMachine.m_PlayerTarget)
+        if (_stateMachine.m_Movement)
         {
-            if (_stateMachine.m_Detection.IsPlayerInRange())
+            if (target)
+            {
+                _stateMachine.m_Movement.MoveToTarget(target.position);
+            }
+            else
             {
                 _stateMachine.TransitionToState(_stateMachine.m_ChasePlayerState);
             }
+        }
+
+        if (_stateMachine.m_PlayerTarget && _stateMachine.m_Detection.IsPlayerInRange())
+        {
+            _stateMachine.TransitionToState(_stateMachine.m_ChasePlayerState);
         }
         
         if (_stateMachine.m_Detection.IsInAttackRange(_stateMachine.m_NavigationBaseTarget))

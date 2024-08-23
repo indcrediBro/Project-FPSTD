@@ -14,15 +14,14 @@ public class EnemyAttack : MonoBehaviour
     private IEnumerator AttackCO(Transform _target, float _timeToWait)
     {
         yield return new WaitForSeconds(_timeToWait);
-        // Logic to deal damage to the target
         if (_target.CompareTag("Player"))
         {
-            _target.GetComponent<PlayerHealth>().TakeDamage(m_attackDamage);
+            GameReferences.Instance.m_PlayerStats.GetPlayerHealthComponent().TakeDamage(m_attackDamage);
         }
         else if (_target.CompareTag("PlayerBase"))
         {
             transform.LookAt(_target);
-            _target.GetComponent<PlayerBaseHealth>().TakeDamage(m_attackDamage);
+            GameReferences.Instance.m_PlayerBase.TakeDamage(m_attackDamage);
         }
     }
 }

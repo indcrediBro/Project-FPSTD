@@ -30,7 +30,5 @@ public class ShopUIManager : MonoBehaviour
 
             shopItemUI.InitializeShopItemUI(item.Name, item.Details, item.Cost.ToString(), item.Icon);
         }
-
-        m_playerCurrencyText.text = "$" + EconomyManager.Instance.GetPlayerMoney();
     }
 }

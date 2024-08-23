@@ -12,23 +12,20 @@ public class PlayState : IGameState
 
     public void Enter()
     {
-        Debug.Log("Entering Play State");
-
-        // Start game logic
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1;
+        GameReferences.Instance.m_IsPaused = false;
     }
 
     public void Update()
     {
-        // Check for pause condition
-        if (InputManager.Instance.m_PauseInput.WasReleasedThisFrame())
+        if (InputManager.Instance.m_PauseInput.WasReleasedThisFrame() && GameReferences.Instance.m_IsPaused == false)
         {
             m_gameManager.SetState(new PauseState(m_gameManager));
         }
-        // Check for game over condition
-        if (GameReferences.Instance.m_PlayerStats.GetPlayerHealthComponent().IsDead() && GameReferences.Instance.m_PlayerBase.IsDead())
+
+        if (GameReferences.Instance.m_PlayerStats.GetPlayerHealthComponent().IsDead() || GameReferences.Instance.m_PlayerBase.IsDead())
         {
             m_gameManager.SetState(new GameOverState(m_gameManager));
         }
@@ -36,6 +33,5 @@ public class PlayState : IGameState
 
     public void Exit()
     {
-        Debug.Log("Exiting Play State");
     }
 }
