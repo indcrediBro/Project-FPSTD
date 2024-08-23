@@ -31,12 +31,13 @@ public class PlayerWeaponController : MonoBehaviour
                 EquipWeapon(m_currentWeaponIndex);
             }
 
-            if (InputManager.Instance.m_SwitchWeaponInput > 0)
+            float switchValue = InputManager.Instance.m_SwitchWeaponInput.ReadValue<float>();
+            if (InputManager.Instance.m_SwitchWeaponInput.WasPerformedThisFrame() && switchValue > 0)
             {
                 SwitchToWeapon(1);
             }
 
-            if (InputManager.Instance.m_SwitchWeaponInput < 0)
+            if (InputManager.Instance.m_SwitchWeaponInput.WasPerformedThisFrame() && switchValue < 0)
             {
                 SwitchToWeapon(-1);
             }

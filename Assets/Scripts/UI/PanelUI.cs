@@ -4,7 +4,7 @@ using UnityEngine;
 
 #endregion
 
-public class Menu : MonoBehaviour
+public class PanelUI : MonoBehaviour
 {
     public string menuName;
     public bool open;

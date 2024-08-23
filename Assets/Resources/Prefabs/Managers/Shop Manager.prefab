@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4287505492124625667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4899473860029063750}
+  - component: {fileID: 6655736499931431534}
+  - component: {fileID: 8383873611586133256}
+  m_Layer: 0
+  m_Name: Shop Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4899473860029063750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4287505492124625667}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6655736499931431534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4287505492124625667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cddb73d889754798abd2f0686b8b629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dontDestroyOnLoad: 0
+  m_shopItems:
+  - Name: Block
+    Details: Blocks the path
+    Prefab: {fileID: 3672779323813650105, guid: ff14b5898f2dc4fb6a775279048de592,
+      type: 3}
+    Icon: {fileID: 0}
+    Cost: 0
+    Quantity: 1
+    ItemType: 0
+  - Name: Spikes
+    Details: Immobalize
+    Prefab: {fileID: 1029278469141272373, guid: ea9c98b551b7e4a559b1bd1996fc2d2f,
+      type: 3}
+    Icon: {fileID: 0}
+    Cost: 3
+    Quantity: 1
+    ItemType: 0
+  - Name: Firepit
+    Details: Burn
+    Prefab: {fileID: 7275402095292909995, guid: 79754482d83364aeaa2688519f22320f,
+      type: 3}
+    Icon: {fileID: 0}
+    Cost: 2
+    Quantity: 1
+    ItemType: 0
+  - Name: Crossbow
+    Details: Fast
+    Prefab: {fileID: 2487558655328968875, guid: 8ccd7ca46eab04bbdba485645635c814,
+      type: 3}
+    Icon: {fileID: 0}
+    Cost: 1
+    Quantity: 1
+    ItemType: 0
+  - Name: Cannon
+    Details: Explosion
+    Prefab: {fileID: 7773144979368894186, guid: 861edbb1fe4104cd4b484772c496fd14,
+      type: 3}
+    Icon: {fileID: 0}
+    Cost: 1
+    Quantity: 1
+    ItemType: 0
+  - Name: Arrow
+    Details: 10 Arrows
+    Prefab: {fileID: 1921194892290325215, guid: dcefd0314825b4bbba4285a315118956,
+      type: 3}
+    Icon: {fileID: 0}
+    Cost: 1
+    Quantity: 10
+    ItemType: 2
+  - Name: Bullet
+    Details: 10 Bullets
+    Prefab: {fileID: 1921194892290325215, guid: dcefd0314825b4bbba4285a315118956,
+      type: 3}
+    Icon: {fileID: 0}
+    Cost: 1
+    Quantity: 10
+    ItemType: 2
+--- !u!114 &8383873611586133256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4287505492124625667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2475c72f34c34ecfa679d098207e912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shopManager: {fileID: 6655736499931431534}
+  m_shopPanel: {fileID: 0}
+  m_shopItemPrefab: {fileID: 4238775038371749058, guid: 62993b7425b39411b8d81284cfcd4edc,
+    type: 3}

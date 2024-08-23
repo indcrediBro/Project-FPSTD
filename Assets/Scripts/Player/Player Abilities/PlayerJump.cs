@@ -19,6 +19,8 @@ public class PlayerJump : MonoBehaviour
 
     public void Jump(bool _jumpInput)
     {
+        if (GameReferences.Instance.m_IsPaused) return;
+
         m_isGrounded = m_stats.IsGrounded();
         ApplyGroundedForce();
 
@@ -28,7 +30,7 @@ public class PlayerJump : MonoBehaviour
         {
             DoJump();
         }
-        
+
         ApplyGravity();
         m_stats.GetCharacterControllerComponent().Move(m_velocity * Time.deltaTime);
     }

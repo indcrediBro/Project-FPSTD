@@ -11,14 +11,15 @@ public class InputManager : Singleton<InputManager>
 
     [HideInInspector] public Vector2 m_MoveInput;
     [HideInInspector] public Vector2 m_LookInput;
-    [HideInInspector] public float m_SwitchWeaponInput;
+    [HideInInspector] public InputAction m_SwitchWeaponInput;
     [HideInInspector] public bool m_SprintInput;
     [HideInInspector] public bool m_DodgeInput;
-    [HideInInspector] public bool m_ReloadInput;
+    [HideInInspector] public InputAction m_ReloadInput;
     [HideInInspector] public InputAction m_JumpInput;
     [HideInInspector] public InputAction m_InteractInput;
     [HideInInspector] public InputAction m_PauseInput;
     [HideInInspector] public InputAction m_AttackInput;
+    [HideInInspector] public InputAction m_BuildInput;
 
     protected override void Awake()
     {
@@ -34,12 +35,13 @@ public class InputManager : Singleton<InputManager>
         m_inputActions.PlayerInputMap.Look.performed += ctx => m_LookInput = ctx.ReadValue<Vector2>();
         m_inputActions.PlayerInputMap.Sprint.performed += ctx => m_SprintInput = ctx.ReadValueAsButton();
         m_inputActions.PlayerInputMap.Dodge.performed += ctx => m_DodgeInput = ctx.ReadValueAsButton();
-        m_inputActions.PlayerInputMap.Reload.performed += ctx => m_ReloadInput = ctx.ReadValueAsButton();
-        m_inputActions.PlayerInputMap.SwitchWeapon.performed += ctx => m_SwitchWeaponInput = ctx.ReadValue<float>();
+        m_ReloadInput = m_inputActions.PlayerInputMap.Reload;
+        m_SwitchWeaponInput = m_inputActions.PlayerInputMap.SwitchWeapon;
         m_InteractInput = m_inputActions.PlayerInputMap.Interact;
         m_PauseInput = m_inputActions.PlayerInputMap.Pause;
         m_JumpInput = m_inputActions.PlayerInputMap.Jump;
         m_AttackInput = m_inputActions.PlayerInputMap.Attack;
+        m_BuildInput = m_inputActions.PlayerInputMap.Build;
     }
 
     private void OnEnable()

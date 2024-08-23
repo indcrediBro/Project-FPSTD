@@ -77,7 +77,7 @@ public class GhostManager : MonoBehaviour
             }
         }
 
-        m_currentGhostObject.transform.position = _position;
+        m_currentGhostObject.transform.position = _position; 
         m_currentGhostObject.SetActive(true);
     }
 

@@ -21,6 +21,8 @@ public class PlayerSprint : MonoBehaviour
     // Fix this
     public void Sprint(bool _sprintInput, Vector2 _moveInput, bool _isGrounded)
     {
+        if (GameReferences.Instance.m_IsPaused) return;
+
         if (_sprintInput && _moveInput.magnitude > 0 && _isGrounded)
         {
             m_sprintTimer += Time.deltaTime;
@@ -28,7 +30,7 @@ public class PlayerSprint : MonoBehaviour
             {
                 if (m_useStamina)
                 {
-                    if( m_stats.GetStamina() > m_staminaCost)
+                    if (m_stats.GetStamina() > m_staminaCost)
                     {
                         m_stats.GetPlayerStaminaComponent().UseStamina(m_staminaCost);
                         m_stats.SetSprintMultiplier(2f);

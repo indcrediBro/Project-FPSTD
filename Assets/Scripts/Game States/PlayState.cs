@@ -20,14 +20,17 @@ public class PlayState : IGameState
 
     public void Update()
     {
+        MenuManager.Instance.ShowHUD();
         if (InputManager.Instance.m_PauseInput.WasReleasedThisFrame() && GameReferences.Instance.m_IsPaused == false)
         {
             m_gameManager.SetState(new PauseState(m_gameManager));
         }
-
-        if (GameReferences.Instance.m_PlayerStats.GetPlayerHealthComponent().IsDead() || GameReferences.Instance.m_PlayerBase.IsDead())
+        if (GameReferences.Instance.m_PlayerStats && GameReferences.Instance.m_PlayerBase)
         {
-            m_gameManager.SetState(new GameOverState(m_gameManager));
+            if (GameReferences.Instance.m_PlayerStats.GetPlayerHealthComponent().IsDead() || GameReferences.Instance.m_PlayerBase.IsDead())
+            {
+                m_gameManager.SetState(new GameOverState(m_gameManager));
+            }
         }
     }
 

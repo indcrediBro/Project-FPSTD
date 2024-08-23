@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-
 public class Bow : Weapon
 {
+    //TODO: Have a seperate abstract class for Charged Weapons
+
     [SerializeField] private Transform m_arrowIdlePosition;
     [SerializeField] private Transform m_arrowChargedPosition;
     [SerializeField] private GameObject m_arrowPrefab;

@@ -27,6 +27,8 @@ public class PlayerStamina : MonoBehaviour
 
     private void Update()
     {
+        if (GameReferences.Instance.m_IsPaused) return;
+
         if (m_stats.IsGrounded() && !InputManager.Instance.m_SprintInput && m_dodge.CanDodge())
         {
             EnableStaminaRegeneration();

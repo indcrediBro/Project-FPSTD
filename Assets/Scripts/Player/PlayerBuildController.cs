@@ -9,8 +9,7 @@ public class PlayerBuildController : MonoBehaviour
 
     private void Update()
     {
-        //TODO: Use New Input System
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (InputManager.Instance.m_BuildInput.WasPerformedThisFrame())
         {
             if (m_stats.IsInBuilderMode())
             {
@@ -30,11 +29,13 @@ public class PlayerBuildController : MonoBehaviour
             return;
         }
 
-        if (InputManager.Instance.m_SwitchWeaponInput < 0)
+        float switchValue = InputManager.Instance.m_SwitchWeaponInput.ReadValue<float>();
+
+        if (InputManager.Instance.m_SwitchWeaponInput.WasPerformedThisFrame() && switchValue < 0)
         {
             SwitchToBuildable(-1);
         }
-        if (InputManager.Instance.m_SwitchWeaponInput > 0)
+        if (InputManager.Instance.m_SwitchWeaponInput.WasPerformedThisFrame() && switchValue > 0)
         {
             SwitchToBuildable(1);
         }
@@ -58,7 +59,7 @@ public class PlayerBuildController : MonoBehaviour
 
     public string GetActiveBuildableName()
     {
-        if(InventoryManager.Instance.GetBuildableInventoryItems().Count < 1)
+        if (InventoryManager.Instance.GetBuildableInventoryItems().Count < 1)
             return "";
         return InventoryManager.Instance.GetBuildableInventoryItems()[m_currentBuildableIndex].Name;
     }

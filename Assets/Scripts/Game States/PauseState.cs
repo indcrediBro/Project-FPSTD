@@ -16,6 +16,8 @@ public class PauseState : IGameState
         Cursor.visible = true;
         Time.timeScale = 0;
         GameReferences.Instance.m_IsPaused = true;
+        MenuManager.Instance.HideHUD();
+        MenuManager.Instance.OpenMenu("PauseMenu");
     }
 
     public void Update()
@@ -28,6 +30,6 @@ public class PauseState : IGameState
 
     public void Exit()
     {
-
+        MenuManager.Instance.ShowHUD();
     }
 }

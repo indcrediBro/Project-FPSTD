@@ -15,6 +15,8 @@ public class PlayerLook : MonoBehaviour
 
     public void Look(Vector2 _lookInput)
     {
+        if (GameReferences.Instance.m_IsPaused) return;
+
         float mouseX = _lookInput.x * m_stats.GetLookSensitivity() * Time.deltaTime;
         float mouseY = _lookInput.y * m_stats.GetLookSensitivity() * Time.deltaTime;
 

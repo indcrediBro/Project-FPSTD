@@ -17,6 +17,8 @@ public class PlayerHealth : Health
 
     private void Update()
     {
+        if (GameReferences.Instance.m_IsPaused) return;
+
         if (m_regenerateRate > 0 && m_regenerateAmount > 0 && m_playerHealth.GetCurrentHealthValue() < m_playerHealth.GetMaxHealthValue())
         {
             Regenerate();

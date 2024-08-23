@@ -14,7 +14,10 @@ public class GameOverState : IGameState
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
-
+        Time.timeScale = 0;
+        GameReferences.Instance.m_IsPaused = true;
+        MenuManager.Instance.HideHUD();
+        MenuManager.Instance.OpenMenu("GameOverPanel");
         Debug.Log("Game Over State!");
     }
 
@@ -24,5 +27,6 @@ public class GameOverState : IGameState
 
     public void Exit()
     {
+        ScoreManager.Instance.ResetScore();
     }
 }

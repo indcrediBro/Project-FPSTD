@@ -23,6 +23,8 @@ public class PlayerInteract : MonoBehaviour
 
     private void Update()
     {
+        if (GameReferences.Instance.m_IsPaused) return;
+
         HandleInteract();
     }
 

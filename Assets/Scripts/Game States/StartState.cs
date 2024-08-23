@@ -17,21 +17,24 @@ public class StartState : IGameState
 
     public void Update()
     {
-        if (GameReferences.Instance.m_PlayerStats.GetPlayerHealthComponent().IsDead() || GameReferences.Instance.m_PlayerBase.IsDead())
-        {
-            m_gameManager.SetState(new GameOverState(m_gameManager));
-        }
+        //if (GameReferences.Instance.m_PlayerStats.GetPlayerHealthComponent().IsDead() || GameReferences.Instance.m_PlayerBase.IsDead())
+        //{
+        //    m_gameManager.SetState(new GameOverState(m_gameManager));
+        //}
     }
 
     public void Exit()
     {
-
+        MenuManager.Instance.ShowHUD();
     }
 
     private void InitializeGameSettings()
     {
+
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
+        MenuManager.Instance.HideHUD();
+        MenuManager.Instance.OpenMenu("MainMenu");
     }
 
 

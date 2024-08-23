@@ -26,7 +26,8 @@ public class Gun : Weapon
 
     private void OnEnable()
     {
-        if(HasBullets()) UpdateAmmoUI();
+        m_isReloading = false;
+        if (HasBullets()) UpdateAmmoUI();
     }
 
     private void Start()
@@ -42,6 +43,11 @@ public class Gun : Weapon
             if (InputManager.Instance.m_AttackInput.WasPerformedThisFrame() && !m_isReloading && m_canFire)
             {
                 Attack();
+            }
+
+            if (InputManager.Instance.m_ReloadInput.WasReleasedThisFrame() && !m_isReloading)
+            {
+                if (m_currentAmmo < m_maxAmmo) StartCoroutine(ReloadCO());
             }
         }
     }
@@ -60,7 +66,7 @@ public class Gun : Weapon
         {
             if (HasBullets())
             {
-                m_playerUI.UpdateAmmoText(m_currentAmmo+"/"+(InventoryManager.Instance.GetAmmoItem("Bullet").Quantity).ToString());
+                m_playerUI.UpdateAmmoText(m_currentAmmo + "/" + (InventoryManager.Instance.GetAmmoItem("Bullet").Quantity).ToString());
             }
             else
             {
@@ -101,6 +107,7 @@ public class Gun : Weapon
     {
         m_isReloading = true;
 
+        PlayAttackAnimation("Reload");
         for (int i = 0; i < m_maxAmmo; i++)
         {
             if (HasBullets())
@@ -108,8 +115,7 @@ public class Gun : Weapon
                 InventoryManager.Instance.UseAmmoItem("Bullet");
                 m_currentAmmo++;
 
-                PlayAttackAnimation("Reload");
-                yield return new WaitForSeconds(m_reloadTime / m_maxAmmo);
+                yield return new WaitForSeconds((m_reloadTime / m_maxAmmo) / 2);
                 UpdateAmmoUI();
             }
             else

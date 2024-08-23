@@ -8,6 +8,7 @@ public class PlayerUIController : MonoBehaviour
     [SerializeField] private Slider m_staminaBar;
     [SerializeField] private TMP_Text m_ammoText;
     [SerializeField] private TMP_Text m_currencyText;
+    [SerializeField] private TMP_Text m_scoreText;
 
     private PlayerStats m_playerStats;
     private PlayerHealth m_playerHealth;
@@ -34,6 +35,7 @@ public class PlayerUIController : MonoBehaviour
         UpdateStaminaBar();
         UpdateCurrencyText();
         UpdateAmmoText();
+        UpdateScoreText();
     }
 
     private void InitializeHealthBar()
@@ -78,11 +80,19 @@ public class PlayerUIController : MonoBehaviour
         {
             if (m_playerStats.IsInBuilderMode())
             {
-                if(InventoryManager.Instance.GetBuildableItem(m_playerBuilder.GetActiveBuildableName()) != null)
+                if (InventoryManager.Instance.GetBuildableItem(m_playerBuilder.GetActiveBuildableName()) != null)
                     m_ammoText.text = InventoryManager.Instance.GetBuildableItem(m_playerBuilder.GetActiveBuildableName()).Quantity.ToString();
                 else
                     m_ammoText.text = "0";
             }
+        }
+    }
+
+    private void UpdateScoreText()
+    {
+        if (m_scoreText)
+        {
+            m_scoreText.text = ScoreManager.Instance.GetScore().ToString();
         }
     }
 

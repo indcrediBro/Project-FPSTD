@@ -26,6 +26,8 @@ public class PlayerDodge : MonoBehaviour
 
     public void Dodge(Vector2 _moveInput, bool _dodgeInput)
     {
+        if (GameReferences.Instance.m_IsPaused) return;
+
         if (_dodgeInput && m_canDodge)
         {
             if (m_useStamina && m_stats.GetStamina() > m_staminaCost)

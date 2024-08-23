@@ -21,6 +21,9 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
 
         if (m_dontDestroyOnLoad)
+        {
+            transform.SetParent(null);
             DontDestroyOnLoad(gameObject);
+        }
     }
 }
