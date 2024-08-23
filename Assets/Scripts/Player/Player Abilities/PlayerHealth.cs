@@ -33,4 +33,10 @@ public class PlayerHealth : Health
             m_currentRegenTime = m_regenerateRate;
         }
     }
+
+    protected override void Die(float _timeBeforeRemoving)
+    {
+        base.Die(_timeBeforeRemoving);
+        GameStateManager.Instance.SetState(new GameOverState(GameStateManager.Instance));
+    }
 }

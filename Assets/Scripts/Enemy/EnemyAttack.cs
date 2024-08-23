@@ -16,12 +16,16 @@ public class EnemyAttack : MonoBehaviour
         yield return new WaitForSeconds(_timeToWait);
         if (_target.CompareTag("Player"))
         {
-            GameReferences.Instance.m_PlayerStats.GetPlayerHealthComponent().TakeDamage(m_attackDamage);
+            if (!GameReferences.Instance.m_PlayerStats.GetPlayerHealthComponent().IsDead())
+                GameReferences.Instance.m_PlayerStats.GetPlayerHealthComponent().TakeDamage(m_attackDamage);
         }
         else if (_target.CompareTag("PlayerBase"))
         {
-            transform.LookAt(_target);
-            GameReferences.Instance.m_PlayerBase.TakeDamage(m_attackDamage);
+            if (!GameReferences.Instance.m_PlayerBase.IsDead())
+            {
+                transform.LookAt(_target);
+                GameReferences.Instance.m_PlayerBase.TakeDamage(m_attackDamage);
+            }
         }
     }
 }
