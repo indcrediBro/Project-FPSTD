@@ -15,7 +15,16 @@ ij_visual_guides =
 ij_wrap_on_typing = true
 
 # ReSharper properties
-resharper_csharp_indent_size = 24
+resharper_cpp_indent_size = 24
+resharper_csharp_indent_size = 4
+resharper_fsharp_indent_size = 24
+resharper_html_indent_size = 24
+resharper_resx_indent_size = 24
+resharper_shaderlab_indent_size = 24
+resharper_T4_indent_size = 24
+resharper_vb_indent_size = 24
+resharper_xmldoc_indent_size = 24
+resharper_xml_indent_size = 24
 
 [*.css]
 ij_css_align_closing_brace_with_properties = false
@@ -619,5 +628,5 @@ ij_yaml_spaces_within_brackets = true
 
 [*.cs]
 indent_style = space
-indent_size = 24
+indent_size = 4
 tab_width = 4
