@@ -98,7 +98,7 @@ public class PlayerUIController : MonoBehaviour
     {
         if (m_currencyText)
         {
-            m_currencyText.text = "$" + EconomyManager.Instance.GetPlayerMoney().ToString();
+            m_currencyText.text = EconomyManager.Instance.GetPlayerMoney().ToString();
         }
     }
 }

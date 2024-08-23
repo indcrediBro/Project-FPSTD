@@ -6,6 +6,7 @@ public class DeadState : IEnemyState
 {
     public void EnterState(EnemyStateMachine _stateMachine)
     {
+        EnemyManager.Instance.ReduceActiveEnemyCount(1);
         _stateMachine.m_Stats.GetCollider().enabled = false;
         _stateMachine.m_Stats.GetRigidbody().isKinematic = true;
         GameObject coin = ObjectPoolManager.Instance.GetPooledObject("Coin");

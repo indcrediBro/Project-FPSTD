@@ -44,7 +44,7 @@ public class Coin : Interactable
         transform.DOMoveY(transform.position.y + 1f, 1f);
         transform.DOLocalRotate(new Vector3(0f, 360f*2, 0f), 2f);
         yield return new WaitForSeconds(1f);
-        transform.DOMove(Camera.main.transform.position, 2f);
+        transform.DOMove(GameReferences.Instance.m_PlayerStats.transform.position, 2f);
         yield return new WaitForSeconds(3f);
         gameObject.SetActive(false);
         EconomyManager.Instance.EarnMoney(1);

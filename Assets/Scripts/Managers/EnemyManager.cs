@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
+#region
     public enum EnemyNames
     {
         MINION,
@@ -22,8 +23,11 @@ public class EnemyManager : Singleton<EnemyManager>
         public void AddEnemyToList(GameObject _enemy) { m_enemyList.Add(_enemy); }
         public void RemoveEnemyToList(GameObject _enemy) { m_enemyList.Remove(_enemy); }
     }
+#endregion
 
     [SerializeField] private ActiveEnemyCollection[] m_activeEnemyCollections;
+    public int m_TotalActiveEnemies;
+    private int m_enemiesLeft;
 
     public void AddEnemyToList(GameObject _enemy, EnemyNames _enemyName)
     {
@@ -48,16 +52,28 @@ public class EnemyManager : Singleton<EnemyManager>
         return activeEnemyCollection;
     }
 
-    //TODO: Use wave enemy count
+    public void ResetEnemyCounter(int _enemyCount)
+    {
+        m_TotalActiveEnemies = _enemyCount;
+        m_enemiesLeft = m_TotalActiveEnemies;
+    }
+
+    public void ReduceActiveEnemyCount(int _valueToReduce)
+    {
+        m_enemiesLeft -= _valueToReduce;
+    }
+
     public bool AreAllEnemiesDefeated()
     {
-        foreach (ActiveEnemyCollection collection in m_activeEnemyCollections)
-        {
-            if (collection.GetEnemyList().Any(enemy => enemy.activeInHierarchy))
-            {
-                return false;
-            }
-        }
-        return true;
+        return m_enemiesLeft <= 0;
+
+        //foreach (ActiveEnemyCollection collection in m_activeEnemyCollections)
+        //{
+        //    if (collection.GetEnemyList().Any(enemy => enemy.activeInHierarchy))
+        //    {
+        //        return false;
+        //    }
+        //}
+        //return true;
     }
 }

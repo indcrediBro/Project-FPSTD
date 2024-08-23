@@ -15,8 +15,8 @@ public class WaveManager : Singleton<WaveManager>
     [SerializeField] private List<EnemyType> m_enemyTypes;
     [SerializeField] private List<Transform> m_spawnPoints;
     [SerializeField] private float m_checkInterval = 1f;
-    // For Debugging
-    [SerializeField] private bool startWaveOnGameStart = true;
+    [SerializeField] private int m_initialEnemies = 3;
+    [SerializeField] private bool m_autoWaveStart = true;
 
     private bool m_isWaveActive;
     private int m_currentWave;
@@ -24,7 +24,7 @@ public class WaveManager : Singleton<WaveManager>
 
     private void Start()
     {
-        if (startWaveOnGameStart) StartWave();
+        if (m_autoWaveStart) StartWave();
     }
 
     public void StartWave()
@@ -37,7 +37,8 @@ public class WaveManager : Singleton<WaveManager>
 
     private IEnumerator SpawnWave()
     {
-        int enemiesToSpawn = m_currentWave * 5;
+        int enemiesToSpawn = m_initialEnemies + m_currentWave;
+        EnemyManager.Instance.ResetEnemyCounter(enemiesToSpawn);
 
         for (int i = 0; i < enemiesToSpawn; i++)
         {
@@ -95,7 +96,7 @@ public class WaveManager : Singleton<WaveManager>
     {
         m_isWaveActive = false;
         UpgradeEnemies();
-        if (startWaveOnGameStart) StartWave();
+        if (m_autoWaveStart) StartWave();
     }
 
     public void UpgradeEnemies()
