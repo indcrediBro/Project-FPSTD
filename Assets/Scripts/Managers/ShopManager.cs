@@ -30,7 +30,7 @@ public class ShopManager : Singleton<ShopManager>
             {
                 InventoryManager.Instance.AddBuildableItem(item.Name, item.Prefab, item.Quantity);
             }
-            else if(item.ItemType == ItemType.Ammo)
+            else if (item.ItemType == ItemType.Ammo)
             {
                 InventoryManager.Instance.AddAmmoItem(item.Name, item.Prefab, item.Quantity);
             }
@@ -43,11 +43,11 @@ public class ShopManager : Singleton<ShopManager>
                 InventoryManager.Instance.AddConsumeableItem(item.Name, item.Prefab, item.Quantity);
             }
 
-            Debug.Log("Item purchased: " + item.Name);
+            ShopUIManager.Instance.DisplayPurchases("Item purchased: " + item.Name);
         }
         else
         {
-            Debug.Log("Not enough currency or item not found.");
+            ShopUIManager.Instance.DisplayPurchases("Not enough currency..!");
         }
     }
 

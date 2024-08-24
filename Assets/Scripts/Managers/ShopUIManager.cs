@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ShopUIManager : MonoBehaviour
+public class ShopUIManager : Singleton<ShopUIManager>
 {
     [SerializeField] private ShopManager m_shopManager;
     [SerializeField] private Transform m_shopPanel;
     [SerializeField] private GameObject m_shopItemPrefab;
-    //[SerializeField] private TMP_Text m_playerCurrencyText;
+    [SerializeField] private TMP_Text m_purchaseText;
 
     private void Start()
     {
@@ -30,5 +30,18 @@ public class ShopUIManager : MonoBehaviour
 
             shopItemUI.InitializeShopItemUI(item.Name, item.Details, item.Cost.ToString(), item.Icon);
         }
+    }
+
+    public void DisplayPurchases(string _details)
+    {
+        StartCoroutine(DisplayPurchaseDetailsCO(_details));
+    }
+
+    private IEnumerator DisplayPurchaseDetailsCO(string _details)
+    {
+        m_purchaseText.text = "";
+        m_purchaseText.text = _details;
+        yield return new WaitForSeconds(1f);
+        m_purchaseText.text = "";
     }
 }

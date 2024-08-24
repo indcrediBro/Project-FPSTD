@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ShopInteractionController : Interactable
 {
-    [SerializeField] private GameObject m_shopUI;
-
     private void LateUpdate()
     {
         if (m_interactGFX && m_interactGFX.activeSelf)
@@ -16,7 +14,6 @@ public class ShopInteractionController : Interactable
 
     public override void Interact()
     {
-        m_shopUI.SetActive(true);
         GameStateManager.Instance.SetState(new ShopState(GameStateManager.Instance));
     }
 

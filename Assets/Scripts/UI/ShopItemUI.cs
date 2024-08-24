@@ -18,10 +18,10 @@ public class ShopItemUI : MonoBehaviour
     public void InitializeShopItemUI(string _name, string _description, string _cost, Sprite _icon)
     {
         m_itemNameText.text = _name;
-        m_itemCostText.text = _description;
+        m_itemDescriptionText.text = _description;
         m_itemCostText.text = _cost;
         m_itemIconImage.sprite = _icon;
         m_buyButton.onClick.AddListener(() => ShopManager.Instance.BuyItem(_name));
-        if(AudioManager.Instance != null) m_buyButton.onClick.AddListener(() => AudioManager.Instance.PlaySound(m_purchaseSound));
+        if (AudioManager.Instance != null) m_buyButton.onClick.AddListener(() => AudioManager.Instance.PlaySound(m_purchaseSound));
     }
 }
