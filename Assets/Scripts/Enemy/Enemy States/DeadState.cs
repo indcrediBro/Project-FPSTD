@@ -10,20 +10,29 @@ public class DeadState : IEnemyState
         EnemyManager.Instance.ReduceActiveEnemyCount(1);
         _stateMachine.m_Stats.GetCollider().enabled = false;
         _stateMachine.m_Stats.GetRigidbody().isKinematic = true;
-        GameObject coin = ObjectPoolManager.Instance.GetPooledObject("Coin");
-        coin.transform.position = _stateMachine.transform.position;
-        coin.SetActive(true);
+        SpawnRandomNumberOfCoins(_stateMachine.transform);
         _stateMachine.m_Animations.PlayAnimation(EnemyState.Dead);
     }
 
     public void UpdateState(EnemyStateMachine _stateMachine)
     {
-        // Possible logic for corpse decay or despawning
+
     }
 
     public void ExitState(EnemyStateMachine _stateMachine)
     {
-        // Cleanup logic if needed before removing the enemy
 
+    }
+
+    private void SpawnRandomNumberOfCoins(Transform _transform)
+    {
+        int r = RandomNumber.Instance.NextInt(1, 5);
+
+        for (int i = 0; i < r; i++)
+        {
+            GameObject coin = ObjectPoolManager.Instance.GetPooledObject("Coin");
+            coin.transform.position = _transform.position;
+            coin.SetActive(true);
+        }
     }
 }

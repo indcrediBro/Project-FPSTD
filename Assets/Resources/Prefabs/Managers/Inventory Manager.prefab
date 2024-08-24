@@ -48,4 +48,6 @@ MonoBehaviour:
   m_buildableInventoryItems: []
   m_ammoInventoryItems: []
   m_consumeableInventoryItems: []
+  m_allWeapons:
+  - {fileID: 0}
   m_playerWeaponController: {fileID: 0}

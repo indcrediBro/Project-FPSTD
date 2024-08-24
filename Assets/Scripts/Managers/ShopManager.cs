@@ -36,11 +36,27 @@ public class ShopManager : Singleton<ShopManager>
             }
             else if (item.ItemType == ItemType.Weapon)
             {
-                InventoryManager.Instance.AddWeaponItem(item.Prefab);
+                if (InventoryManager.Instance.GetWeaponItem(item.Name) == null)
+                {
+                    InventoryManager.Instance.AddWeaponItem(item.Prefab);
+                }
+                else
+                {
+                    InventoryManager.Instance.UpgradeWeaponItem(item.Name);
+                }
             }
             else
             {
-                InventoryManager.Instance.AddConsumeableItem(item.Name, item.Prefab, item.Quantity);
+                if (item.Name == "Player Health")
+                {
+                    PlayerHealth pHealth = GameReferences.Instance.m_PlayerStats.GetPlayerHealthComponent();
+                    pHealth.SetMaxHealth(pHealth.GetMaxHealthValue() * (1 + 0.2f));
+                }
+                else
+                {
+                    PlayerBaseHealth bHealth = GameReferences.Instance.m_PlayerBase;
+                    bHealth.SetMaxHealth(bHealth.GetMaxHealthValue() * 1.2f);
+                }
             }
 
             ShopUIManager.Instance.DisplayPurchases("Item purchased: " + item.Name);

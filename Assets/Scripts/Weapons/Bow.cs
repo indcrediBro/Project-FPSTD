@@ -8,8 +8,7 @@ public class Bow : Weapon
     [SerializeField] private Transform m_arrowChargedPosition;
     [SerializeField] private GameObject m_arrowPrefab;
     [SerializeField] private float m_maxChargeTime = 2f;
-    [SerializeField] private float m_maxDamage = 50f;
-    [SerializeField] private float m_maxSpeed = 50f;
+    [SerializeField] private float m_maxSpeed = 30f;
 
     private GameObject m_currentArrow;
     private float m_currentChargeTime = 0f;
@@ -36,7 +35,7 @@ public class Bow : Weapon
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (HasArrows() && !m_currentArrow)
         {
@@ -104,7 +103,7 @@ public class Bow : Weapon
     {
         if (m_currentArrow != null)
         {
-            float shakeIntensity = Mathf.Lerp(0f, 0.001f, chargeRatio);
+            float shakeIntensity = Mathf.Lerp(0f, 0.002f, chargeRatio);
             Vector3 shakeOffset = Random.insideUnitSphere * shakeIntensity;
             m_currentArrow.transform.localPosition += shakeOffset;
         }
@@ -119,7 +118,7 @@ public class Bow : Weapon
 
             float chargeRatio = Mathf.Clamp01(m_currentChargeTime / m_maxChargeTime);
             float arrowSpeed = Mathf.Lerp(10f, m_maxSpeed, chargeRatio);
-            float arrowDamage = Mathf.Lerp(10f, m_maxDamage, chargeRatio);
+            float arrowDamage = Mathf.Lerp(10f, GetCurrentDamage(), chargeRatio);
 
             arrowRb.velocity = m_currentArrow.transform.forward * arrowSpeed;
 
@@ -135,7 +134,7 @@ public class Bow : Weapon
             StartCharging();
         }
 
-        if (InputManager.Instance.m_AttackInput.IsPressed() && m_isCharging)
+        if (m_isCharging)
         {
             ContinueCharging();
         }

@@ -14,6 +14,7 @@ public class InventoryManager : Singleton<InventoryManager>
     [SerializeField] private List<InventoryItem> m_buildableInventoryItems;
     [SerializeField] private List<InventoryItem> m_ammoInventoryItems;
     [SerializeField] private List<InventoryItem> m_consumeableInventoryItems;
+    [SerializeField] private List<Weapon> m_allWeapons;
     [SerializeField] private PlayerWeaponController m_playerWeaponController;
 
     public InventoryItem GetBuildableItem(string _itemName)
@@ -27,6 +28,10 @@ public class InventoryManager : Singleton<InventoryManager>
     public InventoryItem GetConsumeableItem(string _itemName)
     {
         return m_consumeableInventoryItems.Find(item => item.Name == _itemName && item.Quantity > 0);
+    }
+    public Weapon GetWeaponItem(string _weaponName)
+    {
+        return m_allWeapons.Find(weapon => weapon.m_weaponName == _weaponName);
     }
 
     public List<InventoryItem> GetBuildableInventoryItems()
@@ -84,6 +89,7 @@ public class InventoryManager : Singleton<InventoryManager>
     public void AddWeaponItem(GameObject _prefab)
     {
         GameObject newWeapon = Instantiate(_prefab);
+        m_allWeapons.Add(newWeapon.GetComponent<Weapon>());
         m_playerWeaponController.AddWeapon(newWeapon);
     }
 
@@ -124,6 +130,8 @@ public class InventoryManager : Singleton<InventoryManager>
         }
     }
 
-
-
+    public void UpgradeWeaponItem(string _weaponName)
+    {
+        GetWeaponItem(_weaponName).UpgradeLevel();
+    }
 }

@@ -20,34 +20,45 @@ public class PlayerWeaponController : MonoBehaviour
         if (!m_currentWeapon)
         { return; }
 
+        if (GameReferences.Instance.m_IsPaused) { return; }
+
         if (!m_stats.IsInBuilderMode())
         {
-            if (m_currentWeapon)
-            {
-                m_currentWeapon.SetActive(true);
-            }
-            else
-            {
-                EquipWeapon(m_currentWeaponIndex);
-            }
-
-            float switchValue = InputManager.Instance.m_SwitchWeaponInput.ReadValue<float>();
-            if (InputManager.Instance.m_SwitchWeaponInput.WasPerformedThisFrame() && switchValue > 0)
-            {
-                SwitchToWeapon(1);
-            }
-
-            if (InputManager.Instance.m_SwitchWeaponInput.WasPerformedThisFrame() && switchValue < 0)
-            {
-                SwitchToWeapon(-1);
-            }
+            HandleEquipement();
+            HandleWeaponSwitching();
         }
         else
         {
             if (m_currentWeapon && m_currentWeapon.activeInHierarchy)
             {
-                m_currentWeapon.SetActive(false);
+                UnequipWeapon();
             }
+        }
+    }
+
+    private void HandleWeaponSwitching()
+    {
+        float switchValue = InputManager.Instance.m_SwitchWeaponInput.ReadValue<float>();
+        if (InputManager.Instance.m_SwitchWeaponInput.WasPerformedThisFrame() && switchValue > 0)
+        {
+            SwitchToWeapon(1);
+        }
+
+        if (InputManager.Instance.m_SwitchWeaponInput.WasPerformedThisFrame() && switchValue < 0)
+        {
+            SwitchToWeapon(-1);
+        }
+    }
+
+    private void HandleEquipement()
+    {
+        if (m_currentWeapon)
+        {
+            m_currentWeapon.SetActive(true);
+        }
+        else
+        {
+            EquipWeapon(m_currentWeaponIndex);
         }
     }
 
@@ -81,7 +92,14 @@ public class PlayerWeaponController : MonoBehaviour
         Transform newWeapon = _weapon.transform;
         newWeapon.SetParent(m_weaponRootTF);
         newWeapon.localPosition = Vector3.zero;
+        newWeapon.localRotation = Quaternion.identity;
+        newWeapon.localScale = Vector3.one;
         m_allWeapons.Add(newWeapon.gameObject);
         EquipWeapon(m_allWeapons.IndexOf(newWeapon.gameObject));
+    }
+
+    public Weapon GetActiveWeapon()
+    {
+        return m_currentWeapon.GetComponent<Weapon>();
     }
 }

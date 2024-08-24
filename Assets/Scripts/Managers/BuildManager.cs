@@ -13,6 +13,8 @@ public class BuildManager : Singleton<BuildManager>
 
     private void Update()
     {
+        if (GameReferences.Instance.m_IsGameOver) return;
+
         HandleGhostPlacer();
     }
 
@@ -50,7 +52,7 @@ public class BuildManager : Singleton<BuildManager>
 
             if (isValidPlacement && InputManager.Instance.m_AttackInput.WasReleasedThisFrame())
             {
-                PlaceObject(target,selectedItem.Prefab);
+                PlaceObject(target, selectedItem.Prefab);
                 m_inventoryManager.UseBuildableItem(m_selectedObject);
                 m_ghostManager.HideGhost();
             }

@@ -24,10 +24,9 @@ public class Sword : Weapon
 
     private void Update()
     {
-        if (!CanAttack())
-            return;
-        if (InputManager.Instance.m_AttackInput.WasPressedThisFrame())
-            PerformComboAttack();
+        if (!CanAttack()) return;
+
+        if (InputManager.Instance.m_AttackInput.WasPressedThisFrame()) PerformComboAttack();
     }
 
     //TODO: Use Better Detection System
@@ -38,7 +37,7 @@ public class Sword : Weapon
         {
             if (enemy.TryGetComponent(out EnemyStats enemyStats))
             {
-                enemyStats.GetHealth().TakeDamage(m_damage * (m_comboCounter + 1));
+                enemyStats.GetHealth().TakeDamage(GetCurrentDamage() * (m_comboCounter + 1));
 
                 Vector3 knockbackDirection;
                 Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -52,7 +51,7 @@ public class Sword : Weapon
     private void PerformComboAttack()
     {
         DisableCanAttack();
-        m_weaponAudioSource.Play();
+        //m_weaponAudioSource.Play();
 
         m_comboCounter = (m_comboCounter + 1) % 2;
 

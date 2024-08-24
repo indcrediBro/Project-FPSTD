@@ -293,7 +293,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_interactGFX: {fileID: 5194985327242585852}
-  m_shopUI: {fileID: 3628979185003911717}
 --- !u!208 &8450380072826779499
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -327,6 +326,8 @@ MonoBehaviour:
   m_maxHealth: 10000
   m_currentHealth: 0
   m_waitTimeBeforeDeath: 0
+  m_regenerateAmount: 1
+  m_regenerateRate: 2
 --- !u!1 &4895613541154247159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,6 +1063,18 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerInteract, Assembly-CSharp
         m_MethodName: ClearInteractable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ShowHUD
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

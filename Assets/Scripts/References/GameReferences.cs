@@ -7,4 +7,5 @@ public class GameReferences : Singleton<GameReferences>
     public PlayerBaseHealth m_PlayerBase;
 
     public bool m_IsPaused;
+    public bool m_IsGameOver;
 }

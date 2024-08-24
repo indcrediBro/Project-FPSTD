@@ -11,6 +11,8 @@ public class ChasePlayerState : IEnemyState
 
     public void UpdateState(EnemyStateMachine _stateMachine)
     {
+        if (GameReferences.Instance.m_IsGameOver) return;
+
         _stateMachine.m_Movement.MoveToTarget(_stateMachine.m_PlayerTarget.position);
 
         if (_stateMachine.m_PlayerTarget)

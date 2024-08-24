@@ -5,8 +5,11 @@ using UnityEngine.UI;
 public class PlayerUIController : MonoBehaviour
 {
     [SerializeField] private Slider m_healthBar;
+    [SerializeField] private Slider m_baseHealthBar;
     [SerializeField] private Slider m_staminaBar;
     [SerializeField] private TMP_Text m_ammoText;
+    [SerializeField] private TMP_Text m_equippedText;
+    [SerializeField] private TMP_Text m_levelText;
     [SerializeField] private TMP_Text m_currencyText;
     [SerializeField] private TMP_Text m_scoreText;
 
@@ -14,6 +17,7 @@ public class PlayerUIController : MonoBehaviour
     private PlayerHealth m_playerHealth;
     private PlayerStamina m_playerStamina;
     private PlayerBuildController m_playerBuilder;
+    private PlayerWeaponController m_playerWeapon;
 
     private void Awake()
     {
@@ -21,21 +25,26 @@ public class PlayerUIController : MonoBehaviour
         m_playerHealth = m_playerStats.GetPlayerHealthComponent();
         m_playerStamina = m_playerStats.GetPlayerStaminaComponent();
         m_playerBuilder = GetComponent<PlayerBuildController>();
+        m_playerWeapon = GetComponent<PlayerWeaponController>();
     }
 
     private void Start()
     {
         InitializeHealthBar();
         InitializeStaminaBar();
+        InitializePlayerBaseHealthBar();
     }
 
     private void Update()
     {
         UpdateHealthBar();
+        UpdatePlayerBaseHealthBar();
         UpdateStaminaBar();
         UpdateCurrencyText();
-        UpdateAmmoText();
+        UpdateAmmoBuilderModeText();
         UpdateScoreText();
+        UpdateCurrentEquippedText();
+        UpdateLevelText();
     }
 
     private void InitializeHealthBar()
@@ -47,12 +56,27 @@ public class PlayerUIController : MonoBehaviour
             m_healthBar.value = m_playerHealth.GetCurrentHealthValue();
         }
     }
-
+    private void InitializePlayerBaseHealthBar()
+    {
+        if (m_baseHealthBar)
+        {
+            m_baseHealthBar.minValue = 0;
+            m_baseHealthBar.maxValue = GameReferences.Instance.m_PlayerBase.GetMaxHealthValue();
+            m_baseHealthBar.value = GameReferences.Instance.m_PlayerBase.GetCurrentHealthValue();
+        }
+    }
     private void UpdateHealthBar()
     {
         if (m_healthBar)
         {
             m_healthBar.value = m_playerHealth.GetCurrentHealthValue();
+        }
+    }
+    private void UpdatePlayerBaseHealthBar()
+    {
+        if (m_baseHealthBar)
+        {
+            m_baseHealthBar.value = GameReferences.Instance.m_PlayerBase.GetCurrentHealthValue();
         }
     }
 
@@ -65,7 +89,6 @@ public class PlayerUIController : MonoBehaviour
             m_staminaBar.value = m_playerStamina.GetStamina();
         }
     }
-
     private void UpdateStaminaBar()
     {
         if (m_staminaBar)
@@ -74,7 +97,7 @@ public class PlayerUIController : MonoBehaviour
         }
     }
 
-    private void UpdateAmmoText()
+    private void UpdateAmmoBuilderModeText()
     {
         if (m_ammoText)
         {
@@ -109,6 +132,32 @@ public class PlayerUIController : MonoBehaviour
         if (m_currencyText)
         {
             m_currencyText.text = EconomyManager.Instance.GetPlayerMoney().ToString();
+        }
+    }
+
+    private void UpdateCurrentEquippedText()
+    {
+        if (m_equippedText)
+        {
+            if (m_playerStats.IsInBuilderMode())
+            {
+                m_equippedText.text = m_playerBuilder.GetActiveBuildableName();
+            }
+            else
+            {
+                m_equippedText.text = m_playerWeapon.GetActiveWeapon().m_weaponName;
+            }
+        }
+    }
+
+    private void UpdateLevelText()
+    {
+        if (m_levelText)
+        {
+            if (!m_playerStats.IsInBuilderMode())
+            {
+                m_levelText.text = "Lvl." + m_playerWeapon.GetActiveWeapon().GetLevelNumber();
+            }
         }
     }
 }

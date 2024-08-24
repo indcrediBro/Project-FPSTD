@@ -16,6 +16,7 @@ public class GameOverState : IGameState
         Cursor.visible = true;
         Time.timeScale = 0;
         GameReferences.Instance.m_IsPaused = true;
+        GameReferences.Instance.m_IsGameOver = true;
         MenuManager.Instance.HideHUD();
         MenuManager.Instance.OpenMenu("GameOverPanel");
         Debug.Log("Game Over State!");

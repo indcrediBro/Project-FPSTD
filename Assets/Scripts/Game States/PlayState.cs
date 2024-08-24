@@ -16,6 +16,7 @@ public class PlayState : IGameState
         Cursor.visible = false;
         Time.timeScale = 1;
         GameReferences.Instance.m_IsPaused = false;
+        GameReferences.Instance.m_IsGameOver = false;
     }
 
     public void Update()

@@ -2631,6 +2631,7 @@ MonoBehaviour:
   m_PlayerStats: {fileID: 0}
   m_PlayerBase: {fileID: 0}
   m_IsPaused: 0
+  m_IsGameOver: 0
 --- !u!4 &206529877
 Transform:
   m_ObjectHideFlags: 0
@@ -27044,6 +27045,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5570555857798865159, guid: 08753f489b23bc146aa5431854662689,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570555857798865159, guid: 08753f489b23bc146aa5431854662689,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860909223121384549, guid: 08753f489b23bc146aa5431854662689,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860909223121384549, guid: 08753f489b23bc146aa5431854662689,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102255207792666811, guid: 08753f489b23bc146aa5431854662689,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102255207792666811, guid: 08753f489b23bc146aa5431854662689,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30753,7 +30784,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 8119
+    m_Bits: 3991
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

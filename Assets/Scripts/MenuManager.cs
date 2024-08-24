@@ -80,7 +80,7 @@ public class MenuManager : Singleton<MenuManager>
     public void MainMenu()
     {
         GameStateManager.Instance.SetState(new StartState(GameStateManager.Instance));
-        LoadScene("MainMenu");
+        LoadScene("Main Menu");
     }
 
     public void ResumeGame()

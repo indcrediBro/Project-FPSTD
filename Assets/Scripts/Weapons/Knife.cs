@@ -22,7 +22,7 @@ public class Knife : Weapon
     {
         if (!CanAttack())
             return;
-        if(InputManager.Instance.m_AttackInput.WasPressedThisFrame())
+        if (InputManager.Instance.m_AttackInput.WasPressedThisFrame())
             PerformAttack();
     }
 
@@ -34,7 +34,7 @@ public class Knife : Weapon
         {
             if (enemy.TryGetComponent(out EnemyStats enemyStats))
             {
-                enemyStats.GetHealth().TakeDamage(m_damage);
+                enemyStats.GetHealth().TakeDamage(GetCurrentDamage());
                 Vector3 knockbackDirection;
                 Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
                 knockbackDirection = ray.direction;
@@ -47,8 +47,8 @@ public class Knife : Weapon
     private void PerformAttack()
     {
         DisableCanAttack();
-        m_weaponAudioSource.Play();
-        if(m_weaponAnimator) PlayAttackAnimation("Attack 0");
+        //m_weaponAudioSource.Play();
+        if (m_weaponAnimator) PlayAttackAnimation("Attack 0");
     }
 
     private void OnDrawGizmosSelected()

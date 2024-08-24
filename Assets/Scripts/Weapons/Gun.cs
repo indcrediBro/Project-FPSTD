@@ -94,11 +94,11 @@ public class Gun : Weapon
         StartCoroutine(FireCooldownCO());
         PlayAttackAnimation("Attack 0");
         GameObject bulletGO = Instantiate(m_bulletPrefab, m_firePoint.position, m_firePoint.rotation);
-        bulletGO.GetComponent<PlayerWeaponProjectile>().SetDamage(m_damage);
+        bulletGO.GetComponent<PlayerWeaponProjectile>().SetDamage(GetCurrentDamage());
         Rigidbody bulletRB = bulletGO.GetComponent<Rigidbody>();
         Ray ray = m_mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         bulletRB.AddForce(ray.direction.normalized * m_bulletSpeed, ForceMode.Impulse);
-        m_weaponAudioSource.Play();
+        //m_weaponAudioSource.Play();
         m_currentAmmo--;
         UpdateAmmoUI();
     }

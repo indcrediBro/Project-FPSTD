@@ -6,6 +6,8 @@ public class ShopInteractionController : Interactable
 {
     private void LateUpdate()
     {
+        if (GameReferences.Instance.m_IsGameOver) return;
+
         if (m_interactGFX && m_interactGFX.activeSelf)
         {
             LookAtPlayer();

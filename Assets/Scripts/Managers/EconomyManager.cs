@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using UnityEngine;
 
 public class EconomyManager : Singleton<EconomyManager>
 {
-    private int m_playerMoney = 10;
+    [SerializeField] private int m_playerMoney = 10;
+
     public int GetPlayerMoney()
     {
         return m_playerMoney;

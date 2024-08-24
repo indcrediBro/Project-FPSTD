@@ -11,6 +11,8 @@ public class ChaseBaseState : IEnemyState
 
     public void UpdateState(EnemyStateMachine _stateMachine)
     {
+        if (GameReferences.Instance.m_IsGameOver) return;
+
         Transform target;
         target = NavmeshManager.Instance.GetBasePositionFromArray(_stateMachine.transform);
 
@@ -35,7 +37,7 @@ public class ChaseBaseState : IEnemyState
         {
             _stateMachine.TransitionToState(_stateMachine.m_ChasePlayerState);
         }
-        
+
         if (_stateMachine.m_Detection.IsInAttackRange(_stateMachine.m_NavigationBaseTarget))
         {
             _stateMachine.TransitionToState(_stateMachine.m_AttackState);
