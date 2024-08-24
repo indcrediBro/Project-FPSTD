@@ -31011,6 +31011,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
         type: 3}
+      propertyPath: m_shopItems.Array.data[3].Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 01499a6eebcf3984c8c2d3047c4a348a,
+        type: 3}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
       propertyPath: m_shopItems.Array.data[4].Cost
       value: 35
       objectReference: {fileID: 0}
@@ -31038,9 +31044,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
         type: 3}
+      propertyPath: m_shopItems.Array.data[6].Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: c6642a15f6febaa4e880f6441fe062e4,
+        type: 3}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
       propertyPath: m_shopItems.Array.data[7].Cost
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[7].Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: a2447d8c7b20bce4290ec5735c9dbe8f,
+        type: 3}
     - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
         type: 3}
       propertyPath: m_shopItems.Array.data[8].Cost
@@ -31048,9 +31066,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
         type: 3}
+      propertyPath: m_shopItems.Array.data[8].Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 842f7db4276c19f47816966bd45693c1,
+        type: 3}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
       propertyPath: m_shopItems.Array.data[9].Cost
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[9].Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d142759160ec17459e89eb292e2e6d8,
+        type: 3}
     - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
         type: 3}
       propertyPath: m_shopItems.Array.data[10].Cost
@@ -31058,9 +31088,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
         type: 3}
+      propertyPath: m_shopItems.Array.data[10].Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: a6798a26ce41e444f8b3688d0fe9e6b5,
+        type: 3}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
       propertyPath: m_shopItems.Array.data[11].Cost
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[11].Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: b130a9e1a9c022042bf39c53671d78f1,
+        type: 3}
     - target: {fileID: 8383873611586133256, guid: 0c81bb33258884333b42a0116bcf8655,
         type: 3}
       propertyPath: m_shopPanel
