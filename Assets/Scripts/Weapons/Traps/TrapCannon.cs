@@ -25,6 +25,7 @@ public class TrapCannon : TrapBase
         GameObject projectile = ObjectPoolManager.Instance.GetPooledObject("Ammo_CannonBall");
         projectile.transform.position = m_firePoint.position;
         projectile.transform.rotation = m_firePoint.rotation;
+        projectile.SetActive(true);
         return projectile;
     }
 

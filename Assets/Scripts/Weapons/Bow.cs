@@ -87,6 +87,7 @@ public class Bow : Weapon
         m_currentArrow.transform.SetParent(m_arrowIdlePosition);
         m_currentArrow.transform.localPosition = Vector3.zero;
         m_currentArrow.transform.localRotation = Quaternion.identity;
+        m_currentArrow.SetActive(true);
     }
 
     private void UnloadArrow()

@@ -97,7 +97,7 @@ public class Gun : Weapon
         GameObject bulletGO = ObjectPoolManager.Instance.GetPooledObject("Ammo_BulletPlayer");
         bulletGO.transform.position = m_firePoint.position;
         bulletGO.transform.rotation = m_firePoint.rotation;
-
+        bulletGO.SetActive(true);
 
         bulletGO.GetComponent<PlayerWeaponProjectile>().SetDamage(GetCurrentDamage());
         Rigidbody bulletRB = bulletGO.GetComponent<Rigidbody>();
