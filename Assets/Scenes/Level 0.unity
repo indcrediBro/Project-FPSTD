@@ -31198,9 +31198,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
         type: 3}
+      propertyPath: m_shopItems.Array.data[0].Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 59ef623c1ef982b46bdcfbdd8278fc39,
+        type: 3}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[1].Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 8709aa92a240ee84aa1bea25bf338c60,
+        type: 3}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
       propertyPath: m_shopItems.Array.data[2].Cost
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[2].Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: efc723fd14dc13041bdbea9ef230f530,
+        type: 3}
     - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
         type: 3}
       propertyPath: m_shopItems.Array.data[3].Cost
@@ -31213,9 +31231,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
         type: 3}
+      propertyPath: m_shopItems.Array.data[4].Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: ec7efbb5d40e288468dca56020eb6803,
+        type: 3}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
       propertyPath: m_shopItems.Array.data[5].Cost
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[5].Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 4577a9fa566409744acc1320776952ad,
+        type: 3}
     - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
         type: 3}
       propertyPath: m_shopItems.Array.data[6].Cost
