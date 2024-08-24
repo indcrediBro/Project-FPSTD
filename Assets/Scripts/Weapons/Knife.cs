@@ -34,6 +34,13 @@ public class Knife : Weapon
         {
             if (enemy.TryGetComponent(out EnemyStats enemyStats))
             {
+                Vector3 closestPoint = enemy.ClosestPoint(m_weaponTransform.position);
+                GameObject hitImpact = ObjectPoolManager.Instance.GetPooledObject("VFX_HitKnife");
+                if (hitImpact != null)
+                {
+                    hitImpact.transform.position = closestPoint;
+                    hitImpact.SetActive(true);
+                }
                 enemyStats.GetHealth().TakeDamage(GetCurrentDamage());
                 Vector3 knockbackDirection;
                 Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));

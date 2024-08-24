@@ -82,7 +82,11 @@ public class Bow : Weapon
 
     private void LoadArrow()
     {
-        m_currentArrow = Instantiate(m_arrowPrefab, m_arrowIdlePosition);
+        //m_currentArrow = Instantiate(m_arrowPrefab, m_arrowIdlePosition);
+        m_currentArrow = ObjectPoolManager.Instance.GetPooledObject("Ammo_ArrowPlayer");
+        m_currentArrow.transform.SetParent(m_arrowIdlePosition);
+        m_currentArrow.transform.localPosition = Vector3.zero;
+        m_currentArrow.transform.localRotation = Quaternion.identity;
     }
 
     private void UnloadArrow()

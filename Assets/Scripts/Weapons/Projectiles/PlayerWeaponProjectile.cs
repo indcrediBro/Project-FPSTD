@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -26,7 +24,7 @@ public class PlayerWeaponProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider _other)
     {
-        if(m_isLaunched) OnImpact(_other);
+        if (m_isLaunched) OnImpact(_other);
     }
 
     private void OnImpact(Collider _other)
@@ -34,18 +32,26 @@ public class PlayerWeaponProjectile : MonoBehaviour
         m_collider.enabled = false;
         m_rigidbody.isKinematic = true;
 
+        Vector3 closestPoint = _other.ClosestPoint(transform.position);
+        GameObject hitImpact = ObjectPoolManager.Instance.GetPooledObject("VFX_HitArrow");
+        if (hitImpact != null)
+        {
+            hitImpact.transform.position = closestPoint;
+            hitImpact.SetActive(true);
+        }
+
         if (_other.TryGetComponent(out EnemyStats _enemy))
         {
             _enemy.GetHealth().TakeDamage(m_damage);
             DestroyAfterImpact();
         }
 
-        Invoke(nameof(DestroyAfterImpact),m_postImpactDestroyTime);
+        Invoke(nameof(DestroyAfterImpact), m_postImpactDestroyTime);
     }
 
     private void DestroyAfterImpact()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         return;
     }
 }

@@ -37,8 +37,14 @@ public class Sword : Weapon
         {
             if (enemy.TryGetComponent(out EnemyStats enemyStats))
             {
+                Vector3 closestPoint = enemy.ClosestPoint(m_weaponTransform.position);
+                GameObject hitImpact = ObjectPoolManager.Instance.GetPooledObject("VFX_HitSword");
+                if (hitImpact != null)
+                {
+                    hitImpact.transform.position = closestPoint;
+                    hitImpact.SetActive(true);
+                }
                 enemyStats.GetHealth().TakeDamage(GetCurrentDamage() * (m_comboCounter + 1));
-
                 Vector3 knockbackDirection;
                 Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
                 knockbackDirection = ray.direction;

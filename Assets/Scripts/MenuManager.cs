@@ -69,7 +69,7 @@ public class MenuManager : Singleton<MenuManager>
             menu.defaultButton = EventSystem.current.currentSelectedGameObject;
         }
         m_hud.SetActive(true);
-        GameStateManager.Instance.SetState(new PlayState(GameStateManager.Instance));
+        //GameStateManager.Instance.SetState(new PlayState(GameStateManager.Instance));
     }
 
     public void HideHUD()

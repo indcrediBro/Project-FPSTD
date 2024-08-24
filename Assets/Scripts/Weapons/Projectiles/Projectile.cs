@@ -6,11 +6,17 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float m_speed = 10f;
     [SerializeField] private float m_gravity = -9.81f;
+    [SerializeField] private string m_vfxName;
     private Vector3 m_target;
     private float m_damage;
     private float m_blastRadius;
     private bool m_isParabolic;
     private Vector3 m_velocity;
+
+    private void OnEnable()
+    {
+        Invoke(nameof(DeactivateObject), 4f);
+    }
 
     public void Launch(Vector3 _targetPosition, float _damage, bool _isParabolic = false, float _blastRadius = 0f)
     {
@@ -68,9 +74,8 @@ public class Projectile : MonoBehaviour
                 if (hitCollider.TryGetComponent(out EnemyHealth enemyHealth))
                 {
                     float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
-                    float scaledDamage = Mathf.Lerp(m_damage*2, m_damage/2, distance / m_blastRadius);
+                    float scaledDamage = Mathf.Lerp(m_damage * 2, m_damage / 2, distance / m_blastRadius);
                     enemyHealth.TakeDamage(scaledDamage);
-                    Debug.Log(enemyHealth.name + " took damage of " + scaledDamage);
                 }
             }
         }
@@ -85,16 +90,26 @@ public class Projectile : MonoBehaviour
                 }
             }
         }
-
-        // Add explosion effects (particles, sound)
-        Destroy(gameObject); // Destroy the projectile
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider _other)
     {
-        if (other.gameObject != this.gameObject)
+        if (_other.gameObject != this.gameObject)
         {
             OnImpact();
+            Vector3 closestPoint = _other.ClosestPoint(transform.position);
+            GameObject hitImpact = ObjectPoolManager.Instance.GetPooledObject("VFX_Hit" + m_vfxName);
+            if (hitImpact != null)
+            {
+                hitImpact.transform.position = closestPoint;
+                hitImpact.SetActive(true);
+            }
         }
+        DeactivateObject();
+    }
+
+    private void DeactivateObject()
+    {
+        gameObject.SetActive(false);
     }
 }

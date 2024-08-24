@@ -17,10 +17,6 @@ public class StartState : IGameState
 
     public void Update()
     {
-        //if (GameReferences.Instance.m_PlayerStats.GetPlayerHealthComponent().IsDead() || GameReferences.Instance.m_PlayerBase.IsDead())
-        //{
-        //    m_gameManager.SetState(new GameOverState(m_gameManager));
-        //}
     }
 
     public void Exit()
@@ -30,11 +26,10 @@ public class StartState : IGameState
 
     private void InitializeGameSettings()
     {
-
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
-        MenuManager.Instance.HideHUD();
         MenuManager.Instance.OpenMenu("MainMenu");
+        MenuManager.Instance.HideHUD();
     }
 
 

@@ -8,7 +8,7 @@ public class GameStateManager : Singleton<GameStateManager>
 
     void Start()
     {
-        SetState(new StartState(this));
+        //SetState(new StartState(this));
     }
 
     void Update()
@@ -21,5 +21,6 @@ public class GameStateManager : Singleton<GameStateManager>
         m_currentState?.Exit();
         m_currentState = newState;
         m_currentState?.Enter();
+        Debug.Log(m_currentState);
     }
 }

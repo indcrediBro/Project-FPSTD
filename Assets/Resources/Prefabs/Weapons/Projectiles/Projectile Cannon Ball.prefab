@@ -148,3 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 15
   m_gravity: -20
+  m_vfxName: Cannon

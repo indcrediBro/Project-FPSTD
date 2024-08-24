@@ -22,6 +22,9 @@ public class PlayState : IGameState
     public void Update()
     {
         MenuManager.Instance.ShowHUD();
+
+        if (!InputManager.Instance || !GameReferences.Instance) { return; }
+
         if (InputManager.Instance.m_PauseInput.WasReleasedThisFrame() && GameReferences.Instance.m_IsPaused == false)
         {
             m_gameManager.SetState(new PauseState(m_gameManager));
@@ -37,5 +40,6 @@ public class PlayState : IGameState
 
     public void Exit()
     {
+
     }
 }

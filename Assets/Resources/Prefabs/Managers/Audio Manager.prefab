@@ -53,7 +53,7 @@ MonoBehaviour:
   m_audioSFXList:
   - name: Purchase_Item
     audioClip: {fileID: 0}
-    volume: 0.44
+    volume: 0.4
     isMusic: 0
     isUISFX: 1
     randomizePitch: 0

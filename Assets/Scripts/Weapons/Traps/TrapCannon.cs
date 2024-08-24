@@ -22,7 +22,9 @@ public class TrapCannon : TrapBase
 
     private GameObject InstantiateProjectile()
     {
-        GameObject projectile = Instantiate(m_projectile,m_firePoint.position,Quaternion.identity);
+        GameObject projectile = ObjectPoolManager.Instance.GetPooledObject("Ammo_CannonBall");
+        projectile.transform.position = m_firePoint.position;
+        projectile.transform.rotation = m_firePoint.rotation;
         return projectile;
     }
 

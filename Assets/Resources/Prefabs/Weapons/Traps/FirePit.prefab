@@ -165,9 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42697d2912e6d4ceeab5a4fe87605aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerSecond: 5
-  damageInterval: 0.5
-  radius: 3
+  m_damagePerSecond: 1
+  m_damageInterval: 1
 --- !u!1 &7779654249592083217
 GameObject:
   m_ObjectHideFlags: 0
