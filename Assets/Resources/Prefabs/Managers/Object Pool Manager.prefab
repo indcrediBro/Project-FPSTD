@@ -52,3 +52,63 @@ MonoBehaviour:
       type: 3}
     m_PooledAmount: 10
     m_WillGrow: 1
+  - m_Name: Coin
+    m_PooledObjects: []
+    m_PooledObject: {fileID: 7078938141499889797, guid: f93e7715f4cf944be82470fd655fe57a,
+      type: 3}
+    m_PooledAmount: 10
+    m_WillGrow: 1
+  - m_Name: VFX_HitKnife
+    m_PooledObjects: []
+    m_PooledObject: {fileID: 8182009358617202285, guid: cb5f0c5af6f0942beb32bedec8694c6b,
+      type: 3}
+    m_PooledAmount: 4
+    m_WillGrow: 1
+  - m_Name: VFX_HitSword
+    m_PooledObjects: []
+    m_PooledObject: {fileID: 8182009358617202285, guid: 89a60a57aeb3b494881bd4d4cf951bc1,
+      type: 3}
+    m_PooledAmount: 4
+    m_WillGrow: 1
+  - m_Name: VFX_HitArrow
+    m_PooledObjects: []
+    m_PooledObject: {fileID: 1375652675682617989, guid: 168b67d1fe4ed446a90978e1c5318e63,
+      type: 3}
+    m_PooledAmount: 4
+    m_WillGrow: 1
+  - m_Name: VFX_HitBullet
+    m_PooledObjects: []
+    m_PooledObject: {fileID: 8173759884485290159, guid: 7b9275a8456ec4c75ab13bad1776aa75,
+      type: 3}
+    m_PooledAmount: 4
+    m_WillGrow: 1
+  - m_Name: VFX_HitCannon
+    m_PooledObjects: []
+    m_PooledObject: {fileID: 3796474072365690866, guid: aa9ab48a4c15a498fa0f4cf196a19382,
+      type: 3}
+    m_PooledAmount: 4
+    m_WillGrow: 1
+  - m_Name: Ammo_ArrowPlayer
+    m_PooledObjects: []
+    m_PooledObject: {fileID: 1921194892290325215, guid: dcefd0314825b4bbba4285a315118956,
+      type: 3}
+    m_PooledAmount: 10
+    m_WillGrow: 1
+  - m_Name: Ammo_ArrowCrossbow
+    m_PooledObjects: []
+    m_PooledObject: {fileID: 1921194892290325215, guid: f6ff0471682f9440c8bb2148571808d8,
+      type: 3}
+    m_PooledAmount: 10
+    m_WillGrow: 1
+  - m_Name: Ammo_BulletPlayer
+    m_PooledObjects: []
+    m_PooledObject: {fileID: 6368342842885423115, guid: a5b80bcb9015743949fdff1e3e3be546,
+      type: 3}
+    m_PooledAmount: 10
+    m_WillGrow: 1
+  - m_Name: Ammo_CannonBall
+    m_PooledObjects: []
+    m_PooledObject: {fileID: 6368342842885423115, guid: 83b42621325574f2a85a4894c3fe2c0d,
+      type: 3}
+    m_PooledAmount: 10
+    m_WillGrow: 1

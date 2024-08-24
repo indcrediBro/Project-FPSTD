@@ -13,6 +13,7 @@ public class TrapCrossbow : TrapBase
         {
             Vector3 targetPosition = m_currentTarget.position;
             GameObject projectile = InstantiateProjectile();
+            projectile.SetActive(true);
             projectile.GetComponent<Projectile>().Launch(targetPosition, m_damage);
         }
     }
