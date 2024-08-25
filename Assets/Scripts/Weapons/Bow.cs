@@ -24,14 +24,7 @@ public class Bow : Weapon
     {
         if (m_playerUI)
         {
-            if (HasArrows())
-            {
-                m_playerUI.UpdateAmmoText(InventoryManager.Instance.GetAmmoItem("Arrow").Quantity.ToString());
-            }
-            else
-            {
-                m_playerUI.UpdateAmmoText("0");
-            }
+            m_playerUI.UpdateAmmoText(InventoryManager.Instance.GetAmmoItem("Arrow").Quantity.ToString());
         }
     }
 
@@ -82,6 +75,11 @@ public class Bow : Weapon
     private void LoadArrow()
     {
         //m_currentArrow = Instantiate(m_arrowPrefab, m_arrowIdlePosition);
+        if (m_currentArrow != null)
+        {
+            m_currentArrow.SetActive(false);
+            m_currentArrow = null;
+        }
 
         m_currentArrow = ObjectPoolManager.Instance.GetPooledObject("Ammo_ArrowPlayer");
         m_currentArrow.transform.SetParent(m_arrowIdlePosition);
@@ -95,6 +93,7 @@ public class Bow : Weapon
     private void UnloadArrow()
     {
         m_currentArrow.transform.SetParent(null);
+        m_currentArrow.GetComponent<Collider>().enabled = true;
         m_currentArrow = null;
     }
 
@@ -110,7 +109,7 @@ public class Bow : Weapon
     {
         if (m_currentArrow != null)
         {
-            float shakeIntensity = Mathf.Lerp(0f, 0.002f, chargeRatio);
+            float shakeIntensity = Mathf.Lerp(0f, 0.0015f, chargeRatio);
             Vector3 shakeOffset = Random.insideUnitSphere * shakeIntensity;
             m_currentArrow.transform.localPosition += shakeOffset;
         }
@@ -127,17 +126,16 @@ public class Bow : Weapon
             PlayerWeaponProjectile arrowComponent = m_currentArrow.GetComponent<PlayerWeaponProjectile>();
             arrowComponent.SetDamage(arrowDamage);
 
+            //Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.nearClipPlane);
+            //Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenCenter);
+            Vector3 direction = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)).direction;
+            //Vector3 directionToLook = worldPosition - arrowRb.position;
+
             Rigidbody arrowRb = m_currentArrow.GetComponent<Rigidbody>();
-            Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.nearClipPlane);
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenCenter);
-            Vector3 directionToLook = worldPosition - arrowRb.position;
 
+            arrowRb.rotation = Quaternion.LookRotation(direction);
             arrowRb.isKinematic = false;
-            m_currentArrow.GetComponent<Collider>().enabled = true;
-
-            arrowRb.rotation = Quaternion.LookRotation(directionToLook);
             arrowRb.velocity = m_currentArrow.transform.forward * arrowSpeed;
-
             UnloadArrow();
         }
     }
