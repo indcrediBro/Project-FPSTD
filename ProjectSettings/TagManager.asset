@@ -5,13 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - WeaponDealer
-  - King
   - Floor
   - Block
   - Enemy
   - NavMesh Target
   - PlayerBase
   - Coin
+  - Map
   layers:
   - Default
   - TransparentFX
@@ -26,8 +26,8 @@ TagManager:
   - Enemy
   - Projectile
   - Coin
-  - 
-  - 
+  - Bounds
+  - Traps
   - 
   - 
   - 

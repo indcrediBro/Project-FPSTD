@@ -63,11 +63,6 @@ public class MenuManager : Singleton<MenuManager>
 
     public void ShowHUD()
     {
-        if (m_hud.activeInHierarchy)
-        {
-            return;
-        }
-
         foreach (PanelUI menu in m_panels)
         {
             menu.defaultButton = EventSystem.current.currentSelectedGameObject;

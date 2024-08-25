@@ -43,7 +43,12 @@ public class GhostManager : MonoBehaviour
 
     private GameObject GetGhostObjectByName(string _name)
     {
+        foreach (var obj in m_instanceGhosts)
+        {
+            obj.Value.SetActive(false);
+        }
         m_instanceGhosts.TryGetValue(_name, out GameObject _instance);
+        _instance.SetActive(true);
         return _instance;
     }
 
@@ -71,13 +76,14 @@ public class GhostManager : MonoBehaviour
             m_hoverTime += Time.deltaTime;
             if (m_hoverTime >= 0.1f)
             {
+                UpdateGhostMaterial(false);
                 //m_navmeshManager.BuildNavMesh();
                 _isValid = IsPathValid();
                 UpdateGhostMaterial(_isValid);
             }
         }
 
-        m_currentGhostObject.transform.position = _position; 
+        m_currentGhostObject.transform.position = _position;
         m_currentGhostObject.SetActive(true);
     }
 

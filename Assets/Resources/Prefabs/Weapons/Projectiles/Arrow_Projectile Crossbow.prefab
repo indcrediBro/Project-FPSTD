@@ -54,8 +54,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.6, y: 0.17, z: 0.09}
-  m_Center: {x: 0.17, y: 0, z: 0}
+  m_Size: {x: 0.09, y: 0.17, z: 0.27}
+  m_Center: {x: 0, y: 0, z: 0.51}
 --- !u!54 &8409487303601304167
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78,7 +78,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 20
-  m_gravity: -20
+  m_gravity: -10
   m_vfxName: Arrow
 --- !u!1 &4550773872706473577
 GameObject:

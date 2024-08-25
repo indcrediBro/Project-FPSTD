@@ -60,7 +60,7 @@ public abstract class TrapBase : MonoBehaviour
 
         if (closestEnemy != null)
         {
-            m_currentTarget = closestEnemy;
+            m_currentTarget = closestEnemy.GetComponent<EnemyStats>().GetTrapTargetPoint();
             RotateTowardsTarget();
 
             if (m_fireCooldown <= 0f)
@@ -70,7 +70,7 @@ public abstract class TrapBase : MonoBehaviour
         }
         else
         {
-            m_currentTarget = null; 
+            m_currentTarget = null;
         }
     }
 
@@ -116,7 +116,7 @@ public abstract class TrapBase : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, m_detectionRange);
-        if(m_currentTarget)
+        if (m_currentTarget)
         {
             Gizmos.color = Color.red;
         }

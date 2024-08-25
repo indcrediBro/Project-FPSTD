@@ -27,16 +27,20 @@ public class PlayerWeaponProjectile : MonoBehaviour
         if (m_isLaunched) OnImpact(_other);
     }
 
+    private void OnDisable()
+    {
+        m_collider.enabled = true;
+    }
+
     private void OnImpact(Collider _other)
     {
         m_collider.enabled = false;
         m_rigidbody.isKinematic = true;
 
-        Vector3 closestPoint = _other.ClosestPoint(transform.position);
         GameObject hitImpact = ObjectPoolManager.Instance.GetPooledObject("VFX_HitArrow");
         if (hitImpact != null)
         {
-            hitImpact.transform.position = closestPoint;
+            hitImpact.transform.position = transform.position;
             hitImpact.SetActive(true);
         }
 
@@ -51,7 +55,7 @@ public class PlayerWeaponProjectile : MonoBehaviour
 
     private void DestroyAfterImpact()
     {
+        transform.SetParent(null);
         gameObject.SetActive(false);
-        return;
     }
 }

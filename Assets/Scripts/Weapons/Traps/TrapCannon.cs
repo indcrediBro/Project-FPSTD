@@ -16,7 +16,7 @@ public class TrapCannon : TrapBase
             Vector3 targetPosition = m_currentTarget.position;
             targetPosition.y += m_yOffset;
             GameObject projectile = InstantiateProjectile();
-            projectile.GetComponent<Projectile>().Launch(targetPosition, m_damage, false, blastRadius);
+            projectile.GetComponent<Projectile>().Launch(targetPosition, m_damage, blastRadius);
         }
     }
 

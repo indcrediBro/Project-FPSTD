@@ -5,9 +5,9 @@ using UnityEngine;
 public class HideOnPause : MonoBehaviour
 {
 
-    void LateUpdate()
+    void Update()
     {
-        if (GameReferences.Instance.m_IsPaused)
+        if (GameReferences.Instance.m_IsPaused || GameReferences.Instance.m_IsGameOver)
             gameObject.SetActive(false);
         else
             gameObject.SetActive(true);

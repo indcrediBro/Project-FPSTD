@@ -19,7 +19,7 @@ public class Sword : Weapon
 
     private void OnEnable()
     {
-        m_playerUI.UpdateAmmoText("");
+        m_playerUI?.UpdateAmmoText("");
     }
 
     private void Update()

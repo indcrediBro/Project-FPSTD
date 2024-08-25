@@ -16,11 +16,17 @@ public class GameStateManager : Singleton<GameStateManager>
         m_currentState?.Update();
     }
 
-    public void SetState(IGameState newState)
+    public void SetState(IGameState _newState)
+    {
+        StartCoroutine(ChangeStateCO(_newState));
+    }
+
+    private IEnumerator ChangeStateCO(IGameState _newState)
     {
         m_currentState?.Exit();
-        m_currentState = newState;
-        m_currentState?.Enter();
+        yield return new WaitForEndOfFrame();
+        m_currentState = _newState;
+        m_currentState.Enter();
         Debug.Log(m_currentState);
     }
 }

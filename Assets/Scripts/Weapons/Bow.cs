@@ -76,17 +76,19 @@ public class Bow : Weapon
     {
         m_isCharging = false;
         LaunchArrow();
-        UnloadArrow();
         InventoryManager.Instance.UseAmmoItem("Arrow");
     }
 
     private void LoadArrow()
     {
         //m_currentArrow = Instantiate(m_arrowPrefab, m_arrowIdlePosition);
+
         m_currentArrow = ObjectPoolManager.Instance.GetPooledObject("Ammo_ArrowPlayer");
         m_currentArrow.transform.SetParent(m_arrowIdlePosition);
         m_currentArrow.transform.localPosition = Vector3.zero;
         m_currentArrow.transform.localRotation = Quaternion.identity;
+        m_currentArrow.GetComponent<Rigidbody>().isKinematic = true;
+        m_currentArrow.GetComponent<Collider>().enabled = false;
         m_currentArrow.SetActive(true);
     }
 
@@ -118,17 +120,25 @@ public class Bow : Weapon
     {
         if (m_currentArrow != null)
         {
-            Rigidbody arrowRb = m_currentArrow.GetComponent<Rigidbody>();
-            arrowRb.isKinematic = false;
-
             float chargeRatio = Mathf.Clamp01(m_currentChargeTime / m_maxChargeTime);
             float arrowSpeed = Mathf.Lerp(10f, m_maxSpeed, chargeRatio);
             float arrowDamage = Mathf.Lerp(10f, GetCurrentDamage(), chargeRatio);
 
-            arrowRb.velocity = m_currentArrow.transform.forward * arrowSpeed;
-
             PlayerWeaponProjectile arrowComponent = m_currentArrow.GetComponent<PlayerWeaponProjectile>();
             arrowComponent.SetDamage(arrowDamage);
+
+            Rigidbody arrowRb = m_currentArrow.GetComponent<Rigidbody>();
+            Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.nearClipPlane);
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenCenter);
+            Vector3 directionToLook = worldPosition - arrowRb.position;
+
+            arrowRb.isKinematic = false;
+            m_currentArrow.GetComponent<Collider>().enabled = true;
+
+            arrowRb.rotation = Quaternion.LookRotation(directionToLook);
+            arrowRb.velocity = m_currentArrow.transform.forward * arrowSpeed;
+
+            UnloadArrow();
         }
     }
 

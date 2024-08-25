@@ -10,7 +10,6 @@ public class Projectile : MonoBehaviour
     private Vector3 m_target;
     private float m_damage;
     private float m_blastRadius;
-    private bool m_isParabolic;
     private Vector3 m_velocity;
 
     private void OnEnable()
@@ -18,45 +17,36 @@ public class Projectile : MonoBehaviour
         Invoke(nameof(DeactivateObject), 4f);
     }
 
-    public void Launch(Vector3 _targetPosition, float _damage, bool _isParabolic = false, float _blastRadius = 0f)
+    private void OnDisable()
+    {
+        CancelInvoke(nameof(DeactivateObject));
+    }
+
+    public void Launch(Vector3 _targetPosition, float _damage, float _blastRadius = 0f)
     {
         m_target = _targetPosition;
         this.m_damage = _damage;
-        this.m_isParabolic = _isParabolic;
         this.m_blastRadius = _blastRadius;
 
-        if (_isParabolic)
-        {
-            CalculateParabolicTrajectory();
-        }
-        else
-        {
-            m_velocity = (m_target - transform.position).normalized * m_speed;
-        }
+
+        m_velocity = transform.forward * m_speed;
     }
 
     private void Update()
     {
-        if (m_isParabolic)
-        {
-            ApplyParabolicMotion();
-        }
-        else
-        {
-            transform.position += m_velocity * Time.deltaTime;
-        }
+        ApplyParabolicMotion();
     }
 
-    private void CalculateParabolicTrajectory()
-    {
-        Vector3 direction = m_target - transform.position;
-        float distance = direction.magnitude;
-        float angle = 45f;
-        float radianAngle = Mathf.Deg2Rad * angle;
+    //private void CalculateParabolicTrajectory()
+    //{
+    //    Vector3 direction = m_target - transform.position;
+    //    float distance = direction.magnitude;
+    //    float angle = 45f;
+    //    float radianAngle = Mathf.Deg2Rad * angle;
 
-        float vX = Mathf.Sqrt(distance * Mathf.Abs(m_gravity) / Mathf.Sin(2 * radianAngle));
-        m_velocity = new Vector3(direction.x, Mathf.Tan(radianAngle) * distance, direction.z).normalized * vX;
-    }
+    //    float vX = Mathf.Sqrt(distance * Mathf.Abs(m_gravity) / Mathf.Sin(2 * radianAngle));
+    //    m_velocity = new Vector3(direction.x, Mathf.Tan(radianAngle) * distance, direction.z).normalized * vX;
+    //}
 
     private void ApplyParabolicMotion()
     {
@@ -64,11 +54,12 @@ public class Projectile : MonoBehaviour
         transform.position += m_velocity * Time.deltaTime;
     }
 
-    private void OnImpact()
+    private void OnImpact(Collider _other)
     {
+        Vector3 closestPoint = transform.position;
         if (m_blastRadius > 0f)
         {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, m_blastRadius);
+            Collider[] hitColliders = Physics.OverlapSphere(closestPoint, m_blastRadius);
             foreach (var hitCollider in hitColliders)
             {
                 if (hitCollider.TryGetComponent(out EnemyHealth enemyHealth))
@@ -81,14 +72,18 @@ public class Projectile : MonoBehaviour
         }
         else
         {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.5f);
-            foreach (var hitCollider in hitColliders)
+            if (_other.TryGetComponent(out EnemyHealth enemyHealth))
             {
-                if (hitCollider.TryGetComponent(out EnemyHealth enemyHealth))
-                {
-                    enemyHealth.TakeDamage(m_damage);
-                }
+                enemyHealth.TakeDamage(m_damage);
             }
+        }
+
+        GameObject hitImpact = ObjectPoolManager.Instance.GetPooledObject("VFX_Hit" + m_vfxName);
+        if (hitImpact != null)
+        {
+            hitImpact.transform.position = transform.position;
+            hitImpact.SetActive(true);
+            DeactivateObject();
         }
     }
 
@@ -96,16 +91,8 @@ public class Projectile : MonoBehaviour
     {
         if (_other.gameObject != this.gameObject)
         {
-            OnImpact();
-            Vector3 closestPoint = _other.ClosestPoint(transform.position);
-            GameObject hitImpact = ObjectPoolManager.Instance.GetPooledObject("VFX_Hit" + m_vfxName);
-            if (hitImpact != null)
-            {
-                hitImpact.transform.position = closestPoint;
-                hitImpact.SetActive(true);
-            }
+            OnImpact(_other);
         }
-        DeactivateObject();
     }
 
     private void DeactivateObject()

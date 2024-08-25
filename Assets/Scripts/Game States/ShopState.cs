@@ -32,7 +32,8 @@ public class ShopState : IGameState
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1;
-        MenuManager.Instance.CloseMenu("ShopPanel");
+        GameReferences.Instance.m_IsPaused = false;
+        //MenuManager.Instance.CloseMenu("ShopPanel");
         MenuManager.Instance.ShowHUD();
     }
 }

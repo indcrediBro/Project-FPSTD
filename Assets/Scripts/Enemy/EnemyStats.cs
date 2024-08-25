@@ -4,7 +4,7 @@ public class EnemyStats : MonoBehaviour
 {
     [SerializeField] private EnemyStateMachine m_stateMachine;
     [SerializeField] private EnemyManager.EnemyNames m_enemyName;
-
+    [SerializeField] private Transform m_trapTargetPoint;
     [SerializeField] private Collider m_collider;
     [SerializeField] private Rigidbody m_rigidbody;
     [SerializeField] private EnemyHealth m_health;
@@ -14,6 +14,7 @@ public class EnemyStats : MonoBehaviour
     public Rigidbody GetRigidbody() { return m_rigidbody; }
     public EnemyHealth GetHealth() { return m_health; }
     public EnemyAttack GetAttack() { return m_attack; }
+    public Transform GetTrapTargetPoint() { return m_trapTargetPoint; }
 
     private void OnEnable()
     {
