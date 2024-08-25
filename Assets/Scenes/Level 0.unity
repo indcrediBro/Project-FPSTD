@@ -27969,61 +27969,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 411001136502580738, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 411001136502580738, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 411001136502580738, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 443115548069349320, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -359.60004
-      objectReference: {fileID: 0}
-    - target: {fileID: 896432434856102460, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1275409385602300391, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 592.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 1399839465440728546, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1399839465440728546, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1399839465440728546, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2110404323950928786, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1918933973}
-    - target: {fileID: 2110404323950928786, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3304434042226748565, guid: 08753f489b23bc146aa5431854662689,
         type: 3}
       propertyPath: m_Name
@@ -28089,36 +28034,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6035035856614570838, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6375805390582490317, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_PlaneDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7046179398398648892, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7493728518780400677, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7493728518780400677, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7493728518780400677, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8860909223121384549, guid: 08753f489b23bc146aa5431854662689,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -28127,11 +28042,6 @@ PrefabInstance:
     - target: {fileID: 8860909223121384549, guid: 08753f489b23bc146aa5431854662689,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8877956120934954267, guid: 08753f489b23bc146aa5431854662689,
-        type: 3}
-      propertyPath: m_margin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9102255207792666811, guid: 08753f489b23bc146aa5431854662689,

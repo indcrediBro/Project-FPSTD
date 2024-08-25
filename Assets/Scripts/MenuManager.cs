@@ -89,6 +89,18 @@ public class MenuManager : Singleton<MenuManager>
         GameStateManager.Instance.SetState(new PlayState(GameStateManager.Instance));
     }
 
+    public void HandleSettingsBackButton()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            OpenMenu("MainMenu");
+        }
+        else
+        {
+            OpenMenu("PauseMenu");
+        }
+    }
+
     public void QuitGame()
     {
         Application.Quit();
