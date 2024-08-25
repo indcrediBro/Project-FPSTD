@@ -26,14 +26,14 @@ public class Gun : Weapon
 
     private void OnEnable()
     {
+        PlayAnimation("Idle");
         m_isReloading = false;
-        if (HasBullets()) UpdateAmmoUI();
+        UpdateAmmoUI();
     }
 
     private void Start()
     {
         if (!m_mainCamera) { m_mainCamera = Camera.main; }
-        //m_currentAmmo = m_maxAmmo;
     }
 
     private void FixedUpdate()
@@ -92,7 +92,7 @@ public class Gun : Weapon
 
         DisableCanAttack();
         StartCoroutine(FireCooldownCO());
-        PlayAttackAnimation("Attack 0");
+        PlayAnimation("Attack 0");
 
         GameObject bulletGO = ObjectPoolManager.Instance.GetPooledObject("Ammo_BulletPlayer");
         bulletGO.transform.position = m_firePoint.position;
@@ -114,7 +114,7 @@ public class Gun : Weapon
     {
         m_isReloading = true;
 
-        PlayAttackAnimation("Reload");
+        PlayAnimation("Reload");
         for (int i = 0; i < m_maxAmmo; i++)
         {
             if (HasBullets())

@@ -62,7 +62,7 @@ public class Sword : Weapon
         m_comboCounter = (m_comboCounter + 1) % 2;
 
         string animationName = "Attack " + m_comboCounter;
-        PlayAttackAnimation(animationName);
+        PlayAnimation(animationName);
 
 
         m_lastAttackTime = Time.time;

@@ -42,7 +42,7 @@ public abstract class Weapon : MonoBehaviour
         return canAttack;
     }
 
-    protected virtual void PlayAttackAnimation(string animationName)
+    protected virtual void PlayAnimation(string animationName)
     {
         m_weaponAnimator?.Play(animationName);
     }

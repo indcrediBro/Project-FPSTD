@@ -55,7 +55,7 @@ public class Knife : Weapon
     {
         DisableCanAttack();
         //m_weaponAudioSource.Play();
-        if (m_weaponAnimator) PlayAttackAnimation("Attack 0");
+        if (m_weaponAnimator) PlayAnimation("Attack 0");
     }
 
     private void OnDrawGizmosSelected()

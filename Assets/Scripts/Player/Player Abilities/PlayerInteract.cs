@@ -39,27 +39,19 @@ public class PlayerInteract : MonoBehaviour
         Collider[] colliders = new Collider[maxColliders];
         int size = Physics.OverlapSphereNonAlloc(m_interactCenter.position, m_interactRange, colliders, m_interactableLayers);
 
-        Interactable closestInteractable = null;
-        float distanceToCurrentInteractable = m_currentInteractableDistance;
-
         for (int i = 0; i < size; i++)
         {
-            if (!colliders[i].TryGetComponent(out Transform colliderTF) ||
-               !colliders[i].TryGetComponent(out Interactable interactable))
+            if (!colliders[i].TryGetComponent(out Interactable interactable))
                 continue;
 
-            float distanceToPlayer = Vector3.Distance(colliderTF.position, m_interactCenter.position);
-            bool closerThanCurrentInteractable = distanceToPlayer < distanceToCurrentInteractable;
-            if (closerThanCurrentInteractable)
+            if (interactable.CompareTag("PlayerBase"))
             {
-                closestInteractable = interactable;
-                distanceToCurrentInteractable = distanceToPlayer;
+                SetInteractable(interactable, interactable.transform);
             }
-        }
-
-        if (closestInteractable)
-        {
-            SetInteractable(closestInteractable, closestInteractable.transform);
+            else
+            {
+                interactable.Interact();
+            }
         }
 
         UpdateInteractableDistance();
