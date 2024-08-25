@@ -5,31 +5,20 @@ using UnityEngine;
 public class TrapFirepit : MonoBehaviour
 {
     [SerializeField] private float m_damagePerSecond = 5f;
-    [SerializeField] private float m_damageInterval = 0.5f;
 
-    private void Start()
+    private void OnTriggerStay(Collider _other)
     {
-        StartCoroutine(DamageOverTimeRoutine());
-    }
-
-    private IEnumerator DamageOverTimeRoutine()
-    {
-        while (true)
+        if (_other.TryGetComponent(out EnemyBurn enemy))
         {
-            DamageEnemiesInRange();
-            yield return new WaitForSeconds(m_damageInterval);
+            enemy.StartBurning();
         }
     }
 
-    private void DamageEnemiesInRange()
+    private void OnTriggerExit(Collider _other)
     {
-        Collider[] hitColliders = Physics.OverlapBox(transform.position, transform.localScale / 2);
-        foreach (Collider collider in hitColliders)
+        if (_other.TryGetComponent(out EnemyBurn enemy))
         {
-            if (collider.TryGetComponent(out Health enemyHealth))
-            {
-                enemyHealth.TakeDamage(m_damagePerSecond * m_damageInterval);
-            }
+            enemy.StopBurning();
         }
     }
 }

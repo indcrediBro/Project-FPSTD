@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TrapSpikes : MonoBehaviour
@@ -32,25 +33,15 @@ public class TrapSpikes : MonoBehaviour
                 elapsedTime += Time.deltaTime * m_spikeSpeed;
                 yield return null;
             }
-
-            if (isRaised)
-            {
-                DamageEnemiesAbove();
-            }
-
             yield return new WaitForSeconds(m_interval);
         }
     }
 
-    private void DamageEnemiesAbove()
+    private void OnTriggerStay(Collider _other)
     {
-        Collider[] hitColliders = Physics.OverlapBox(m_spikesTransform.position, m_spikesTransform.localScale / 2);
-        foreach (Collider collider in hitColliders)
+        if (isRaised && _other.TryGetComponent(out EnemyHealth enemyHealth))
         {
-            if (collider.TryGetComponent(out Health enemyHealth))
-            {
-                enemyHealth.TakeDamage(m_damage);
-            }
+            enemyHealth.TakeDamage(m_damage);
         }
     }
 }
