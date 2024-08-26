@@ -45,11 +45,11 @@ public class Sword : Weapon
                     hitImpact.SetActive(true);
                 }
                 enemyStats.GetHealth().TakeDamage(GetCurrentDamage() * (m_comboCounter + 1), false);
-                Vector3 knockbackDirection;
-                Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-                knockbackDirection = ray.direction;
-                knockbackDirection.y += m_knockbackForce;
-                enemyStats.GetRigidbody().AddForce(knockbackDirection * m_knockbackForce, ForceMode.Impulse);
+                //Vector3 knockbackDirection;
+                //Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+                //knockbackDirection = ray.direction;
+                //knockbackDirection.y += m_knockbackForce;
+                //enemyStats.GetRigidbody().AddForce(knockbackDirection * m_knockbackForce, ForceMode.Impulse);
             }
         }
     }

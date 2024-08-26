@@ -24,17 +24,18 @@ public class ShopUIManager : Singleton<ShopUIManager>
         }
 
         List<ShopItem> list = m_shopManager.GetShopItems();
+        ShopItemUI shopItemUIFirst = null;
+
         for (int i = 0; i < list.Count; i++)
         {
             ShopItem item = list[i];
 
             GameObject shopItemGO = Instantiate(m_shopItemPrefab, m_shopPanel);
             ShopItemUI shopItemUI = shopItemGO.GetComponent<ShopItemUI>();
-
+            if (i == 0) shopItemUIFirst = shopItemUI;
             shopItemUI.InitializeShopItemUI(item.Name, item.Details, item.Cost.ToString(), item.Icon);
-
-            if (i == 0) MenuManager.Instance.SetActiveObject(shopItemGO);
         }
+        if (shopItemUIFirst != null) MenuManager.Instance.SetActiveObject(shopItemUIFirst?.gameObject);
     }
 
     public void DisplayPurchases(string _details)

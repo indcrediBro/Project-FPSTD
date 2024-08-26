@@ -42,11 +42,11 @@ public class Knife : Weapon
                     hitImpact.SetActive(true);
                 }
                 enemyStats.GetHealth().TakeDamage(GetCurrentDamage(), false);
-                Vector3 knockbackDirection;
-                Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-                knockbackDirection = ray.direction;
-                knockbackDirection.y += m_knockbackForce;
-                enemyStats.GetRigidbody().AddForce(knockbackDirection * m_knockbackForce, ForceMode.Impulse);
+                //Vector3 knockbackDirection;
+                //Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+                //knockbackDirection = ray.direction;
+                //knockbackDirection.y += m_knockbackForce;
+                //enemyStats.GetRigidbody().AddForce(knockbackDirection * m_knockbackForce, ForceMode.Impulse);
             }
         }
     }
