@@ -5,9 +5,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float m_speed = 10f;
-    [SerializeField] private float m_gravity = -9.81f;
     [SerializeField] private string m_vfxName;
-    private Vector3 m_target;
+    private Transform m_target;
     private float m_damage;
     private float m_blastRadius;
     private Vector3 m_velocity;
@@ -22,36 +21,31 @@ public class Projectile : MonoBehaviour
         CancelInvoke(nameof(DeactivateObject));
     }
 
-    public void Launch(Vector3 _targetPosition, float _damage, float _blastRadius = 0f)
+    public void Launch(Transform _targetPosition, float _damage, float _blastRadius = 0f)
     {
         m_target = _targetPosition;
         this.m_damage = _damage;
         this.m_blastRadius = _blastRadius;
-
-
-        m_velocity = transform.forward * m_speed;
     }
 
     private void Update()
     {
-        ApplyParabolicMotion();
+        MoveProjectile();
     }
 
-    //private void CalculateParabolicTrajectory()
-    //{
-    //    Vector3 direction = m_target - transform.position;
-    //    float distance = direction.magnitude;
-    //    float angle = 45f;
-    //    float radianAngle = Mathf.Deg2Rad * angle;
-
-    //    float vX = Mathf.Sqrt(distance * Mathf.Abs(m_gravity) / Mathf.Sin(2 * radianAngle));
-    //    m_velocity = new Vector3(direction.x, Mathf.Tan(radianAngle) * distance, direction.z).normalized * vX;
-    //}
-
-    private void ApplyParabolicMotion()
+    private void MoveProjectile()
     {
-        m_velocity.y += m_gravity * Time.deltaTime;
-        transform.position += m_velocity * Time.deltaTime;
+        Vector3 dir = m_target.position - transform.position;
+        float distanceThisFrame = m_speed * Time.deltaTime;
+
+        if (dir.magnitude <= distanceThisFrame)
+        {
+            OnImpact(m_target.GetComponentInParent<Collider>());
+            return;
+        }
+
+        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+        transform.LookAt(m_target);
     }
 
     private void OnImpact(Collider _other)
