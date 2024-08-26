@@ -10,7 +10,7 @@ public class Knife : Weapon
 
     private void Awake()
     {
-        m_playerUI = GetComponentInParent<PlayerUIController>();
+        m_playerUI = GameReferences.Instance.m_PlayerStats.GetComponent<PlayerUIController>();
     }
 
     private void OnEnable()
@@ -20,13 +20,11 @@ public class Knife : Weapon
 
     private void Update()
     {
-        if (!CanAttack())
-            return;
-        if (InputManager.Instance.m_AttackInput.WasPressedThisFrame())
-            PerformAttack();
+        if (!CanAttack() || GameReferences.Instance.m_IsPaused) return;
+
+        if (InputManager.Instance.m_AttackInput.WasPressedThisFrame()) PerformAttack();
     }
 
-    //TODO: Use Better Detection System
     public override void Attack()
     {
         Collider[] hitEnemies = Physics.OverlapSphere(m_weaponTransform.position, m_hitRadius, m_enemyLayer);

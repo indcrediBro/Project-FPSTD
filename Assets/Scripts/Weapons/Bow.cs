@@ -15,21 +15,30 @@ public class Bow : Weapon
     private bool m_isCharging = false;
     private PlayerUIController m_playerUI;
 
-    private void Awake()
+    private void Start()
     {
-        m_playerUI = GetComponentInParent<PlayerUIController>();
+        m_playerUI = GameReferences.Instance.m_PlayerStats.GetComponent<PlayerUIController>();
     }
 
     private void UpdateAmmoUI()
     {
         if (m_playerUI)
         {
-            m_playerUI.UpdateAmmoText(InventoryManager.Instance.GetAmmoItem("Arrow").Quantity.ToString());
+            if (InventoryManager.Instance.GetAmmoItem("Arrow") != null)
+            {
+                m_playerUI.UpdateAmmoText(InventoryManager.Instance.GetAmmoItem("Arrow").Quantity.ToString());
+            }
+            else
+            {
+                m_playerUI.UpdateAmmoText("0");
+            }
         }
     }
 
     private void Update()
     {
+        if (GameReferences.Instance.m_IsPaused) return;
+
         if (HasArrows() && !m_currentArrow)
         {
             LoadArrow();

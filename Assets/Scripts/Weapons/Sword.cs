@@ -14,7 +14,7 @@ public class Sword : Weapon
 
     private void Awake()
     {
-        m_playerUI = GetComponentInParent<PlayerUIController>();
+        m_playerUI = GameReferences.Instance.m_PlayerStats.GetComponent<PlayerUIController>();
     }
 
     private void OnEnable()
@@ -24,12 +24,11 @@ public class Sword : Weapon
 
     private void Update()
     {
-        if (!CanAttack()) return;
+        if (!CanAttack() || GameReferences.Instance.m_IsPaused) return;
 
         if (InputManager.Instance.m_AttackInput.WasPressedThisFrame()) PerformComboAttack();
     }
 
-    //TODO: Use Better Detection System
     public override void Attack()
     {
         Collider[] hitEnemies = Physics.OverlapSphere(m_weaponTransform.position, m_hitRadius, m_enemyLayer);

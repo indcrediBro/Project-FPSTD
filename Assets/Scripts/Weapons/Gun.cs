@@ -20,8 +20,7 @@ public class Gun : Weapon
 
     private void Awake()
     {
-        m_playerUI = GetComponentInParent<PlayerUIController>();
-        UpdateAmmoUI();
+        m_playerUI = GameReferences.Instance.m_PlayerStats.GetComponent<PlayerUIController>();
     }
 
     private void OnEnable()
@@ -38,6 +37,8 @@ public class Gun : Weapon
 
     private void FixedUpdate()
     {
+        if (GameReferences.Instance.m_IsPaused) return;
+
         if (HasBullets())
         {
             if (InputManager.Instance.m_AttackInput.WasPerformedThisFrame() && !m_isReloading && m_canFire)
@@ -64,7 +65,7 @@ public class Gun : Weapon
     {
         if (m_playerUI)
         {
-            if (HasBullets())
+            if (InventoryManager.Instance.GetAmmoItem("Bullet") != null)
             {
                 m_playerUI.UpdateAmmoText(m_currentAmmo + "/" + (InventoryManager.Instance.GetAmmoItem("Bullet").Quantity).ToString());
             }
