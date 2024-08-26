@@ -8,7 +8,15 @@ public class PanelUI : MonoBehaviour
 {
     public string menuName;
     public bool open;
-    public GameObject defaultButton;
+    [SerializeField] private GameObject defaultButton;
+    public GameObject GetDefaultButton()
+    {
+        return defaultButton;
+    }
+    public void SetDefaultButton(GameObject _obj)
+    {
+        defaultButton = _obj;
+    }
 
     public void Open()
     {

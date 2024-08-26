@@ -24,7 +24,7 @@ public class ShopUIManager : Singleton<ShopUIManager>
         }
 
         List<ShopItem> list = m_shopManager.GetShopItems();
-        ShopItemUI shopItemUIFirst = null;
+        GameObject shopItemGOFirst = null;
 
         for (int i = 0; i < list.Count; i++)
         {
@@ -32,10 +32,13 @@ public class ShopUIManager : Singleton<ShopUIManager>
 
             GameObject shopItemGO = Instantiate(m_shopItemPrefab, m_shopPanel);
             ShopItemUI shopItemUI = shopItemGO.GetComponent<ShopItemUI>();
-            if (i == 0) shopItemUIFirst = shopItemUI;
             shopItemUI.InitializeShopItemUI(item.Name, item.Details, item.Cost.ToString(), item.Icon);
+            if (i == 0) shopItemGOFirst = shopItemGO;
         }
-        if (shopItemUIFirst != null) MenuManager.Instance.SetActiveObject(shopItemUIFirst?.gameObject);
+        if (shopItemGOFirst != null)
+        {
+            MenuManager.Instance.GetPanelUI("ShopPanel").SetDefaultButton(shopItemGOFirst);
+        }
     }
 
     public void DisplayPurchases(string _details)

@@ -4,7 +4,7 @@ using System.Collections;
 public class Knife : Weapon
 {
     [SerializeField] private float m_hitRadius = 1f;
-    [SerializeField] private float m_knockbackForce = 10f;
+    //[SerializeField] private float m_knockbackForce = 10f;
     [SerializeField] private LayerMask m_enemyLayer;
     private PlayerUIController m_playerUI;
 

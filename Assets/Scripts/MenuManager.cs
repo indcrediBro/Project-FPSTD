@@ -11,18 +11,31 @@ public class MenuManager : Singleton<MenuManager>
     [SerializeField] private PanelUI[] m_panels;
     [SerializeField] private GameObject m_hud;
 
+    public PanelUI GetPanelUI(string _panelName)
+    {
+        for (int i = 0; i < m_panels.Length; i++)
+        {
+            if (m_panels[i].menuName == _panelName)
+            {
+                return m_panels[i];
+            }
+        }
+        return null;
+    }
+
     public void OpenMenu(string menuName)
     {
         for (int i = 0; i < m_panels.Length; i++)
         {
-            if (m_panels[i].menuName == menuName)
-            {
-                m_panels[i].Open();
-                SetActiveObject(m_panels[i].defaultButton);
-            }
-            else if (m_panels[i].open)
+            if (m_panels[i].open)
             {
                 CloseMenu(m_panels[i]);
+            }
+
+            if (m_panels[i].menuName == menuName)
+            {
+                SetActiveObject(m_panels[i].GetDefaultButton());
+                m_panels[i].Open();
             }
         }
     }
@@ -33,13 +46,13 @@ public class MenuManager : Singleton<MenuManager>
         {
             if (m_panels[i].open)
             {
-                SetActiveObject(menu.defaultButton);
+                SetActiveObject(menu.GetDefaultButton());
                 CloseMenu(m_panels[i]);
             }
         }
 
         menu.Open();
-        SetActiveObject(menu.defaultButton);
+        SetActiveObject(menu.GetDefaultButton());
     }
 
     public void CloseMenu(string menuName)
@@ -48,7 +61,7 @@ public class MenuManager : Singleton<MenuManager>
         {
             if (m_panels[i].menuName == menuName)
             {
-                m_panels[i].defaultButton = EventSystem.current.currentSelectedGameObject;
+                //m_panels[i].defaultButton = EventSystem.current.currentSelectedGameObject;
                 m_panels[i].Close();
             }
         }
@@ -56,8 +69,8 @@ public class MenuManager : Singleton<MenuManager>
 
     public void CloseMenu(PanelUI menu)
     {
-        GameObject current_object = EventSystem.current.currentSelectedGameObject;
-        menu.defaultButton = EventSystem.current.currentSelectedGameObject;
+        //GameObject current_object = EventSystem.current.currentSelectedGameObject;
+        //menu.defaultButton = EventSystem.current.currentSelectedGameObject;
         menu.Close();
     }
 
@@ -65,7 +78,7 @@ public class MenuManager : Singleton<MenuManager>
     {
         foreach (PanelUI menu in m_panels)
         {
-            menu.defaultButton = EventSystem.current.currentSelectedGameObject;
+            //menu.defaultButton = EventSystem.current.currentSelectedGameObject;
             menu.Close();
         }
 

@@ -4,7 +4,7 @@ using System.Collections;
 public class Sword : Weapon
 {
     [SerializeField] private float m_hitRadius = 1.5f;
-    [SerializeField] private float m_knockbackForce = 1500f;
+    //[SerializeField] private float m_knockbackForce = 1500f;
     [SerializeField] private LayerMask m_enemyLayer;
 
     private int m_comboCounter = 1;
