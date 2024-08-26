@@ -37,7 +37,7 @@ public class Sword : Weapon
         {
             if (enemy.TryGetComponent(out EnemyStats enemyStats))
             {
-                Vector3 closestPoint = enemy.ClosestPoint(m_weaponTransform.position);
+                Vector3 closestPoint = enemy.ClosestPoint(transform.position);
                 GameObject hitImpact = ObjectPoolManager.Instance.GetPooledObject("VFX_HitSword");
                 if (hitImpact != null)
                 {

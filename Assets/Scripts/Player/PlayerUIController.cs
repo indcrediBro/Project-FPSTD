@@ -43,7 +43,7 @@ public class PlayerUIController : MonoBehaviour
         UpdatePlayerBaseHealthBar();
         UpdateStaminaBar();
         UpdateCurrencyText();
-        UpdateAmmoBuilderModeText();
+        if (m_playerStats.IsInBuilderMode()) UpdateAmmoBuilderModeText();
         UpdateScoreText();
         UpdateCurrentEquippedText();
         UpdateLevelText();
@@ -126,6 +126,7 @@ public class PlayerUIController : MonoBehaviour
         if (m_ammoText)
         {
             m_ammoText.text = _text;
+            Debug.Log("Updating Ammo UI From: " + name);
         }
     }
 

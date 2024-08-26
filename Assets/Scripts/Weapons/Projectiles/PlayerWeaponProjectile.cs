@@ -6,7 +6,7 @@ public class PlayerWeaponProjectile : MonoBehaviour
     private float m_damage;
     [SerializeField] private float m_postImpactDestroyTime = 2f;
     private bool m_isLaunched;
-
+    [SerializeField] private bool m_rotateWithVelocity;
     private Rigidbody m_rigidbody;
     private Collider m_collider;
 
@@ -15,7 +15,13 @@ public class PlayerWeaponProjectile : MonoBehaviour
         m_collider = GetComponent<Collider>();
         m_rigidbody = GetComponent<Rigidbody>();
     }
-
+    void FixedUpdate()
+    {
+        if (m_rotateWithVelocity && m_rigidbody.velocity != Vector3.zero)
+        {
+            m_rigidbody.rotation = Quaternion.LookRotation(m_rigidbody.velocity);
+        }
+    }
     public void SetDamage(float damageAmount)
     {
         m_damage = damageAmount;
