@@ -41,7 +41,7 @@ public class Knife : Weapon
                     hitImpact.transform.position = closestPoint;
                     hitImpact.SetActive(true);
                 }
-                enemyStats.GetHealth().TakeDamage(GetCurrentDamage());
+                enemyStats.GetHealth().TakeDamage(GetCurrentDamage(), false);
                 Vector3 knockbackDirection;
                 Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
                 knockbackDirection = ray.direction;

@@ -37,6 +37,8 @@ public class PlayerUIController : MonoBehaviour
 
     private void Update()
     {
+        if (GameReferences.Instance.m_IsGameOver) return;
+
         UpdateHealthBar();
         UpdatePlayerBaseHealthBar();
         UpdateStaminaBar();

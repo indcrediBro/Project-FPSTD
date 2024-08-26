@@ -15,7 +15,7 @@ public class HurtState : IEnemyState
         {
             _stateMachine.TransitionToState(_stateMachine.m_DeadState);
         }
-        else if(_stateMachine.m_Animations.IsAnimationNotInProgress("Hurt"))
+        else if (_stateMachine.m_Animations.IsAnimationNotInProgress("Hurt") || _stateMachine.m_Animations.IsAnimationNotInProgress("Burn"))
         {
             if (_stateMachine.m_PlayerTarget && _stateMachine.m_Detection.IsPlayerInRange())
             {

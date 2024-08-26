@@ -22,7 +22,8 @@ public class PlayState : IGameState
     public void Update()
     {
         MenuManager.Instance.ShowHUD();
-
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         if (!InputManager.Instance || !GameReferences.Instance) { return; }
 
         if (InputManager.Instance.m_PauseInput.WasReleasedThisFrame() && GameReferences.Instance.m_IsPaused == false)

@@ -3,9 +3,10 @@ using System.Collections;
 
 public class EnemyBurn : MonoBehaviour
 {
-    public float m_burnDamagePerSecond = 5f;
-    private bool m_isBurning = false;
     private EnemyHealth m_health;
+    public float m_burnDamagePerSecond = 5f;
+    public bool m_isBurning = false;
+    [SerializeField] private GameObject m_burnParticles;
 
     private void Awake()
     {
@@ -14,21 +15,31 @@ public class EnemyBurn : MonoBehaviour
 
     public void StartBurning()
     {
-        m_isBurning = true;
-        InvokeRepeating(nameof(ApplyBurnDamage), 0f, 1f);
+        if (!m_isBurning)
+        {
+            m_isBurning = true;
+            m_burnParticles.SetActive(true);
+        }
+    }
+
+    private void OnDisable()
+    {
+        StopBurning();
     }
 
     public void StopBurning()
     {
+        Debug.Log("Stopped Burn!!!!!!!!!!!!");
         m_isBurning = false;
-        CancelInvoke(nameof(ApplyBurnDamage));
+        m_burnParticles.SetActive(false);
     }
 
-    private void ApplyBurnDamage()
+    public void ApplyBurnDamage()
     {
-        if (m_isBurning)
+        if (m_isBurning && !m_health.IsDead())
         {
-            m_health.TakeDamage(m_burnDamagePerSecond);
+            m_health.TakeDamage(m_burnDamagePerSecond, true);
         }
     }
 }
+

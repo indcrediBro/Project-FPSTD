@@ -46,7 +46,7 @@ public class PlayerWeaponProjectile : MonoBehaviour
 
         if (_other.TryGetComponent(out EnemyStats _enemy))
         {
-            _enemy.GetHealth().TakeDamage(m_damage);
+            _enemy.GetHealth().TakeDamage(m_damage, false);
             DestroyAfterImpact();
         }
 

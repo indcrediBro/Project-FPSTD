@@ -23,9 +23,16 @@ public class EnemyHealth : Health
         }
     }
 
-    public override void TakeDamage(float _damage)
+    public void TakeDamage(float _damage, bool _isBurning)
     {
-        m_stateMachine.TransitionToState(m_stateMachine.m_HurtState);
-        base.TakeDamage(_damage);
+        if (!_isBurning)
+        {
+            m_stateMachine.TransitionToState(m_stateMachine.m_HurtState);
+        }
+        else
+        {
+            m_stateMachine.TransitionToState(m_stateMachine.m_BurnState);
+        }
+        TakeDamage(_damage);
     }
 }

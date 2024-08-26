@@ -66,7 +66,7 @@ public class Projectile : MonoBehaviour
                 {
                     float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
                     float scaledDamage = Mathf.Lerp(m_damage * 2, m_damage / 2, distance / m_blastRadius);
-                    enemyHealth.TakeDamage(scaledDamage);
+                    enemyHealth.TakeDamage(scaledDamage, false);
                 }
             }
         }
@@ -74,7 +74,7 @@ public class Projectile : MonoBehaviour
         {
             if (_other.TryGetComponent(out EnemyHealth enemyHealth))
             {
-                enemyHealth.TakeDamage(m_damage);
+                enemyHealth.TakeDamage(m_damage, false);
             }
         }
 

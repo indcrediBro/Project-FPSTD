@@ -27,6 +27,6 @@ public class GameStateManager : Singleton<GameStateManager>
         yield return new WaitForEndOfFrame();
         m_currentState = _newState;
         m_currentState.Enter();
-        Debug.Log(m_currentState);
+        //Debug.Log(m_currentState);
     }
 }

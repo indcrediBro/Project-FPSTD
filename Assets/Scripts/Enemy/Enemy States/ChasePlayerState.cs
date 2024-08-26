@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class ChasePlayerState : IEnemyState
 {
     public void EnterState(EnemyStateMachine _stateMachine)

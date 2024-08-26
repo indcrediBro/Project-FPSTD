@@ -29,7 +29,8 @@ public class IdleState : IEnemyState
                 _stateMachine.TransitionToState(_stateMachine.m_ChasePlayerState);
             }
         }
-        else if (_stateMachine.m_Detection.IsInAttackRange(_stateMachine.m_NavigationBaseTarget))
+
+        if (_stateMachine.m_Detection.IsInAttackRange(_stateMachine.m_NavigationBaseTarget))
         {
             _stateMachine.TransitionToState(_stateMachine.m_AttackState);
         }
@@ -46,7 +47,8 @@ public class IdleState : IEnemyState
 
     private bool IsNotPlayingAnyAnimations(EnemyStateMachine _stateMachine)
     {
-        return _stateMachine.m_Animations.IsAnimationNotInProgress("Idle") || _stateMachine.m_Animations.IsAnimationNotInProgress("Attack 0") ||
+        return _stateMachine.m_Animations.IsAnimationNotInProgress("Idle") ||
+            _stateMachine.m_Animations.IsAnimationNotInProgress("Attack 0") ||
             _stateMachine.m_Animations.IsAnimationNotInProgress("Attack 1") || _stateMachine.m_Animations.IsAnimationNotInProgress("Attack 2") ||
             _stateMachine.m_Animations.IsAnimationNotInProgress("Attack 3");
     }

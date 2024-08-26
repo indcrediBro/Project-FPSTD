@@ -54,7 +54,7 @@ public class PlayerBuildController : MonoBehaviour
 
     public void RequipLastBuildable()
     {
-        BuildManager.Instance.SetSelectedBuildable(InventoryManager.Instance.GetBuildableInventoryItems()[m_currentBuildableIndex].Name);
+        BuildManager.Instance.SetSelectedBuildable(GetActiveBuildableName());
     }
 
     public string GetActiveBuildableName()

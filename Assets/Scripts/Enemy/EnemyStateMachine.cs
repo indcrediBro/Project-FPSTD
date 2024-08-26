@@ -69,6 +69,8 @@ public class EnemyStateMachine : MonoBehaviour
         m_CurrentState?.ExitState(this);
         m_CurrentState = _newState;
         m_CurrentState.EnterState(this);
+
+        Debug.Log("Entering " + m_CurrentState);
     }
 
     public void SetNavigationalBaseTarget(Transform _navigationalTargetTile)

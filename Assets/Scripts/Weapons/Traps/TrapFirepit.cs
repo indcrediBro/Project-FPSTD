@@ -5,12 +5,18 @@ using UnityEngine;
 public class TrapFirepit : MonoBehaviour
 {
     [SerializeField] private float m_damagePerSecond = 5f;
+    [SerializeField] private float m_burnRate = 1.5f; // Time between burns
 
-    private void OnTriggerStay(Collider _other)
+    private void OnTriggerEnter(Collider _other)
     {
+        if (!_other.CompareTag("Enemy")) return;
+
         if (_other.TryGetComponent(out EnemyBurn enemy))
         {
-            enemy.StartBurning();
+            if (!enemy.m_isBurning && !enemy.GetComponent<EnemyStats>().GetHealth().IsDead())
+            {
+                StartCoroutine(BurnCO(enemy));
+            }
         }
     }
 
@@ -18,7 +24,23 @@ public class TrapFirepit : MonoBehaviour
     {
         if (_other.TryGetComponent(out EnemyBurn enemy))
         {
+            StopCoroutine(nameof(BurnCO));
             enemy.StopBurning();
         }
     }
+
+    private IEnumerator BurnCO(EnemyBurn _enemy)
+    {
+        _enemy.m_isBurning = true;
+        _enemy.m_burnDamagePerSecond = m_damagePerSecond;
+        _enemy.StartBurning();
+
+        while (_enemy.m_isBurning)
+        {
+            _enemy.ApplyBurnDamage();
+            yield return new WaitForSeconds(m_burnRate); // Delay between each burn
+        }
+    }
 }
+
+

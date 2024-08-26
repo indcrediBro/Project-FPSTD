@@ -17,7 +17,7 @@ public class EnemyDetection : MonoBehaviour
 
     public bool IsPlayerInRange()
     {
-        detectedTargets = Physics.OverlapSphere(transform.position+transform.forward, m_detectionRadius, m_targetLayer);
+        detectedTargets = Physics.OverlapSphere(transform.position + transform.forward, m_detectionRadius, m_targetLayer);
         foreach (var target in detectedTargets)
         {
             if (target.CompareTag("Player"))
