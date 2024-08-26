@@ -23,12 +23,17 @@ public class ShopUIManager : Singleton<ShopUIManager>
             Destroy(child.gameObject);
         }
 
-        foreach (ShopItem item in m_shopManager.GetShopItems())
+        List<ShopItem> list = m_shopManager.GetShopItems();
+        for (int i = 0; i < list.Count; i++)
         {
+            ShopItem item = list[i];
+
             GameObject shopItemGO = Instantiate(m_shopItemPrefab, m_shopPanel);
             ShopItemUI shopItemUI = shopItemGO.GetComponent<ShopItemUI>();
 
             shopItemUI.InitializeShopItemUI(item.Name, item.Details, item.Cost.ToString(), item.Icon);
+
+            if (i == 0) MenuManager.Instance.SetActiveObject(shopItemGO);
         }
     }
 
