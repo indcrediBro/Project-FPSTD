@@ -29,7 +29,6 @@ public class EnemyBurn : MonoBehaviour
 
     public void StopBurning()
     {
-        Debug.Log("Stopped Burn!!!!!!!!!!!!");
         m_isBurning = false;
         m_burnParticles.SetActive(false);
     }
