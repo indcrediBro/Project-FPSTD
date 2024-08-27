@@ -13303,6 +13303,99 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1992051206}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &834450657
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 63dfbcf203fd2334d8fb2af600564623,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 63dfbcf203fd2334d8fb2af600564623,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 63dfbcf203fd2334d8fb2af600564623,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 63dfbcf203fd2334d8fb2af600564623,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27.645
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 63dfbcf203fd2334d8fb2af600564623,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.606
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 63dfbcf203fd2334d8fb2af600564623,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 22.778
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 63dfbcf203fd2334d8fb2af600564623,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 63dfbcf203fd2334d8fb2af600564623,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 63dfbcf203fd2334d8fb2af600564623,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 63dfbcf203fd2334d8fb2af600564623,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 63dfbcf203fd2334d8fb2af600564623,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 63dfbcf203fd2334d8fb2af600564623,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 63dfbcf203fd2334d8fb2af600564623,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 63dfbcf203fd2334d8fb2af600564623,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2708497312253239672, guid: 63dfbcf203fd2334d8fb2af600564623,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7a731cead7a20654c8134c40b901063e, type: 2}
+    - target: {fileID: 919132149155446097, guid: 63dfbcf203fd2334d8fb2af600564623,
+        type: 3}
+      propertyPath: m_Name
+      value: Dusty_Easter_Egg
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 63dfbcf203fd2334d8fb2af600564623, type: 3}
 --- !u!4 &839069446 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2377032109250681152, guid: e3e628c4c6649435a950a395a6db7b75,
@@ -31920,6 +32013,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[5].Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: c30d9653078319c4d901aaffb526d966,
+        type: 3}
     - target: {fileID: 8383873611586133256, guid: 0c81bb33258884333b42a0116bcf8655,
         type: 3}
       propertyPath: m_shopPanel
@@ -33312,3 +33411,4 @@ SceneRoots:
   - {fileID: 1839477377228115244}
   - {fileID: 5091155119100129916}
   - {fileID: 8547579022936390872}
+  - {fileID: 834450657}
