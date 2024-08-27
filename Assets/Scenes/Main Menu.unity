@@ -7953,9 +7953,9 @@ RectTransform:
   - {fileID: 556875503}
   m_Father: {fileID: 1964354799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960.00006, y: -250.0575}
   m_SizeDelta: {x: 1920, y: 118}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &504691111
@@ -9925,9 +9925,9 @@ RectTransform:
   - {fileID: 1086749465}
   m_Father: {fileID: 1964354799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960.00006, y: -583.46747}
   m_SizeDelta: {x: 1920, y: 118}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &617834790
@@ -20490,9 +20490,9 @@ RectTransform:
   - {fileID: 1922104600}
   m_Father: {fileID: 1964354799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960.00006, y: -416.7625}
   m_SizeDelta: {x: 1920, y: 118}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1381794056
@@ -23624,9 +23624,9 @@ RectTransform:
   - {fileID: 1805240118}
   m_Father: {fileID: 1964354799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960.00006, y: -83.3525}
   m_SizeDelta: {x: 1920, y: 118}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1576746995
@@ -28147,6 +28147,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 80347981225041180, guid: 08753f489b23bc146aa5431854662689,
+        type: 3}
+      propertyPath: m_text
+      value: 'Monsters
+
+        on The
+
+        Island'
+      objectReference: {fileID: 0}
     - target: {fileID: 610556092941537436, guid: 08753f489b23bc146aa5431854662689,
         type: 3}
       propertyPath: m_fontColor32.rgba
@@ -28337,7 +28346,7 @@ PrefabInstance:
     - target: {fileID: 4258605072076674518, guid: 08753f489b23bc146aa5431854662689,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4425700500267028844, guid: 08753f489b23bc146aa5431854662689,
         type: 3}
