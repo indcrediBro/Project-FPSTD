@@ -74,12 +74,16 @@ public class GhostManager : MonoBehaviour
         else
         {
             m_hoverTime += Time.deltaTime;
-            if (m_hoverTime >= 0.1f)
+            if (m_hoverTime >= 0.2f)
             {
-                UpdateGhostMaterial(false);
                 //m_navmeshManager.BuildNavMesh();
                 _isValid = IsPathValid();
                 UpdateGhostMaterial(_isValid);
+            }
+            else
+            {
+                _isValid = false;
+                UpdateGhostMaterial(false);
             }
         }
 
