@@ -5,38 +5,38 @@ using UnityEngine.UI;
 
 public class ScreenFlash : MonoBehaviour
 {
-    [SerializeField] private Image flashImage;
-    [SerializeField] private Color flashColor = Color.red;
+    [SerializeField] private Image m_flashImage;
+    [SerializeField] private Color m_flashColor = Color.red;
 
     void Start()
     {
-        if (flashImage != null)
+        if (m_flashImage != null)
         {
-            flashImage.color = new Color(flashColor.r, flashColor.g, flashColor.b, 0);
+            m_flashImage.color = new Color(m_flashColor.r, m_flashColor.g, m_flashColor.b, 0);
         }
     }
 
-    public void TriggerFlash(float flashDuration = 0.2f)
+    public void TriggerFlash(float _flashDuration = 0.2f)
     {
         //if (SettingsManager.Instance.screenFlashEnabled)
         {
-            StartCoroutine(FlashCoroutine(flashDuration));
+            StartCoroutine(FlashCoroutine(_flashDuration));
         }
     }
 
-    private IEnumerator FlashCoroutine(float flashDuration)
+    private IEnumerator FlashCoroutine(float _flashDuration)
     {
         float elapsedTime = 0f;
-        flashImage.color = new Color(flashColor.r, flashColor.g, flashColor.b, 1);
+        m_flashImage.color = new Color(m_flashColor.r, m_flashColor.g, m_flashColor.b, 1);
 
-        while (elapsedTime < flashDuration)
+        while (elapsedTime < _flashDuration)
         {
             elapsedTime += Time.deltaTime;
-            float alpha = Mathf.Lerp(1, 0, elapsedTime / flashDuration);
-            flashImage.color = new Color(flashColor.r, flashColor.g, flashColor.b, alpha);
+            float alpha = Mathf.Lerp(1, 0, elapsedTime / _flashDuration);
+            m_flashImage.color = new Color(m_flashColor.r, m_flashColor.g, m_flashColor.b, alpha);
             yield return null;
         }
 
-        flashImage.color = new Color(flashColor.r, flashColor.g, flashColor.b, 0);
+        m_flashImage.color = new Color(m_flashColor.r, m_flashColor.g, m_flashColor.b, 0);
     }
 }
