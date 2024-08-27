@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd99b7a3806c4c6ba587e5acd7068ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_validMaterial: {fileID: 2100000, guid: 3eda8359aed5e4230bedc756bc5ebace, type: 2}
-  m_invalidMaterial: {fileID: 2100000, guid: 9330c6fd59da8406fbec57391a60aaa6, type: 2}
+  m_validMaterial: {fileID: 2100000, guid: f8fda9fc1aa284c00b0722d7e5490262, type: 2}
+  m_invalidMaterial: {fileID: 2100000, guid: ec313a6894c564e5a9cc9b04e31952e2, type: 2}
   m_navmeshManager: {fileID: 0}
   m_ghostObjects:
   - Name: Cannon

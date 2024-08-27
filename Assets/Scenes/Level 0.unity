@@ -32683,6 +32683,11 @@ PrefabInstance:
       propertyPath: m_navmeshManager
       value: 
       objectReference: {fileID: 1073895066}
+    - target: {fileID: 7150070518247393215, guid: f722a8afe337d44e3a3bb7bb21712b32,
+        type: 3}
+      propertyPath: m_invalidMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 20e324597965c4b1fad49482e45fae98, type: 2}
     - target: {fileID: 8436666898838107059, guid: f722a8afe337d44e3a3bb7bb21712b32,
         type: 3}
       propertyPath: m_Name
