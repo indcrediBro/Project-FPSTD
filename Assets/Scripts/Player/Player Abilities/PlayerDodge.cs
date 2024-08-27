@@ -46,6 +46,8 @@ public class PlayerDodge : MonoBehaviour
     {
         m_canDodge = false;
 
+        AudioManager.Instance.StopSound("SFX_PlayerMove");
+        AudioManager.Instance.PlaySound("SFX_PlayerDash");
         // Make a GetDodgeDirection function
         Vector3 dodgeDirection = _moveInput.magnitude > 0 ? transform.TransformDirection(new Vector3(_moveInput.x, 0f, _moveInput.y).normalized) : -transform.forward;
 
@@ -56,7 +58,6 @@ public class PlayerDodge : MonoBehaviour
 
         while (elapsedTime < m_dodgeDuration)
         {
-            // Extract this into function
             float step = (m_dodgeDistance / m_dodgeDuration) * Time.deltaTime;
             m_characterController.Move(dodgeDirection * step);
 
@@ -66,7 +67,11 @@ public class PlayerDodge : MonoBehaviour
 
         StartCoroutine(SmoothDutchTilt(0, 0.1f));
 
-        // You can possibly cache WaitForSeconds
+        if (_moveInput.magnitude > 0 && m_stats.IsGrounded())
+        {
+            AudioManager.Instance.PlaySound("SFX_PlayerMove");
+        }
+
         yield return new WaitForSeconds(m_dodgeCooldown - m_dodgeDuration);
         m_canDodge = true;
     }

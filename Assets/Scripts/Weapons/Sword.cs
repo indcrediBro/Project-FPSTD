@@ -31,6 +31,7 @@ public class Sword : Weapon
 
     public override void Attack()
     {
+        AudioManager.Instance.PlaySound("SFX_SwordSwing");
         Collider[] hitEnemies = Physics.OverlapSphere(m_weaponTransform.position, m_hitRadius, m_enemyLayer);
         foreach (Collider enemy in hitEnemies)
         {
@@ -54,6 +55,7 @@ public class Sword : Weapon
         if (hitEnemies.Length > 0)
         {
             GameReferences.Instance.m_CameraShake.TriggerShake();
+            AudioManager.Instance.PlaySound("SFX_SwordHit");
         }
     }
 
@@ -66,7 +68,6 @@ public class Sword : Weapon
 
         string animationName = "Attack " + m_comboCounter;
         PlayAnimation(animationName);
-
 
         m_lastAttackTime = Time.time;
         Invoke(nameof(ResetCombo), m_comboResetTime);

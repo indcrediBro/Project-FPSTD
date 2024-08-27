@@ -34,5 +34,7 @@ public class EnemyHealth : Health
             m_stateMachine.TransitionToState(m_stateMachine.m_BurnState);
         }
         TakeDamage(_damage);
+
+        m_stateMachine.m_Stats.GetAudio().PlayHurtSound();
     }
 }

@@ -27,6 +27,7 @@ public class Knife : Weapon
 
     public override void Attack()
     {
+        AudioManager.Instance.PlaySound("SFX_KnifeSwing");
         Collider[] hitEnemies = Physics.OverlapSphere(m_weaponTransform.position, m_hitRadius, m_enemyLayer);
         foreach (Collider enemy in hitEnemies)
         {
@@ -50,6 +51,7 @@ public class Knife : Weapon
         if (hitEnemies.Length > 0)
         {
             GameReferences.Instance.m_CameraShake.TriggerShake();
+            AudioManager.Instance.PlaySound("SFX_KnifeHit");
         }
     }
 
@@ -57,7 +59,10 @@ public class Knife : Weapon
     {
         DisableCanAttack();
         //m_weaponAudioSource.Play();
-        if (m_weaponAnimator) PlayAnimation("Attack 0");
+        if (m_weaponAnimator)
+        {
+            PlayAnimation("Attack 0");
+        }
     }
 
     private void OnDrawGizmosSelected()

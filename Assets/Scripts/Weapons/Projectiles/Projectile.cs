@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float m_speed = 10f;
     [SerializeField] private string m_vfxName;
+    [SerializeField] private string m_sfxName;
     private Transform m_target;
     private float m_damage;
     private float m_blastRadius;
@@ -72,13 +73,19 @@ public class Projectile : MonoBehaviour
             }
         }
 
+        AudioSource audioSource = ObjectPoolManager.Instance.GetPooledObject(m_sfxName).GetComponent<AudioSource>();
+        audioSource.pitch = RandomNumber.Instance.NextFloat(0.85f, 1.15f);
+        audioSource.transform.position = transform.position;
+        audioSource.gameObject.SetActive(true);
+        audioSource.Play();
+
         GameObject hitImpact = ObjectPoolManager.Instance.GetPooledObject("VFX_Hit" + m_vfxName);
         if (hitImpact != null)
         {
             hitImpact.transform.position = transform.position;
             hitImpact.SetActive(true);
-            DeactivateObject();
         }
+        DeactivateObject();
     }
 
     private void OnTriggerEnter(Collider _other)

@@ -5,6 +5,7 @@ public class ChaseBaseState : IEnemyState
     public void EnterState(EnemyStateMachine _stateMachine)
     {
         _stateMachine.m_Animations.PlayAnimation(EnemyState.ChaseBase);
+        _stateMachine.m_Stats.GetAudio().PlayChaseSound();
     }
 
     public void UpdateState(EnemyStateMachine _stateMachine)
@@ -27,12 +28,14 @@ public class ChaseBaseState : IEnemyState
             }
             else
             {
+                _stateMachine.m_Stats.GetAudio().PlayAlertSound();
                 _stateMachine.TransitionToState(_stateMachine.m_ChasePlayerState);
             }
         }
 
         if (_stateMachine.m_PlayerTarget && _stateMachine.m_Detection.IsPlayerInRange())
         {
+            _stateMachine.m_Stats.GetAudio().PlayAlertSound();
             _stateMachine.TransitionToState(_stateMachine.m_ChasePlayerState);
         }
 

@@ -51,13 +51,120 @@ MonoBehaviour:
   m_sfxMixer: {fileID: 6701690750796449149, guid: f761d52be2e5cf34bbb77540f268d507,
     type: 2}
   m_audioSFXList:
-  - name: Purchase_Item
-    audioClip: {fileID: 0}
-    volume: 0.4
+  - name: SFX_BaseHit
+    audioClip: {fileID: 8300000, guid: 748dfa93a377b43818d4569cf6ce6a23, type: 3}
+    volume: 0.583
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.8, y: 1.05}
+    playOnAwake: 0
+    loop: 0
+  - name: SFX_PlayerHit
+    audioClip: {fileID: 8300000, guid: c324d26c1a11c4cd6995b201035d9a17, type: 3}
+    volume: 0.866
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.9, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+  - name: SFX_KnifeSwing
+    audioClip: {fileID: 8300000, guid: fd8d0d2c8fc20479ba2d94eb7c4ab6be, type: 3}
+    volume: 0.783
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 1.3, y: 1.8}
+    playOnAwake: 0
+    loop: 0
+  - name: SFX_KnifeHit
+    audioClip: {fileID: 8300000, guid: 0b429ef32c3d6a54cad81e0b9f3be9ed, type: 3}
+    volume: 0.79
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.9, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+  - name: SFX_SwordSwing
+    audioClip: {fileID: 8300000, guid: fd8d0d2c8fc20479ba2d94eb7c4ab6be, type: 3}
+    volume: 0.802
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.6, y: 1}
+    playOnAwake: 0
+    loop: 0
+  - name: SFX_SwordHit
+    audioClip: {fileID: 8300000, guid: b74ae577ec051d84da6fdc9855c0a38f, type: 3}
+    volume: 0.593
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.9, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+  - name: SFX_GunReload
+    audioClip: {fileID: 8300000, guid: 2535a26ee9026bc43929d422dd9494a6, type: 3}
+    volume: 0.673
     isMusic: 0
     isUISFX: 1
     randomizePitch: 0
-    randomizePitchValues: {x: 0, y: 0}
+    randomizePitchValues: {x: 0.9, y: 1.1}
     playOnAwake: 0
-    playOnLocation: 0
+    loop: 0
+  - name: SFX_GunFire
+    audioClip: {fileID: 8300000, guid: c07a34244f1c4504bbfbeef410d92ef9, type: 3}
+    volume: 0.191
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.9, y: 1.1}
+    playOnAwake: 0
+    loop: 0
+  - name: SFX_BowPull
+    audioClip: {fileID: 8300000, guid: 72749aea2d489dc4ea5c6699e5b75bb4, type: 3}
+    volume: 1
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 0.9, y: 1.1}
+    playOnAwake: 0
+    loop: 1
+  - name: SFX_BowRelease
+    audioClip: {fileID: 8300000, guid: fd8d0d2c8fc20479ba2d94eb7c4ab6be, type: 3}
+    volume: 0.704
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 1.6, y: 2}
+    playOnAwake: 0
+    loop: 0
+  - name: SFX_PlayerMove
+    audioClip: {fileID: 8300000, guid: 68cfb1616759c4b43b0993806ad21cd1, type: 3}
+    volume: 0.952
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 0
+    randomizePitchValues: {x: 1.6, y: 2}
+    playOnAwake: 0
+    loop: 1
+  - name: SFX_PlayerJump
+    audioClip: {fileID: 8300000, guid: d2b552985289b4673ad08df82fa935df, type: 3}
+    volume: 0.687
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 1.25, y: 1.75}
+    playOnAwake: 0
+    loop: 0
+  - name: SFX_PlayerDash
+    audioClip: {fileID: 8300000, guid: 0488dc48341553c47859dc2f401162ed, type: 3}
+    volume: 1
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 1
+    randomizePitchValues: {x: 1.15, y: 1.5}
+    playOnAwake: 0
     loop: 0

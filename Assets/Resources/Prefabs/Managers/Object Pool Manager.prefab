@@ -112,3 +112,21 @@ MonoBehaviour:
       type: 3}
     m_PooledAmount: 10
     m_WillGrow: 1
+  - m_Name: SFX_ArrowHit
+    m_PooledObjects: []
+    m_PooledObject: {fileID: 1812822813135015632, guid: f0ccc3ce993434d609000a1b117fc654,
+      type: 3}
+    m_PooledAmount: 10
+    m_WillGrow: 1
+  - m_Name: SFX_BulletHit
+    m_PooledObjects: []
+    m_PooledObject: {fileID: 2090368943749497974, guid: 7a2694b271e924b9bbc79ff4ff548b99,
+      type: 3}
+    m_PooledAmount: 10
+    m_WillGrow: 1
+  - m_Name: SFX_CannonHit
+    m_PooledObjects: []
+    m_PooledObject: {fileID: 6970338326867609944, guid: 93ce5106958664a6ea97c25f300aa310,
+      type: 3}
+    m_PooledAmount: 10
+    m_WillGrow: 1

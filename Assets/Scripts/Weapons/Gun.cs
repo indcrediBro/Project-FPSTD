@@ -94,6 +94,7 @@ public class Gun : Weapon
         DisableCanAttack();
         StartCoroutine(FireCooldownCO());
         PlayAnimation("Attack 0");
+        AudioManager.Instance.PlaySound("SFX_GunFire");
 
         GameObject bulletGO = ObjectPoolManager.Instance.GetPooledObject("Ammo_BulletPlayer");
         bulletGO.transform.position = m_firePoint.position;
@@ -116,6 +117,7 @@ public class Gun : Weapon
         m_isReloading = true;
 
         PlayAnimation("Reload");
+        AudioManager.Instance.PlaySound("SFX_GunReload");
         for (int i = 0; i < m_maxAmmo; i++)
         {
             if (HasBullets())

@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_postImpactDestroyTime: 2
   m_rotateWithVelocity: 1
+  m_sfxName: SFX_ArrowHit
 --- !u!54 &8409487303601304167
 Rigidbody:
   m_ObjectHideFlags: 0

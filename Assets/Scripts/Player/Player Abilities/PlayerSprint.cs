@@ -35,21 +35,25 @@ public class PlayerSprint : MonoBehaviour
                         m_stats.GetPlayerStaminaComponent().UseStamina(m_staminaCost);
                         m_stats.SetSprintMultiplier(2f);
                         m_sprintTimer = 0f;
+                        AudioManager.Instance.GetAudioSource("SFX_PlayerMove").pitch = 2f;
                     }
                     else
                     {
                         m_stats.SetSprintMultiplier(1f);
+                        AudioManager.Instance.GetAudioSource("SFX_PlayerMove").pitch = 1f;
                     }
                 }
                 else
                 {
                     m_stats.SetSprintMultiplier(2f);
+                    AudioManager.Instance.GetAudioSource("SFX_PlayerMove").pitch = 2f;
                 }
             }
         }
         else
         {
             m_stats.SetSprintMultiplier(1f);
+            AudioManager.Instance.GetAudioSource("SFX_PlayerMove").pitch = 1f;
         }
     }
 }

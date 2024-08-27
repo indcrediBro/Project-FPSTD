@@ -7,6 +7,8 @@ public class PlayerWeaponProjectile : MonoBehaviour
     [SerializeField] private float m_postImpactDestroyTime = 2f;
     private bool m_isLaunched;
     [SerializeField] private bool m_rotateWithVelocity;
+    [SerializeField] private string m_sfxName;
+
     private Rigidbody m_rigidbody;
     private Collider m_collider;
 
@@ -15,6 +17,12 @@ public class PlayerWeaponProjectile : MonoBehaviour
         m_collider = GetComponent<Collider>();
         m_rigidbody = GetComponent<Rigidbody>();
     }
+
+    private void OnEnable()
+    {
+        m_isLaunched = false;
+    }
+
     void FixedUpdate()
     {
         if (m_rotateWithVelocity && m_rigidbody.velocity != Vector3.zero)
@@ -42,6 +50,12 @@ public class PlayerWeaponProjectile : MonoBehaviour
     {
         m_collider.enabled = false;
         m_rigidbody.isKinematic = true;
+
+        AudioSource audioSource = ObjectPoolManager.Instance.GetPooledObject(m_sfxName).GetComponent<AudioSource>();
+        audioSource.pitch = RandomNumber.Instance.NextFloat(1f, 1.5f);
+        audioSource.transform.position = transform.position;
+        audioSource.gameObject.SetActive(true);
+        audioSource.Play();
 
         GameObject hitImpact = ObjectPoolManager.Instance.GetPooledObject("VFX_HitArrow");
         if (hitImpact != null)

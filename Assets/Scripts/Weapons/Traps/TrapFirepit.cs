@@ -6,6 +6,17 @@ public class TrapFirepit : MonoBehaviour
 {
     [SerializeField] private float m_damagePerSecond = 5f;
     [SerializeField] private float m_burnRate = 1.5f; // Time between burns
+    [SerializeField] private AudioSource m_audioSource;
+
+    private void OnEnable()
+    {
+        m_audioSource.Play();
+    }
+
+    private void OnDisable()
+    {
+        m_audioSource.Stop();
+    }
 
     private void OnTriggerEnter(Collider _other)
     {

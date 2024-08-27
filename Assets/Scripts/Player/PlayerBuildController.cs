@@ -59,7 +59,7 @@ public class PlayerBuildController : MonoBehaviour
 
     public string GetActiveBuildableName()
     {
-        if (InventoryManager.Instance.GetBuildableInventoryItems().Count <= 0)
+        if (InventoryManager.Instance.GetBuildableInventoryItems().Count == 0)
             return "";
         return InventoryManager.Instance.GetBuildableInventoryItems()[m_currentBuildableIndex].Name;
     }

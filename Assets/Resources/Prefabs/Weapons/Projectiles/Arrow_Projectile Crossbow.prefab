@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 30
   m_vfxName: Arrow
+  m_sfxName: SFX_ArrowHit
 --- !u!1 &4550773872706473577
 GameObject:
   m_ObjectHideFlags: 0

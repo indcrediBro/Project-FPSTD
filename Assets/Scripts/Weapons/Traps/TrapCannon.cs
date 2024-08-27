@@ -17,6 +17,8 @@ public class TrapCannon : TrapBase
             targetPosition.y += m_yOffset;
             GameObject projectile = InstantiateProjectile();
             projectile.GetComponent<Projectile>().Launch(m_currentTarget, m_damage, blastRadius);
+            m_audioSource.pitch = RandomNumber.Instance.NextFloat(0.85f, 1.15f);
+            m_audioSource.Play();
         }
     }
 

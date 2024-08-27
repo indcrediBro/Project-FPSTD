@@ -41,14 +41,17 @@ public class PlayerJump : MonoBehaviour
         {
             if (m_stats.GetStamina() > m_staminaCost)
             {
+                AudioManager.Instance.PlaySound("SFX_PlayerJump");
                 m_stats.GetPlayerStaminaComponent().UseStamina(m_staminaCost);
                 m_velocity.y = Mathf.Sqrt(m_stats.GetJumpHeight() * -2f * m_stats.GetGravity());
             }
         }
         else
         {
+            AudioManager.Instance.PlaySound("SFX_PlayerJump");
             m_velocity.y = Mathf.Sqrt(m_stats.GetJumpHeight() * -2f * m_stats.GetGravity());
         }
+
     }
 
     private void ApplyGroundedForce()

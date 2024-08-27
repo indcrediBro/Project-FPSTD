@@ -7,6 +7,7 @@ public class IdleState : IEnemyState
     public void EnterState(EnemyStateMachine _stateMachine)
     {
         _stateMachine.m_Animations.PlayAnimation(EnemyState.Idle);
+        _stateMachine.m_Stats.GetAudio().PlayAlertSound();
     }
 
     public void UpdateState(EnemyStateMachine _stateMachine)

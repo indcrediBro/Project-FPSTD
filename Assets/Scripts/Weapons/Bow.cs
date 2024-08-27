@@ -60,6 +60,7 @@ public class Bow : Weapon
         m_currentChargeTime = 0f;
         m_isCharging = true;
         m_currentArrow.transform.SetParent(m_arrowChargedPosition);
+        AudioManager.Instance.PlaySound("SFX_BowPull");
     }
 
     private void ContinueCharging()
@@ -146,6 +147,9 @@ public class Bow : Weapon
             arrowRb.isKinematic = false;
             arrowRb.velocity = m_currentArrow.transform.forward * arrowSpeed;
             UnloadArrow();
+
+            AudioManager.Instance.StopSound("SFX_BowPull");
+            AudioManager.Instance.PlaySound("SFX_BowRelease");
         }
     }
 

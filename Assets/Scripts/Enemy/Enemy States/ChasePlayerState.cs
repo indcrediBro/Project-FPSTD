@@ -3,6 +3,7 @@ public class ChasePlayerState : IEnemyState
     public void EnterState(EnemyStateMachine _stateMachine)
     {
         _stateMachine.m_Animations.PlayAnimation(EnemyState.ChasePlayer);
+        _stateMachine.m_Stats.GetAudio().PlayChaseSound();
     }
 
     public void UpdateState(EnemyStateMachine _stateMachine)
@@ -15,6 +16,7 @@ public class ChasePlayerState : IEnemyState
         {
             if (!_stateMachine.m_Detection.IsPlayerInRange())
             {
+                _stateMachine.m_Stats.GetAudio().PlayAlertSound();
                 _stateMachine.TransitionToState(_stateMachine.m_IdleState);
             }
 

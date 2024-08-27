@@ -309,6 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_postImpactDestroyTime: 0
   m_rotateWithVelocity: 0
+  m_sfxName: SFX_BulletHit
 --- !u!1 &8766202749147394003
 GameObject:
   m_ObjectHideFlags: 0

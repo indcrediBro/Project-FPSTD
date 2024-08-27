@@ -15,10 +15,10 @@ public abstract class TrapBase : MonoBehaviour
     [SerializeField] private float m_recoilDuration = 0.1f;
 
     [SerializeField] protected GameObject m_projectile;
+    [SerializeField] protected AudioSource m_audioSource;
     protected float m_fireCooldown = 0f;
     protected Transform m_currentTarget;
     private Vector3 m_originalPosition;
-
     protected virtual void Start()
     {
         m_originalPosition = transform.localPosition;

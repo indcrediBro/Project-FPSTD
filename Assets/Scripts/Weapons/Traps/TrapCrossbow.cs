@@ -15,6 +15,8 @@ public class TrapCrossbow : TrapBase
             GameObject projectile = InstantiateProjectile();
             projectile.SetActive(true);
             projectile.GetComponent<Projectile>().Launch(m_currentTarget, m_damage);
+            m_audioSource.pitch = RandomNumber.Instance.NextFloat(1.2f, 1.75f);
+            m_audioSource.Play();
         }
     }
 

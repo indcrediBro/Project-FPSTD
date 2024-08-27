@@ -9,6 +9,7 @@ public class TrapSpikes : MonoBehaviour
     [SerializeField] private Transform m_spikesTransform;
     [SerializeField] private Vector3 m_raisedPosition;
     [SerializeField] private Vector3 m_loweredPosition;
+    [SerializeField] private AudioSource m_audioSource;
 
     private Collider m_collider;
     private bool isRaised = false;
@@ -40,6 +41,8 @@ public class TrapSpikes : MonoBehaviour
 
             yield return new WaitForSeconds(isRaised ? m_interval / 2 : m_interval);
             m_collider.enabled = isRaised; // Collider is enabled only when spikes are raised
+            m_audioSource.pitch = RandomNumber.Instance.NextFloat(0.85f, 1.25f);
+            m_audioSource.Play();
         }
     }
 
