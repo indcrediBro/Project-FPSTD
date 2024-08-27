@@ -51,15 +51,15 @@ MonoBehaviour:
     Details: Blocks the path
     Prefab: {fileID: 3672779323813650105, guid: ff14b5898f2dc4fb6a775279048de592,
       type: 3}
-    Icon: {fileID: 0}
-    Cost: 0
+    Icon: {fileID: 21300000, guid: 59ef623c1ef982b46bdcfbdd8278fc39, type: 3}
+    Cost: 1
     Quantity: 1
     ItemType: 0
   - Name: Spikes
     Details: Immobalize
     Prefab: {fileID: 1029278469141272373, guid: ea9c98b551b7e4a559b1bd1996fc2d2f,
       type: 3}
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 8709aa92a240ee84aa1bea25bf338c60, type: 3}
     Cost: 3
     Quantity: 1
     ItemType: 0
@@ -67,79 +67,87 @@ MonoBehaviour:
     Details: Burn
     Prefab: {fileID: 7275402095292909995, guid: 79754482d83364aeaa2688519f22320f,
       type: 3}
-    Icon: {fileID: 0}
-    Cost: 2
+    Icon: {fileID: 21300000, guid: efc723fd14dc13041bdbea9ef230f530, type: 3}
+    Cost: 10
     Quantity: 1
     ItemType: 0
   - Name: Crossbow
     Details: Fast
     Prefab: {fileID: 2487558655328968875, guid: 8ccd7ca46eab04bbdba485645635c814,
       type: 3}
-    Icon: {fileID: 0}
-    Cost: 1
+    Icon: {fileID: 21300000, guid: 01499a6eebcf3984c8c2d3047c4a348a, type: 3}
+    Cost: 25
     Quantity: 1
     ItemType: 0
   - Name: Cannon
     Details: Explosion
     Prefab: {fileID: 7773144979368894186, guid: 861edbb1fe4104cd4b484772c496fd14,
       type: 3}
-    Icon: {fileID: 0}
-    Cost: 1
+    Icon: {fileID: 21300000, guid: ec7efbb5d40e288468dca56020eb6803, type: 3}
+    Cost: 35
     Quantity: 1
     ItemType: 0
-  - Name: Arrow
-    Details: 10 Arrows
-    Prefab: {fileID: 1921194892290325215, guid: dcefd0314825b4bbba4285a315118956,
+  - Name: Knife
+    Details: Default
+    Prefab: {fileID: 4405967225442156524, guid: 8e7496e371d3a4a0fae9b72e0081a5a2,
       type: 3}
-    Icon: {fileID: 0}
-    Cost: 1
-    Quantity: 10
-    ItemType: 2
-  - Name: Bullet
-    Details: 10 Bullets
-    Prefab: {fileID: 1921194892290325215, guid: dcefd0314825b4bbba4285a315118956,
-      type: 3}
-    Icon: {fileID: 0}
-    Cost: 1
-    Quantity: 10
-    ItemType: 2
+    Icon: {fileID: 21300000, guid: a2447d8c7b20bce4290ec5735c9dbe8f, type: 3}
+    Cost: 30
+    Quantity: 1
+    ItemType: 1
   - Name: Sword
     Details: Combo
     Prefab: {fileID: 744890731368516849, guid: 71bcb89b7825d4453b44bcb2cb4d8e6b, type: 3}
-    Icon: {fileID: 0}
-    Cost: 1
+    Icon: {fileID: 21300000, guid: a2447d8c7b20bce4290ec5735c9dbe8f, type: 3}
+    Cost: 50
     Quantity: 1
     ItemType: 1
   - Name: Bow
     Details: Charged
     Prefab: {fileID: 5645318541186855315, guid: 16fd70588be404910a03a43d321e9ace,
       type: 3}
-    Icon: {fileID: 0}
-    Cost: 1
+    Icon: {fileID: 21300000, guid: 842f7db4276c19f47816966bd45693c1, type: 3}
+    Cost: 25
     Quantity: 1
     ItemType: 1
+  - Name: Arrow
+    Details: 10 Arrows
+    Prefab: {fileID: 1921194892290325215, guid: dcefd0314825b4bbba4285a315118956,
+      type: 3}
+    Icon: {fileID: 21300000, guid: 4577a9fa566409744acc1320776952ad, type: 3}
+    Cost: 1
+    Quantity: 10
+    ItemType: 2
   - Name: Gun
     Details: 2 Shots
     Prefab: {fileID: 8144537438729290365, guid: 62c08cc0155424603889e923f0928ca3,
       type: 3}
-    Icon: {fileID: 0}
-    Cost: 1
+    Icon: {fileID: 21300000, guid: 5d142759160ec17459e89eb292e2e6d8, type: 3}
+    Cost: 50
     Quantity: 1
     ItemType: 1
+  - Name: Bullet
+    Details: 10 Bullets
+    Prefab: {fileID: 1921194892290325215, guid: dcefd0314825b4bbba4285a315118956,
+      type: 3}
+    Icon: {fileID: 21300000, guid: c6642a15f6febaa4e880f6441fe062e4, type: 3}
+    Cost: 5
+    Quantity: 10
+    ItemType: 2
   - Name: Player Health
     Details: Player Max Health Upgrade
     Prefab: {fileID: 5869036248412213485, guid: f06c29aaeb95a0a4e98b45743c8493ed,
       type: 3}
-    Icon: {fileID: 0}
-    Cost: 1
+    Icon: {fileID: 21300000, guid: a6798a26ce41e444f8b3688d0fe9e6b5, type: 3}
+    Cost: 50
     Quantity: 1
     ItemType: 3
   - Name: Base Health
     Details: Base Max Health Upgrade
     Prefab: {fileID: 2990672962286243183, guid: 9b3cdefd878b09947a5f2c7195e00682,
       type: 3}
-    Icon: {fileID: 0}
-    Cost: 1
+    Icon: {fileID: 21300000, guid: b130a9e1a9c022042bf39c53671d78f1, type: 3}
+    Cost: 50
     Quantity: 1
     ItemType: 3
 --- !u!114 &8383873611586133256

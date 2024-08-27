@@ -47,6 +47,10 @@ public class Knife : Weapon
                 //enemyStats.GetRigidbody().AddForce(knockbackDirection * m_knockbackForce, ForceMode.Impulse);
             }
         }
+        if (hitEnemies.Length > 0)
+        {
+            GameReferences.Instance.m_CameraShake.TriggerShake();
+        }
     }
 
     private void PerformAttack()

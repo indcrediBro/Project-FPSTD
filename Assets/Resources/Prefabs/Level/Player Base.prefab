@@ -277,7 +277,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 0f47f8346e042ac4d892d84dfd8c5a15, type: 3}
 --- !u!114 &1478767316742643012
@@ -323,11 +323,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_isPlayer: 1
   m_dontDestroy: 0
-  m_maxHealth: 10000
+  m_maxHealth: 500
   m_currentHealth: 0
   m_waitTimeBeforeDeath: 0
-  m_regenerateAmount: 1
-  m_regenerateRate: 2
+  m_regenerateAmount: 2
+  m_regenerateRate: 1
 --- !u!1 &4895613541154247159
 GameObject:
   m_ObjectHideFlags: 0

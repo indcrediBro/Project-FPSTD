@@ -28,7 +28,11 @@ public class PlayerBaseHealth : Health
             m_currentRegenTime = m_regenerateRate;
         }
     }
-
+    public override void TakeDamage(float _damage)
+    {
+        base.TakeDamage(_damage);
+        GameReferences.Instance.m_CameraShake.TriggerShake();
+    }
     protected override void Die(float _timeBeforeRemoving)
     {
         base.Die(_timeBeforeRemoving);

@@ -7,19 +7,17 @@ public class PlayerHealth : Health
     [SerializeField] private int m_regenerateAmount;
     [SerializeField] private float m_regenerateRate;
 
-    private PlayerHealth m_playerHealth;
     private float m_currentRegenTime;
 
     private void Awake()
     {
-        m_playerHealth = GetComponent<PlayerHealth>();
     }
 
     private void Update()
     {
         if (GameReferences.Instance.m_IsPaused) return;
 
-        if (m_regenerateRate > 0 && m_regenerateAmount > 0 && m_playerHealth.GetCurrentHealthValue() < m_playerHealth.GetMaxHealthValue())
+        if (m_regenerateRate > 0 && m_regenerateAmount > 0 && GetCurrentHealthValue() < GetMaxHealthValue())
         {
             Regenerate();
         }
@@ -31,9 +29,15 @@ public class PlayerHealth : Health
 
         if (m_currentRegenTime <= 0)
         {
-            m_playerHealth.Heal(m_regenerateAmount);
+            Heal(m_regenerateAmount);
             m_currentRegenTime = m_regenerateRate;
         }
+    }
+
+    public override void TakeDamage(float _damage)
+    {
+        base.TakeDamage(_damage);
+        GameReferences.Instance.m_ScreenFlash.TriggerFlash(1f);
     }
 
     protected override void Die(float _timeBeforeRemoving)

@@ -160,6 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1568155778640013831}
   - component: {fileID: 5465714931067513084}
+  - component: {fileID: 2077561893795448016}
   m_Layer: 0
   m_Name: Player FPS Virtual Camera
   m_TagString: Untagged
@@ -223,6 +224,19 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 3731250208834489030}
+--- !u!114 &2077561893795448016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4735542148498931858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bcd1394f6fc747b1b3bfe389fa26bb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dampingSpeed: 0.01
 --- !u!1 &5512623428007020257
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +311,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 8087
+    m_Bits: 24471
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -16097,7 +16111,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 343
+  m_VersionIndex: 346
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -16629,7 +16643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_isPlayer: 1
-  m_dontDestroy: 0
+  m_dontDestroy: 1
   m_maxHealth: 100
   m_currentHealth: 0
   m_waitTimeBeforeDeath: 0
