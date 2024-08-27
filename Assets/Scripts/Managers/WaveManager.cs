@@ -50,7 +50,7 @@ public class WaveManager : Singleton<WaveManager>
             enemyObject.SetActive(true);
 
             EnemyManager.Instance.AddEnemyToList(enemyObject, enemyType.m_EnemyName);
-            
+
             yield return new WaitForSeconds(RandomNumber.Instance.NextFloat(0.5f, 2f));
         }
         StartCoroutine(CheckWaveCompletion());
@@ -96,7 +96,7 @@ public class WaveManager : Singleton<WaveManager>
     {
         m_isWaveActive = false;
         UpgradeEnemies();
-        if (m_autoWaveStart) StartWave();
+        if (m_autoWaveStart) Invoke("StartWave", 5f);
     }
 
     public void UpgradeEnemies()
