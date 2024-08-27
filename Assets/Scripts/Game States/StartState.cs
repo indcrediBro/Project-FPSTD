@@ -13,6 +13,10 @@ public class StartState : IGameState
     public void Enter()
     {
         InitializeGameSettings();
+        AudioManager.Instance.StopSound("BGM_Game");
+        AudioManager.Instance.StopSound("BGM_Gameover");
+        AudioManager.Instance.StopSound("BGM_Shop");
+        AudioManager.Instance.PlaySound("BGM_MainMenu");
     }
 
     public void Update()

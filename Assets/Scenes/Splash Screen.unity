@@ -470,6 +470,171 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1482977779}
     m_Modifications:
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.size
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[17].loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[17].name
+      value: SFX_Purchase
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[18].name
+      value: SFX_Error
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[19].name
+      value: SFX_UIPanelOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[20].name
+      value: SFX_UIHover
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[21].name
+      value: SFX_UIClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[17].volume
+      value: 0.516
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[18].volume
+      value: 0.516
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[19].volume
+      value: 0.516
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[20].volume
+      value: 0.719
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[21].volume
+      value: 0.779
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[17].isMusic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[17].isUISFX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[18].isUISFX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[19].isUISFX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[20].isUISFX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[21].isUISFX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[17].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a8e4e45aada943eab003ecaaddcb9be, type: 3}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[18].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b2db8f0f7efdb2c41ad17fe63d4d0b03, type: 3}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[19].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3868fdc9c887b4376b264597bfd49ae7, type: 3}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[20].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5e38cb46f9f02a44797fea9502416b99, type: 3}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[21].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6558bdfdf1c4cf84bb5deea523d848fb, type: 3}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[17].randomizePitchValues.x
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[17].randomizePitchValues.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[18].randomizePitchValues.x
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[18].randomizePitchValues.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[19].randomizePitchValues.x
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[19].randomizePitchValues.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[20].randomizePitchValues.x
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[20].randomizePitchValues.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[21].randomizePitchValues.x
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 764291406049573580, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
+        type: 3}
+      propertyPath: m_audioSFXList.Array.data[21].randomizePitchValues.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2937421767358665122, guid: 45124cf0d3dc54aa59df2d37f8cdbeaf,
         type: 3}
       propertyPath: m_Name

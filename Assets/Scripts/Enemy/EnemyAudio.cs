@@ -7,6 +7,12 @@ public class EnemyAudio : MonoBehaviour
     [SerializeField] private AudioClip m_chaseClip, m_alertClip, m_hurtClip, m_deadClip;
     [SerializeField] private AudioSource m_audioSource;
 
+    private void Update()
+    {
+        if (GameReferences.Instance.m_IsPaused) m_audioSource.Pause();
+        else m_audioSource.Play();
+    }
+
     public void PlayChaseSound()
     {
         m_audioSource.Stop();

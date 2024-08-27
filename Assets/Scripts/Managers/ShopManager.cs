@@ -58,11 +58,12 @@ public class ShopManager : Singleton<ShopManager>
                     bHealth.SetMaxHealth(bHealth.GetMaxHealthValue() * 1.2f);
                 }
             }
-
+            AudioManager.Instance.PlaySound("SFX_Purchase");
             ShopUIManager.Instance.DisplayPurchases("Item purchased: " + item.Name);
         }
         else
         {
+            AudioManager.Instance.PlaySound("SFX_Error");
             ShopUIManager.Instance.DisplayPurchases("Not enough currency..!");
         }
     }

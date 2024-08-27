@@ -22,6 +22,7 @@ public class PanelUI : MonoBehaviour
     {
         open = true;
         gameObject.SetActive(true);
+        AudioManager.Instance.PlaySound("SFX_UIPanelOpen");
     }
 
     public void Close()

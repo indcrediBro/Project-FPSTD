@@ -19,6 +19,10 @@ public class GameOverState : IGameState
         GameReferences.Instance.m_IsGameOver = true;
         MenuManager.Instance.HideHUD();
         MenuManager.Instance.OpenMenu("GameOverPanel");
+        AudioManager.Instance.StopSound("BGM_Game");
+        AudioManager.Instance.StopSound("BGM_Shop");
+        AudioManager.Instance.StopSound("BGM_MainMenu");
+        AudioManager.Instance.PlaySound("BGM_Gameover");
     }
 
     public void Update()

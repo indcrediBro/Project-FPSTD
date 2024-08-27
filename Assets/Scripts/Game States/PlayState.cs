@@ -17,6 +17,10 @@ public class PlayState : IGameState
         Time.timeScale = 1;
         GameReferences.Instance.m_IsPaused = false;
         GameReferences.Instance.m_IsGameOver = false;
+        AudioManager.Instance.StopSound("BGM_Gameover");
+        AudioManager.Instance.StopSound("BGM_Shop");
+        AudioManager.Instance.StopSound("BGM_MainMenu");
+        AudioManager.Instance.PlaySound("BGM_Game");
     }
 
     public void Update()

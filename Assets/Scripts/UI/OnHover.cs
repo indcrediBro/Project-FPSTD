@@ -7,33 +7,30 @@ using UnityEngine.UI;
 
 #endregion
 
-public class OnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class OnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [SerializeField] private RectTransform m_rectTransform;
-    [SerializeField] private Button m_button;
-    [SerializeField] private float m_scaleValue;
-    [SerializeField] private float m_scaleDuration;
+    //private RectTransform m_rectTransform;
+    //private Button m_button;
+    [SerializeField] private float m_scaleValue = 1.15f;
+    [SerializeField] private float m_scaleDuration = 0.25f;
     [SerializeField] private Ease m_easing;
     private Tween m_tweener;
 
-    private void Start()
-    {
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-    }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
-        m_tweener = m_rectTransform.DOScale(Vector3.one * m_scaleValue, m_scaleDuration).SetEase(m_easing);
+        AudioManager.Instance.PlaySound("SFX_UIHover");
+        m_tweener = transform.DOScale(Vector3.one * m_scaleValue, m_scaleDuration).SetEase(m_easing);
         m_tweener.SetUpdate(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        m_tweener = m_rectTransform.DOScale(Vector3.one, m_scaleDuration);
+        m_tweener = transform.DOScale(Vector3.one, m_scaleDuration);
         m_tweener.SetUpdate(true);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        AudioManager.Instance.PlaySound("SFX_UIClick");
     }
 }

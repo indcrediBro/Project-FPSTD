@@ -17,12 +17,19 @@ public class ShopState : IGameState
         Time.timeScale = 0;
         GameReferences.Instance.m_IsPaused = true;
         MenuManager.Instance.OpenMenu("ShopPanel");
+
+        AudioManager.Instance.StopSound("BGM_Game");
+        AudioManager.Instance.StopSound("BGM_Gameover");
+        AudioManager.Instance.StopSound("BGM_MainMenu");
+        AudioManager.Instance.PlaySound("BGM_Shop");
     }
 
     public void Update()
     {
         if (InputManager.Instance.m_PauseInput.WasReleasedThisFrame())
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             m_gameManager.SetState(new PlayState(m_gameManager));
         }
     }

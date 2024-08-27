@@ -168,3 +168,39 @@ MonoBehaviour:
     randomizePitchValues: {x: 1.15, y: 1.5}
     playOnAwake: 0
     loop: 0
+  - name: BGM_MainMenu
+    audioClip: {fileID: 8300000, guid: 2eb26790f2a19403294d6b1010e81f5c, type: 3}
+    volume: 0.438
+    isMusic: 1
+    isUISFX: 0
+    randomizePitch: 0
+    randomizePitchValues: {x: 1.15, y: 1.5}
+    playOnAwake: 0
+    loop: 1
+  - name: BGM_Shop
+    audioClip: {fileID: 8300000, guid: fa705a24ab4694c62a10ce09907d533a, type: 3}
+    volume: 0.788
+    isMusic: 1
+    isUISFX: 0
+    randomizePitch: 0
+    randomizePitchValues: {x: 1.15, y: 1.5}
+    playOnAwake: 0
+    loop: 1
+  - name: BGM_Game
+    audioClip: {fileID: 8300000, guid: a51375044d23e4f449a4cb8e54718c7c, type: 3}
+    volume: 0.313
+    isMusic: 1
+    isUISFX: 0
+    randomizePitch: 0
+    randomizePitchValues: {x: 1.15, y: 1.5}
+    playOnAwake: 0
+    loop: 1
+  - name: BGM_Gameover
+    audioClip: {fileID: 8300000, guid: 1f1952b062e8b4171944dfaba88dfe34, type: 3}
+    volume: 0.516
+    isMusic: 1
+    isUISFX: 0
+    randomizePitch: 0
+    randomizePitchValues: {x: 1.15, y: 1.5}
+    playOnAwake: 0
+    loop: 1
