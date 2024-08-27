@@ -20,6 +20,7 @@ public class MenuManager : Singleton<MenuManager>
                 return m_panels[i];
             }
         }
+
         return null;
     }
 
@@ -61,7 +62,7 @@ public class MenuManager : Singleton<MenuManager>
         {
             if (m_panels[i].menuName == menuName)
             {
-                //m_panels[i].defaultButton = EventSystem.current.currentSelectedGameObject;
+                m_panels[i].SetDefaultButton(EventSystem.current.currentSelectedGameObject);
                 m_panels[i].Close();
             }
         }
@@ -69,8 +70,7 @@ public class MenuManager : Singleton<MenuManager>
 
     public void CloseMenu(PanelUI menu)
     {
-        //GameObject current_object = EventSystem.current.currentSelectedGameObject;
-        //menu.defaultButton = EventSystem.current.currentSelectedGameObject;
+        menu.SetDefaultButton(EventSystem.current.currentSelectedGameObject);
         menu.Close();
     }
 

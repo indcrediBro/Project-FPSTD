@@ -3,11 +3,10 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 #endregion
 
-public class OnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class OnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, ISelectHandler, IDeselectHandler
 {
     //private RectTransform m_rectTransform;
     //private Button m_button;
@@ -32,5 +31,17 @@ public class OnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     public void OnPointerClick(PointerEventData eventData)
     {
         AudioManager.Instance.PlaySound("SFX_UIClick");
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        m_tweener = transform.DOScale(Vector3.one * m_scaleValue, m_scaleDuration).SetEase(m_easing);
+        m_tweener.SetUpdate(true);
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
+        m_tweener = transform.DOScale(Vector3.one, m_scaleDuration);
+        m_tweener.SetUpdate(true);
     }
 }
