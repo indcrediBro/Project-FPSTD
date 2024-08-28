@@ -56,7 +56,7 @@ MonoBehaviour:
     Quantity: 1
     ItemType: 0
   - Name: Spikes
-    Details: Immobalize
+    Details: Poke
     Prefab: {fileID: 1029278469141272373, guid: ea9c98b551b7e4a559b1bd1996fc2d2f,
       type: 3}
     Icon: {fileID: 21300000, guid: 8709aa92a240ee84aa1bea25bf338c60, type: 3}
@@ -110,14 +110,6 @@ MonoBehaviour:
     Cost: 25
     Quantity: 1
     ItemType: 1
-  - Name: Arrow
-    Details: 10 Arrows
-    Prefab: {fileID: 1921194892290325215, guid: dcefd0314825b4bbba4285a315118956,
-      type: 3}
-    Icon: {fileID: 21300000, guid: 4577a9fa566409744acc1320776952ad, type: 3}
-    Cost: 1
-    Quantity: 10
-    ItemType: 2
   - Name: Gun
     Details: 2 Shots
     Prefab: {fileID: 8144537438729290365, guid: 62c08cc0155424603889e923f0928ca3,
@@ -126,6 +118,14 @@ MonoBehaviour:
     Cost: 50
     Quantity: 1
     ItemType: 1
+  - Name: Arrow
+    Details: 10 Arrows
+    Prefab: {fileID: 1921194892290325215, guid: dcefd0314825b4bbba4285a315118956,
+      type: 3}
+    Icon: {fileID: 21300000, guid: 4577a9fa566409744acc1320776952ad, type: 3}
+    Cost: 1
+    Quantity: 10
+    ItemType: 2
   - Name: Bullet
     Details: 10 Bullets
     Prefab: {fileID: 1921194892290325215, guid: dcefd0314825b4bbba4285a315118956,
@@ -134,16 +134,16 @@ MonoBehaviour:
     Cost: 5
     Quantity: 10
     ItemType: 2
-  - Name: Player Health
-    Details: Player Max Health Upgrade
+  - Name: Player
+    Details: Max Health
     Prefab: {fileID: 5869036248412213485, guid: f06c29aaeb95a0a4e98b45743c8493ed,
       type: 3}
     Icon: {fileID: 21300000, guid: a6798a26ce41e444f8b3688d0fe9e6b5, type: 3}
     Cost: 50
     Quantity: 1
     ItemType: 3
-  - Name: Base Health
-    Details: Base Max Health Upgrade
+  - Name: Home Base
+    Details: Max Health
     Prefab: {fileID: 2990672962286243183, guid: 9b3cdefd878b09947a5f2c7195e00682,
       type: 3}
     Icon: {fileID: 21300000, guid: b130a9e1a9c022042bf39c53671d78f1, type: 3}

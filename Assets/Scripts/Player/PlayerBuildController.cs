@@ -43,7 +43,10 @@ public class PlayerBuildController : MonoBehaviour
 
     public void SwitchToBuildable(int change)
     {
-        m_currentBuildableIndex = (m_currentBuildableIndex + change + InventoryManager.Instance.GetBuildableInventoryItems().Count) % InventoryManager.Instance.GetBuildableInventoryItems().Count;
+        int itemCount = InventoryManager.Instance.GetBuildableInventoryItems().Count;
+        if (itemCount == 0) return;
+
+        m_currentBuildableIndex = (m_currentBuildableIndex + change + itemCount) % itemCount;
         BuildManager.Instance.SetSelectedBuildable(InventoryManager.Instance.GetBuildableInventoryItems()[m_currentBuildableIndex].Name);
     }
 
@@ -61,6 +64,6 @@ public class PlayerBuildController : MonoBehaviour
     {
         if (InventoryManager.Instance.GetBuildableInventoryItems().Count == 0)
             return "";
-        return InventoryManager.Instance.GetBuildableInventoryItems()[m_currentBuildableIndex].Name;
+        return InventoryManager.Instance.GetBuildableInventoryItems()[Mathf.Clamp(m_currentBuildableIndex, 0, InventoryManager.Instance.GetBuildableInventoryItems().Count - 1)].Name;
     }
 }

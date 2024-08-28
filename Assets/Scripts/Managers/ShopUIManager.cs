@@ -18,27 +18,32 @@ public class ShopUIManager : Singleton<ShopUIManager>
 
     public void UpdateShopUI()
     {
-        foreach (Transform child in m_shopPanel)
-        {
-            Destroy(child.gameObject);
-        }
-
-        List<ShopItem> list = m_shopManager.GetShopItems();
+        List<ShopItem> shopItemList = m_shopManager.GetShopItems();
+        List<ShopItemUI> shopItemUIList = new List<ShopItemUI>();
         GameObject shopItemGOFirst = null;
 
-        for (int i = 0; i < list.Count; i++)
+        for (int i = 0; i < m_shopPanel.childCount; i++)
         {
-            ShopItem item = list[i];
+            m_shopPanel.GetChild(i).TryGetComponent(out ShopItemUI itemUI);
+            if (itemUI) shopItemUIList.Add(itemUI);
+        }
 
-            GameObject shopItemGO = Instantiate(m_shopItemPrefab, m_shopPanel);
-            ShopItemUI shopItemUI = shopItemGO.GetComponent<ShopItemUI>();
-            shopItemUI.InitializeShopItemUI(item.Name, item.Details, item.Cost.ToString(), item.Icon);
-            if (i == 0) shopItemGOFirst = shopItemGO;
+        for (int i = 0; i < shopItemList.Count; i++)
+        {
+            ShopItem item = shopItemList[i];
+
+            shopItemUIList[i].InitializeShopItemUI(item.Name, item.Details, "Cost: " + item.Cost.ToString(), item.Icon);
+            if (i == 0) shopItemGOFirst = shopItemUIList[i].gameObject;
         }
         if (shopItemGOFirst != null)
         {
             MenuManager.Instance.GetPanelUI("ShopPanel").SetDefaultButton(shopItemGOFirst);
         }
+    }
+
+    public void MoveShopItemToBottom(Transform _shopItem)
+    {
+        _shopItem.SetAsLastSibling();
     }
 
     public void DisplayPurchases(string _details)

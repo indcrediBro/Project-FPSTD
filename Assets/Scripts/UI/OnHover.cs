@@ -15,6 +15,11 @@ public class OnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     [SerializeField] private Ease m_easing;
     private Tween m_tweener;
 
+    private void OnDisable()
+    {
+        m_tweener.Complete();
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         AudioManager.Instance.PlaySound("SFX_UIHover");

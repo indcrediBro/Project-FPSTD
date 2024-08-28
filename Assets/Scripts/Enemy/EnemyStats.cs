@@ -71,6 +71,6 @@ public class EnemyStats : MonoBehaviour
     public void UpgradeStats(int wave)
     {
         m_health.SetMaxHealth(wave + 10f);
-        m_attack.m_attackDamage += wave;
+        m_attack.m_attackDamage = wave;
     }
 }

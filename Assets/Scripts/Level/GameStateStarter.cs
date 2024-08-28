@@ -7,13 +7,14 @@ public class GameStateStarter : MonoBehaviour
 {
     void Start()
     {
-        if (GameStateManager.Instance)
+        if (!GameStateManager.Instance)
         {
-            GameStateManager.Instance.SetState(new StartState(GameStateManager.Instance));
+            SceneManager.LoadScene("Splash Screen");
         }
         else
         {
-            SceneManager.LoadScene("Splash Screen");
+            if (SceneManager.GetActiveScene().name == "Main Menu")
+                GameStateManager.Instance.SetState(new StartState(GameStateManager.Instance));
         }
     }
 }
