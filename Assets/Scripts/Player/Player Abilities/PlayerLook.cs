@@ -7,7 +7,7 @@ public class PlayerLook : MonoBehaviour
 {
     private PlayerStats m_stats;
     private float m_xRotation = 0f;
-    private float m_joystickSensitivityMultiplier = 10f;
+    private float m_joystickSensitivityMultiplier = 20f;
 
     private void Start()
     {

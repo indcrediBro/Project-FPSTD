@@ -34,27 +34,27 @@ public class SettingsManager : Singleton<SettingsManager>
     private void Start()
     {
         LoadSettings();
-      
+
     }
     private void LoadSettings()
     {
-        m_masterVolume = PlayerPrefs.GetFloat("MASTER");
+        m_masterVolume = PlayerPrefs.GetFloat("MASTER", .8f);
         m_masterVolumeSlider.value = m_masterVolume;
-        m_musicVolume = PlayerPrefs.GetFloat("MUSIC");
+        m_musicVolume = PlayerPrefs.GetFloat("MUSIC", 1f);
         m_musicVolumeSlider.value = m_musicVolume;
-        m_sfxVolume = PlayerPrefs.GetFloat("SFX");
+        m_sfxVolume = PlayerPrefs.GetFloat("SFX", 1f);
         m_sfxVolumeSlider.value = m_sfxVolume;
-        m_lookSensitivity = PlayerPrefs.GetFloat("SENSITIVITY");
+        m_lookSensitivity = PlayerPrefs.GetFloat("SENSITIVITY", 1f);
         m_lookSensitivitySlider.value = m_lookSensitivity;
 
         bool isVfxOn = PlayerPrefs.GetInt("VFX") == 1;
         m_isVfxOn = isVfxOn;
-        m_vfxToggle.isOn = m_isVfxOn;  
-        
+        m_vfxToggle.isOn = m_isVfxOn;
+
         bool isQualitySettingsOn = PlayerPrefs.GetInt("SETINGS") == 1;
         m_isQualitySettingsOn = isQualitySettingsOn;
-        m_qualitySettingsToggle.isOn = m_isQualitySettingsOn;  
-        
+        m_qualitySettingsToggle.isOn = m_isQualitySettingsOn;
+
         bool isPostProcessingOn = PlayerPrefs.GetInt("PROCESSING") == 1;
         m_isPostProcessingOn = isPostProcessingOn;
         m_postProcessingToggle.isOn = m_isPostProcessingOn;
@@ -63,11 +63,11 @@ public class SettingsManager : Singleton<SettingsManager>
         SetMasterVolume();
         SetMusicVolume();
         SetSFXVolume();
-        SetLookSensitivity(); 
+        SetLookSensitivity();
         SetQualitySettings();
         SetPostProcessing();
         SetVFX();
-        
+
     }
 
     public void SetMasterVolume()
@@ -75,7 +75,7 @@ public class SettingsManager : Singleton<SettingsManager>
         m_masterVolume = m_masterVolumeSlider.value;
         m_audioMixer.SetFloat("Master", Mathf.Log10(m_masterVolume) * 20);
         PlayerPrefs.SetFloat("MASTER", m_masterVolume);
-    }  
+    }
 
     public void SetMusicVolume()
     {
