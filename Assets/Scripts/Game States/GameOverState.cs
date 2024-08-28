@@ -27,10 +27,12 @@ public class GameOverState : IGameState
 
     public void Update()
     {
+
     }
 
     public void Exit()
     {
         ScoreManager.Instance.ResetScore();
+        MenuManager.Instance.SetGameOverText("");
     }
 }

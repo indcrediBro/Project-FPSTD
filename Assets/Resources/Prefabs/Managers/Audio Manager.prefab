@@ -204,3 +204,66 @@ MonoBehaviour:
     randomizePitchValues: {x: 1.15, y: 1.5}
     playOnAwake: 0
     loop: 1
+  - name: SFX_Purchase
+    audioClip: {fileID: 8300000, guid: 7a8e4e45aada943eab003ecaaddcb9be, type: 3}
+    volume: 0.516
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 0
+    randomizePitchValues: {x: 1.15, y: 1.5}
+    playOnAwake: 0
+    loop: 0
+  - name: SFX_Error
+    audioClip: {fileID: 8300000, guid: b2db8f0f7efdb2c41ad17fe63d4d0b03, type: 3}
+    volume: 0.516
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 0
+    randomizePitchValues: {x: 1.15, y: 1.5}
+    playOnAwake: 0
+    loop: 0
+  - name: SFX_UIPanelOpen
+    audioClip: {fileID: 8300000, guid: 3868fdc9c887b4376b264597bfd49ae7, type: 3}
+    volume: 0.516
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 0
+    randomizePitchValues: {x: 1.15, y: 1.5}
+    playOnAwake: 0
+    loop: 0
+  - name: SFX_UIHover
+    audioClip: {fileID: 8300000, guid: 5e38cb46f9f02a44797fea9502416b99, type: 3}
+    volume: 0.719
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 0
+    randomizePitchValues: {x: 1.15, y: 1.5}
+    playOnAwake: 0
+    loop: 0
+  - name: SFX_UIClick
+    audioClip: {fileID: 8300000, guid: 6558bdfdf1c4cf84bb5deea523d848fb, type: 3}
+    volume: 0.779
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 0
+    randomizePitchValues: {x: 1.15, y: 1.5}
+    playOnAwake: 0
+    loop: 0
+  - name: SFX_EasterEgg
+    audioClip: {fileID: 8300000, guid: 6d65f2e2eac094c23b085db57b5d8961, type: 3}
+    volume: 0.954
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 0
+    randomizePitchValues: {x: 1.15, y: 1.5}
+    playOnAwake: 0
+    loop: 0
+  - name: SFX_BallExplode
+    audioClip: {fileID: 8300000, guid: 3a998c7b35829417aabd9d7e62259fde, type: 3}
+    volume: 0.889
+    isMusic: 0
+    isUISFX: 1
+    randomizePitch: 0
+    randomizePitchValues: {x: 1.15, y: 1.5}
+    playOnAwake: 0
+    loop: 0

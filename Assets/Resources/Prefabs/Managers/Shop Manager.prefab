@@ -91,7 +91,7 @@ MonoBehaviour:
     Details: Default
     Prefab: {fileID: 4405967225442156524, guid: 8e7496e371d3a4a0fae9b72e0081a5a2,
       type: 3}
-    Icon: {fileID: 21300000, guid: a2447d8c7b20bce4290ec5735c9dbe8f, type: 3}
+    Icon: {fileID: 21300000, guid: c30d9653078319c4d901aaffb526d966, type: 3}
     Cost: 30
     Quantity: 1
     ItemType: 1

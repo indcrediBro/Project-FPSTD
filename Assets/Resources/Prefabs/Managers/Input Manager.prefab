@@ -47,16 +47,67 @@ MonoBehaviour:
   m_dontDestroyOnLoad: 0
   m_MoveInput: {x: 0, y: 0}
   m_LookInput: {x: 0, y: 0}
-  m_SwitchWeaponInput: 0
-  m_JumpInput: 0
+  m_SwitchWeaponInput:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e07d0f91-d84d-45a0-ab34-abc0a3279207
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   m_SprintInput: 0
   m_DodgeInput: 0
-  m_ReloadInput: 0
+  m_ReloadInput:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 972d3505-e545-4cc6-82c9-669a5ecdd7a2
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_JumpInput:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e8285464-7b5d-4cdc-89d8-287cdadb84fb
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_InteractInput:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 5a27724a-c273-436f-bbd2-de3ef467f5b6
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_PauseInput:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 53e91da7-2166-466d-8983-c6fb6114566a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   m_AttackInput:
     m_Name: Attack Input
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: cb209fe4-7817-4ebe-b2ac-5664073f6a88
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_BuildInput:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 231bb2ad-6a89-45a3-976c-143295ae2297
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []

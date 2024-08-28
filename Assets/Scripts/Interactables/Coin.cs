@@ -49,7 +49,7 @@ public class Coin : Interactable
         yield return new WaitForSeconds(1f);
         transform.DOMove(GameReferences.Instance.m_PlayerStats.transform.position, 2f);
         yield return new WaitForSeconds(1f);
-        EconomyManager.Instance.EarnMoney(1);
+        EconomyManager.Instance.EarnMoney(WaveManager.Instance.GetCurrentWave());
         gameObject.SetActive(false);
     }
 }

@@ -70,6 +70,12 @@ public class PlayerWeaponProjectile : MonoBehaviour
             DestroyAfterImpact();
         }
 
+        if (_other.TryGetComponent(out BallHealth _ball))
+        {
+            _ball.TakeDamage(m_damage);
+            DestroyAfterImpact();
+        }
+
         Invoke(nameof(DestroyAfterImpact), m_postImpactDestroyTime);
     }
 

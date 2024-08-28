@@ -10,6 +10,7 @@ public class MenuManager : Singleton<MenuManager>
 {
     [SerializeField] private PanelUI[] m_panels;
     [SerializeField] private GameObject m_hud;
+    [SerializeField] private TMPro.TMP_Text m_deathText;
 
     public PanelUI GetPanelUI(string _panelName)
     {
@@ -112,6 +113,11 @@ public class MenuManager : Singleton<MenuManager>
         {
             OpenMenu("PauseMenu");
         }
+    }
+
+    public void SetGameOverText(string _text)
+    {
+        m_deathText.text = _text;
     }
 
     public void QuitGame()

@@ -36,7 +36,7 @@ public class PlayerBaseHealth : Health
     protected override void Die(float _timeBeforeRemoving)
     {
         base.Die(_timeBeforeRemoving);
-
+        MenuManager.Instance.SetGameOverText("Base Destroyed!");
         GameStateManager.Instance.SetState(new GameOverState(GameStateManager.Instance));
     }
 }

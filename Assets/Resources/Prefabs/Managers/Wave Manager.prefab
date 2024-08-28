@@ -30220,19 +30220,19 @@ MonoBehaviour:
     m_PoolName: Enemy_Minion
     m_SpawnWeight: 1
   m_spawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3926699655615062745}
+  - {fileID: 5047628684528671580}
+  - {fileID: 5980422147140312715}
+  - {fileID: 6808603515668884684}
+  - {fileID: 5899607043803206261}
+  - {fileID: 8390728276251566419}
+  - {fileID: 6758053017556870505}
+  - {fileID: 624754794673962390}
+  - {fileID: 887720587489518529}
+  - {fileID: 2322070165418581314}
+  - {fileID: 4867300184368902199}
   m_checkInterval: 1
-  m_initialEnemies: 3
+  m_initialEnemies: 2
   m_autoWaveStart: 1
 --- !u!1 &5670068058521428000
 GameObject:

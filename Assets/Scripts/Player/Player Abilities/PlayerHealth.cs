@@ -43,6 +43,7 @@ public class PlayerHealth : Health
     protected override void Die(float _timeBeforeRemoving)
     {
         base.Die(_timeBeforeRemoving);
+        MenuManager.Instance.SetGameOverText("You Dead!");
         GameStateManager.Instance.SetState(new GameOverState(GameStateManager.Instance));
     }
 }
