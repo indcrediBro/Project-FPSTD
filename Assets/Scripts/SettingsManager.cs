@@ -38,14 +38,15 @@ public class SettingsManager : Singleton<SettingsManager>
     }
     private void LoadSettings()
     {
-        m_masterVolume = PlayerPrefs.GetFloat("MASTER", .8f);
+        m_masterVolume = PlayerPrefs.GetFloat("MASTER", 1f);
         m_masterVolumeSlider.value = m_masterVolume;
-        m_musicVolume = PlayerPrefs.GetFloat("MUSIC", 1f);
+        m_musicVolume = PlayerPrefs.GetFloat("MUSIC", 0.5f);
         m_musicVolumeSlider.value = m_musicVolume;
-        m_sfxVolume = PlayerPrefs.GetFloat("SFX", 1f);
+        m_sfxVolume = PlayerPrefs.GetFloat("SFX", 0.5f);
         m_sfxVolumeSlider.value = m_sfxVolume;
-        m_lookSensitivity = PlayerPrefs.GetFloat("SENSITIVITY", 1f);
+        m_lookSensitivity = PlayerPrefs.GetFloat("SENSITIVITY", 0.5f);
         m_lookSensitivitySlider.value = m_lookSensitivity;
+        m_lookSensitivitySlider.minValue = 0.05f;
 
         bool isVfxOn = PlayerPrefs.GetInt("VFX") == 1;
         m_isVfxOn = isVfxOn;

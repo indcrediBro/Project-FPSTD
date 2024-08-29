@@ -17,8 +17,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(Vector2 _input)
     {
-        if (GameReferences.Instance.m_IsPaused) return;
-
+        if (GameReferences.Instance.m_IsPaused)
+        {
+            AudioManager.Instance.StopSound("SFX_PlayerMove");
+            return;
+        }
         Vector3 move = transform.right * _input.x + transform.forward * _input.y;
         m_characterController.Move(move * m_stats.GetMoveSpeed() * Time.deltaTime);
 

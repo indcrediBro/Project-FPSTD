@@ -55,7 +55,7 @@ public class Gun : Weapon
 
     private bool HasBullets()
     {
-        if (InventoryManager.Instance.GetAmmoItem("Bullet") != null && InventoryManager.Instance.GetAmmoItem("Bullet").Quantity > 0)
+        if (m_currentAmmo > 0 || InventoryManager.Instance.GetAmmoItem("Bullet") != null && InventoryManager.Instance.GetAmmoItem("Bullet").Quantity > 0)
         {
             return true;
         }
@@ -65,7 +65,7 @@ public class Gun : Weapon
     {
         if (m_playerUI)
         {
-            if (InventoryManager.Instance.GetAmmoItem("Bullet") != null)
+            if (HasBullets())
             {
                 m_playerUI.UpdateAmmoText(m_currentAmmo + "/" + (InventoryManager.Instance.GetAmmoItem("Bullet").Quantity).ToString());
             }
@@ -118,14 +118,19 @@ public class Gun : Weapon
 
         PlayAnimation("Reload");
         AudioManager.Instance.PlaySound("SFX_GunReload");
+
+        WaitForSeconds waitForSeconds = new WaitForSeconds((m_reloadTime / m_maxAmmo) / 2);
+
         for (int i = 0; i < m_maxAmmo; i++)
         {
             if (HasBullets())
             {
-                InventoryManager.Instance.UseAmmoItem("Bullet");
-                m_currentAmmo++;
-
-                yield return new WaitForSeconds((m_reloadTime / m_maxAmmo) / 2);
+                if (m_currentAmmo < m_maxAmmo)
+                {
+                    InventoryManager.Instance.UseAmmoItem("Bullet");
+                    m_currentAmmo++;
+                }
+                yield return waitForSeconds;
                 UpdateAmmoUI();
             }
             else

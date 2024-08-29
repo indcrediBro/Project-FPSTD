@@ -80,9 +80,11 @@ public class WaveManager : Singleton<WaveManager>
 
     private IEnumerator CheckWaveCompletion()
     {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(m_checkInterval);
+
         while (m_isWaveActive)
         {
-            yield return new WaitForSeconds(m_checkInterval);
+            yield return waitForSeconds;
 
             if (EnemyManager.Instance.AreAllEnemiesDefeated())
             {

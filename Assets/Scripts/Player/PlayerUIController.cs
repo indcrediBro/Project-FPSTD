@@ -15,7 +15,7 @@ public class PlayerUIController : MonoBehaviour
 
     private PlayerStats m_playerStats;
     private PlayerHealth m_playerHealth;
-    private PlayerStamina m_playerStamina;
+    //private PlayerStamina m_playerStamina;
     private PlayerBuildController m_playerBuilder;
     private PlayerWeaponController m_playerWeapon;
 
@@ -23,7 +23,7 @@ public class PlayerUIController : MonoBehaviour
     {
         m_playerStats = GetComponent<PlayerStats>();
         m_playerHealth = m_playerStats.GetPlayerHealthComponent();
-        m_playerStamina = m_playerStats.GetPlayerStaminaComponent();
+        //m_playerStamina = m_playerStats.GetPlayerStaminaComponent();
         m_playerBuilder = GetComponent<PlayerBuildController>();
         m_playerWeapon = GetComponent<PlayerWeaponController>();
     }
@@ -31,7 +31,7 @@ public class PlayerUIController : MonoBehaviour
     private void Start()
     {
         InitializeHealthBar();
-        InitializeStaminaBar();
+        //InitializeStaminaBar();
         InitializePlayerBaseHealthBar();
     }
 
@@ -41,7 +41,7 @@ public class PlayerUIController : MonoBehaviour
 
         UpdateHealthBar();
         UpdatePlayerBaseHealthBar();
-        UpdateStaminaBar();
+        //UpdateStaminaBar();
         UpdateCurrencyText();
         if (m_playerStats.IsInBuilderMode()) UpdateAmmoBuilderModeText();
         UpdateScoreText();
@@ -82,22 +82,22 @@ public class PlayerUIController : MonoBehaviour
         }
     }
 
-    private void InitializeStaminaBar()
-    {
-        if (m_staminaBar)
-        {
-            m_staminaBar.minValue = 0;
-            m_staminaBar.maxValue = m_playerStamina.GetMaxStamina();
-            m_staminaBar.value = m_playerStamina.GetStamina();
-        }
-    }
-    private void UpdateStaminaBar()
-    {
-        if (m_staminaBar)
-        {
-            m_staminaBar.value = m_playerStamina.GetStamina();
-        }
-    }
+    //private void InitializeStaminaBar()
+    //{
+    //    if (m_staminaBar)
+    //    {
+    //        m_staminaBar.minValue = 0;
+    //        m_staminaBar.maxValue = m_playerStamina.GetMaxStamina();
+    //        m_staminaBar.value = m_playerStamina.GetStamina();
+    //    }
+    //}
+    //private void UpdateStaminaBar()
+    //{
+    //    if (m_staminaBar)
+    //    {
+    //        m_staminaBar.value = m_playerStamina.GetStamina();
+    //    }
+    //}
 
     private void UpdateAmmoBuilderModeText()
     {
