@@ -1,7 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Runtime.ConstrainedExecution;
-using UnityEditor.Rendering;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Gun : Weapon
 {
@@ -14,7 +12,7 @@ public class Gun : Weapon
     [SerializeField] private float m_fireCooldown = 0.5f;
 
     private int m_currentAmmo;
-    private bool m_isReloading = false;
+    private bool m_isReloading;
     private bool m_canFire = true;
     private PlayerUIController m_playerUI;
 
@@ -32,12 +30,18 @@ public class Gun : Weapon
 
     private void Start()
     {
-        if (!m_mainCamera) { m_mainCamera = Camera.main; }
+        if (!m_mainCamera)
+        {
+            m_mainCamera = Camera.main;
+        }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (GameReferences.Instance.m_IsPaused) return;
+        if (GameReferences.Instance.m_IsPaused)
+        {
+            return;
+        }
 
         if (HasBullets())
         {
@@ -48,26 +52,32 @@ public class Gun : Weapon
 
             if (InputManager.Instance.m_ReloadInput.WasReleasedThisFrame() && !m_isReloading)
             {
-                if (m_currentAmmo < m_maxAmmo) StartCoroutine(ReloadCO());
+                if (m_currentAmmo < m_maxAmmo)
+                {
+                    StartCoroutine(ReloadCO());
+                }
             }
         }
     }
 
     private bool HasBullets()
     {
-        if (m_currentAmmo > 0 || InventoryManager.Instance.GetAmmoItem("Bullet") != null && InventoryManager.Instance.GetAmmoItem("Bullet").Quantity > 0)
+        if (m_currentAmmo > 0 || (InventoryManager.Instance.GetAmmoItem("Bullet") != null &&
+                                  InventoryManager.Instance.GetAmmoItem("Bullet").Quantity > 0))
         {
             return true;
         }
+
         return false;
     }
+
     private void UpdateAmmoUI()
     {
         if (m_playerUI)
         {
             if (HasBullets())
             {
-                m_playerUI.UpdateAmmoText(m_currentAmmo + "/" + (InventoryManager.Instance.GetAmmoItem("Bullet").Quantity).ToString());
+                m_playerUI.UpdateAmmoText(m_currentAmmo + "/" + InventoryManager.Instance.GetAmmoItem("Bullet").Quantity);
             }
             else
             {
@@ -83,7 +93,10 @@ public class Gun : Weapon
 
     private void Fire()
     {
-        if (!CanAttack() || m_isReloading || !m_canFire) return;
+        if (!CanAttack() || m_isReloading || !m_canFire)
+        {
+            return;
+        }
 
         if (m_currentAmmo <= 0)
         {
@@ -119,7 +132,7 @@ public class Gun : Weapon
         PlayAnimation("Reload");
         AudioManager.Instance.PlaySound("SFX_GunReload");
 
-        WaitForSeconds waitForSeconds = new WaitForSeconds((m_reloadTime / m_maxAmmo) / 2);
+        WaitForSeconds waitForSeconds = new(m_reloadTime / m_maxAmmo / 2);
 
         for (int i = 0; i < m_maxAmmo; i++)
         {
@@ -130,6 +143,7 @@ public class Gun : Weapon
                     InventoryManager.Instance.UseAmmoItem("Bullet");
                     m_currentAmmo++;
                 }
+
                 yield return waitForSeconds;
                 UpdateAmmoUI();
             }
