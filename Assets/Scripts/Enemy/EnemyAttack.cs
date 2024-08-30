@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
@@ -9,10 +7,16 @@ public class EnemyAttack : MonoBehaviour
     public float m_AttackDamage = 10f;
     public float m_AttackRange = 2f;
     private EnemyStats m_stats;
+    private Collider[] _colliders;
 
     private void Awake()
     {
         m_stats = GetComponentInParent<EnemyStats>();
+    }
+
+    private void OnEnable()
+    {
+        m_CanAttack = true;
     }
 
     private void OnDisable()
@@ -27,62 +31,52 @@ public class EnemyAttack : MonoBehaviour
             StopAllCoroutines();
             return;
         }
-        StartCoroutine(AttackCO(m_stats.GetEnemyStateMachine().m_CurrentTarget));
+
+        _colliders = Physics.OverlapSphere(transform.position, m_AttackRange);
+
+        foreach (Collider collider in _colliders)
+        {
+            if (collider.TryGetComponent(out Health targetHealth) && !targetHealth.IsDead())
+            {
+                if (collider.CompareTag("Player") || collider.CompareTag("PlayerBase"))
+                {
+                    StartCoroutine(AttackCO(targetHealth));
+                    return;
+                }
+            }
+        }
     }
 
-    private IEnumerator AttackCO(Transform _target)
+    private IEnumerator AttackCO(Health targetHealth)
     {
         m_CanAttack = false;
         yield return null;
 
-        if (m_stats.GetHealth().IsDead() || Vector3.Distance(_target.position, transform.position) > m_AttackRange)
+        if (m_stats.GetHealth().IsDead())
         {
             StopAllCoroutines();
             yield break;
         }
 
-        if (_target.TryGetComponent(out Health targetHealth) && !targetHealth.IsDead())
+        Vector3 direction = m_stats.transform.position - targetHealth.transform.position;
+        direction.y = 0;
+        m_stats.transform.rotation = Quaternion.LookRotation(direction * -1);
+
+        if (m_stats.GetEnemyStateMachine().m_CurrentTarget == m_stats.GetEnemyStateMachine().m_BaseTarget)
         {
-            Vector3 direction = transform.position - _target.position;
-            direction.y = 0;
-            transform.rotation = Quaternion.LookRotation(-direction);
-            //transform.LookAt(_target);
+            GameReferences.Instance.m_PlayerBase.TakeDamage(m_AttackDamage);
+            AudioManager.Instance.PlaySound("SFX_BaseHit", transform.position);
+        }
+        else if (Vector3.Distance(targetHealth.transform.position, m_stats.transform.position) > m_AttackRange)
+        {
             targetHealth.TakeDamage(m_AttackDamage);
-
-            if (targetHealth.CompareTag("Player"))
-            {
-                AudioManager.Instance.PlaySound("SFX_PlayerHit");
-            }
-            else
-            {
-                AudioManager.Instance.PlaySound("SFX_BaseHit", transform.position);
-            }
         }
-        else
+
+        if (targetHealth.CompareTag("Player"))
         {
-            m_stats.GetEnemyStateMachine().TransitionToState(m_stats.GetEnemyStateMachine().m_ChaseState);
-            StopAllCoroutines();
-            yield break;
+            AudioManager.Instance.PlaySound("SFX_PlayerHit");
         }
 
-        //if (_target.CompareTag("Player") &&
-        //    Vector3.Distance(transform.position, _target.position) <= m_stats.GetAttack().m_AttackRange)
-        //{
-        //    if (!GameReferences.Instance.m_PlayerStats.GetPlayerHealthComponent().IsDead())
-        //    {
-        //        GameReferences.Instance.m_PlayerStats.GetPlayerHealthComponent().TakeDamage(m_AttackDamage);
-        //        AudioManager.Instance.PlaySound("SFX_PlayerHit");
-        //    }
-        //}
-        //else if (_target.CompareTag("PlayerBase"))
-        //{
-        //    if (!GameReferences.Instance.m_PlayerBase.IsDead())
-        //    {
-        //        transform.LookAt(_target);
-        //        GameReferences.Instance.m_PlayerBase.TakeDamage(m_AttackDamage);
-        //        AudioManager.Instance.PlaySound("SFX_BaseHit", transform.position);
-        //    }
-        //}
         yield return new WaitForSeconds(0.35f);
         m_CanAttack = true;
     }

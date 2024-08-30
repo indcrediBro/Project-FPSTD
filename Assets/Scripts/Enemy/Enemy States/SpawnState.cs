@@ -6,7 +6,6 @@ public class SpawnState : IEnemyState
     public void EnterState(EnemyStateMachine _stateMachine)
     {
         _stateMachine.m_Stats.GetCollider().enabled = false;
-        _stateMachine.m_Stats.GetRigidbody().isKinematic = true;
         _stateMachine.m_Animations.PlayAnimation(EnemyState.Spawn);
     }
 
@@ -21,6 +20,5 @@ public class SpawnState : IEnemyState
     public void ExitState(EnemyStateMachine _stateMachine)
     {
         _stateMachine.m_Stats.GetCollider().enabled = true;
-        _stateMachine.m_Stats.GetRigidbody().isKinematic = false;
     }
 }

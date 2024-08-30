@@ -37,7 +37,7 @@ public class WaveManager : Singleton<WaveManager>
 
     private IEnumerator SpawnWave()
     {
-        int enemiesToSpawn = m_initialEnemies + m_currentWave;
+        int enemiesToSpawn = m_initialEnemies * m_currentWave;
         EnemyManager.Instance.ResetEnemyCounter(enemiesToSpawn);
 
         for (int i = 0; i < enemiesToSpawn; i++)

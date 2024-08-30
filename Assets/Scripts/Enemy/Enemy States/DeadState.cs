@@ -9,7 +9,6 @@ public class DeadState : IEnemyState
 
         _stateMachine.m_Stats.GetAudio().PlayDeadSound();
         _stateMachine.m_Stats.GetCollider().enabled = false;
-        _stateMachine.m_Stats.GetRigidbody().isKinematic = true;
 
         SpawnRandomNumberOfCoins(_stateMachine.transform);
         _stateMachine.m_Animations.PlayAnimation(EnemyState.Dead);

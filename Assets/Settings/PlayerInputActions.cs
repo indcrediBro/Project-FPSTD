@@ -64,15 +64,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Dodge"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""e75e1d5d-0949-47e0-a84c-6a8b6f9a897c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Reload"",
                     ""type"": ""Button"",
                     ""id"": ""ca257458-0c1c-4547-ae03-73a47b54e4b9"",
@@ -317,28 +308,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""92bab41d-3ec5-4e0a-b53d-cdbb66bafdf5"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dodge"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9d54d8a3-5c00-4a5d-80c0-faa911a7f239"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dodge"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""6a1fd31f-b2e7-4872-a3b4-698916794572"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
@@ -352,6 +321,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""0e03151e-1d29-4a18-9b4e-de54126e0444"",
                     ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76d801af-e078-42a0-b30d-a0544fb4850b"",
+                    ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -472,7 +452,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""06997de6-d5e5-4714-bf99-b24aa3aeaa2b"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -524,7 +504,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_PlayerInputMap_Look = m_PlayerInputMap.FindAction("Look", throwIfNotFound: true);
         m_PlayerInputMap_Jump = m_PlayerInputMap.FindAction("Jump", throwIfNotFound: true);
         m_PlayerInputMap_Sprint = m_PlayerInputMap.FindAction("Sprint", throwIfNotFound: true);
-        m_PlayerInputMap_Dodge = m_PlayerInputMap.FindAction("Dodge", throwIfNotFound: true);
         m_PlayerInputMap_Reload = m_PlayerInputMap.FindAction("Reload", throwIfNotFound: true);
         m_PlayerInputMap_Build = m_PlayerInputMap.FindAction("Build", throwIfNotFound: true);
         m_PlayerInputMap_Pause = m_PlayerInputMap.FindAction("Pause", throwIfNotFound: true);
@@ -596,7 +575,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInputMap_Look;
     private readonly InputAction m_PlayerInputMap_Jump;
     private readonly InputAction m_PlayerInputMap_Sprint;
-    private readonly InputAction m_PlayerInputMap_Dodge;
     private readonly InputAction m_PlayerInputMap_Reload;
     private readonly InputAction m_PlayerInputMap_Build;
     private readonly InputAction m_PlayerInputMap_Pause;
@@ -611,7 +589,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_PlayerInputMap_Look;
         public InputAction @Jump => m_Wrapper.m_PlayerInputMap_Jump;
         public InputAction @Sprint => m_Wrapper.m_PlayerInputMap_Sprint;
-        public InputAction @Dodge => m_Wrapper.m_PlayerInputMap_Dodge;
         public InputAction @Reload => m_Wrapper.m_PlayerInputMap_Reload;
         public InputAction @Build => m_Wrapper.m_PlayerInputMap_Build;
         public InputAction @Pause => m_Wrapper.m_PlayerInputMap_Pause;
@@ -639,9 +616,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
-            @Dodge.started += instance.OnDodge;
-            @Dodge.performed += instance.OnDodge;
-            @Dodge.canceled += instance.OnDodge;
             @Reload.started += instance.OnReload;
             @Reload.performed += instance.OnReload;
             @Reload.canceled += instance.OnReload;
@@ -676,9 +650,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
-            @Dodge.started -= instance.OnDodge;
-            @Dodge.performed -= instance.OnDodge;
-            @Dodge.canceled -= instance.OnDodge;
             @Reload.started -= instance.OnReload;
             @Reload.performed -= instance.OnReload;
             @Reload.canceled -= instance.OnReload;
@@ -720,7 +691,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
-        void OnDodge(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnBuild(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);

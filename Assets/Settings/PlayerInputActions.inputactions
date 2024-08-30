@@ -42,15 +42,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Dodge",
-                    "type": "PassThrough",
-                    "id": "e75e1d5d-0949-47e0-a84c-6a8b6f9a897c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Reload",
                     "type": "Button",
                     "id": "ca257458-0c1c-4547-ae03-73a47b54e4b9",
@@ -295,28 +286,6 @@
                 },
                 {
                     "name": "",
-                    "id": "92bab41d-3ec5-4e0a-b53d-cdbb66bafdf5",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dodge",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9d54d8a3-5c00-4a5d-80c0-faa911a7f239",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dodge",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "6a1fd31f-b2e7-4872-a3b4-698916794572",
                     "path": "<Keyboard>/r",
                     "interactions": "",
@@ -330,6 +299,17 @@
                     "name": "",
                     "id": "0e03151e-1d29-4a18-9b4e-de54126e0444",
                     "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76d801af-e078-42a0-b30d-a0544fb4850b",
+                    "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -450,7 +430,7 @@
                 {
                     "name": "",
                     "id": "06997de6-d5e5-4714-bf99-b24aa3aeaa2b",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

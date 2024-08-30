@@ -47,7 +47,7 @@ public class ShopManager : Singleton<ShopManager>
             }
             else
             {
-                if (item.Name == "Player Health")
+                if (item.Name == "Player")
                 {
                     PlayerHealth pHealth = GameReferences.Instance.m_PlayerStats.GetPlayerHealthComponent();
                     pHealth.SetMaxHealth(pHealth.GetMaxHealthValue() * (1 + 0.2f));
