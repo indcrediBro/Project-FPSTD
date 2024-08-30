@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class GhostManager : MonoBehaviour
 {
@@ -15,17 +14,14 @@ public class GhostManager : MonoBehaviour
 
     [SerializeField] private Material m_validMaterial;
     [SerializeField] private Material m_invalidMaterial;
-    [SerializeField] private NavmeshManager m_navmeshManager;
     [SerializeField] private GhostObject[] m_ghostObjects;
 
     private Dictionary<string, GameObject> m_instanceGhosts;
     private GameObject m_currentGhostObject;
     private Vector3 m_lastPosition;
-    private float m_hoverTime;
 
     private void Start()
     {
-        if (m_navmeshManager == null) m_navmeshManager = FindObjectOfType<NavmeshManager>();
         InitializeGhostObjects();
     }
 
@@ -41,56 +37,39 @@ public class GhostManager : MonoBehaviour
         }
     }
 
-    private GameObject GetGhostObjectByName(string _name)
+    private GameObject GetGhostObjectByName(string name)
     {
-        foreach (var obj in m_instanceGhosts)
+        foreach (KeyValuePair<string, GameObject> obj in m_instanceGhosts)
         {
             obj.Value.SetActive(false);
         }
-        m_instanceGhosts.TryGetValue(_name, out GameObject _instance);
-        _instance.SetActive(true);
-        return _instance;
+
+        GameObject instance;
+        m_instanceGhosts.TryGetValue(name, out instance);
+        if (instance != null)
+        {
+            instance.SetActive(true);
+        }
+        return instance;
     }
 
-    public void UpdateGhost(string _name, Vector3 _position, bool _isValid)
+    public void UpdateGhost(string name, Vector3 position, bool isCorrectLayer)
     {
-        if (m_currentGhostObject == null || m_currentGhostObject.name != _name)
+        if (m_currentGhostObject == null || m_currentGhostObject.name != name)
         {
-            m_currentGhostObject = GetGhostObjectByName(_name);
+            m_currentGhostObject = GetGhostObjectByName(name);
         }
 
         if (m_currentGhostObject == null)
         {
-            _isValid = false;
             return;
         }
 
-        if (_position != m_lastPosition)
-        {
-            m_lastPosition = _position;
-            m_hoverTime = 0f;
-            _isValid = false;
-        }
-        else
-        {
-            m_hoverTime += Time.deltaTime;
-            if (m_hoverTime >= 0.2f)
-            {
-                //m_navmeshManager.BuildNavMesh();
-                _isValid = IsPathValid();
-                UpdateGhostMaterial(_isValid);
-            }
-            else
-            {
-                _isValid = false;
-                UpdateGhostMaterial(false);
-            }
-        }
-
-        m_currentGhostObject.transform.position = _position;
+        m_currentGhostObject.transform.position = position;
+        bool isOverlappingPlayer = IsOverlappingPlayer(position);
+        UpdateGhostMaterial(isCorrectLayer, isOverlappingPlayer);
         m_currentGhostObject.SetActive(true);
     }
-
 
     public void HideGhost()
     {
@@ -101,35 +80,33 @@ public class GhostManager : MonoBehaviour
         }
     }
 
-    public bool IsPathValid()
+    private void UpdateGhostMaterial(bool isCorrectLayer, bool isOverlappingPlayer)
     {
-        return m_navmeshManager.CheckPathValidity();
-    }
+        MeshRenderer meshRenderer = m_currentGhostObject.GetComponentInChildren<MeshRenderer>();
+        Material[] materials = meshRenderer.materials;
 
-    public void PlaceGhostObjectTemporarily(Vector3 _position)
-    {
-        if (m_currentGhostObject == null) return;
-
-        m_currentGhostObject.transform.position = _position;
-        m_currentGhostObject.SetActive(true);
-
-        //m_navmeshManager.BuildNavMesh();
-
-        bool isPathValid = IsPathValid();
-        UpdateGhostMaterial(isPathValid);
-    }
-
-    private void UpdateGhostMaterial(bool _isValid)
-    {
-        MeshRenderer _meshRenderer = m_currentGhostObject.GetComponentInChildren<MeshRenderer>();
-        Material[] materials = _meshRenderer.materials;
+        Material materialToApply = isOverlappingPlayer ? m_invalidMaterial :
+            isCorrectLayer ? m_validMaterial : m_invalidMaterial;
 
         for (int i = 0; i < materials.Length; i++)
         {
-            materials[i] = _isValid ? m_validMaterial : m_invalidMaterial;
+            materials[i] = materialToApply;
         }
 
-        _meshRenderer.materials = materials;
+        meshRenderer.materials = materials;
+    }
+
+    private bool IsOverlappingPlayer(Vector3 position)
+    {
+        Collider[] colliders = Physics.OverlapSphere(position, 0.5f);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("Player"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public Vector3 GetCurrentGhostPosition()

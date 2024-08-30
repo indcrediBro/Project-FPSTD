@@ -2,33 +2,33 @@ public class ChasePlayerState : IEnemyState
 {
     public void EnterState(EnemyStateMachine _stateMachine)
     {
-        _stateMachine.m_Animations.PlayAnimation(EnemyState.ChasePlayer);
-        _stateMachine.m_Stats.GetAudio().PlayChaseSound();
+        //_stateMachine.m_Animations.PlayAnimation(EnemyState.ChasePlayer);
+        //_stateMachine.m_Stats.GetAudio().PlayChaseSound();
     }
 
     public void UpdateState(EnemyStateMachine _stateMachine)
     {
-        if (GameReferences.Instance.m_IsGameOver) return;
+        //if (GameReferences.Instance.m_IsGameOver) return;
 
-        _stateMachine.m_Movement.MoveToTarget(_stateMachine.m_PlayerTarget.position);
+        //_stateMachine.m_Movement.MoveToTarget(_stateMachine.m_PlayerTarget.position);
 
-        if (_stateMachine.m_PlayerTarget)
-        {
-            if (!_stateMachine.m_Detection.IsPlayerInRange())
-            {
-                _stateMachine.m_Stats.GetAudio().PlayAlertSound();
-                _stateMachine.TransitionToState(_stateMachine.m_IdleState);
-            }
+        //if (_stateMachine.m_PlayerTarget)
+        //{
+        //    if (!_stateMachine.m_Detection.IsPlayerInRange())
+        //    {
+        //        _stateMachine.m_Stats.GetAudio().PlayAlertSound();
+        //        _stateMachine.TransitionToState(_stateMachine.m_IdleState);
+        //    }
 
-            if (_stateMachine.m_Detection.IsInAttackRange(_stateMachine.m_PlayerTarget))
-            {
-                _stateMachine.TransitionToState(_stateMachine.m_AttackState);
-            }
-        }
+        //    if (_stateMachine.m_Detection.IsInAttackRange(_stateMachine.m_PlayerTarget))
+        //    {
+        //        _stateMachine.TransitionToState(_stateMachine.m_AttackState);
+        //    }
+        //}
     }
 
     public void ExitState(EnemyStateMachine _stateMachine)
     {
-        _stateMachine.m_Movement.StopMoving();
+        //_stateMachine.m_Movement.StopMoving();
     }
 }

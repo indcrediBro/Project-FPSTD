@@ -47,11 +47,9 @@ MonoBehaviour:
   m_dontDestroyOnLoad: 0
   m_inventoryManager: {fileID: 0}
   m_ghostManager: {fileID: 0}
-  m_navmeshManager: {fileID: 0}
-  m_floorLayer:
+  m_floorLayer: 7
+  m_blockLayer: 8
+  m_selectedObject: 
+  m_buildableLayers:
     serializedVersion: 2
-    m_Bits: 128
-  m_blockLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  m_selectedObject: Cannon
+    m_Bits: 384

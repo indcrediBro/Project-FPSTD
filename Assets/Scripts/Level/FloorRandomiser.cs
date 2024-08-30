@@ -42,11 +42,11 @@ public class FloorRandomiser : MonoBehaviour
         {
             GameObject _decor = m_decorationsGO[i];
             _decor.SetActive(false);
-            if(m_destoryOtherObjetsOnSpawn && randomSpawnIndex < m_decorationsGO.Length && _decor != m_decorationsGO[randomSpawnIndex])
+            if (m_destoryOtherObjetsOnSpawn && randomSpawnIndex < m_decorationsGO.Length && _decor != m_decorationsGO[randomSpawnIndex])
             {
                 Destroy(_decor);
             }
-            if(m_destoryOtherObjetsOnSpawn && randomSpawnIndex > m_decorationsGO.Length)
+            if (m_destoryOtherObjetsOnSpawn && randomSpawnIndex > m_decorationsGO.Length)
             {
                 Destroy(_decor);
             }
@@ -65,6 +65,11 @@ public class FloorRandomiser : MonoBehaviour
                                                 );
                 decor.transform.localRotation = Quaternion.Euler(0f, RandomNumber.Instance.NextFloat(0f, 360f), 0f);
                 decor.transform.localScale *= RandomNumber.Instance.NextFloat(0.9f, 1.25f);
+            }
+            else
+            {
+                transform.tag = "Untagged";
+                transform.gameObject.layer = 0;
             }
         }
     }

@@ -9,7 +9,7 @@ public class EnemyAnimations : MonoBehaviour
     [SerializeField] private EnemyState m_currentAnimationState;
     private void Awake()
     {
-        if(m_childAnimator) m_animator = GetComponentInChildren<Animator>();
+        if (m_childAnimator) m_animator = GetComponentInChildren<Animator>();
         else m_animator = GetComponent<Animator>();
     }
 
@@ -24,14 +24,17 @@ public class EnemyAnimations : MonoBehaviour
             case EnemyState.Idle:
                 m_animator.Play("Idle");
                 break;
-            case EnemyState.ChaseBase:
+            case EnemyState.Chase:
                 m_animator.Play("Move");
                 break;
-            case EnemyState.ChasePlayer:
-                m_animator.Play("Move");
-                break;
+            //case EnemyState.ChaseBase:
+            //    m_animator.Play("Move");
+            //    break;
+            //case EnemyState.ChasePlayer:
+            //    m_animator.Play("Move");
+            //break;
             case EnemyState.Attack:
-                m_animator.Play("Attack "+ RandomNumber.Instance.NextInt(3));
+                m_animator.Play("Attack " + RandomNumber.Instance.NextInt(3));
                 break;
             case EnemyState.Hurt:
                 m_animator.Play("Hurt");

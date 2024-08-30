@@ -29261,6 +29261,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6375805390582490317, guid: 08753f489b23bc146aa5431854662689,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8860909223121384549, guid: 08753f489b23bc146aa5431854662689,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -33766,16 +33771,6 @@ PrefabInstance:
       objectReference: {fileID: 1383514209}
     - target: {fileID: 2466487409969347774, guid: 984da10a546404ff99bc740cdba421ec,
         type: 3}
-      propertyPath: m_navmeshManager
-      value: 
-      objectReference: {fileID: 1073895066}
-    - target: {fileID: 2466487409969347774, guid: 984da10a546404ff99bc740cdba421ec,
-        type: 3}
-      propertyPath: m_selectedObject
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2466487409969347774, guid: 984da10a546404ff99bc740cdba421ec,
-        type: 3}
       propertyPath: m_inventoryManager
       value: 
       objectReference: {fileID: 1097124873}
@@ -34294,6 +34289,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1482977779}
     m_Modifications:
+    - target: {fileID: 1120782533081185728, guid: 8b0d0ac0048cd4ea6be9fbb97e7170e6,
+        type: 3}
+      propertyPath: m_initialEnemies
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2322070165418581314, guid: 8b0d0ac0048cd4ea6be9fbb97e7170e6,
         type: 3}
       propertyPath: m_LocalPosition.x

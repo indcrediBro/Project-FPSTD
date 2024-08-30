@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9075911211462146547}
   - component: {fileID: 2365067356741696489}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Ghost Block
-  m_TagString: Block
+  m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +40,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926842090374526278}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 1.15, y: 0.875, z: 1.15}

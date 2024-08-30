@@ -24,7 +24,7 @@ public class EnemyStats : MonoBehaviour
         OnObjectSpawn();
     }
 
-    private void Start()
+    private void Awake()
     {
         InitialiseReferences();
     }
@@ -34,7 +34,7 @@ public class EnemyStats : MonoBehaviour
         if (m_collider == null) { m_collider = GetComponent<Collider>(); }
         if (m_rigidbody == null) { m_rigidbody = GetComponent<Rigidbody>(); }
         if (m_health == null) { m_health = GetComponent<EnemyHealth>(); }
-        if (m_attack == null) { m_attack = GetComponent<EnemyAttack>(); }
+        if (m_attack == null) { m_attack = GetComponentInChildren<EnemyAttack>(); }
         if (m_audio == null) { m_audio = GetComponent<EnemyAudio>(); }
         if (m_stateMachine == null) { m_stateMachine = GetComponent<EnemyStateMachine>(); }
     }
@@ -70,7 +70,7 @@ public class EnemyStats : MonoBehaviour
 
     public void UpgradeStats(int wave)
     {
-        m_health.SetMaxHealth(wave + 10f);
-        m_attack.m_attackDamage = wave;
+        m_health.SetMaxHealth(wave * 5f);
+        m_attack.m_AttackDamage = wave * 5;
     }
 }

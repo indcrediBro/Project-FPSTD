@@ -30,6 +30,4 @@ public class TrapCannon : TrapBase
         projectile.SetActive(true);
         return projectile;
     }
-
-
 }

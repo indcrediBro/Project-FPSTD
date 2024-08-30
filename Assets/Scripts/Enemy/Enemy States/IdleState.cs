@@ -19,26 +19,29 @@ public class IdleState : IEnemyState
 
         if (IsNotPlayingAnyAnimations(_stateMachine)) { return; }
 
-        if (_stateMachine.m_Detection.IsPlayerInRange())
-        {
-            if (_stateMachine.m_Detection.IsInAttackRange(_stateMachine.m_PlayerTarget))
-            {
-                _stateMachine.TransitionToState(_stateMachine.m_AttackState);
-            }
-            else
-            {
-                _stateMachine.TransitionToState(_stateMachine.m_ChasePlayerState);
-            }
-        }
+        _stateMachine.TransitionToState(_stateMachine.m_ChaseState);
 
-        if (_stateMachine.m_Detection.IsInAttackRange(_stateMachine.m_NavigationBaseTarget))
-        {
-            _stateMachine.TransitionToState(_stateMachine.m_AttackState);
-        }
-        else
-        {
-            _stateMachine.TransitionToState(_stateMachine.m_ChaseBaseState);
-        }
+
+        //if (_stateMachine.m_Detection.IsPlayerInRange())
+        //{
+        //    if (_stateMachine.m_Detection.IsInAttackRange(_stateMachine.m_PlayerTarget))
+        //    {
+        //        _stateMachine.TransitionToState(_stateMachine.m_AttackState);
+        //    }
+        //    else
+        //    {
+        //        _stateMachine.TransitionToState(_stateMachine.m_ChasePlayerState);
+        //    }
+        //}
+
+        //if (_stateMachine.m_Detection.IsInAttackRange(_stateMachine.m_NavigationBaseTarget))
+        //{
+        //    _stateMachine.TransitionToState(_stateMachine.m_AttackState);
+        //}
+        //else
+        //{
+        //    _stateMachine.TransitionToState(_stateMachine.m_ChaseBaseState);
+        //}
     }
 
     public void ExitState(EnemyStateMachine _stateMachine)

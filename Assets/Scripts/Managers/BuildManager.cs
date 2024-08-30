@@ -1,19 +1,18 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildManager : Singleton<BuildManager>
 {
     [SerializeField] private InventoryManager m_inventoryManager;
     [SerializeField] private GhostManager m_ghostManager;
-    [SerializeField] private NavmeshManager m_navmeshManager;
-    [SerializeField] private LayerMask m_floorLayer;
-    [SerializeField] private LayerMask m_blockLayer;
+    [SerializeField] private int m_floorLayer = 7;
+    [SerializeField] private int m_blockLayer = 8;
     [SerializeField] private string m_selectedObject;
+    [SerializeField] private LayerMask m_buildableLayers;
     private Transform m_lastTargetTransform;
 
     private void Update()
     {
-        if (GameReferences.Instance.m_IsGameOver) return;
+        if (GameReferences.Instance.m_IsGameOver || GameReferences.Instance.m_IsPaused) return;
 
         HandleGhostPlacer();
     }
@@ -21,51 +20,27 @@ public class BuildManager : Singleton<BuildManager>
     private void HandleGhostPlacer()
     {
         InventoryManager.InventoryItem selectedItem = m_inventoryManager.GetBuildableItem(m_selectedObject);
-        if (selectedItem == null)
+        if (selectedItem == null || string.IsNullOrEmpty(m_selectedObject))
         {
             m_ghostManager.HideGhost();
             return;
         }
 
-        if (string.IsNullOrEmpty(m_selectedObject))
+        Transform target = GetPlacementTarget();
+        Vector3 placementPosition = CalculatePlacementPosition(target);
+
+        bool isCorrectLayer = target && target.gameObject.layer == GetTargetLayer();
+        m_ghostManager.UpdateGhost(m_selectedObject, placementPosition, isCorrectLayer);
+
+        if (InputManager.Instance.m_AttackInput.WasReleasedThisFrame() && isCorrectLayer)
         {
+            PlaceObject(target, selectedItem.Prefab);
+            m_inventoryManager.UseBuildableItem(m_selectedObject);
             m_ghostManager.HideGhost();
-            return;
-        }
-
-        Transform target = GetPlacementTarget(GetTargetLayer());
-        if (target != null)
-        {
-            Vector3 placementPosition = CalculatePlacementPosition(target);
-            bool isValidPlacement = m_navmeshManager.CheckPathValidity();
-
-            if (m_lastTargetTransform != target)
-            {
-                m_ghostManager.PlaceGhostObjectTemporarily(placementPosition);
-                m_ghostManager.UpdateGhost(m_selectedObject, placementPosition, isValidPlacement);
-                m_lastTargetTransform = target;
-            }
-            else
-            {
-                m_ghostManager.UpdateGhost(m_selectedObject, placementPosition, isValidPlacement);
-            }
-
-            if (isValidPlacement && InputManager.Instance.m_AttackInput.WasReleasedThisFrame())
-            {
-                PlaceObject(target, selectedItem.Prefab);
-                m_inventoryManager.UseBuildableItem(m_selectedObject);
-                m_ghostManager.HideGhost();
-            }
-        }
-        else
-        {
-            m_ghostManager.HideGhost();
-            m_lastTargetTransform = null;
         }
     }
 
-
-    private LayerMask GetTargetLayer()
+    private int GetTargetLayer()
     {
         switch (m_selectedObject)
         {
@@ -80,10 +55,11 @@ public class BuildManager : Singleton<BuildManager>
         }
     }
 
-    private Transform GetPlacementTarget(LayerMask _layer)
+    private Transform GetPlacementTarget()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f, _layer))
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 10f, m_buildableLayers))
         {
             if (hit.transform.gameObject.activeInHierarchy && hit.transform.gameObject.activeSelf)
             {
@@ -95,6 +71,11 @@ public class BuildManager : Singleton<BuildManager>
 
     private Vector3 CalculatePlacementPosition(Transform target)
     {
+        if (target == null)
+        {
+            return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+
         Collider targetCollider = target.GetComponent<Collider>();
         if (targetCollider != null)
         {
@@ -105,17 +86,18 @@ public class BuildManager : Singleton<BuildManager>
         return target.position;
     }
 
-    private void PlaceObject(Transform _target, GameObject _prefab)
+    private void PlaceObject(Transform target, GameObject prefab)
     {
-        Instantiate(_prefab, m_ghostManager.GetCurrentGhostPosition(), Quaternion.identity, _target);
-
-        _target.tag = "Untagged";
-        _target.gameObject.layer = 0;
-
+        Instantiate(prefab, m_ghostManager.GetCurrentGhostPosition(), Quaternion.identity, target);
+        if (target != null)
+        {
+            target.tag = "Untagged";
+            target.gameObject.layer = 0;
+        }
     }
 
-    public void SetSelectedBuildable(string _name)
+    public void SetSelectedBuildable(string name)
     {
-        m_selectedObject = _name;
+        m_selectedObject = name;
     }
 }
