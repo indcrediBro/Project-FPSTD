@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,21 +8,27 @@ public class ScreenFlash : MonoBehaviour
 {
     [SerializeField] private Image m_flashImage;
     [SerializeField] private Color m_flashColor = Color.red;
+    [SerializeField] private Color m_fadeColor = Color.white;
+    [SerializeField] private float m_fadeDuration = 1f;
 
     void Start()
     {
         if (m_flashImage != null)
         {
-            m_flashImage.color = new Color(m_flashColor.r, m_flashColor.g, m_flashColor.b, 0);
+            m_flashImage.color = m_fadeColor;
+            m_flashImage.DOFade(0, m_fadeDuration);
         }
+    }
+
+    public void FadeOut()
+    {
+        m_flashImage.color = m_fadeColor;
+        m_flashImage.DOFade(1f, m_fadeDuration);
     }
 
     public void TriggerFlash(float _flashDuration = 0.2f)
     {
-        //if (SettingsManager.Instance.screenFlashEnabled)
-        {
-            StartCoroutine(FlashCoroutine(_flashDuration));
-        }
+        StartCoroutine(FlashCoroutine(_flashDuration));
     }
 
     private IEnumerator FlashCoroutine(float _flashDuration)

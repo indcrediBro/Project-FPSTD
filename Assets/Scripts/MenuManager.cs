@@ -1,5 +1,6 @@
 #region
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,7 @@ public class MenuManager : Singleton<MenuManager>
     [SerializeField] private PanelUI[] m_panels;
     [SerializeField] private GameObject m_hud;
     [SerializeField] private TMPro.TMP_Text m_deathText;
+    [SerializeField] private ScreenFlash m_screenFlash;
 
     public PanelUI GetPanelUI(string _panelName)
     {
@@ -127,8 +129,7 @@ public class MenuManager : Singleton<MenuManager>
 
     public void LoadScene(string _levelToLoad)
     {
-        SceneManager.LoadScene(_levelToLoad);
-        GameStateManager.Instance.SetState(new PlayState(GameStateManager.Instance));
+        StartCoroutine(LoadSceneCO(_levelToLoad));
     }
 
     public void SetActiveObject(GameObject obj)
@@ -142,5 +143,13 @@ public class MenuManager : Singleton<MenuManager>
         {
             EventSystem.current.SetSelectedGameObject(null);
         }
+    }
+
+    private IEnumerator LoadSceneCO(string _levelToLoad)
+    {
+        m_screenFlash.FadeOut();
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(_levelToLoad);
+        GameStateManager.Instance.SetState(new PlayState(GameStateManager.Instance));
     }
 }

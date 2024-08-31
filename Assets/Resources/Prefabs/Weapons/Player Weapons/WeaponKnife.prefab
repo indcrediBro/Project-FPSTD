@@ -84,7 +84,6 @@ MonoBehaviour:
   m_weaponTransform: {fileID: 2226955296568859348}
   m_weaponAnimator: {fileID: 7367542295936325058}
   m_hitRadius: 1
-  m_knockbackForce: 0.75
   m_enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -120,17 +119,17 @@ PrefabInstance:
     - target: {fileID: 2089171180881882981, guid: 3d8bc8913257a484995006dd08caaf63,
         type: 3}
       propertyPath: m_Convex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2089171180881882981, guid: 3d8bc8913257a484995006dd08caaf63,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2089171180881882981, guid: 3d8bc8913257a484995006dd08caaf63,
         type: 3}
-      propertyPath: m_IsTrigger
+      propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2089171180881882981, guid: 3d8bc8913257a484995006dd08caaf63,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2510876488531102831, guid: 3d8bc8913257a484995006dd08caaf63,
         type: 3}

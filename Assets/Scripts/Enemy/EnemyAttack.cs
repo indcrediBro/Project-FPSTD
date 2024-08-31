@@ -36,7 +36,8 @@ public class EnemyAttack : MonoBehaviour
 
         foreach (Collider collider in _colliders)
         {
-            if (collider.TryGetComponent(out Health targetHealth) && !targetHealth.IsDead())
+            if (collider.TryGetComponent(out Health targetHealth) && !targetHealth.IsDead() &&
+                !collider.TryGetComponent(out EnemyHealth friendlyHealth))
             {
                 StartCoroutine(AttackCO(targetHealth));
                 return;
@@ -73,8 +74,6 @@ public class EnemyAttack : MonoBehaviour
         {
             AudioManager.Instance.PlaySound("SFX_PlayerHit");
         }
-
-        yield return new WaitForSeconds(0.35f);
         m_CanAttack = true;
     }
 }
