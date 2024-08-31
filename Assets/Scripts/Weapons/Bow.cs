@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 public class Bow : Weapon
 {
     //TODO: Have a seperate abstract class for Charged Weapons
@@ -11,8 +10,8 @@ public class Bow : Weapon
     [SerializeField] private float m_maxSpeed = 30f;
 
     private GameObject m_currentArrow;
-    private float m_currentChargeTime = 0f;
-    private bool m_isCharging = false;
+    private float m_currentChargeTime;
+    private bool m_isCharging;
     private PlayerUIController m_playerUI;
 
     private void Start()
@@ -131,7 +130,7 @@ public class Bow : Weapon
         {
             float chargeRatio = Mathf.Clamp01(m_currentChargeTime / m_maxChargeTime);
             float arrowSpeed = Mathf.Lerp(10f, m_maxSpeed, chargeRatio);
-            float arrowDamage = Mathf.Lerp(10f, GetCurrentDamage(), chargeRatio);
+            float arrowDamage = Mathf.Lerp(0f, GetCurrentDamage(), chargeRatio);
 
             PlayerWeaponProjectile arrowComponent = m_currentArrow.GetComponent<PlayerWeaponProjectile>();
             arrowComponent.SetDamage(arrowDamage);
