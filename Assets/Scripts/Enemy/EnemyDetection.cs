@@ -15,6 +15,22 @@ public class EnemyDetection : MonoBehaviour
         m_stateMachine = GetComponent<EnemyStateMachine>();
     }
 
+    private void Update()
+    {
+        if (GetNearestTarget() != null)
+        {
+            m_stateMachine.m_CurrentTarget = GetNearestTarget();
+        }
+        else if (IsTargetInRange(m_stateMachine.m_PlayerTarget))
+        {
+            m_stateMachine.m_CurrentTarget = m_stateMachine.m_PlayerTarget;
+        }
+        else
+        {
+            m_stateMachine.m_CurrentTarget = m_stateMachine.m_BaseTarget;
+        }
+    }
+
     public bool IsTargetInRange(Transform target)
     {
         if (target == null) return false;
@@ -30,7 +46,7 @@ public class EnemyDetection : MonoBehaviour
     {
         const int maxColliders = 100;
         Collider[] colliders = new Collider[maxColliders];
-        int size = Physics.OverlapSphereNonAlloc(transform.position, 100f, colliders, m_targetLayer);
+        int size = Physics.OverlapSphereNonAlloc(transform.position, 5f, colliders, m_targetLayer);
 
         Transform closestEnemy = null;
         float distanceToCurrentTarget = m_detectionRadius;

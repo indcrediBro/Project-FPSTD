@@ -9,18 +9,12 @@ public class ChaseState : IEnemyState
     {
         stateMachine.m_Animations.PlayAnimation(EnemyState.Chase);
         stateMachine.m_Stats.GetAudio().PlayChaseSound();
-        DetermineTarget(stateMachine);
+        //DetermineTarget(stateMachine);
     }
 
     public void UpdateState(EnemyStateMachine stateMachine)
     {
         if (GameReferences.Instance.m_IsGameOver) return;
-
-        // Ensure m_CurrentTarget is always set
-        if (stateMachine.m_CurrentTarget == null)
-        {
-            DetermineTarget(stateMachine);
-        }
 
         // Move towards the current target
         if (stateMachine.m_CurrentTarget != null)
@@ -34,10 +28,6 @@ public class ChaseState : IEnemyState
                 HandleOtherTargets(stateMachine);
             }
         }
-        else
-        {
-            DetermineTarget(stateMachine);
-        }
     }
 
     public void ExitState(EnemyStateMachine stateMachine)
@@ -45,55 +35,55 @@ public class ChaseState : IEnemyState
         stateMachine.m_Movement.StopMoving();
     }
 
-    private void DetermineTarget(EnemyStateMachine stateMachine)
-    {
-        if (stateMachine.m_NavigationBaseTarget == null)
-        {
-            stateMachine.SetNavigationalBaseTarget(NavmeshManager.Instance.GetBasePositionFromArray(stateMachine.transform));
-        }
+    //private void DetermineTarget(EnemyStateMachine stateMachine)
+    //{
+    //    if (stateMachine.m_NavigationBaseTarget == null)
+    //    {
+    //        stateMachine.SetNavigationalBaseTarget(NavmeshManager.Instance.GetBasePositionFromArray(stateMachine.transform));
+    //    }
 
-        // Initialize potential targets list
-        _potentialTargets = new List<Transform>
-        {
-            stateMachine.m_PlayerTarget, // Priority to the player
-            stateMachine.m_BaseTarget    // Always consider the base
-        };
+    //    // Initialize potential targets list
+    //    _potentialTargets = new List<Transform>
+    //    {
+    //        stateMachine.m_PlayerTarget, // Priority to the player
+    //        stateMachine.m_BaseTarget    // Always consider the base
+    //    };
 
-        // Add any valid targets within range (like turrets, barricades)
-        Transform nearestToBase = NavmeshManager.Instance.GetBasePositionFromArray(stateMachine.m_BaseTarget);
-        if (nearestToBase != null)
-        {
-            _potentialTargets.Add(nearestToBase);
-        }
+    //    // Add any valid targets within range (like turrets, barricades)
+    //    Transform nearestToBase = NavmeshManager.Instance.GetBasePositionFromArray(stateMachine.transform);
+    //    if (nearestToBase != null)
+    //    {
+    //        _potentialTargets.Add(nearestToBase);
+    //    }
 
-        // Prioritize targets
-        stateMachine.m_CurrentTarget = GetValidTarget(stateMachine);
+    //    // Prioritize targets
+    //    stateMachine.m_CurrentTarget = GetValidTarget(stateMachine);
 
-        // Ensure the path to the base is valid, otherwise choose the nearest target to the base
-        if (stateMachine.m_CurrentTarget == stateMachine.m_BaseTarget && !NavmeshManager.Instance.CheckPathValidity())
-        {
-            stateMachine.m_CurrentTarget = nearestToBase;
-        }
+    //    // Ensure the path to the base is valid, otherwise choose the nearest target to the base
+    //    if (stateMachine.m_CurrentTarget == stateMachine.m_BaseTarget && !NavmeshManager.Instance.CheckPathValidity())
+    //    {
+    //        stateMachine.m_CurrentTarget = nearestToBase;
+    //    }
 
-        // Fallback to the base if no other valid target is found
-        if (stateMachine.m_CurrentTarget == null)
-        {
-            stateMachine.m_CurrentTarget = stateMachine.m_BaseTarget;
-        }
-    }
+    //    // Fallback to the base if no other valid target is found
+    //    if (stateMachine.m_CurrentTarget == null)
+    //    {
+    //        stateMachine.m_CurrentTarget = stateMachine.m_BaseTarget;
+    //    }
+    //}
 
-    private Transform GetValidTarget(EnemyStateMachine stateMachine)
-    {
-        // Prioritize player if in range, else consider other targets
-        foreach (Transform target in _potentialTargets)
-        {
-            if (target != null && stateMachine.m_Detection.IsTargetInRange(target))
-            {
-                return target;
-            }
-        }
-        return null;
-    }
+    //private Transform GetValidTarget(EnemyStateMachine stateMachine)
+    //{
+    //    // Prioritize player if in range, else consider other targets
+    //    foreach (Transform target in _potentialTargets)
+    //    {
+    //        if (target != null && stateMachine.m_Detection.IsTargetInRange(target))
+    //        {
+    //            return target;
+    //        }
+    //    }
+    //    return null;
+    //}
 
     private void HandleBaseTarget(EnemyStateMachine stateMachine)
     {
@@ -110,11 +100,6 @@ public class ChaseState : IEnemyState
         {
             stateMachine.TransitionToState(stateMachine.m_AttackState);
         }
-
-        if (!stateMachine.m_Detection.IsTargetInRange(stateMachine.m_CurrentTarget))
-        {
-            DetermineTarget(stateMachine);
-        }
     }
 
     private void HandleOtherTargets(EnemyStateMachine stateMachine)
@@ -125,11 +110,6 @@ public class ChaseState : IEnemyState
         if (stateMachine.m_Detection.IsInAttackRange(stateMachine.m_CurrentTarget))
         {
             stateMachine.TransitionToState(stateMachine.m_AttackState);
-        }
-
-        if (!stateMachine.m_Detection.IsTargetInRange(stateMachine.m_CurrentTarget))
-        {
-            DetermineTarget(stateMachine);
         }
     }
 }
