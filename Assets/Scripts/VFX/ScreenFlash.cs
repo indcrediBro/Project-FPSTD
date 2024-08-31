@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class ScreenFlash : MonoBehaviour
 {
     [SerializeField] private Image m_flashImage;
@@ -11,7 +9,7 @@ public class ScreenFlash : MonoBehaviour
     [SerializeField] private Color m_fadeColor = Color.white;
     [SerializeField] private float m_fadeDuration = 1f;
 
-    void Start()
+    private void Start()
     {
         if (m_flashImage != null)
         {
@@ -38,7 +36,7 @@ public class ScreenFlash : MonoBehaviour
 
         while (elapsedTime < _flashDuration)
         {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             float alpha = Mathf.Lerp(1, 0, elapsedTime / _flashDuration);
             m_flashImage.color = new Color(m_flashColor.r, m_flashColor.g, m_flashColor.b, alpha);
             yield return null;

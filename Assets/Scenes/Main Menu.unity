@@ -15815,6 +15815,86 @@ PrefabInstance:
       propertyPath: InitialModule.startSpeed.minScalar
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 198232944087665674, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
+        type: 3}
+      propertyPath: InitialModule.startSize.maxCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198232944087665674, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
+        type: 3}
+      propertyPath: InitialModule.startSize.minCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198232944087665674, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.maxCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198232944087665674, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.minCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198232944087665674, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
+        type: 3}
+      propertyPath: InitialModule.startSizeZ.maxCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198232944087665674, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
+        type: 3}
+      propertyPath: InitialModule.startSizeZ.minCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198232944087665674, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.maxCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198232944087665674, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.minCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198232944087665674, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.maxCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198232944087665674, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198232944087665674, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
+        type: 3}
+      propertyPath: InitialModule.startRotation.maxCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198232944087665674, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
+        type: 3}
+      propertyPath: InitialModule.startRotation.minCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198232944087665674, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
+        type: 3}
+      propertyPath: InitialModule.startRotationX.maxCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198232944087665674, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
+        type: 3}
+      propertyPath: InitialModule.startRotationX.minCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198232944087665674, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
+        type: 3}
+      propertyPath: InitialModule.startRotationY.maxCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198232944087665674, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
+        type: 3}
+      propertyPath: InitialModule.startRotationY.minCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 199493038665733520, guid: 3d42bbbe9fe446f41aa669ee01abd12d,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -26444,6 +26524,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198580859042387738, guid: bfd029cf92085ea4a9842fae64ef7799,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.maxCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198580859042387738, guid: bfd029cf92085ea4a9842fae64ef7799,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minCurve.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 199092536874862196, guid: bfd029cf92085ea4a9842fae64ef7799,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -27392,7 +27482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_flashImage: {fileID: 1838123586}
   m_flashColor: {r: 0.735849, g: 0.010412939, b: 0.010412939, a: 1}
-  m_fadeColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fadeColor: {r: 0, g: 0, b: 0, a: 0.7294118}
   m_fadeDuration: 1
 --- !u!114 &1838123586
 MonoBehaviour:
@@ -27407,7 +27497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -42926,7 +43016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_flashImage: {fileID: 0}
   m_flashColor: {r: 0.735849, g: 0.010412939, b: 0.010412939, a: 1}
-  m_fadeColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fadeColor: {r: 0, g: 0, b: 0, a: 0.7294118}
   m_fadeDuration: 1
 --- !u!114 &3230219387897091157
 MonoBehaviour:
@@ -48203,8 +48293,8 @@ RectTransform:
   m_Children:
   - {fileID: 8645174066564444521}
   - {fileID: 6629069422889882189}
-  - {fileID: 2748148342596765281}
   - {fileID: 3464213867427498894}
+  - {fileID: 2748148342596765281}
   - {fileID: 7222035360268361389}
   m_Father: {fileID: 1885990036235134371}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57708,7 +57798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
