@@ -8,11 +8,13 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] private Collider m_collider;
     [SerializeField] private EnemyHealth m_health;
     [SerializeField] private EnemyAttack m_attack;
+    [SerializeField] private EnemyDetection m_detect;
     [SerializeField] private EnemyAudio m_audio;
 
     public Collider GetCollider() { return m_collider; }
     public EnemyHealth GetHealth() { return m_health; }
     public EnemyAttack GetAttack() { return m_attack; }
+    public EnemyDetection GetDetection() { return m_detect; }
     public EnemyAudio GetAudio() { return m_audio; }
     public Transform GetTrapTargetPoint() { return m_trapTargetPoint; }
     public EnemyStateMachine GetEnemyStateMachine() { return m_stateMachine; }
@@ -32,6 +34,7 @@ public class EnemyStats : MonoBehaviour
         if (m_collider == null) { m_collider = GetComponent<Collider>(); }
         if (m_health == null) { m_health = GetComponent<EnemyHealth>(); }
         if (m_attack == null) { m_attack = GetComponentInChildren<EnemyAttack>(); }
+        if (m_detect == null) { m_detect = GetComponent<EnemyDetection>(); }
         if (m_audio == null) { m_audio = GetComponent<EnemyAudio>(); }
         if (m_stateMachine == null) { m_stateMachine = GetComponent<EnemyStateMachine>(); }
     }

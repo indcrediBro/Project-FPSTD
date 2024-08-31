@@ -32,17 +32,14 @@ public class EnemyAttack : MonoBehaviour
             return;
         }
 
-        _colliders = Physics.OverlapSphere(transform.position, m_AttackRange);
+        _colliders = Physics.OverlapSphere(m_stats.GetDetection().m_attackPoint.position, m_AttackRange);
 
         foreach (Collider collider in _colliders)
         {
             if (collider.TryGetComponent(out Health targetHealth) && !targetHealth.IsDead())
             {
-                if (collider.CompareTag("Player") || collider.CompareTag("PlayerBase"))
-                {
-                    StartCoroutine(AttackCO(targetHealth));
-                    return;
-                }
+                StartCoroutine(AttackCO(targetHealth));
+                return;
             }
         }
     }
@@ -67,7 +64,7 @@ public class EnemyAttack : MonoBehaviour
             GameReferences.Instance.m_PlayerBase.TakeDamage(m_AttackDamage);
             AudioManager.Instance.PlaySound("SFX_BaseHit", transform.position);
         }
-        else if (Vector3.Distance(targetHealth.transform.position, m_stats.transform.position) > m_AttackRange)
+        else if (Vector3.Distance(targetHealth.transform.position, m_stats.transform.position) < m_AttackRange)
         {
             targetHealth.TakeDamage(m_AttackDamage);
         }

@@ -2741,7 +2741,7 @@ MonoBehaviour:
   m_PlayerBase: {fileID: 5098735690131809376}
   m_IsPaused: 0
   m_IsGameOver: 0
-  m_CameraShake: {fileID: 4746342275366053001}
+  m_CameraShake: {fileID: 1135955417}
   m_ScreenFlash: {fileID: 1093334782}
 --- !u!4 &206529877
 Transform:
@@ -17214,6 +17214,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1389726302}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1135955417 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2077561893795448016, guid: f920eaaaa52c84a7884767527aa2de83,
+    type: 3}
+  m_PrefabInstance: {fileID: 4746342275366052997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bcd1394f6fc747b1b3bfe389fa26bb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1138094095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2377032109250681152, guid: e3e628c4c6649435a950a395a6db7b75,
@@ -29409,7 +29421,7 @@ PrefabInstance:
     - target: {fileID: 8860909223121384549, guid: 08753f489b23bc146aa5431854662689,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.6462259
+      value: -0.646225
       objectReference: {fileID: 0}
     - target: {fileID: 9102255207792666811, guid: 08753f489b23bc146aa5431854662689,
         type: 3}
@@ -33567,18 +33579,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4746342275366052997}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4746342275366053001 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2077561893795448016, guid: f920eaaaa52c84a7884767527aa2de83,
-    type: 3}
-  m_PrefabInstance: {fileID: 4746342275366052997}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bcd1394f6fc747b1b3bfe389fa26bb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4746342275366053002
 MonoBehaviour:
   m_ObjectHideFlags: 0

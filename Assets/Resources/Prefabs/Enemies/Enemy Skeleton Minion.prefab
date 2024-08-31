@@ -5959,7 +5959,7 @@ Transform:
   m_GameObject: {fileID: 3780171095004158282}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.165, z: 0.822}
+  m_LocalPosition: {x: 0, y: -0.165, z: 0.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6399,14 +6399,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5216124821874856922}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1961950512990014244}
   m_Father: {fileID: 7701461265962366103}
-  m_LocalEulerAnglesHint: {x: 0.0000025044778, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5409549149130097723
 GameObject:
   m_ObjectHideFlags: 0
@@ -6578,6 +6578,7 @@ MonoBehaviour:
   m_collider: {fileID: 1905533032872417004}
   m_health: {fileID: 3340179588282938972}
   m_attack: {fileID: 0}
+  m_detect: {fileID: 0}
   m_audio: {fileID: -8428930821074434415}
 --- !u!114 &2684584694817969547
 MonoBehaviour:

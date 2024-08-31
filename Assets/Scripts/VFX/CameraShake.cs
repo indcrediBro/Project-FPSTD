@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class CameraShake : MonoBehaviour
@@ -26,18 +27,20 @@ public class CameraShake : MonoBehaviour
 
     public void TriggerShake(float _shakeDuration = 0.25f, float _shakeMagnitude = .25f)
     {
+        transform.DOShakePosition(_shakeDuration, _shakeMagnitude);
+
         //if (SettingsManager.Instance.cameraShakeEnabled)
-        {
-            m_shakeElapsedTime = 0;
-            m_cameraTransform.localPosition = m_initialPosition;
-            m_shakeMagnitude = _shakeMagnitude;
-            m_shakeElapsedTime = _shakeDuration;
-        }
+        //{
+        //    m_shakeElapsedTime = 0;
+        //    m_cameraTransform.localPosition = m_initialPosition;
+        //    m_shakeMagnitude = _shakeMagnitude;
+        //    m_shakeElapsedTime = _shakeDuration;
+        //}
     }
 
     void Update()
     {
-        Shake();
+        //Shake();
     }
 
     private void Shake()

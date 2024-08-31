@@ -59,7 +59,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void Start()
     {
-        //TransitionToState(m_SpawnState);
+        TransitionToState(m_SpawnState);
     }
 
     private void Update()
@@ -73,7 +73,7 @@ public class EnemyStateMachine : MonoBehaviour
         m_CurrentState = _newState;
         m_CurrentState.EnterState(this);
 
-        Debug.Log("New State: " + m_CurrentState);
+        //Debug.Log("New State: " + m_CurrentState);
     }
 
     public void SetNavigationalBaseTarget(Transform _navigationalTargetTile)
