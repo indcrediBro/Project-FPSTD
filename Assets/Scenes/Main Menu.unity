@@ -27482,7 +27482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_flashImage: {fileID: 1838123586}
   m_flashColor: {r: 0.735849, g: 0.010412939, b: 0.010412939, a: 1}
-  m_fadeColor: {r: 0, g: 0, b: 0, a: 0.7294118}
+  m_fadeColor: {r: 0, g: 0, b: 0, a: 1}
   m_fadeDuration: 1
 --- !u!114 &1838123586
 MonoBehaviour:

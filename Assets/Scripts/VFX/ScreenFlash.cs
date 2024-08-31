@@ -9,10 +9,16 @@ public class ScreenFlash : MonoBehaviour
     [SerializeField] private Color m_fadeColor = Color.white;
     [SerializeField] private float m_fadeDuration = 1f;
 
-    private void Start()
+    private void OnEnable()
+    {
+        FadeIn();
+    }
+
+    public void FadeIn()
     {
         if (m_flashImage != null)
         {
+            m_flashImage.color = new Color(m_fadeColor.r, m_fadeColor.g, m_fadeColor.b, 1);
             m_flashImage.color = m_fadeColor;
             m_flashImage.DOFade(0, m_fadeDuration);
         }
@@ -20,6 +26,7 @@ public class ScreenFlash : MonoBehaviour
 
     public void FadeOut()
     {
+        m_flashImage.color = new Color(m_fadeColor.r, m_fadeColor.g, m_fadeColor.b, 0);
         m_flashImage.color = m_fadeColor;
         m_flashImage.DOFade(1f, m_fadeDuration);
     }

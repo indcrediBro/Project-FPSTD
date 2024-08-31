@@ -147,9 +147,11 @@ public class MenuManager : Singleton<MenuManager>
 
     private IEnumerator LoadSceneCO(string _levelToLoad)
     {
+        Time.timeScale = 1;
         m_screenFlash.FadeOut();
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(_levelToLoad);
         GameStateManager.Instance.SetState(new PlayState(GameStateManager.Instance));
+        m_screenFlash.FadeIn();
     }
 }
