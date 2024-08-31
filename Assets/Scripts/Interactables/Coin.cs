@@ -49,7 +49,8 @@ public class Coin : Interactable
         yield return new WaitForSeconds(1f);
         transform.DOMove(GameReferences.Instance.m_PlayerStats.transform.position, 2f);
         yield return new WaitForSeconds(1f);
-        AudioManager.Instance.PlaySound("SFX_UIClick");
+        AudioManager.Instance.StopSound("SFX_Coin");
+        AudioManager.Instance.PlaySound("SFX_Coin");
         EconomyManager.Instance.EarnMoney(RandomNumber.Instance.NextInt(1, 10));
         gameObject.SetActive(false);
     }

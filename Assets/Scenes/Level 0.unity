@@ -53862,7 +53862,7 @@ PrefabInstance:
     - target: {fileID: 311276270635894054, guid: d37f336803e1543ea860682d89d39d58,
         type: 3}
       propertyPath: m_playerMoney
-      value: 500
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2151387344491614499, guid: d37f336803e1543ea860682d89d39d58,
         type: 3}
