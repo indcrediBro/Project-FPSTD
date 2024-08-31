@@ -7,6 +7,8 @@ public class PlayerUIController : MonoBehaviour
     [SerializeField] private Slider m_healthBar;
     [SerializeField] private Slider m_baseHealthBar;
     [SerializeField] private Slider m_staminaBar;
+    [SerializeField] private TMP_Text m_healthText;
+    [SerializeField] private TMP_Text m_baseHealthText;
     [SerializeField] private TMP_Text m_ammoText;
     [SerializeField] private TMP_Text m_equippedText;
     [SerializeField] private TMP_Text m_levelText;
@@ -73,12 +75,20 @@ public class PlayerUIController : MonoBehaviour
         {
             m_healthBar.value = m_playerHealth.GetCurrentHealthValue();
         }
+        if (m_healthText)
+        {
+            m_healthText.text = m_playerHealth.GetCurrentHealthValue() + "/" + m_playerHealth.GetMaxHealthValue();
+        }
     }
     private void UpdatePlayerBaseHealthBar()
     {
         if (m_baseHealthBar)
         {
             m_baseHealthBar.value = GameReferences.Instance.m_PlayerBase.GetCurrentHealthValue();
+        }
+        if (m_baseHealthText)
+        {
+            m_baseHealthText.text = GameReferences.Instance.m_PlayerBase.GetCurrentHealthValue() + "/" + GameReferences.Instance.m_PlayerBase.GetMaxHealthValue();
         }
     }
 

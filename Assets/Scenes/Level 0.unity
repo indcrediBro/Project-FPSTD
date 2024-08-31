@@ -29388,6 +29388,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6035035856614570838, guid: 08753f489b23bc146aa5431854662689,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6625712089702561506, guid: 08753f489b23bc146aa5431854662689,
         type: 3}
       propertyPath: m_IsActive
@@ -32881,6 +32886,30 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3e628c4c6649435a950a395a6db7b75, type: 3}
+--- !u!114 &2130712777 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 273162964224229691, guid: 08753f489b23bc146aa5431854662689,
+    type: 3}
+  m_PrefabInstance: {fileID: 1918933972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2130712778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1520069101222478947, guid: 08753f489b23bc146aa5431854662689,
+    type: 3}
+  m_PrefabInstance: {fileID: 1918933972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2131674110 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cbf66ff686d069741b5a14ad736b5bab,
@@ -33153,6 +33182,91 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[0].Cost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[1].Cost
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[3].Cost
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[5].Cost
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[7].Cost
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[9].Cost
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[0].Details
+      value: Blocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[1].Details
+      value: Pokey Spikes
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[2].Details
+      value: Burnin Firepit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[3].Details
+      value: Fast Crossbow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[4].Details
+      value: Coconut Cannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[5].Details
+      value: Default Knife
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[6].Details
+      value: Combo Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[7].Details
+      value: Charged Bow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[8].Details
+      value: 2 Shots Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[11].Details
+      value: Max Player Health
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655736499931431534, guid: 0c81bb33258884333b42a0116bcf8655,
+        type: 3}
+      propertyPath: m_shopItems.Array.data[12].Details
+      value: Max Base Health
+      objectReference: {fileID: 0}
     - target: {fileID: 8383873611586133256, guid: 0c81bb33258884333b42a0116bcf8655,
         type: 3}
       propertyPath: m_shopPanel
@@ -33410,6 +33524,11 @@ PrefabInstance:
       objectReference: {fileID: 1892337280}
     - target: {fileID: 4487583651155426220, guid: f920eaaaa52c84a7884767527aa2de83,
         type: 3}
+      propertyPath: m_healthText
+      value: 
+      objectReference: {fileID: 2130712778}
+    - target: {fileID: 4487583651155426220, guid: f920eaaaa52c84a7884767527aa2de83,
+        type: 3}
       propertyPath: m_staminaBar
       value: 
       objectReference: {fileID: 1918933976}
@@ -33428,6 +33547,11 @@ PrefabInstance:
       propertyPath: m_baseHealthBar
       value: 
       objectReference: {fileID: 819168601}
+    - target: {fileID: 4487583651155426220, guid: f920eaaaa52c84a7884767527aa2de83,
+        type: 3}
+      propertyPath: m_baseHealthText
+      value: 
+      objectReference: {fileID: 2130712777}
     - target: {fileID: 4610074451116836256, guid: f920eaaaa52c84a7884767527aa2de83,
         type: 3}
       propertyPath: m_LocalPosition.x

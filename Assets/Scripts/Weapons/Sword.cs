@@ -26,7 +26,7 @@ public class Sword : Weapon
     {
         if (!CanAttack() || GameReferences.Instance.m_IsPaused) return;
 
-        if (InputManager.Instance.m_AttackInput.WasPressedThisFrame()) PerformComboAttack();
+        if (InputManager.Instance.m_AttackInput.WasPressedThisFrame() && CanAttack()) PerformComboAttack();
     }
 
     public override void Attack()

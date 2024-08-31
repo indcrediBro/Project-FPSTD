@@ -14,6 +14,7 @@ public class EnemyHealth : Health
     protected override void Die(float _time)
     {
         base.Die(m_waitTimeBeforeDeath);
+        m_stateMachine.m_Stats.GetAudio().PlayDeadSound();
         m_stateMachine.TransitionToState(m_stateMachine.m_DeadState);
         if (EnemyManager.Instance)
         {
@@ -31,8 +32,8 @@ public class EnemyHealth : Health
         {
             m_stateMachine.TransitionToState(m_stateMachine.m_BurnState);
         }
+        m_stateMachine.m_Stats.GetAudio().PlayHurtSound();
         TakeDamage(_damage);
 
-        m_stateMachine.m_Stats.GetAudio().PlayHurtSound();
     }
 }

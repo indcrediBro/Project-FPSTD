@@ -16,8 +16,8 @@ public class ShopItemUI : MonoBehaviour
 
     public void InitializeShopItemUI(string _name, string _description, string _cost, Sprite _icon)
     {
-        m_itemNameText.text = _name;
-        m_itemDescriptionText.text = _description;
+        m_itemNameText.text = _description;
+        m_itemDescriptionText.text = "";
         m_itemCostText.text = _cost;
         m_itemIconImage.sprite = _icon;
         m_buyButton.onClick.AddListener(() => ShopManager.Instance.BuyItem(_name));
