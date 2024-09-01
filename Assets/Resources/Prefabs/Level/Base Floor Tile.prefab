@@ -409,6 +409,7 @@ GameObject:
   - component: {fileID: 1578733657427448767}
   - component: {fileID: 8465356908223993260}
   - component: {fileID: 196648645260348914}
+  - component: {fileID: 5373696090861267746}
   m_Layer: 8
   m_Name: Base Block
   m_TagString: Block
@@ -489,6 +490,23 @@ MonoBehaviour:
   - {fileID: 1661973501687708073}
   m_baseParentTF: {fileID: 5611187701763688400}
   m_decorSpawnLocationRange: 0
+--- !u!114 &5373696090861267746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5381413354612372265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce485312434545d99bee354b568cec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isPlayer: 0
+  m_dontDestroy: 0
+  m_maxHealth: 100
+  m_currentHealth: 100
+  m_waitTimeBeforeDeath: 0
 --- !u!1 &6144995240010068129
 GameObject:
   m_ObjectHideFlags: 0

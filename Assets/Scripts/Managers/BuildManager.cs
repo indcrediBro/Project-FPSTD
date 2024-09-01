@@ -73,7 +73,7 @@ public class BuildManager : Singleton<BuildManager>
     {
         if (target == null)
         {
-            return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            return GetPlacementTarget().position;
         }
 
         Collider targetCollider = target.GetComponent<Collider>();

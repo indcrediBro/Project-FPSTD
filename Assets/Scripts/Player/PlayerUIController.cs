@@ -77,7 +77,7 @@ public class PlayerUIController : MonoBehaviour
         }
         if (m_healthText)
         {
-            m_healthText.text = m_playerHealth.GetCurrentHealthValue() + "/" + m_playerHealth.GetMaxHealthValue();
+            m_healthText.text = (int)m_playerHealth.GetCurrentHealthValue() + "/" + (int)m_playerHealth.GetMaxHealthValue();
         }
     }
     private void UpdatePlayerBaseHealthBar()
@@ -88,26 +88,9 @@ public class PlayerUIController : MonoBehaviour
         }
         if (m_baseHealthText)
         {
-            m_baseHealthText.text = GameReferences.Instance.m_PlayerBase.GetCurrentHealthValue() + "/" + GameReferences.Instance.m_PlayerBase.GetMaxHealthValue();
+            m_baseHealthText.text = (int)GameReferences.Instance.m_PlayerBase.GetCurrentHealthValue() + "/" + (int)GameReferences.Instance.m_PlayerBase.GetMaxHealthValue();
         }
     }
-
-    //private void InitializeStaminaBar()
-    //{
-    //    if (m_staminaBar)
-    //    {
-    //        m_staminaBar.minValue = 0;
-    //        m_staminaBar.maxValue = m_playerStamina.GetMaxStamina();
-    //        m_staminaBar.value = m_playerStamina.GetStamina();
-    //    }
-    //}
-    //private void UpdateStaminaBar()
-    //{
-    //    if (m_staminaBar)
-    //    {
-    //        m_staminaBar.value = m_playerStamina.GetStamina();
-    //    }
-    //}
 
     private void UpdateAmmoBuilderModeText()
     {

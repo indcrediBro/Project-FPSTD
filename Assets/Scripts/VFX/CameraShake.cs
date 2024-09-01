@@ -27,37 +27,6 @@ public class CameraShake : MonoBehaviour
 
     public void TriggerShake(float _shakeDuration = 0.25f, float _shakeMagnitude = .25f)
     {
-        transform.DOShakePosition(_shakeDuration, _shakeMagnitude);
-
-        //if (SettingsManager.Instance.cameraShakeEnabled)
-        //{
-        //    m_shakeElapsedTime = 0;
-        //    m_cameraTransform.localPosition = m_initialPosition;
-        //    m_shakeMagnitude = _shakeMagnitude;
-        //    m_shakeElapsedTime = _shakeDuration;
-        //}
-    }
-
-    void Update()
-    {
-        //Shake();
-    }
-
-    private void Shake()
-    {
-        if (m_shakeElapsedTime > 0)
-        {
-            m_cameraTransform.localPosition = m_initialPosition + new Vector3(
-                Mathf.PerlinNoise(Time.time * m_shakeMagnitude, 0f) * 2 - 1,
-                Mathf.PerlinNoise(0f, Time.time * m_shakeMagnitude) * 2 - 1,
-                0) * m_shakeMagnitude;
-
-            m_shakeElapsedTime -= Time.deltaTime * m_dampingSpeed;
-        }
-        else
-        {
-            m_shakeElapsedTime = 0f;
-            m_cameraTransform.localPosition = m_initialPosition;
-        }
+        transform.DOShakePosition(_shakeDuration, _shakeMagnitude).OnComplete(() => transform.DOLocalMoveY(0.8f, 0f));
     }
 }
